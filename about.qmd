@@ -1,5 +1,49 @@
 ---
-title: "About"
+title: "About Me"
+about:
+  id: hero-heading
+  template: jolla
+  image: 증명사진.jpg
+  links:
+    - icon: github
+      text: Github
+      href: https://github.com/gangcheol/
 ---
 
-About this site
+###
+
+:::{#hero-heading}
+
+## Education
+
+`-` 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 2015. 03 ~ 2021. 02
+
+`-` 전북대학교 통계학과 석사 졸업예정 | 2021. 03 ~ 2023. 02
+
+## Experience
+
+`-` 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06
+ 
+`-` 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원  | 2021. 06 ~ 2021. 08 
+
+`-` 에너지AI융합대학원 빅데이터 분석 특강 조교 | 전북대학교 AI에너지 융합대학원 |2021. 06 ~ 2021. 10
+
+`-` SPSS를 이용한 통계자료분석 특강 조교 | 전북대학교 통계학과 | 2022. 01 ~ 2022. 02
+
+`-` 데이터 준전문가 ADsP 특강 조교 | 전북대학교 통계학과 | 2022. 01 ~ 2022. 02
+
+
+## Publications
+
+`-` [데이터 분석을 통한 지역별 고령친화도 시각화](https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002773972)
+
+    `-` 김영선, 강민구, 이강철  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 
+
+`-` [핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선](https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002890029)
+    
+    `-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학
+
+
+:::
+
+### 
