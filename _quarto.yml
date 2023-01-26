@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir : docs  
 website:
   title: "Gangcheol"
   navbar:
@@ -14,11 +15,8 @@ website:
     
 format:
   html:
-    theme:
-        dark: darkly
     css: styles.css
     toc: true
-    code-fold: false
-    code-line-numbers: false
-    code-copy: false
-    fontsize: 1.2em
+
+theme :
+  dark : darkly
