@@ -1,5 +1,5 @@
 ---
-title: "gangcheol"
+title: "Gang Cheol Portfolio"
 listing:
   contents: post
   sort: "date desc"

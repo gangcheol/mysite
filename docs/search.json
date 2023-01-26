@@ -1,17 +1,31 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
+    "objectID": "about.html#education",
+    "href": "about.html#education",
     "title": "About Me",
-    "section": "",
-    "text": ":::{#hero-heading}"
+    "section": "Education",
+    "text": "Education\n- 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 2015. 03 ~ 2021. 02\n- 전북대학교 통계학과 석사 졸업예정 | 2021. 03 ~ 2023. 02"
+  },
+  {
+    "objectID": "about.html#experience",
+    "href": "about.html#experience",
+    "title": "About Me",
+    "section": "Experience",
+    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 에너지AI융합대학원 빅데이터 분석 특강 조교 | 전북대학교 AI에너지 융합대학원 |2021. 06 ~ 2021. 10\n- SPSS를 이용한 통계자료분석 특강 조교 | 전북대학교 통계학과 | 2022. 01 ~ 2022. 02\n- 데이터 준전문가 ADsP 특강 조교 | 전북대학교 통계학과 | 2022. 01 ~ 2022. 02"
+  },
+  {
+    "objectID": "about.html#publications",
+    "href": "about.html#publications",
+    "title": "About Me",
+    "section": "Publications",
+    "text": "Publications\n- 데이터 분석을 통한 지역별 고령친화도 시각화\n`-` 김영선, 강민구, 이강철  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 \n- 핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n`-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "gangcheol",
+    "title": "Gang Cheol Portfolio",
     "section": "",
-    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJan 26, 2022\n\n\nQuarto test\n\n\nGANGCHEOL LEE\n\n\n\n\n\n\nNo matching items"
+    "text": "Date\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nMar 3, 2022\n\n\nbasic of linear regression\n\n\nGANGCHEOL LEE\n\n\n\n\nJan 26, 2022\n\n\nQuarto test\n\n\nGANGCHEOL LEE\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "post/R for the Data Scienece/2023-01-26-quarto test.html",
@@ -56,24 +70,10 @@
     "text": "6"
   },
   {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "About Me",
-    "section": "Experience",
-    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 에너지AI융합대학원 빅데이터 분석 특강 조교 | 전북대학교 AI에너지 융합대학원 |2021. 06 ~ 2021. 10\n- SPSS를 이용한 통계자료분석 특강 조교 | 전북대학교 통계학과 | 2022. 01 ~ 2022. 02\n- 데이터 준전문가 ADsP 특강 조교 | 전북대학교 통계학과 | 2022. 01 ~ 2022. 02"
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About Me",
-    "section": "Education",
-    "text": "Education\n- 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 2015. 03 ~ 2021. 02\n- 전북대학교 통계학과 석사 졸업예정 | 2021. 03 ~ 2023. 02"
-  },
-  {
-    "objectID": "about.html#publications",
-    "href": "about.html#publications",
-    "title": "About Me",
-    "section": "Publications",
-    "text": "Publications\n- 데이터 분석을 통한 지역별 고령친화도 시각화\n`-` 김영선, 강민구, 이강철  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 \n- 핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n`-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+    "objectID": "post/R for the Data Scienece/2022-03-03-선형회귀분석.html",
+    "href": "post/R for the Data Scienece/2022-03-03-선형회귀분석.html",
+    "title": "basic of linear regression",
+    "section": "",
+    "text": "변수들간의 인과관계를 밝히고 모형을 적합하여 관심 있는 변수를 예측하거나 추론하기 위해 사용하는 분석기법\n선형회귀분석의 가정\n\n오차의 등분산성\n오차의 독립성\n오차의 정규성 : Q-Q plot, Kolmogorov-Smirnov 검정, Shapiro-Wilk 검정을 확인하여 정규성을 확인한다.\n\n\n\n\n0. 회귀모형이 통계적으로 유의한가 확인\n1. 모형 내의 개별 회귀계수에 대한 검정\n2. 모형에 설명력 \\(R^2\\)값을 통해 확인, 독립변수의 수가 많아지면 \\(adj-R^2\\) 값을 확인\n3. 잔차 plot을 통해 모형의 진단\n4. 다중공선성의 확인 (10이상이면 다중공선성이 존재한다고 판단.) \\(\\to\\) car 패키지의 vif 함수 이용\n5. 잔차분석\n\n\n\nCars93 데이터의 엔진크기(EngineSize)를 독립변수, 가격(Price)를 종속변수로 선정하여 단순 선형회귀분석을 실시한 후, 추정된 회귀모형에 대해 해석해보자.\n\n#collapse-hide\nlibrary(MASS)\nlibrary(lmtest) ## 더비왓슨 테스트를 위함\nlibrary(tidyverse)\nselect <- dplyr::select\n\n\n#collapse-hide\nfit1 <- lm(Price~EngineSize,data=Cars93)\nsummary(fit1)\n\n\nCall:\nlm(formula = Price ~ EngineSize, data = Cars93)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-13.684  -4.627  -1.795   2.592  39.429 \n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)    \n(Intercept)   4.6692     2.2390   2.085   0.0398 *  \nEngineSize    5.5629     0.7828   7.107 2.59e-10 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 7.789 on 91 degrees of freedom\nMultiple R-squared:  0.3569,    Adjusted R-squared:  0.3499 \nF-statistic: 50.51 on 1 and 91 DF,  p-value: 2.588e-10\n\n\n\n#collapse-hide\nplot(Cars93$EngineSize,Cars93$Price,lwd=2)\nabline(a=coefficients(fit1)[2],b=coefficients(fit1)[1],col=\"red\",lwd=2)\n\n\n\n\n\n#collapse-hide\npar(mfrow=c(1,2))\nplot(fit1,1); plot(fit1,2)\n\n\n\n\n\n#collapse-hide\nshapiro.test(resid(fit1))\n\n\n    Shapiro-Wilk normality test\n\ndata:  resid(fit1)\nW = 0.85365, p-value = 3.886e-08\n\n\n\n#collapse-hide\ndwtest(fit1,alternative=\"two.sided\")\n\n\n    Durbin-Watson test\n\ndata:  fit1\nDW = 1.1716, p-value = 2.236e-05\nalternative hypothesis: true autocorrelation is not 0\n\n\n1. 모형과 추정된 회귀계수는 모두 통계적으로 유의하다.\n2. 결정계수값과 수정된 결정계수 값이 각각 0.3569, 0.3499 로 산출되었다.\n3. F-통계량의 근거한 p-value값을 보아도 생성된 모델은 통계적으로 유의하다.\n4. 잔차 plot 을 그려본 결과 오차항의 정규성과 독립성 가정이 위배된 것 같다. * 실제로 test 결과 위배되었다는 결론이 통계적으로 유의미했다.\n5. 따라서 모형의 식별 단계로 돌아가 새로운 모형을 적합할 필요가 있어보인다.\n\n#collapse-hide\ntest <- Cars93 %>% select(EngineSize)  %>% sample_n(5)\n\n\n#collapse-hide\npredict(fit1,test,interval=\"none\") ##점추정\n\n123.0268912710567216.9076569678407324.1394793261868425.8083614088821523.5831852986217\n\n\n\n#collapse-hide\npredict(fit1,test,interval=\"confidence\") # 회귀계수에 대한 신뢰구간을 고려한 구간\npredict(fit1,test,interval=\"prediction\") # 회귀계수에 대한 신뢰구간과 오차항을 고려한 구간\n\n\n\nA matrix: 5 × 3 of type dbl\n\n    fitlwrupr\n\n\n    123.0268921.1453624.90842\n    216.9076615.1462318.66909\n    324.1394822.0783426.20061\n    425.8083623.4265328.19019\n    523.5831921.6159525.55043\n\n\n\n\n\n\nA matrix: 5 × 3 of type dbl\n\n    fitlwrupr\n\n\n    123.02689 7.44184638.61194\n    216.90766 1.33665432.47866\n    324.13948 8.53173239.74723\n    425.8083610.15503541.46169\n    523.58319 7.98756039.17881\n\n\n\n\n\n\n\n\niris 데이터를 사용\nR에 lm함수는 범주형 변수를 자동으로 더미변수로 변환해줌\n\n\n#collapse-hide\nfit2 <- lm(Petal.Length~.,data=iris)\nsummary(fit2) \n\n\nCall:\nlm(formula = Petal.Length ~ ., data = iris)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-0.78396 -0.15708  0.00193  0.14730  0.65418 \n\nCoefficients:\n                  Estimate Std. Error t value Pr(>|t|)    \n(Intercept)       -1.11099    0.26987  -4.117 6.45e-05 ***\nSepal.Length       0.60801    0.05024  12.101  < 2e-16 ***\nSepal.Width       -0.18052    0.08036  -2.246   0.0262 *  \nPetal.Width        0.60222    0.12144   4.959 1.97e-06 ***\nSpeciesversicolor  1.46337    0.17345   8.437 3.14e-14 ***\nSpeciesvirginica   1.97422    0.24480   8.065 2.60e-13 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.2627 on 144 degrees of freedom\nMultiple R-squared:  0.9786,    Adjusted R-squared:  0.9778 \nF-statistic:  1317 on 5 and 144 DF,  p-value: < 2.2e-16\n\n\n\n#collapse-hide\ndwtest(fit2,alternative=\"two.sided\")\n\n\n    Durbin-Watson test\n\ndata:  fit2\nDW = 1.6772, p-value = 0.03042\nalternative hypothesis: true autocorrelation is not 0\n\n\n\n#collapse-hide\nshapiro.test(resid(fit2))\n\n\n    Shapiro-Wilk normality test\n\ndata:  resid(fit2)\nW = 0.99389, p-value = 0.78\n\n\n\n#collapse-hide\nlibrary(car)\nvif(fit2)\n\n\n\nA matrix: 4 × 3 of type dbl\n\n    GVIFDfGVIF^(1/(2*Df))\n\n\n    Sepal.Length 3.73670511.933056\n    Sepal.Width 2.64812711.627307\n    Petal.Width18.49697314.300811\n    Species28.55141622.311569\n\n\n\n\n\n\n\n\n\n\n1. 전진 선택법 (forward selection) : 절편만 있는 상수모형에서 시작하여 중요하다고 생각되는 설명변수부터 차례로 추가한다.\n2. 후진 제거법 (backward elimination) : 모든 독립변수를 포함한 모형에서 출발하여 종속변수에 가장 적은 영향을 주는 변수부터 하나씩 제거하면서 더 이상 제거할 변수가 없을 때의 모형을 선택한다.\n3. 단계적 방법 (stepwise method) : 전진선택법에 의해 변수를 추가하면서 새롭게 추가된 변수에 의해 기존 변수의 중요도가 약화되면 해당변수를 제거한다.\n\n\n\n\n모형의 복잡도에 따라 벌점을 주는 방식으로 \\(AIC, BIC\\) 값이 주로 사용된다.\n\n\n\n\n\n#collapse-hide\nfit3 <- step(lm(Price~ EngineSize +Horsepower +RPM + Width + Length + Weight,Cars93),direction = \"both\")\nsummary(fit3)\n\nStart:  AIC=322.11\nPrice ~ EngineSize + Horsepower + RPM + Width + Length + Weight\n\n             Df Sum of Sq    RSS    AIC\n- EngineSize  1      1.69 2556.1 320.17\n- RPM         1     19.71 2574.1 320.82\n<none>                    2554.4 322.11\n- Length      1    119.55 2674.0 324.36\n- Weight      1    209.73 2764.2 327.45\n- Width       1    585.01 3139.4 339.29\n- Horsepower  1    720.84 3275.3 343.22\n\nStep:  AIC=320.17\nPrice ~ Horsepower + RPM + Width + Length + Weight\n\n             Df Sum of Sq    RSS    AIC\n- RPM         1     49.36 2605.5 319.95\n<none>                    2556.1 320.17\n+ EngineSize  1      1.69 2554.4 322.11\n- Length      1    140.92 2697.0 323.16\n- Weight      1    208.09 2764.2 325.45\n- Width       1    593.56 3149.7 337.59\n- Horsepower  1   1476.65 4032.8 360.57\n\nStep:  AIC=319.95\nPrice ~ Horsepower + Width + Length + Weight\n\n             Df Sum of Sq    RSS    AIC\n<none>                    2605.5 319.95\n+ RPM         1     49.36 2556.1 320.17\n+ EngineSize  1     31.34 2574.1 320.82\n- Length      1    132.02 2737.5 322.54\n- Weight      1    279.31 2884.8 327.42\n- Width       1    562.10 3167.6 336.12\n- Horsepower  1   1898.74 4504.2 368.86\n\n\n\nCall:\nlm(formula = Price ~ Horsepower + Width + Length + Weight, data = Cars93)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-14.956  -2.578  -0.182   2.114  28.448 \n\nCoefficients:\n             Estimate Std. Error t value Pr(>|t|)    \n(Intercept) 53.005861  16.532269   3.206  0.00188 ** \nHorsepower   0.129653   0.016190   8.008 4.46e-12 ***\nWidth       -1.480623   0.339813  -4.357 3.56e-05 ***\nLength       0.152968   0.072440   2.112  0.03755 *  \nWeight       0.007339   0.002389   3.071  0.00283 ** \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 5.441 on 88 degrees of freedom\nMultiple R-squared:  0.6965,    Adjusted R-squared:  0.6827 \nF-statistic: 50.48 on 4 and 88 DF,  p-value: < 2.2e-16"
   }
 ]
