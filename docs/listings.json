@@ -2,8 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
-      "/post/R for the Data Scienece/2022-03-03-선형회귀분석.html",
-      "/post/R for the Data Scienece/2023-01-26-quarto test.html"
+      "/post/ML with pytorch/2022-01-27-Intro.html",
+      "/post/R for the Data Scienece/2023-01-26-quarto test.html",
+      "/post/R for the Data Scienece/2022-03-03-선형회귀분석.html"
     ]
   }
 ]
