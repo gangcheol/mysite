@@ -10,7 +10,7 @@ website:
         href: https://github.com/gangcheol/
   sidebar:
     style: "docked"
-    search: true
+    search: True
     contents: auto
     
 format:

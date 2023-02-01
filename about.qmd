@@ -43,6 +43,10 @@ about:
     
     `-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학
 
+## Post
+
+`-` [Bigdata analysis](http://localhost:3939/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html)
+
 ## Conctact
 
 `-` <rkdcjf8232@gmail.com>

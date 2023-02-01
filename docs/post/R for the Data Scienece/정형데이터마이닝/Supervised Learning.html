@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GANGCHEOL LEE">
+<meta name="dcterms.date" content="2021-07-10">
+
+<title>Gangcheol - 01. Supervised Learning</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../about.html" aria-current="page">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">01. Supervised Learning</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">About Me</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Post</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Bigdata Analysis</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-03-08-(1주차).html" class="sidebar-item-text sidebar-link">01. 단순선형회귀</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-03-14-(2주차).html" class="sidebar-item-text sidebar-link">02. Tensorflow-1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-03-21-(3주차).html" class="sidebar-item-text sidebar-link">03. Tensorflow-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-03-28-(4주차).html" class="sidebar-item-text sidebar-link">04. 경사하강법-1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-03-30-(5주차).html" class="sidebar-item-text sidebar-link">05. 경사하강법-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-04-11-(6주차).html" class="sidebar-item-text sidebar-link">06. layer</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2020-04-12-(6주차) 과제.html" class="sidebar-item-text sidebar-link">06. layer 과제</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-04-18-(7주차).html" class="sidebar-item-text sidebar-link">07. Adam</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-04-27-중간고사 해설.html" class="sidebar-item-text sidebar-link">08. Mid term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-05-01-(9주차).html" class="sidebar-item-text sidebar-link">09. MLE</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-05-02-lecture.html" class="sidebar-item-text sidebar-link">10. 확률적 경사하강법</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-05-08-lecture.html" class="sidebar-item-text sidebar-link">11. softmax</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-05-11-(11주차).html" class="sidebar-item-text sidebar-link">12. Max pooling, CNN</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-05-23-(12주차).html" class="sidebar-item-text sidebar-link">13. CNN-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-05-30-(13주차).html" class="sidebar-item-text sidebar-link">13. model fitting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Bigdata Analysis/2022-06-13-기말고사 문제풀이.html" class="sidebar-item-text sidebar-link">14. Final term</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">ML with pytorch</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/ML with pytorch/2022-01-27-Intro.html" class="sidebar-item-text sidebar-link">0. Intro (MLP)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">R for the Data Scienece</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">데이터 전처리</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/데이터 전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">01. 결측치 처리</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/데이터 전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">02. 표준화와 정규화</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/데이터 전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">03. 날짜 데이터</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">비정형데이터마이닝</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/비정형데이터마이닝/텍스트마이닝.html" class="sidebar-item-text sidebar-link">01. text mining</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">정형데이터마이닝</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/정형데이터마이닝/Supervised Learning.html" class="sidebar-item-text sidebar-link active">01. Supervised Learning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/정형데이터마이닝/Unsupervised Learning(1204).html" class="sidebar-item-text sidebar-link">02. unsupervised learning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">통계분석</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">01. sampling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/T-검정.html" class="sidebar-item-text sidebar-link">02. T-test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">03. ANOVA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/교차분석.html" class="sidebar-item-text sidebar-link">04. chi-square test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">05. cor-test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">06. regression analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">07. regression analysis-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">08. PCA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link">09. Factor Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">10. Multidimensional scaling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/R for the Data Scienece/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">11. Time-seris analysis</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#지도학습-supervised-learning" id="toc-지도학습-supervised-learning" class="nav-link active" data-scroll-target="#지도학습-supervised-learning">지도학습 (Supervised Learning)</a></li>
+  <li><a href="#package-for-supervised-learning" id="toc-package-for-supervised-learning" class="nav-link" data-scroll-target="#package-for-supervised-learning">0. Package for Supervised Learning</a></li>
+  <li><a href="#로지스틱-회귀분석" id="toc-로지스틱-회귀분석" class="nav-link" data-scroll-target="#로지스틱-회귀분석">1. 로지스틱 회귀분석</a>
+  <ul class="collapse">
+  <li><a href="#r을-이용한-이항-로지스틱" id="toc-r을-이용한-이항-로지스틱" class="nav-link" data-scroll-target="#r을-이용한-이항-로지스틱">1-1. R을 이용한 이항 로지스틱</a></li>
+  <li><a href="#다항로지스틱" id="toc-다항로지스틱" class="nav-link" data-scroll-target="#다항로지스틱">1-2. 다항로지스틱</a></li>
+  </ul></li>
+  <li><a href="#의사결정나무" id="toc-의사결정나무" class="nav-link" data-scroll-target="#의사결정나무">2. 의사결정나무</a>
+  <ul class="collapse">
+  <li><a href="#binary-classification" id="toc-binary-classification" class="nav-link" data-scroll-target="#binary-classification">2-1. binary classification</a></li>
+  <li><a href="#multiple-classification" id="toc-multiple-classification" class="nav-link" data-scroll-target="#multiple-classification">2-2. multiple classification</a></li>
+  </ul></li>
+  <li><a href="#배깅" id="toc-배깅" class="nav-link" data-scroll-target="#배깅">3. 배깅</a></li>
+  <li><a href="#부스팅" id="toc-부스팅" class="nav-link" data-scroll-target="#부스팅">4. 부스팅</a></li>
+  <li><a href="#랜덤포레스트" id="toc-랜덤포레스트" class="nav-link" data-scroll-target="#랜덤포레스트">5. 랜덤포레스트</a></li>
+  <li><a href="#svm" id="toc-svm" class="nav-link" data-scroll-target="#svm">6. SVM</a></li>
+  <li><a href="#나이브-베이즈-분류" id="toc-나이브-베이즈-분류" class="nav-link" data-scroll-target="#나이브-베이즈-분류">7. 나이브 베이즈 분류</a></li>
+  <li><a href="#k-nnk-nearest-neighbor" id="toc-k-nnk-nearest-neighbor" class="nav-link" data-scroll-target="#k-nnk-nearest-neighbor">8. K-NN(K-Nearest Neighbor)</a></li>
+  <li><a href="#인공신경망-모형-artificial-nerual-network" id="toc-인공신경망-모형-artificial-nerual-network" class="nav-link" data-scroll-target="#인공신경망-모형-artificial-nerual-network">9. 인공신경망 모형 (Artificial Nerual Network)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">01. Supervised Learning</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>GANGCHEOL LEE </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 10, 2021</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="지도학습-supervised-learning" class="level1">
+<h1>지도학습 (Supervised Learning)</h1>
+<ul>
+<li><p>절차 : 목적 설정 -&gt; 데이터 준비 -&gt; 가공 -&gt; 기법적용 -&gt; 검증</p></li>
+<li><p>세부적인 절차는 아래와 같다.</p></li>
+</ul>
+<ol type="1">
+<li><p>데이터를 로드 한 후 데이터의 형(type), 기초통계량 확인</p></li>
+<li><p>훈련용 데이터와 테스트 데이터를 분류</p></li>
+<li><p>모형 적합 후 모형확인 -&gt; 유의하지 않은 변수가 많을 경우 step 함수를 이용하여 적절히 변수선택법을 사용</p></li>
+<li><p>모형 적합 후 검증 : ROC curve, AUC, 정확도, 특이도, 민감도 등을 확인</p></li>
+</ol>
+</section>
+<section id="package-for-supervised-learning" class="level1">
+<h1>0. Package for Supervised Learning</h1>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">##전처리 패키지</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret) <span class="do">## confusion matrix를 만들기 위한 패키지</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet) <span class="do">##  다항 로지스틱 회귀분석 모델을 적합하기 위한 패키지</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ROCR)</span></code></pre></div>
+</div>
+</section>
+<section id="로지스틱-회귀분석" class="level1">
+<h1>1. 로지스틱 회귀분석</h1>
+<ul>
+<li>로지스틱 회귀분석은 지도학습 기법 중 가장 기본이 되는 분석기법이다.</li>
+</ul>
+<p><span class="math display">\[\begin{eqnarray*} P\,(Y) = \frac {1}{1+exp\left[ -\,(\beta_0 + \beta_1x_1+\dots\right)]}\end{eqnarray*}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(x_i\)</span>가 한 단위 증가할때 <span class="math inline">\(log(odds)\)</span>는 <span class="math inline">\(\beta_i\)</span> 만큼 증가한다.</p></li>
+<li><p>다른 분류기법들과 다르게 특정 범주의 속할 확률을 계산한뒤 임계치를 기준으로 분류한다.</p></li>
+</ul>
+<section id="r을-이용한-이항-로지스틱" class="level2">
+<h2 class="anchored" data-anchor-id="r을-이용한-이항-로지스틱">1-1. R을 이용한 이항 로지스틱</h2>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">PART 05 실습용 데이터"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>credit_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"credit_final.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(credit_data) ## credit.rating의 경우 factor 변수이므로 변환</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>credit_data<span class="sc">$</span>credit.rating <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(credit_data<span class="sc">$</span>credit.rating)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1000 Columns: 21
+
+-- Column specification ------------------------------------------------------------------------------------------------
+Delimiter: ","
+dbl (21): credit.rating, account.balance, credit.duration.months, previous.c...
+
+
+i Use `spec()` to retrieve the full column specification for this data.
+i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(credit_data)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 데이터 분할 각각의 데이터를 7:3으로 나눔</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> credit_data <span class="sc">%&gt;%</span> <span class="fu">sample_frac</span>(<span class="fl">0.7</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> credit_data <span class="sc">%&gt;%</span> <span class="fu">setdiff</span>(train)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 로지스틱 회귀모형 적합</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>logit_fit <span class="ot">&lt;-</span><span class="fu">glm</span>(credit.rating<span class="sc">~</span>., <span class="at">data =</span>train, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">family =</span> <span class="st">"binomial"</span>) <span class="do">## 이진분류이므로 "binomial"이라고 기입</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(logit_fit)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>step.logit <span class="ot">&lt;-</span> <span class="fu">step</span>(<span class="fu">glm</span>(credit.rating<span class="sc">~</span>., <span class="at">data =</span>train, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">family =</span> <span class="st">"binomial"</span>),<span class="at">direction =</span> <span class="st">'both'</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(step.logit) ## 총 12개의 변수가 채택됨</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># length(step.logit$coefficients)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(step.logit, test <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>),<span class="at">type=</span><span class="st">"response"</span>) <span class="sc">%&gt;%</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>pred <span class="ot">&lt;-</span> pred <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">hat_y =</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(value<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="dv">1</span>,<span class="dv">0</span>)))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Start:  AIC=695.13
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + guarantor + residence.duration + 
+    current.assets + age + other.credits + apartment.type + bank.credits + 
+    occupation + dependents + telephone + foreign.worker
+
+                                 Df Deviance    AIC
+- residence.duration              1   653.14 693.14
+- dependents                      1   653.18 693.18
+- occupation                      1   653.19 693.19
+- age                             1   653.21 693.21
+- guarantor                       1   653.34 693.34
+- bank.credits                    1   653.76 693.76
+- foreign.worker                  1   654.15 694.15
+&lt;none&gt;                                653.13 695.13
+- employment.duration             1   655.13 695.13
+- other.credits                   1   655.68 695.68
+- apartment.type                  1   656.90 696.90
+- credit.amount                   1   656.97 696.97
+- telephone                       1   658.59 698.59
+- credit.duration.months          1   658.67 698.67
+- marital.status                  1   659.91 699.91
+- previous.credit.payment.status  1   661.76 701.76
+- installment.rate                1   662.17 702.17
+- savings                         1   663.97 703.97
+- current.assets                  1   665.97 705.97
+- credit.purpose                  1   666.41 706.41
+- account.balance                 1   710.79 750.79
+
+Step:  AIC=693.14
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + guarantor + current.assets + 
+    age + other.credits + apartment.type + bank.credits + occupation + 
+    dependents + telephone + foreign.worker
+
+                                 Df Deviance    AIC
+- dependents                      1   653.20 691.20
+- occupation                      1   653.20 691.20
+- age                             1   653.25 691.25
+- guarantor                       1   653.35 691.35
+- bank.credits                    1   653.77 691.77
+- foreign.worker                  1   654.18 692.18
+&lt;none&gt;                                653.14 693.14
+- employment.duration             1   655.28 693.28
+- other.credits                   1   655.70 693.70
+- apartment.type                  1   656.90 694.90
+- credit.amount                   1   656.99 694.99
++ residence.duration              1   653.13 695.13
+- telephone                       1   658.64 696.64
+- credit.duration.months          1   658.71 696.71
+- marital.status                  1   659.93 697.93
+- previous.credit.payment.status  1   661.81 699.81
+- installment.rate                1   662.18 700.18
+- savings                         1   664.13 702.13
+- current.assets                  1   666.17 704.17
+- credit.purpose                  1   666.51 704.51
+- account.balance                 1   711.31 749.31
+
+Step:  AIC=691.2
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + guarantor + current.assets + 
+    age + other.credits + apartment.type + bank.credits + occupation + 
+    telephone + foreign.worker
+
+                                 Df Deviance    AIC
+- occupation                      1   653.27 689.27
+- age                             1   653.29 689.29
+- guarantor                       1   653.41 689.41
+- bank.credits                    1   653.84 689.84
+- foreign.worker                  1   654.22 690.22
+&lt;none&gt;                                653.20 691.20
+- employment.duration             1   655.31 691.31
+- other.credits                   1   655.78 691.78
+- apartment.type                  1   656.91 692.91
+- credit.amount                   1   657.03 693.03
++ dependents                      1   653.14 693.14
++ residence.duration              1   653.18 693.18
+- telephone                       1   658.71 694.71
+- credit.duration.months          1   658.75 694.75
+- marital.status                  1   659.95 695.95
+- previous.credit.payment.status  1   661.92 697.92
+- installment.rate                1   662.21 698.21
+- savings                         1   664.16 700.16
+- current.assets                  1   666.24 702.24
+- credit.purpose                  1   666.62 702.62
+- account.balance                 1   711.60 747.60
+
+Step:  AIC=689.27
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + guarantor + current.assets + 
+    age + other.credits + apartment.type + bank.credits + telephone + 
+    foreign.worker
+
+                                 Df Deviance    AIC
+- age                             1   653.35 687.35
+- guarantor                       1   653.48 687.48
+- bank.credits                    1   653.93 687.93
+- foreign.worker                  1   654.28 688.28
+&lt;none&gt;                                653.27 689.27
+- employment.duration             1   655.52 689.52
+- other.credits                   1   655.88 689.88
+- apartment.type                  1   656.97 690.97
+- credit.amount                   1   657.05 691.05
++ occupation                      1   653.20 691.20
++ dependents                      1   653.20 691.20
++ residence.duration              1   653.25 691.25
+- credit.duration.months          1   658.90 692.90
+- telephone                       1   659.76 693.76
+- marital.status                  1   659.97 693.97
+- previous.credit.payment.status  1   661.95 695.95
+- installment.rate                1   662.22 696.22
+- savings                         1   664.17 698.17
+- current.assets                  1   666.30 700.30
+- credit.purpose                  1   666.99 700.99
+- account.balance                 1   711.99 745.99
+
+Step:  AIC=687.35
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + guarantor + current.assets + 
+    other.credits + apartment.type + bank.credits + telephone + 
+    foreign.worker
+
+                                 Df Deviance    AIC
+- guarantor                       1   653.57 685.57
+- bank.credits                    1   653.97 685.97
+- foreign.worker                  1   654.39 686.39
+&lt;none&gt;                                653.35 687.35
+- other.credits                   1   655.96 687.96
+- employment.duration             1   656.02 688.02
+- credit.amount                   1   657.10 689.10
++ age                             1   653.27 689.27
++ occupation                      1   653.29 689.29
++ dependents                      1   653.30 689.30
++ residence.duration              1   653.32 689.32
+- apartment.type                  1   657.85 689.85
+- credit.duration.months          1   659.25 691.25
+- marital.status                  1   659.98 691.98
+- telephone                       1   660.07 692.07
+- previous.credit.payment.status  1   662.05 694.05
+- installment.rate                1   662.25 694.25
+- savings                         1   664.35 696.35
+- current.assets                  1   666.35 698.35
+- credit.purpose                  1   666.99 698.99
+- account.balance                 1   712.02 744.02
+
+Step:  AIC=685.57
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + current.assets + other.credits + 
+    apartment.type + bank.credits + telephone + foreign.worker
+
+                                 Df Deviance    AIC
+- bank.credits                    1   654.17 684.17
+- foreign.worker                  1   654.67 684.67
+&lt;none&gt;                                653.57 685.57
+- other.credits                   1   656.21 686.21
+- employment.duration             1   656.25 686.25
+- credit.amount                   1   657.25 687.25
++ guarantor                       1   653.35 687.35
++ age                             1   653.48 687.48
++ occupation                      1   653.52 687.52
++ dependents                      1   653.52 687.52
++ residence.duration              1   653.55 687.55
+- apartment.type                  1   658.04 688.04
+- credit.duration.months          1   659.38 689.38
+- telephone                       1   660.23 690.23
+- marital.status                  1   660.32 690.32
+- previous.credit.payment.status  1   662.15 692.15
+- installment.rate                1   662.49 692.49
+- savings                         1   664.37 694.37
+- credit.purpose                  1   667.27 697.27
+- current.assets                  1   667.27 697.27
+- account.balance                 1   712.07 742.07
+
+Step:  AIC=684.17
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + current.assets + other.credits + 
+    apartment.type + telephone + foreign.worker
+
+                                 Df Deviance    AIC
+- foreign.worker                  1   655.39 683.39
+&lt;none&gt;                                654.17 684.17
+- employment.duration             1   656.69 684.69
+- other.credits                   1   657.30 685.30
++ bank.credits                    1   653.57 685.57
++ guarantor                       1   653.97 685.97
+- credit.amount                   1   658.07 686.07
++ occupation                      1   654.09 686.09
++ dependents                      1   654.10 686.10
++ age                             1   654.12 686.12
++ residence.duration              1   654.16 686.16
+- apartment.type                  1   658.67 686.67
+- credit.duration.months          1   659.92 687.92
+- telephone                       1   660.69 688.69
+- marital.status                  1   660.79 688.79
+- previous.credit.payment.status  1   662.55 690.55
+- installment.rate                1   662.92 690.92
+- savings                         1   665.50 693.50
+- current.assets                  1   667.58 695.58
+- credit.purpose                  1   668.17 696.17
+- account.balance                 1   712.69 740.69
+
+Step:  AIC=683.39
+credit.rating ~ account.balance + credit.duration.months + previous.credit.payment.status + 
+    credit.purpose + credit.amount + savings + employment.duration + 
+    installment.rate + marital.status + current.assets + other.credits + 
+    apartment.type + telephone
+
+                                 Df Deviance    AIC
+&lt;none&gt;                                655.39 683.39
+- employment.duration             1   657.93 683.93
++ foreign.worker                  1   654.17 684.17
+- other.credits                   1   658.53 684.53
++ bank.credits                    1   654.67 684.67
+- credit.amount                   1   658.86 684.86
++ guarantor                       1   655.13 685.13
++ occupation                      1   655.31 685.31
++ age                             1   655.32 685.32
++ dependents                      1   655.33 685.33
++ residence.duration              1   655.36 685.36
+- apartment.type                  1   659.85 685.85
+- telephone                       1   661.73 687.73
+- credit.duration.months          1   661.88 687.88
+- marital.status                  1   662.40 688.40
+- previous.credit.payment.status  1   664.08 690.08
+- installment.rate                1   664.36 690.36
+- savings                         1   666.61 692.61
+- credit.purpose                  1   668.81 694.81
+- current.assets                  1   669.65 695.65
+- account.balance                 1   713.23 739.23</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred<span class="sc">$</span>hat_y,<span class="at">reference =</span> test<span class="sc">$</span>credit.rating,<span class="at">positive =</span> <span class="st">"1"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  40  23
+         1  56 181
+                                         
+               Accuracy : 0.7367         
+                 95% CI : (0.683, 0.7856)
+    No Information Rate : 0.68           
+    P-Value [Acc &gt; NIR] : 0.0192801      
+                                         
+                  Kappa : 0.3343         
+                                         
+ Mcnemar's Test P-Value : 0.0003179      
+                                         
+            Sensitivity : 0.8873         
+            Specificity : 0.4167         
+         Pos Pred Value : 0.7637         
+         Neg Pred Value : 0.6349         
+             Prevalence : 0.6800         
+         Detection Rate : 0.6033         
+   Detection Prevalence : 0.7900         
+      Balanced Accuracy : 0.6520         
+                                         
+       'Positive' Class : 1              
+                                         </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">150</span>,<span class="at">repr.plot.width=</span><span class="dv">8</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>pred.roc <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred<span class="sc">$</span>hat_y),<span class="fu">as.numeric</span>(test<span class="sc">$</span>credit.rating))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="st">"dashed"</span>,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.roc,<span class="st">"auc"</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<ol>
+    <li>0.651960784313725</li>
+</ol>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li><p>위를 살펴보면 기존의 로지스틱회귀 모형을 적합했을 때 유의미하지 않은 변수가 다수 보여 단계적 변수 선택법을 적용하여 모델을 적합시켰다.</p></li>
+<li><p>정확도는 약 73%, 민감도와 특이도는 각각 85%, 44%로 측정되었으며, AUC값은 0.6484로 산출되었다. 그닥 훌륭한 모델이라고 보기 어렵다.</p></li>
+</ul>
+</section>
+<section id="다항로지스틱" class="level2">
+<h2 class="anchored" data-anchor-id="다항로지스틱">1-2. 다항로지스틱</h2>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">##iris 데이터를 이용한 다항 로지스틱 회귀분석</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>train.iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">sample_frac</span>(<span class="fl">0.7</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>test.iris <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span> <span class="fu">setdiff</span>(train.iris)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>mul.iris <span class="ot">&lt;-</span> <span class="fu">multinom</span>(Species<span class="sc">~</span>.,train.iris)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mul.iris)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># weights:  18 (10 variable)
+initial  value 115.354290 
+iter  10 value 11.452176
+iter  20 value 3.153238
+iter  30 value 2.649388
+iter  40 value 2.341641
+iter  50 value 2.256572
+iter  60 value 1.995702
+iter  70 value 1.245143
+iter  80 value 0.904025
+iter  90 value 0.621338
+iter 100 value 0.603201
+final  value 0.603201 
+stopped after 100 iterations</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Call:
+multinom(formula = Species ~ ., data = train.iris)
+
+Coefficients:
+           (Intercept) Sepal.Length Sepal.Width Petal.Length Petal.Width
+versicolor    51.48231    -30.82089   -21.44772     85.88038    24.74862
+virginica    -96.62251    -68.87111   -61.97239    164.13765    94.06323
+
+Std. Errors:
+           (Intercept) Sepal.Length Sepal.Width Petal.Length Petal.Width
+versicolor    121.5106     132.8265    97.66829     74.74537    36.83325
+virginica     118.3141     144.8161   106.79819     64.21134    33.88914
+
+Residual Deviance: 1.206402 
+AIC: 21.2064 </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>pred.mul <span class="ot">&lt;-</span> <span class="fu">predict</span>(mul.iris,test.iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">5</span>)) </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(pred.mul,test.iris<span class="sc">$</span>Species)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+            Reference
+Prediction   setosa versicolor virginica
+  setosa         13          0         0
+  versicolor      0         16         0
+  virginica       0          1        15
+
+Overall Statistics
+                                          
+               Accuracy : 0.9778          
+                 95% CI : (0.8823, 0.9994)
+    No Information Rate : 0.3778          
+    P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+                                          
+                  Kappa : 0.9665          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: setosa Class: versicolor Class: virginica
+Sensitivity                 1.0000            0.9412           1.0000
+Specificity                 1.0000            1.0000           0.9667
+Pos Pred Value              1.0000            1.0000           0.9375
+Neg Pred Value              1.0000            0.9655           1.0000
+Prevalence                  0.2889            0.3778           0.3333
+Detection Rate              0.2889            0.3556           0.3333
+Detection Prevalence        0.2889            0.3556           0.3556
+Balanced Accuracy           1.0000            0.9706           0.9833</code></pre>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="의사결정나무" class="level1">
+<h1>2. 의사결정나무</h1>
+<ul>
+<li>분류함수를 의사결정 규칙으로 이뤄진 나무 모양으로 그리는 방법</li>
+<li>분할 횟수가 많을 경우 모형이 복잡해지는 것을 방지하기 위해 가지치기 단계를 적용한다.</li>
+</ul>
+<section id="binary-classification" class="level2">
+<h2 class="anchored" data-anchor-id="binary-classification">2-1. binary classification</h2>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart.plot)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>dt.model <span class="ot">&lt;-</span> <span class="fu">rpart</span>(credit.rating<span class="sc">~</span>.,<span class="at">method=</span><span class="st">"class"</span>, <span class="do">## 회귀가 아닌 분류이므로 "class" 기입</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">data =</span> train, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">control =</span> <span class="fu">rpart.control</span>(<span class="at">maxdepth=</span><span class="dv">5</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                                           <span class="at">minsplit=</span><span class="dv">15</span>)) <span class="do">## 의사결정나무의 최대 깊이는 5, 노드에서의 최소 관측치는 15개이 상</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt.model,<span class="at">extra=</span><span class="dv">2</span>) <span class="do">## extra 인자를 이용해 각각 범주의 분류된 개수를 파악, extra=3 은 오분류된 개수를 보여주</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li><p>총 700개의 관측치 중 496개의 관측치를 1로 분류하였으며, <code>account.balance &lt;3</code> 인 377개의 노드 중 210개가 1로 분류되었음을 의미한다.</p></li>
+<li><p>cptable을 확인하여 xerror가 가장 낮은 split 개수를 택한 후 가지치기를 적용하자.</p></li>
+<li><p><code>xerror</code>는해당 <code>CP</code>에서 교차검증오류를 나타내며 <code>CP</code>는 복잡성을 나타낸다.</p></li>
+</ul>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dt.model<span class="sc">$</span>cptable</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A matrix: 4 × 5 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope="col">CP</th><th scope="col">nsplit</th><th scope="col">rel error</th><th scope="col">xerror</th><th scope="col">xstd</th></tr>
+</thead>
+<tbody>
+    <tr><th scope="row">1</th><td>0.05269608</td><td>0</td><td>1.0000000</td><td>1.0000000</td><td>0.05893547</td></tr>
+    <tr><th scope="row">2</th><td>0.02450980</td><td>4</td><td>0.7892157</td><td>0.9264706</td><td>0.05757874</td></tr>
+    <tr><th scope="row">3</th><td>0.01470588</td><td>5</td><td>0.7647059</td><td>0.8872549</td><td>0.05678633</td></tr>
+    <tr><th scope="row">4</th><td>0.01000000</td><td>7</td><td>0.7352941</td><td>0.8872549</td><td>0.05678633</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<ul>
+<li><p>확인 결과 <code>xerror</code>가 가장 낮은 분할 횟수는 7이며, 앞선 모형의 그래프를 봤을 때 모델이 분할을 7번까지 한다고 할 수 있다.</p></li>
+<li><p>해당 위치에서의 <code>CP</code> 값을 전달받자</p></li>
+</ul>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>opt <span class="ot">&lt;-</span> <span class="fu">which.min</span>(dt.model<span class="sc">$</span>cptable[,<span class="st">"xerror"</span>])</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>cp  <span class="ot">&lt;-</span> dt.model<span class="sc">$</span>cptable[opt,<span class="st">"CP"</span>]</span></code></pre></div>
+</div>
+<ul>
+<li>plotcp를 그려본결과 8번째 분할에서 <code>xerror</code>가 가장 낮지만 과적합을 막기위해 <code>cptable</code>에서 산출한 <code>cp</code>값을 이용하여 가지치기를 하자.</li>
+</ul>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(dt.model)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>가지치기 수행</li>
+</ul>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt.model,<span class="at">extra=</span><span class="dv">2</span>) <span class="do">## extra 인자를 이용해 각각 범주의 분류된 개수를 파악, extra=3 은 오분류된 개수를 보여준다</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>prune.c <span class="ot">&lt;-</span> <span class="fu">prune</span>(dt.model,<span class="at">cp=</span>cp)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(prune.c,<span class="at">extra=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li><p>기존의 모델보다 복잡성이 줄어든 것으로 볼 수 있다.</p></li>
+<li><p>예측을 통하여 우리가 생성한 모델의 타당성을 평가하자.</p></li>
+</ul>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pred.dt <span class="ot">&lt;-</span> <span class="fu">predict</span>(dt.model, test <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>),<span class="at">type=</span><span class="st">"class"</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span>pred.dt,<span class="at">reference=</span> test<span class="sc">$</span>credit.rating)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  37  19
+         1  59 185
+                                          
+               Accuracy : 0.74            
+                 95% CI : (0.6865, 0.7887)
+    No Information Rate : 0.68            
+    P-Value [Acc &gt; NIR] : 0.014           
+                                          
+                  Kappa : 0.3285          
+                                          
+ Mcnemar's Test P-Value : 1.006e-05       
+                                          
+            Sensitivity : 0.3854          
+            Specificity : 0.9069          
+         Pos Pred Value : 0.6607          
+         Neg Pred Value : 0.7582          
+             Prevalence : 0.3200          
+         Detection Rate : 0.1233          
+   Detection Prevalence : 0.1867          
+      Balanced Accuracy : 0.6461          
+                                          
+       'Positive' Class : 0               
+                                          </code></pre>
+</div>
+</div>
+<ul>
+<li><code>정분류율</code>은 0.73이며 <code>특이도</code>, <code>민감도</code>는 각각 0.8578, 0.4270으로 산출되었다.</li>
+</ul>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>pred.dt.roc <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.dt),<span class="fu">as.numeric</span>(test<span class="sc">$</span>credit.rating))</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.dt.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span><span class="dv">1</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.dt.roc,<span class="st">"auc"</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<ol>
+    <li>0.646139705882353</li>
+</ol>
+</div>
+</div>
+<ul>
+<li>산출된 AUC값은 <code>0.642</code>로 좋은 모델은 아니다.</li>
+</ul>
+</section>
+<section id="multiple-classification" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-classification">2-2. multiple classification</h2>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>dt.model2 <span class="ot">&lt;-</span> <span class="fu">rpart</span>(Species <span class="sc">~</span>. ,<span class="at">data=</span>train.iris)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(dt.model2,<span class="at">extra=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>총 105개의 데이터에서 39개의 데이터가 <code>virginica</code>로 분류되었고, <code>Petal.Length &lt; 2.5</code>인 34개의 데이터는 모두 <code>setosa</code>로 분류되었다.</li>
+</ul>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pred.dt2 <span class="ot">&lt;-</span> <span class="fu">predict</span>(dt.model2, test.iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">5</span>),<span class="at">type=</span><span class="st">"class"</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(pred.dt2,test.iris<span class="sc">$</span>Species)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+            Reference
+Prediction   setosa versicolor virginica
+  setosa         13          0         0
+  versicolor      0         16         3
+  virginica       0          1        12
+
+Overall Statistics
+                                          
+               Accuracy : 0.9111          
+                 95% CI : (0.7878, 0.9752)
+    No Information Rate : 0.3778          
+    P-Value [Acc &gt; NIR] : 1.099e-13       
+                                          
+                  Kappa : 0.8655          
+                                          
+ Mcnemar's Test P-Value : NA              
+
+Statistics by Class:
+
+                     Class: setosa Class: versicolor Class: virginica
+Sensitivity                 1.0000            0.9412           0.8000
+Specificity                 1.0000            0.8929           0.9667
+Pos Pred Value              1.0000            0.8421           0.9231
+Neg Pred Value              1.0000            0.9615           0.9062
+Prevalence                  0.2889            0.3778           0.3333
+Detection Rate              0.2889            0.3556           0.2667
+Detection Prevalence        0.2889            0.4222           0.2889
+Balanced Accuracy           1.0000            0.9170           0.8833</code></pre>
+</div>
+</div>
+<ul>
+<li>정확도의 <code>0.9556</code>, 각각의 <code>class</code>에서 특이도와 민감도를 확인해보니 적절한 분류가 이루어졌음을 알 수 있다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="배깅" class="level1">
+<h1>3. 배깅</h1>
+<ul>
+<li><p>의사결정나무의 경우 학습자료의 작은 변화에 의해 예측모형이 크게 변한다. 즉 학습방법이 불안정하다.</p></li>
+<li><p>배깅은 여러 개의 붓스트랩자료를 생성하고 각 붓스트랩 자료에 예측모형을 만든 후 결합하여 최종 예측모형을 만드는 방법이다.</p></li>
+</ul>
+<p><span class="math inline">\(\divideontimes\)</span> <strong>붓스트랩 : 주어진 자료에서 동일한 크기의 표본을 랜덤 복원추출로 뽑은 자료를 의미한다.</strong></p>
+<ul>
+<li><p>예측모형을 결합한다는 것은 평균을 내는 것과 같으며, Classification 문제의 경우는 평균을 내는 것이 무의미 하므로 다수결의 원칙 즉, <code>voting</code> 방식을 이용한다.</p></li>
+<li><p><code>adabag</code> 패키지에서 제공하는 <code>bagging</code> 함수의 경우 코드실행속도가 매우 느리다.</p></li>
+<li><p>따라서 <code>randomForest</code> 패키지에서 제공하는 <code>randomForest</code> 함수를 사용</p></li>
+<li><p><code>mtry</code> 는 매번 분할에 사용될 예측변수(x)에 개수, 해당 데이터는 총 20개의 예측변수를 가짐</p></li>
+<li><p><code>randomForest</code>와 <code>bagging</code>의 차이점은 고려할 예측변수의 개수이다. <code>bagging</code>의 경우 모든 변수를 고려한다.</p></li>
+</ul>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adabag) <span class="do">## 이 패키지의 경우 코드실행속도가 매우 느리다.</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>bag <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(credit.rating <span class="sc">~</span>. , <span class="at">data=</span>train, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">mtry =</span> <span class="dv">20</span>,<span class="at">importance =</span>T)</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>pred.bg <span class="ot">&lt;-</span> <span class="fu">predict</span>(bag,test,<span class="at">type=</span><span class="st">"class"</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data =</span> pred.bg, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">reference =</span> test<span class="sc">$</span>credit.rating,</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>                <span class="at">positive =</span> <span class="st">"1"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  49  27
+         1  43 181
+                                          
+               Accuracy : 0.7667          
+                 95% CI : (0.7146, 0.8134)
+    No Information Rate : 0.6933          
+    P-Value [Acc &gt; NIR] : 0.00297         
+                                          
+                  Kappa : 0.4233          
+                                          
+ Mcnemar's Test P-Value : 0.07300         
+                                          
+            Sensitivity : 0.8702          
+            Specificity : 0.5326          
+         Pos Pred Value : 0.8080          
+         Neg Pred Value : 0.6447          
+             Prevalence : 0.6933          
+         Detection Rate : 0.6033          
+   Detection Prevalence : 0.7467          
+      Balanced Accuracy : 0.7014          
+                                          
+       'Positive' Class : 1               
+                                          </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.width=</span><span class="dv">8</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>pred.bg.roc <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.bg),<span class="fu">as.numeric</span>(test<span class="sc">$</span>credit.rating))</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.bg.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">lty=</span><span class="st">"dashed"</span>)</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.bg.roc,<span class="st">"auc"</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<ol>
+    <li>0.701400501672241</li>
+</ol>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="부스팅" class="level1">
+<h1>4. 부스팅</h1>
+<ul>
+<li><p>배깅과 달리 tree를 순차적으로 적합</p></li>
+<li><p>전번 분류기에서 오분류율 정보를 이용하여 다음 번 분류기에서 가중치를 적합해 생성, 가중치의 합은 1</p></li>
+<li><p>배깅은 샘플링을 이용하여 <code>n</code>개의 예측모형생성 후 다수결의 원칙을 적용</p></li>
+<li><p>부스팅은 샘플링을 하지 않고 잔차에서 발생하는 정보를 활용하여 다음 분류기에 적합한다.</p></li>
+<li><p>부스팅하고 배깅은 속도가 코드 구현 속도가 너무 느리다….</p></li>
+</ul>
+<hr>
+</section>
+<section id="랜덤포레스트" class="level1">
+<h1>5. 랜덤포레스트</h1>
+<ul>
+<li>붓스트랩에 의해 생성되는 나무들 간의 상관성을 제거함으로써 최종 예측 모형의 분산을 획기적으로 감소시키고자 하는 방법</li>
+<li>이는 소수의 강력한 예측변수들에 의해 모든 나무모형이 유사해지는 것을 막기 위해 매번 분할 시 <code>p</code>개의 예측 변수 중 <code>m</code> 개만 문할 기준의 후보로 삼음.</li>
+</ul>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randomForest)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>rf.model <span class="ot">&lt;-</span> <span class="fu">randomForest</span>(credit.rating <span class="sc">~</span>.,</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">data =</span> train, <span class="at">ntree =</span> <span class="dv">50</span>,</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">mtry =</span> <span class="fu">sqrt</span>(<span class="dv">20</span>),</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">importance=</span>T)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>rf.model</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+ randomForest(formula = credit.rating ~ ., data = train, ntree = 50,      mtry = sqrt(20), importance = T) 
+               Type of random forest: classification
+                     Number of trees: 50
+No. of variables tried at each split: 4
+
+        OOB estimate of  error rate: 26.86%
+Confusion matrix:
+   0   1 class.error
+0 77 131   0.6298077
+1 57 435   0.1158537</code></pre>
+</div>
+</div>
+<ul>
+<li><code>OOB estimate of error rate</code>는 에러추정치로서 값이 낮을수록 분류모델의 성능이 좋다고 판단할 수 있다.</li>
+</ul>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rf.model$importance</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">varImpPlot</span>(rf.model)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>변수 중요도를 <code>MeanDecreaseGini</code> 기준으로 살펴보았을 때, <code>credit.amount</code>, <code>credit.duration.months</code>, <code>age</code> 순서로 변수 중요도가 크다는 것을 파악할 수 있다.</li>
+</ul>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>pred.rf <span class="ot">&lt;-</span>  <span class="fu">predict</span>(rf.model, test, <span class="at">type=</span><span class="st">"class"</span>)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data =</span> pred.rf, <span class="at">reference =</span> test<span class="sc">$</span>credit.rating, <span class="at">positive=</span><span class="st">"1"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  38  19
+         1  54 189
+                                         
+               Accuracy : 0.7567         
+                 95% CI : (0.704, 0.8041)
+    No Information Rate : 0.6933         
+    P-Value [Acc &gt; NIR] : 0.009216       
+                                         
+                  Kappa : 0.3599         
+                                         
+ Mcnemar's Test P-Value : 6.909e-05      
+                                         
+            Sensitivity : 0.9087         
+            Specificity : 0.4130         
+         Pos Pred Value : 0.7778         
+         Neg Pred Value : 0.6667         
+             Prevalence : 0.6933         
+         Detection Rate : 0.6300         
+   Detection Prevalence : 0.8100         
+      Balanced Accuracy : 0.6608         
+                                         
+       'Positive' Class : 1              
+                                         </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>pred.rf.roc <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.rf), <span class="fu">as.numeric</span>(test<span class="sc">$</span>credit.rating))</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.rf.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">b=</span><span class="dv">1</span>,<span class="at">a=</span><span class="dv">0</span>,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.rf.roc,<span class="st">"auc"</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<ol>
+    <li>0.660848662207358</li>
+</ol>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="svm" class="level1">
+<h1>6. SVM</h1>
+<ul>
+<li><p>각 그룹을 구분하는 분류자를 <strong>결정 초평면 (decision hyperline)</strong>, 각 그룹에 속한 데이터들 중에서도 <strong>초평면에 가장 가까이에 붙어있는 최전방 데이터들을 서포트 벡터(support vector), 서포트 벡터와 초평면 사이의 수직거리를 마진(mergin)</strong>,이라고 한다.</p></li>
+<li><p>SVM은 고차원 혹은 무한 차원의 공간에서 마진을 최대화하는 초평면을 찾아 <strong>분류와 회귀</strong>를 수행한다.</p></li>
+<li><p>모형을 적합하기 전 <code>tune.svm</code> 함수로 최적의 파라미터를 찾는다.</p></li>
+<li><p><code>gamma</code> : 초평면의 기울기, default = 1/(데이터차원)</p></li>
+<li><p><code>cost</code> : 과적합을 막는 정도로 오분류의 허용한계이다. cost가 클수록 마진이 넓고, 적을 수록 마진이 좁다. dafault = 1</p></li>
+</ul>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tune.svm</span>(credit.rating <span class="sc">~</span>., <span class="at">data =</span> credit_data,</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>                          <span class="at">gamma =</span> <span class="dv">10</span><span class="sc">^</span>(<span class="sc">-</span><span class="dv">6</span><span class="sc">:-</span><span class="dv">1</span>),</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">cost =</span> <span class="dv">10</span><span class="sc">^</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Parameter tuning of 'svm':
+
+- sampling method: 10-fold cross validation 
+
+- best parameters:
+ gamma cost
+  0.01   10
+
+- best performance: 0.232 </code></pre>
+</div>
+</div>
+<ul>
+<li><p>위와 같은 경우 <code>6 x 2 = 12</code> 총 12개의 조합에서 모수조율이 이루어진다.</p></li>
+<li><p><code>kernel</code> : radial, linear, polynomial, sigmoid 등이 있는데 실제 문제에서 커널의 선택이 결과의 정확도에 큰 영향을 주지 않는다.</p></li>
+</ul>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>svm.model  <span class="ot">&lt;-</span> <span class="fu">svm</span>(credit.rating<span class="sc">~</span>.,</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data =</span>train,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">kernel =</span><span class="st">"radial"</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">gamma =</span> <span class="fl">0.01</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>                  <span class="at">cost =</span> <span class="dv">10</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(svm.model)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+svm(formula = credit.rating ~ ., data = train, kernel = "radial", 
+    gamma = 0.01, cost = 10)
+
+
+Parameters:
+   SVM-Type:  C-classification 
+ SVM-Kernel:  radial 
+       cost:  10 
+
+Number of Support Vectors:  402
+
+ ( 187 215 )
+
+
+Number of Classes:  2 
+
+Levels: 
+ 0 1
+
+</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>pred.svm <span class="ot">&lt;-</span> <span class="fu">predict</span>(svm.model, test, <span class="at">type=</span><span class="st">"class"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data =</span> pred.svm, <span class="at">reference =</span> test<span class="sc">$</span>credit.rating,<span class="at">positive=</span> <span class="st">"1"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  39  22
+         1  53 186
+                                        
+               Accuracy : 0.75          
+                 95% CI : (0.697, 0.798)
+    No Information Rate : 0.6933        
+    P-Value [Acc &gt; NIR] : 0.018050      
+                                        
+                  Kappa : 0.3511        
+                                        
+ Mcnemar's Test P-Value : 0.000532      
+                                        
+            Sensitivity : 0.8942        
+            Specificity : 0.4239        
+         Pos Pred Value : 0.7782        
+         Neg Pred Value : 0.6393        
+             Prevalence : 0.6933        
+         Detection Rate : 0.6200        
+   Detection Prevalence : 0.7967        
+      Balanced Accuracy : 0.6591        
+                                        
+       'Positive' Class : 1             
+                                        </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>pred.svm.roc <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.svm),<span class="fu">as.numeric</span>(test<span class="sc">$</span>credit.rating))</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.svm.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>))</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="dv">0</span>,<span class="at">b=</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">performance</span>(pred.svm.roc,<span class="st">"auc"</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<ol>
+    <li>0.659071906354515</li>
+</ol>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="나이브-베이즈-분류" class="level1">
+<h1>7. 나이브 베이즈 분류</h1>
+<ul>
+<li><p><span class="math inline">\(C_i = label \, of \, class\)</span></p></li>
+<li><p><span class="math inline">\(X=(X_1,X_2,\dots X_n)\)</span></p></li>
+<li><p><span class="math inline">\(\begin {eqnarray*}posterior=P(C_i | X) = \frac {P(C_i)P(X|C_i)}{P(X)}\end{eqnarray*} = \frac {prior \times likelhood}{evidence}\)</span></p></li>
+<li><p><span class="math inline">\(P(X | C_i)= \prod_{k=1}^n P(X_k|C_i) = P(x_1|C_i)\times \dots P(x_n |C_i)\)</span></p></li>
+<li><p>클래스 조건 독립성 : 위 식처럼 속성값에 대해 다른 속성이 독립적이라는 가정이다.</p></li>
+<li><p>즉 <span class="math inline">\(X\)</span>라는 속성값들이 주어져있을 때 사전확률값과 관측값을 이용하여 사후확률을 구하여 개체를 해당 클래스로 분류하는 기법이다.</p></li>
+</ul>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span></code></pre></div>
+</div>
+<ul>
+<li><code>laplace</code> : 라플라스 보정여부, 뭔지는 잘 모르겠음..</li>
+</ul>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>nb.model  <span class="ot">&lt;-</span> <span class="fu">naiveBayes</span>(credit.rating <span class="sc">~</span> . ,<span class="at">data =</span> train , <span class="at">laplace=</span><span class="dv">0</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>nb.model</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Naive Bayes Classifier for Discrete Predictors
+
+Call:
+naiveBayes.default(x = X, y = Y, laplace = laplace)
+
+A-priori probabilities:
+Y
+        0         1 
+0.2971429 0.7028571 
+
+Conditional probabilities:
+   account.balance
+Y       [,1]      [,2]
+  0 1.759615 0.8045185
+  1 2.394309 0.8066729
+
+   credit.duration.months
+Y       [,1]     [,2]
+  0 25.24038 13.26358
+  1 19.23984 11.38457
+
+   previous.credit.payment.status
+Y       [,1]      [,2]
+  0 2.081731 0.6505686
+  1 2.365854 0.5955475
+
+   credit.purpose
+Y       [,1]      [,2]
+  0 3.149038 0.9178314
+  1 2.900407 0.9929691
+
+   credit.amount
+Y       [,1]     [,2]
+  0 3841.731 3393.693
+  1 3035.821 2507.385
+
+   savings
+Y       [,1]     [,2]
+  0 1.586538 1.036629
+  1 2.002033 1.244947
+
+   employment.duration
+Y       [,1]     [,2]
+  0 2.250000 1.135718
+  1 2.518293 1.072557
+
+   installment.rate
+Y       [,1]     [,2]
+  0 3.158654 1.062684
+  1 2.914634 1.124088
+
+   marital.status
+Y       [,1]     [,2]
+  0 2.250000 1.096767
+  1 2.439024 1.049848
+
+   guarantor
+Y       [,1]      [,2]
+  0 1.096154 0.2955133
+  1 1.093496 0.2914225
+
+   residence.duration
+Y       [,1]     [,2]
+  0 2.831731 1.110143
+  1 2.833333 1.100207
+
+   current.assets
+Y      [,1]     [,2]
+  0 2.50000 1.049500
+  1 2.26626 1.041032
+
+   age
+Y       [,1]     [,2]
+  0 34.01442 11.22647
+  1 36.23171 11.51335
+
+   other.credits
+Y       [,1]      [,2]
+  0 1.750000 0.4340574
+  1 1.857724 0.3496890
+
+   apartment.type
+Y       [,1]      [,2]
+  0 1.937500 0.5986599
+  1 1.955285 0.4839928
+
+   bank.credits
+Y       [,1]      [,2]
+  0 1.326923 0.4702206
+  1 1.367886 0.4827210
+
+   occupation
+Y       [,1]      [,2]
+  0 2.961538 0.6727703
+  1 2.900407 0.6415992
+
+   dependents
+Y       [,1]      [,2]
+  0 1.149038 0.3569856
+  1 1.162602 0.3693774
+
+   telephone
+Y       [,1]      [,2]
+  0 1.379808 0.4865098
+  1 1.398374 0.4900615
+
+   foreign.worker
+Y       [,1]      [,2]
+  0 1.019231 0.1376665
+  1 1.046748 0.2113134</code></pre>
+</div>
+</div>
+<ul>
+<li><code>A-priori probabilities</code> 는 사전확률을 나타내고 있으며, <code>Conditional Probabilities</code>는 각 변수에 대한 조건부 확률이다.</li>
+</ul>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>pred.nb <span class="ot">&lt;-</span> <span class="fu">predict</span>(nb.model,test, <span class="at">type=</span><span class="st">"class"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="at">data=</span> pred.nb,<span class="at">reference =</span> test<span class="sc">$</span>credit.rating,<span class="at">positive=</span><span class="st">"1"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  59  36
+         1  33 172
+                                          
+               Accuracy : 0.77            
+                 95% CI : (0.7182, 0.8164)
+    No Information Rate : 0.6933          
+    P-Value [Acc &gt; NIR] : 0.001967        
+                                          
+                  Kappa : 0.464           
+                                          
+ Mcnemar's Test P-Value : 0.809732        
+                                          
+            Sensitivity : 0.8269          
+            Specificity : 0.6413          
+         Pos Pred Value : 0.8390          
+         Neg Pred Value : 0.6211          
+             Prevalence : 0.6933          
+         Detection Rate : 0.5733          
+   Detection Prevalence : 0.6833          
+      Balanced Accuracy : 0.7341          
+                                          
+       'Positive' Class : 1               
+                                          </code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>pred.nb.roc  <span class="ot">&lt;-</span> <span class="fu">prediction</span>(<span class="fu">as.numeric</span>(pred.nb),<span class="fu">as.numeric</span>(test<span class="sc">$</span>credit.rating))</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">performance</span>(pred.nb.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>))</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">b=</span><span class="dv">1</span>,<span class="at">a=</span><span class="dv">0</span>,<span class="at">col=</span><span class="st">"red"</span>); <span class="fu">performance</span>(pred.nb.roc,<span class="st">"auc"</span>)<span class="sc">@</span>y.values</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<ol>
+    <li>0.734113712374582</li>
+</ol>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-45-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<hr>
+</section>
+<section id="k-nnk-nearest-neighbor" class="level1">
+<h1>8. K-NN(K-Nearest Neighbor)</h1>
+<ul>
+<li>K-NN 알고리즘에서는 새로운 데이터의 클래스를 해당 데이터와 가장 가까운 <code>k</code>개 데이터들의 클래스(범주)로 결정한다.</li>
+<li>최근접 이웃 간의 거리를 계산할 때 유클리디안 거리, 맨하탄 거리, 민코우스키 거리 등을 사용할 수 있으며, 대표적으로 <strong>유클리디안 거리</strong>를 사용한다.</li>
+</ul>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(class)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>train.data <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a>test.data <span class="ot">&lt;-</span> test <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a>class <span class="ot">&lt;-</span> train<span class="sc">$</span>credit.rating</span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>knn<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">knn</span>(train.data,test.data, class, <span class="at">k=</span><span class="dv">3</span> )</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>knn<span class="fl">.7</span> <span class="ot">&lt;-</span> <span class="fu">knn</span>(train.data,test.data, class, <span class="at">k=</span><span class="dv">7</span> )</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>knn<span class="fl">.10</span> <span class="ot">&lt;-</span> <span class="fu">knn</span>(train.data,test.data, class, <span class="at">k=</span><span class="dv">10</span> )</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(knn<span class="fl">.3</span>, test<span class="sc">$</span>credit.rating,<span class="at">positive=</span><span class="st">"1"</span>)</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(knn<span class="fl">.7</span>, test<span class="sc">$</span>credit.rating,<span class="at">positive=</span><span class="st">"1"</span>)</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(knn<span class="fl">.10</span>, test<span class="sc">$</span>credit.rating,<span class="at">positive=</span><span class="st">"1"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  28  43
+         1  64 165
+                                          
+               Accuracy : 0.6433          
+                 95% CI : (0.5863, 0.6975)
+    No Information Rate : 0.6933          
+    P-Value [Acc &gt; NIR] : 0.97262         
+                                          
+                  Kappa : 0.1043          
+                                          
+ Mcnemar's Test P-Value : 0.05318         
+                                          
+            Sensitivity : 0.7933          
+            Specificity : 0.3043          
+         Pos Pred Value : 0.7205          
+         Neg Pred Value : 0.3944          
+             Prevalence : 0.6933          
+         Detection Rate : 0.5500          
+   Detection Prevalence : 0.7633          
+      Balanced Accuracy : 0.5488          
+                                          
+       'Positive' Class : 1               
+                                          </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  17  18
+         1  75 190
+                                          
+               Accuracy : 0.69            
+                 95% CI : (0.6343, 0.7419)
+    No Information Rate : 0.6933          
+    P-Value [Acc &gt; NIR] : 0.5775          
+                                          
+                  Kappa : 0.1188          
+                                          
+ Mcnemar's Test P-Value : 6.363e-09       
+                                          
+            Sensitivity : 0.9135          
+            Specificity : 0.1848          
+         Pos Pred Value : 0.7170          
+         Neg Pred Value : 0.4857          
+             Prevalence : 0.6933          
+         Detection Rate : 0.6333          
+   Detection Prevalence : 0.8833          
+      Balanced Accuracy : 0.5491          
+                                          
+       'Positive' Class : 1               
+                                          </code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>Confusion Matrix and Statistics
+
+          Reference
+Prediction   0   1
+         0  13  10
+         1  79 198
+                                          
+               Accuracy : 0.7033          
+                 95% CI : (0.6481, 0.7545)
+    No Information Rate : 0.6933          
+    P-Value [Acc &gt; NIR] : 0.3799          
+                                          
+                  Kappa : 0.1179          
+                                          
+ Mcnemar's Test P-Value : 5.679e-13       
+                                          
+            Sensitivity : 0.9519          
+            Specificity : 0.1413          
+         Pos Pred Value : 0.7148          
+         Neg Pred Value : 0.5652          
+             Prevalence : 0.6933          
+         Detection Rate : 0.6600          
+   Detection Prevalence : 0.9233          
+      Balanced Accuracy : 0.5466          
+                                          
+       'Positive' Class : 1               
+                                          </code></pre>
+</div>
+</div>
+<ul>
+<li>적절한 <code>k</code>값을 찾기 위해 <code>k</code>값을 변경해 가면서 확인하여야한다.</li>
+</ul>
+<hr>
+</section>
+<section id="인공신경망-모형-artificial-nerual-network" class="level1">
+<h1>9. 인공신경망 모형 (Artificial Nerual Network)</h1>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nnet)</span></code></pre></div>
+</div>
+<ul>
+<li>size = hidden node의 개수</li>
+<li>maxit = 학습 반복 횟수, 반복 중 가장 좋은 모델을 선정함.</li>
+<li>decay = 가중치 감소의 모수, 보통 0.0005 채택</li>
+</ul>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>nn.model <span class="ot">&lt;-</span> <span class="fu">nnet</span>(credit.rating<span class="sc">~</span>.,<span class="at">data=</span>train,</span>
+<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">size =</span> <span class="dv">2</span>,</span>
+<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">maxit =</span> <span class="dv">200</span>,</span>
+<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">decay =</span> <span class="fl">0.0005</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># weights:  45
+initial  value 465.171750 
+iter  10 value 431.758720
+iter  20 value 431.756746
+iter  30 value 423.013724
+iter  40 value 385.108066
+iter  50 value 369.426057
+iter  60 value 362.889778
+iter  70 value 361.595605
+iter  80 value 361.468176
+iter  90 value 361.461934
+iter 100 value 361.461857
+final  value 361.461791 
+converged</code></pre>
+</div>
+</div>
+<ul>
+<li>최종 error 값이 <code>425.896932</code>로 <code>final value</code>를 보고 확인할 수 있다.</li>
+</ul>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(nn.model)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>a 20-2-1 network with 45 weights
+options were - entropy fitting  decay=5e-04
+  b-&gt;h1  i1-&gt;h1  i2-&gt;h1  i3-&gt;h1  i4-&gt;h1  i5-&gt;h1  i6-&gt;h1  i7-&gt;h1  i8-&gt;h1  i9-&gt;h1 
+   0.01   -0.01    0.01   -0.01    0.00    0.05    0.01    0.01   -0.01    0.01 
+i10-&gt;h1 i11-&gt;h1 i12-&gt;h1 i13-&gt;h1 i14-&gt;h1 i15-&gt;h1 i16-&gt;h1 i17-&gt;h1 i18-&gt;h1 i19-&gt;h1 
+   0.01    0.01    0.01    0.02    0.00    0.01    0.01    0.01    0.00   -0.01 
+i20-&gt;h1 
+  -0.01 
+  b-&gt;h2  i1-&gt;h2  i2-&gt;h2  i3-&gt;h2  i4-&gt;h2  i5-&gt;h2  i6-&gt;h2  i7-&gt;h2  i8-&gt;h2  i9-&gt;h2 
+ -18.85   32.55   -5.06    2.17  -15.94    0.02   11.73   17.82   -3.15    3.52 
+i10-&gt;h2 i11-&gt;h2 i12-&gt;h2 i13-&gt;h2 i14-&gt;h2 i15-&gt;h2 i16-&gt;h2 i17-&gt;h2 i18-&gt;h2 i19-&gt;h2 
+  13.88    1.02  -13.90    1.34   -7.07    0.02   -5.22  -10.24   -5.20   29.20 
+i20-&gt;h2 
+  -0.08 
+  b-&gt;o  h1-&gt;o  h2-&gt;o 
+ -0.35  -0.38   2.25 </code></pre>
+</div>
+</div>
+<ul>
+<li><code>neuralnet</code> 패키지를 이용</li>
+</ul>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(neuralnet)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(infert)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>infert<span class="sc">$</span>case <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(infert<span class="sc">$</span>case)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>train.infert <span class="ot">&lt;-</span> infert <span class="sc">%&gt;%</span> <span class="fu">sample_frac</span>(<span class="fl">0.7</span>)</span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>test.infert  <span class="ot">&lt;-</span>  infert  <span class="sc">%&gt;%</span> <span class="fu">setdiff</span>(train.infert)</span></code></pre></div>
+</div>
+<ul>
+<li><code>algorithm</code> : 사용할 알고리즘 ( <code>backprop(역전파)</code>, <code>rprop+(default)</code>,<code>rprop-</code>)</li>
+<li><code>thresold</code> : 훈련중단 기준으로 default = 0.01</li>
+<li><code>hidden</code> : 은닉노드의 개수 c(n,m)-&gt; n = 첫 번째 은닉층은 n개의 은닉노드, m = 두 번째 은닉층의 m개의 은닉노드</li>
+<li><code>stepmax</code> : 인공 신경망 훈련 수행 최대횟수</li>
+<li><code>err.fct</code> : 손실함수 지정 -&gt; <code>ce</code> : 크로스 엔트로피, <code>sse</code> : 잔차제곱합</li>
+<li><code>linear.output</code> : 활성화함수를 사용하지 않는다면 <code>TRUE</code>로 입력해야함.</li>
+<li><code>likelihood</code> : 에러함수에 대한 우도함수를 지정해주는 것, 만약 에러 함수가 음의 로그-우도 함수가 아니면, likelhood는 TRUE이여야 한다., 그러면 <code>AIC,BIC</code>가 계산되는 것을 기반으로 한다.</li>
+<li><code>acc.fct</code> : 활성화 함수로 <code>logistice, tanh</code> 인자가 입력 가능하다.</li>
+</ul>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>nn.model2 <span class="ot">&lt;-</span> <span class="fu">neuralnet</span>(case <span class="sc">~</span> age<span class="sc">+</span>parity<span class="sc">+</span>induced <span class="sc">+</span> spontaneous,<span class="at">data=</span>train.infert,</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">hidden =</span><span class="dv">3</span>,</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">algorithm=</span><span class="st">"rprop+"</span>,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">threshold=</span><span class="fl">0.01</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">150</span>,<span class="at">repr.plot.width=</span><span class="dv">6</span>,<span class="at">repr.plot.height=</span><span class="dv">4</span>)</span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(nn.model2,<span class="at">rep=</span><span class="st">"best"</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="Supervised Learning_files/figure-html/cell-56-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>test.infert<span class="sc">$</span>nn.model2_pred.prob <span class="ot">&lt;-</span> <span class="fu">compute</span>(nn.model2,<span class="at">covariate=</span>test.infert[,<span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>,<span class="dv">6</span>)])<span class="sc">$</span>net.result</span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>test.infert<span class="sc">$</span>nn.model2_pred <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(test.infert<span class="sc">$</span>nn.model2_pred.prob<span class="sc">&gt;</span><span class="fl">0.5</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>test.infert<span class="sc">$</span>nn.model2_pred</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+<caption>A matrix: 56 × 2 of type dbl</caption>
+<tbody>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>1</td><td>0</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+    <tr><td>0</td><td>1</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(<span class="fu">as.factor</span>(test.infert<span class="sc">$</span>nn.model2_pred),test.infert<span class="sc">$</span>case)</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ERROR: Error in table(data, reference, dnn = dnn, ...): 모든 인자들은 반드시 같은 길이를 가져야 합니다</code></pre>
+</div>
+</div>
+<ul>
+<li>인공신경망 쪽은 다시 체크하자!</li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

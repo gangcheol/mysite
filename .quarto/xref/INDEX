@@ -73,5 +73,56 @@
   },
   "post/Bigdata Analysis/2022-06-13-기말고사 문제풀이.ipynb": {
     "2022-06-13-기말고사 문제풀이.html": "99be75c2"
+  },
+  "post/R for the Data Scienece/데이터 전처리/결측치(1205).ipynb": {
+    "결측치(1205).html": "1a5815fb"
+  },
+  "post/R for the Data Scienece/데이터 전처리/표준화와 정규화(1205).ipynb": {
+    "표준화와 정규화(1205).html": "e4c71023"
+  },
+  "post/R for the Data Scienece/데이터 전처리/날짜 데이터 전처리.ipynb": {
+    "날짜 데이터 전처리.html": "6528653c"
+  },
+  "post/R for the Data Scienece/통계분석/데이터 샘플링.ipynb": {
+    "데이터 샘플링.html": "364bfaee"
+  },
+  "post/R for the Data Scienece/통계분석/T-검정.ipynb": {
+    "T-검정.html": "92a3139f"
+  },
+  "post/R for the Data Scienece/통계분석/분산분석(ANOVA).ipynb": {
+    "분산분석(ANOVA).html": "1aa59f24"
+  },
+  "post/R for the Data Scienece/통계분석/교차분석.ipynb": {
+    "교차분석.html": "12e4fd7c"
+  },
+  "post/R for the Data Scienece/통계분석/상관분석.ipynb": {
+    "상관분석.html": "1b36646d"
+  },
+  "post/R for the Data Scienece/통계분석/회귀분석.ipynb": {
+    "회귀분석.html": "8ef833f9"
+  },
+  "post/R for the Data Scienece/통계분석/고급회귀분석.ipynb": {
+    "고급회귀분석.html": "21bb5e00"
+  },
+  "post/R for the Data Scienece/통계분석/주성분분석(1204).ipynb": {
+    "주성분분석(1204).html": "0b3ee152"
+  },
+  "post/R for the Data Scienece/통계분석/요인분석(1205).ipynb": {
+    "요인분석(1205).html": "579cd9df"
+  },
+  "post/R for the Data Scienece/통계분석/다차원척도법(1204).ipynb": {
+    "다차원척도법(1204).html": "a92febf9"
+  },
+  "post/R for the Data Scienece/통계분석/시계열 분석.ipynb": {
+    "시계열 분석.html": "1eb32d9d"
+  },
+  "post/R for the Data Scienece/정형데이터마이닝/Supervised Learning.ipynb": {
+    "Supervised Learning.html": "21f8a83e"
+  },
+  "post/R for the Data Scienece/정형데이터마이닝/Unsupervised Learning(1204).ipynb": {
+    "Unsupervised Learning(1204).html": "4d90c5d8"
+  },
+  "post/R for the Data Scienece/비정형데이터마이닝/텍스트마이닝.ipynb": {
+    "텍스트마이닝.html": "f2e102db"
   }
 }
