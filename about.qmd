@@ -59,7 +59,7 @@ about:
 
 `-` [R for Data Science](https://gangcheol.github.io/mysite/post/R%20for%20the%20Data%20Scienece/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A0%84%EC%B2%98%EB%A6%AC/%EA%B2%B0%EC%B8%A1%EC%B9%98(1205).html) | 2021. 06 ~ 
 
-`-` [ML with Pytorch](http://localhost:3939/post/ML%20with%20Pytorch/2022-01-27-Intro.html) | 2023. 01 ~
+`-` [ML with Pytorch](https://gangcheol.github.io/mysite/post/ML%20with%20pytorch/2022-01-27-Intro.html) | 2023. 01 ~
 
 `-` Data Visualization
 
