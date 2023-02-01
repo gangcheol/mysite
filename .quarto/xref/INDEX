@@ -124,5 +124,56 @@
   },
   "post/R for the Data Scienece/비정형데이터마이닝/텍스트마이닝.ipynb": {
     "텍스트마이닝.html": "f2e102db"
+  },
+  "post/R for Data Scienece/데이터 전처리/결측치(1205).ipynb": {
+    "결측치(1205).html": "75f62c33"
+  },
+  "post/R for Data Scienece/데이터 전처리/날짜 데이터 전처리.ipynb": {
+    "날짜 데이터 전처리.html": "ac87d2d1"
+  },
+  "post/R for Data Scienece/데이터 전처리/표준화와 정규화(1205).ipynb": {
+    "표준화와 정규화(1205).html": "19ea6799"
+  },
+  "post/R for Data Scienece/비정형데이터마이닝/텍스트마이닝.ipynb": {
+    "텍스트마이닝.html": "df92d4f3"
+  },
+  "post/R for Data Scienece/정형데이터마이닝/Supervised Learning.ipynb": {
+    "Supervised Learning.html": "e8bc9eaa"
+  },
+  "post/R for Data Scienece/정형데이터마이닝/Unsupervised Learning(1204).ipynb": {
+    "Unsupervised Learning(1204).html": "f9f91af7"
+  },
+  "post/R for Data Scienece/통계분석/T-검정.ipynb": {
+    "T-검정.html": "1cc15652"
+  },
+  "post/R for Data Scienece/통계분석/고급회귀분석.ipynb": {
+    "고급회귀분석.html": "c76c9c41"
+  },
+  "post/R for Data Scienece/통계분석/교차분석.ipynb": {
+    "교차분석.html": "9a170cb2"
+  },
+  "post/R for Data Scienece/통계분석/다차원척도법(1204).ipynb": {
+    "다차원척도법(1204).html": "837f47f6"
+  },
+  "post/R for Data Scienece/통계분석/데이터 샘플링.ipynb": {
+    "데이터 샘플링.html": "7c639ba6"
+  },
+  "post/R for Data Scienece/통계분석/분산분석(ANOVA).ipynb": {
+    "분산분석(ANOVA).html": "1d876bcd"
+  },
+  "post/R for Data Scienece/통계분석/상관분석.ipynb": {
+    "상관분석.html": "150ff94f"
+  },
+  "post/R for Data Scienece/통계분석/시계열 분석.ipynb": {
+    "시계열 분석.html": "8140edc7"
+  },
+  "post/R for Data Scienece/통계분석/요인분석(1205).ipynb": {
+    "요인분석(1205).html": "b25450de"
+  },
+  "post/R for Data Scienece/통계분석/주성분분석(1204).ipynb": {
+    "주성분분석(1204).html": "6ed2280a"
+  },
+  "post/R for Data Scienece/통계분석/회귀분석.ipynb": {
+    "회귀분석.html": "aae8435e"
   }
 }

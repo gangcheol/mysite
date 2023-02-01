@@ -45,7 +45,11 @@ about:
 
 ## Post
 
-`-` [Bigdata analysis](http://localhost:3939/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html)
+`-` [Bigdata Analysis](https://gangcheol.github.io/mysite/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html)
+
+`-` [R for Data Science]()
+
+`-` [ML with Pytorch](http://localhost:3939/post/ML%20with%20Pytorch/2022-01-27-Intro.html)
 
 ## Conctact
 
