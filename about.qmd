@@ -67,7 +67,7 @@ about:
 
 `-` [BigData Analysis](https://gangcheol.github.io/mysite/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html) | 2022. 08 ~
 
-`-` [Ml with Pytorch](https://gangcheol.github.io/mysite/post/Ml%20with%20pytorch/2022-01-27-Intro.html) | 2023. 01 ~
+`-` [Ml with Pytorch](https://gangcheol.github.io/mysite/post/Ml%20with%20pytorch/2023-01-27-Intro.html) | 2023. 01 ~
 
 
 ## Conctact
