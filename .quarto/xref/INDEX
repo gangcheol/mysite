@@ -232,5 +232,8 @@
   },
   "post/etc/toeic speaking/part4.ipynb": {
     "part4.html": "16c53df2"
+  },
+  "post/Ml with pytorch/2022-01-27-Intro.ipynb": {
+    "2022-01-27-Intro.html": "173f6da8"
   }
 }
