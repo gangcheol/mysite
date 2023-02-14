@@ -1,0 +1,3152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GANGCHEOL LEE">
+<meta name="dcterms.date" content="2023-02-01">
+
+<title>Gangcheol - 02. Overview</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../about.html" aria-current="page">
+ <span class="menu-text">About Me</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">02. Overview</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../about.html" class="sidebar-item-text sidebar-link">About Me</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Post</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Bigdata Analysis</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-03-08-(1주차).html" class="sidebar-item-text sidebar-link">01. 단순선형회귀</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-03-14-(2주차).html" class="sidebar-item-text sidebar-link">02. Tensorflow-1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-03-21-(3주차).html" class="sidebar-item-text sidebar-link">03. Tensorflow-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-03-28-(4주차).html" class="sidebar-item-text sidebar-link">04. 경사하강법-1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-03-30-(5주차).html" class="sidebar-item-text sidebar-link">05. 경사하강법-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-04-11-(6주차).html" class="sidebar-item-text sidebar-link">06. layer</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2020-04-12-(6주차) 과제.html" class="sidebar-item-text sidebar-link">06. layer 과제</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-04-18-(7주차).html" class="sidebar-item-text sidebar-link">07. Adam</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-04-27-중간고사 해설.html" class="sidebar-item-text sidebar-link">08. Mid term</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-05-01-(9주차).html" class="sidebar-item-text sidebar-link">09. MLE</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-05-02-lecture.html" class="sidebar-item-text sidebar-link">10. 확률적 경사하강법</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-05-08-lecture.html" class="sidebar-item-text sidebar-link">11. softmax</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-05-11-(11주차).html" class="sidebar-item-text sidebar-link">12. Max pooling, CNN</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-05-23-(12주차).html" class="sidebar-item-text sidebar-link">13. CNN-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-05-30-(13주차).html" class="sidebar-item-text sidebar-link">13. model fitting</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Bigdata Analysis/2022-06-13-기말고사 문제풀이.html" class="sidebar-item-text sidebar-link">14. Final term</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Etc</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">toeic speaking</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/etc/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">part 1</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/etc/toeic speaking/part2.html" class="sidebar-item-text sidebar-link">part 2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/etc/toeic speaking/part3.html" class="sidebar-item-text sidebar-link">part 3</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/etc/toeic speaking/part4.html" class="sidebar-item-text sidebar-link">part 4</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/etc/toeic speaking/part5.html" class="sidebar-item-text sidebar-link">part 5</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Ml with pytorch</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Ml with pytorch/2023-01-27-Intro.html" class="sidebar-item-text sidebar-link">01. intro</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Ml with pytorch/2023-02-01-Overview.html" class="sidebar-item-text sidebar-link active">02. Overview</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/Ml with pytorch/2023-02-04-DNN 딥러닝의 기초 (1).html" class="sidebar-item-text sidebar-link">03. DNN 딥러닝의 기초 (1)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">R for Data Scienece</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth2 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">데이터 전처리</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/데이터 전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">01. 결측치 처리</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/데이터 전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">02. 표준화와 정규화</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/데이터 전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">03. 날짜 데이터</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">비정형데이터마이닝</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/비정형데이터마이닝/텍스트마이닝.html" class="sidebar-item-text sidebar-link">01. text mining</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">정형데이터마이닝</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/정형데이터마이닝/Supervised Learning.html" class="sidebar-item-text sidebar-link">01. Supervised Learning</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/정형데이터마이닝/Unsupervised Learning(1204).html" class="sidebar-item-text sidebar-link">02. unsupervised learning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">통계분석</a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">01. sampling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/T-검정.html" class="sidebar-item-text sidebar-link">02. T-test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">03. ANOVA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/교차분석.html" class="sidebar-item-text sidebar-link">04. chi-square test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">05. cor-test</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">06. regression analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">07. regression analysis-2</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">08. PCA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link">09. Factor Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">10. Multidimensional scaling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../post/R for Data Scienece/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">11. Time-seris analysis</a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#지난시간-복습" id="toc-지난시간-복습" class="nav-link active" data-scroll-target="#지난시간-복습">지난시간 복습</a>
+  <ul class="collapse">
+  <li><a href="#단계-데이터-정리" id="toc-단계-데이터-정리" class="nav-link" data-scroll-target="#단계-데이터-정리">1단계 : 데이터 정리</a></li>
+  <li><a href="#단계-irnr-오브젝트-생성" id="toc-단계-irnr-오브젝트-생성" class="nav-link" data-scroll-target="#단계-irnr-오브젝트-생성">2단계 : Irnr 오브젝트 생성</a></li>
+  <li><a href="#단계-irnr.학습" id="toc-단계-irnr.학습" class="nav-link" data-scroll-target="#단계-irnr.학습">3단계 : Irnr.학습()</a></li>
+  <li><a href="#단계-lnnr.예측" id="toc-단계-lnnr.예측" class="nav-link" data-scroll-target="#단계-lnnr.예측">4단계 : lnnr.예측()</a></li>
+  <li><a href="#프로그래밍-과정" id="toc-프로그래밍-과정" class="nav-link" data-scroll-target="#프로그래밍-과정">프로그래밍 과정</a></li>
+  </ul></li>
+  <li><a href="#추천시스템-실습" id="toc-추천시스템-실습" class="nav-link" data-scroll-target="#추천시스템-실습">추천시스템 실습</a>
+  <ul class="collapse">
+  <li><a href="#단계-dls-생성" id="toc-단계-dls-생성" class="nav-link" data-scroll-target="#단계-dls-생성">1단계 : dls 생성</a></li>
+  <li><a href="#단계-lrnr-생성" id="toc-단계-lrnr-생성" class="nav-link" data-scroll-target="#단계-lrnr-생성">2단계 : lrnr 생성</a></li>
+  <li><a href="#단계-학습" id="toc-단계-학습" class="nav-link" data-scroll-target="#단계-학습">3단계 : 학습</a></li>
+  <li><a href="#단계-예측" id="toc-단계-예측" class="nav-link" data-scroll-target="#단계-예측">4단계 : 예측</a></li>
+  </ul></li>
+  <li><a href="#텍스트분석-실습" id="toc-텍스트분석-실습" class="nav-link" data-scroll-target="#텍스트분석-실습">텍스트분석 실습</a>
+  <ul class="collapse">
+  <li><a href="#단계-dls-생성-1" id="toc-단계-dls-생성-1" class="nav-link" data-scroll-target="#단계-dls-생성-1">1단계 : dls 생성</a></li>
+  <li><a href="#단계-lrnr-생성-1" id="toc-단계-lrnr-생성-1" class="nav-link" data-scroll-target="#단계-lrnr-생성-1">2단계 : lrnr 생성</a></li>
+  <li><a href="#단계-학습-1" id="toc-단계-학습-1" class="nav-link" data-scroll-target="#단계-학습-1">3단계 : 학습</a></li>
+  <li><a href="#단계-예측-1" id="toc-단계-예측-1" class="nav-link" data-scroll-target="#단계-예측-1">4단계 : 예측</a></li>
+  </ul></li>
+  <li><a href="#gan-intro" id="toc-gan-intro" class="nav-link" data-scroll-target="#gan-intro">GAN intro</a>
+  <ul class="collapse">
+  <li><a href="#생성모형" id="toc-생성모형" class="nav-link" data-scroll-target="#생성모형">생성모형</a></li>
+  <li><a href="#gan의-원리" id="toc-gan의-원리" class="nav-link" data-scroll-target="#gan의-원리">GAN의 원리</a></li>
+  </ul></li>
+  <li><a href="#gan-실습" id="toc-gan-실습" class="nav-link" data-scroll-target="#gan-실습">GAN 실습</a>
+  <ul class="collapse">
+  <li><a href="#단계-dls-생성-2" id="toc-단계-dls-생성-2" class="nav-link" data-scroll-target="#단계-dls-생성-2">1단계 : dls 생성</a></li>
+  <li><a href="#단계-lrnr-생성-2" id="toc-단계-lrnr-생성-2" class="nav-link" data-scroll-target="#단계-lrnr-생성-2">2단계 : lrnr 생성</a></li>
+  <li><a href="#단계-학습-2" id="toc-단계-학습-2" class="nav-link" data-scroll-target="#단계-학습-2">3단계 : 학습</a></li>
+  <li><a href="#단계-없음" id="toc-단계-없음" class="nav-link" data-scroll-target="#단계-없음">4단계 : 없음</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">02. Overview</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Python</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>GANGCHEOL LEE </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 1, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span> <span class="co">## 이미지분석</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.collab <span class="im">import</span> <span class="op">*</span> <span class="co">## 추천시스템</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.text.<span class="bu">all</span> <span class="im">import</span> <span class="op">*</span> <span class="co">## 텍스트 분석</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> fastai.vision.gan <span class="im">import</span> <span class="op">*</span> <span class="co">## GAN (이미지 생성)</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+</div>
+<section id="지난시간-복습" class="level1">
+<h1>지난시간 복습</h1>
+<section id="단계-데이터-정리" class="level2">
+<h2 class="anchored" data-anchor-id="단계-데이터-정리">1단계 : 데이터 정리</h2>
+<p><code>-</code> 데이터를 정리해서 ‘dls’ 객체에 저장</p>
+<div class="cell" data-outputid="52487e89-94ee-423b-eff1-71b4cd76de1f" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> untar_data(URLs.PETS)<span class="op">/</span><span class="st">"images"</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+    <div>
+      <progress value="811712512" class="" max="811706944" style="width:300px; height:20px; vertical-align: middle;"></progress>
+      100.00% [811712512/811706944 00:08&lt;00:00]
+    </div>
+    
+</div>
+</div>
+<div class="cell" data-outputid="785479b2-fa7d-4cc3-97ca-bac430c9b123" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>path.ls() <span class="co">## 파일 목록</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>(#7393) [Path('/root/.fastai/data/oxford-iiit-pet/images/Bombay_58.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/British_Shorthair_270.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Birman_56.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/leonberger_150.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Egyptian_Mau_143.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/german_shorthaired_130.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Russian_Blue_114.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/boxer_173.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Birman_121.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Siamese_225.jpg')...]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>fnames <span class="op">=</span> get_image_files(path)</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="bb8e32e9-2103-47f8-9624-6815769fceba" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fnames <span class="co">## 이미지들의 리스트를 경로와 함께 저장</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>(#7390) [Path('/root/.fastai/data/oxford-iiit-pet/images/Bombay_58.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/British_Shorthair_270.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Birman_56.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/leonberger_150.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Egyptian_Mau_143.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/german_shorthaired_130.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Russian_Blue_114.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/boxer_173.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Birman_121.jpg'),Path('/root/.fastai/data/oxford-iiit-pet/images/Siamese_225.jpg')...]</code></pre>
+</div>
+</div>
+<p><code>-</code> path.ls 와 fnames의 차이 <span class="math inline">\(\to\)</span> path.ls는 모든 파일들을 리스트로 리턴, fnames는 이미지 파일만 리턴한 것임</p>
+<p><code>-</code> 아래는 이미지 데이터 로드함수</p>
+<p>[python]</p>
+<pre><code>ImageDataLoaders.from_name_func(
+  path,
+  fnames,
+  #label_func,
+  item_tfms = Resize(224)    
+)</code></pre>
+<p><code>-</code> 지난 시간 함수</p>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(fname) :</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fname[<span class="dv">0</span>].isupper() :</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"cat"</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span> :</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"dog"</span></span></code></pre></div>
+</div>
+<p><code>-</code> 지난시간 함수 lambda 로 구현</p>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> fname : <span class="st">"cat"</span> <span class="cf">if</span> fname[<span class="dv">0</span>].isupper() <span class="cf">else</span> <span class="st">"dog"</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span>ImageDataLoaders.from_name_func(</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  path,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  fnames,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  f,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  item_tfms <span class="op">=</span> Resize(<span class="dv">224</span>)    </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="4e611fdb-c3b1-4ae9-f827-3d16b257e469" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-02-01-Overview_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="단계-irnr-오브젝트-생성" class="level2">
+<h2 class="anchored" data-anchor-id="단계-irnr-오브젝트-생성">2단계 : Irnr 오브젝트 생성</h2>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">##cnn_learner??</span></span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">##vision_learner??</span></span></code></pre></div>
+</div>
+<div class="cell" data-outputid="0401dbda-bc36-4819-ffc3-ecd64200aec3" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> cnn_learner(dls,resnet34,metrics <span class="op">=</span> error_rate)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/usr/local/lib/python3.8/dist-packages/fastai/vision/learner.py:288: UserWarning: `cnn_learner` has been renamed to `vision_learner` -- please update your code
+  warn("`cnn_learner` has been renamed to `vision_learner` -- please update your code")
+/usr/local/lib/python3.8/dist-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/usr/local/lib/python3.8/dist-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet34_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet34_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /root/.cache/torch/hub/checkpoints/resnet34-b627a593.pth</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"d898420ab1fe49598b1e88a343d214b5","version_major":2,"version_minor":0}
+</script>
+</div>
+</div>
+<div class="cell" data-outputid="d73f2d00-6b1b-47b3-806d-d94d665ae7d4" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(dls)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>140201663392160</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="6328a66f-9148-4808-b609-c6676e3378f2" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="bu">id</span>(lrnr.dls)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>140201663392160</code></pre>
+</div>
+</div>
+<p><code>-</code> 둘의 메모리 공간 주소가 같다.</p>
+</section>
+<section id="단계-irnr.학습" class="level2">
+<h2 class="anchored" data-anchor-id="단계-irnr.학습">3단계 : Irnr.학습()</h2>
+<ul>
+<li><strong>fine_tune()</strong> 모든 가중치를 학습하는 것이 아니라 일부만 학습하는 것임.</li>
+<li>fine_tune을 직역하면 미세조정이다.</li>
+<li>즉, 주어진 환경에 맞게 이미 학습된 데이터를 마지막에 미세한 조정을 주어서 다시 학습한다. 이것을 <code>transfer learning</code> 이라고한다.</li>
+</ul>
+<div class="cell" data-outputid="23e904fc-27d7-4e15-d58d-d74c1ec418a2" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lrnr.fine_tune(<span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.141714</td>
+      <td>0.015523</td>
+      <td>0.007442</td>
+      <td>00:16</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>error_rate</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.046919</td>
+      <td>0.023695</td>
+      <td>0.006766</td>
+      <td>00:10</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<ul>
+<li>fine_tune()이외의 방법으로 학습할 수도 있음 <span class="math inline">\(\to\)</span> fit 함수로도 가능</li>
+</ul>
+</section>
+<section id="단계-lnnr.예측" class="level2">
+<h2 class="anchored" data-anchor-id="단계-lnnr.예측">4단계 : lnnr.예측()</h2>
+<p>(방법 1) : lrnr.predict()함수를 이용</p>
+<div class="cell" data-outputid="a847d080-0679-48b8-92d4-8c3b594b0328" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lrnr.predict(fnames[<span class="dv">0</span>])</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>('cat', TensorBase(0), TensorBase([9.9900e-01, 9.9530e-04]))</code></pre>
+</div>
+</div>
+<p>(방법2) : lrrnr.model(X)를 이용 : X의 shape이 (?,3,224,224)의 형태의 텐서이어야 한다.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dir(lrnr.model) ##__call 이라고 되어있으면 함수처럼 사용가능</span></span></code></pre></div>
+</div>
+<ul>
+<li>이미지를 넘겨주면 에러출력 <span class="math inline">\(\to\)</span> 컴퓨터가 이해할 수 있는 숫자로 보내주어야 한다.</li>
+</ul>
+<div class="cell" data-outputid="57315955-2761-4ab7-8a43-72fbd59fc6b0" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(fnames[<span class="dv">0</span>])</span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: ignored</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>_rtn <span class="op">=</span> dls.one_batch()</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="a3b73182-7f42-47cf-9f6c-fdffbb2208ec" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(_rtn)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#_rtn</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>tuple</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="36308a79-4706-4714-8d5a-9711bb2bd242" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(_rtn)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>X,y <span class="op">=</span> dls.one_batch()</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="81700ae4-092f-47e4-e930-d6d5b4107efb" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>X.shape <span class="co"># 224는 이미지 사이즈를 우리가 잡았던 것, 3은 채널(빨강, 노랑, 초록), 64는 이미지의 수</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>torch.Size([64, 3, 224, 224])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="f2f33251-5548-4c0e-e28d-a9ab74a9af3a" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>y.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
+<pre><code>torch.Size([64])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="b33f5de5-e3c5-4e88-a596-6d914efcd981" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>y[:<span class="dv">4</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
+<pre><code>TensorCategory([1, 1, 1, 1], device='cuda:0')</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="9fa27268-75d2-4e48-dfcf-21a2007b10ea" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(X)[:<span class="dv">4</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
+<pre><code>TensorBase([[-4.0604,  6.3253],
+            [-6.1767,  7.2553],
+            [-2.5415,  3.9088],
+            [-5.6635,  6.0049]], device='cuda:0', grad_fn=&lt;AliasBackward0&gt;)</code></pre>
+</div>
+</div>
+<ul>
+<li><p>즉 <code>X</code>를 모델 학습에 넘겨주고 <code>y</code>가 0인지 1인지 맞춘다. 왼쪽에 있는 숫자가 클수록 0, 오른쪽에 있는 숫자가 클수록 1이라고 예측한다.</p></li>
+<li><p><code>lrnr.model(X)</code> 활성화함수 직전 상태 즉, <code>softmax</code>로 넘어가기전 <code>y_hat</code>이 되기 직전인 상태이다.</p></li>
+</ul>
+<div class="cell" data-outputid="cd58eb14-ba50-46d7-f1b5-2619ebfa1bd0" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">0</span>].shape <span class="co">## 한장의 이미지 shape</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="58">
+<pre><code>torch.Size([3, 224, 224])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="2dde67e7-a9c3-4aa7-c197-7bffc5fc36fe" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(X[<span class="dv">0</span>]) <span class="co">## 4차원 텐서를 넣어야 하는데 3차원 텐서를 넣어서 에러가 발생</span></span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ValueError: ignored</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="2c442103-1b00-4a24-86ed-718e7b36bddc" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(X[:<span class="dv">1</span>]) <span class="co">## 이런식으로 넣어주면 가능!</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="66">
+<pre><code>TensorBase([[-4.0608,  6.3263]], device='cuda:0', grad_fn=&lt;AliasBackward0&gt;)</code></pre>
+</div>
+</div>
+</section>
+<section id="프로그래밍-과정" class="level2">
+<h2 class="anchored" data-anchor-id="프로그래밍-과정">프로그래밍 과정</h2>
+<p><code>-</code> overview</p>
+<ol type="1">
+<li><p>dls 오브젝트 생성</p></li>
+<li><p>lrnr 오브젝트 생성</p></li>
+<li><p>lrnr.학습()</p></li>
+<li><p>lrnr.예측()</p></li>
+</ol>
+</section>
+</section>
+<section id="추천시스템-실습" class="level1">
+<h1>추천시스템 실습</h1>
+<section id="단계-dls-생성" class="level2">
+<h2 class="anchored" data-anchor-id="단계-dls-생성">1단계 : dls 생성</h2>
+<ul>
+<li>임의의 커피, 홍차 맛 만족도 데이터</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>guebin<span class="op">/</span>STML2022<span class="op">/</span>main<span class="op">/</span>posts<span class="op">/</span>I.<span class="op">%</span><span class="dv">20</span><span class="er">Overview</span><span class="op">/</span><span class="dv">2022</span><span class="op">-</span><span class="dv">0</span><span class="er">9</span><span class="op">-</span><span class="dv">0</span><span class="er">8</span><span class="op">-</span>rcmd_view.csv</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="c2868e06-5955-4018-8506-6d72e0d379e9" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>df_view <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/STML2022/main/posts/I.%20Overview/2022-09-08-rcmd_view.csv'</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>df_view.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+
+
+  <div id="df-118c775b-1c28-445a-bed1-8760485634fb">
+    <div class="colab-df-container">
+      <div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>커피1</th>
+      <th>커피2</th>
+      <th>커피3</th>
+      <th>커피4</th>
+      <th>커피5</th>
+      <th>커피6</th>
+      <th>커피7</th>
+      <th>커피8</th>
+      <th>커피9</th>
+      <th>커피10</th>
+      <th>홍차1</th>
+      <th>홍차2</th>
+      <th>홍차3</th>
+      <th>홍차4</th>
+      <th>홍차5</th>
+      <th>홍차6</th>
+      <th>홍차7</th>
+      <th>홍차8</th>
+      <th>홍차9</th>
+      <th>홍차10</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4.149209</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.078139</td>
+      <td>4.033415</td>
+      <td>4.071871</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.142659</td>
+      <td>1.109452</td>
+      <td>NaN</td>
+      <td>0.603118</td>
+      <td>1.084308</td>
+      <td>NaN</td>
+      <td>0.906524</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.903826</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.031811</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.822704</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.071410</td>
+      <td>3.996206</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.839565</td>
+      <td>1.011315</td>
+      <td>NaN</td>
+      <td>1.120552</td>
+      <td>0.911340</td>
+      <td>NaN</td>
+      <td>0.860954</td>
+      <td>0.871482</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.082178</td>
+      <td>4.196436</td>
+      <td>NaN</td>
+      <td>3.956876</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.450931</td>
+      <td>3.972090</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.983838</td>
+      <td>NaN</td>
+      <td>0.918576</td>
+      <td>1.206796</td>
+      <td>0.913116</td>
+      <td>NaN</td>
+      <td>0.956194</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>4.000621</td>
+      <td>3.89557</td>
+      <td>NaN</td>
+      <td>3.838781</td>
+      <td>3.967183</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>4.105741</td>
+      <td>1.147554</td>
+      <td>NaN</td>
+      <td>1.346860</td>
+      <td>NaN</td>
+      <td>0.614099</td>
+      <td>1.297301</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.147545</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>3.888208</td>
+      <td>NaN</td>
+      <td>3.97033</td>
+      <td>3.979490</td>
+      <td>NaN</td>
+      <td>4.010982</td>
+      <td>NaN</td>
+      <td>0.920995</td>
+      <td>1.081111</td>
+      <td>0.999345</td>
+      <td>NaN</td>
+      <td>1.195183</td>
+      <td>NaN</td>
+      <td>0.818332</td>
+      <td>1.236331</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-118c775b-1c28-445a-bed1-8760485634fb')" title="Convert this dataframe to an interactive table." style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"></path><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"></path>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-118c775b-1c28-445a-bed1-8760485634fb button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-118c775b-1c28-445a-bed1-8760485634fb');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+</div>
+<div class="cell" data-outputid="fccb06e6-a0a4-4333-ae9d-076171f1c393" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>df_view.shape</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="72">
+<pre><code>(100, 20)</code></pre>
+</div>
+</div>
+<p><code>-</code> 위 데이터는 컴퓨터가 좋아하는 데이터 타입은 아님</p>
+<p><code>-</code> 아래와 같은 데이터 타입이 컴퓨터가 좋아하는 데이터 형태!</p>
+<div class="cell" data-outputid="7d4fcfbf-7217-4077-9e4c-be20237917e5" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/STML2022/main/posts/I.%20Overview/2022-09-08-rcmd_anal.csv'</span>)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="75">
+
+
+  <div id="df-2e14032f-453e-4880-8ca1-5e970d2c1a6d">
+    <div class="colab-df-container">
+      <div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+      <th>rating</th>
+      <th>item_name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>15</td>
+      <td>1.084308</td>
+      <td>홍차5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>1</td>
+      <td>4.149209</td>
+      <td>커피1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>11</td>
+      <td>1.142659</td>
+      <td>홍차1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>5</td>
+      <td>4.033415</td>
+      <td>커피5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>4</td>
+      <td>4.078139</td>
+      <td>커피4</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-2e14032f-453e-4880-8ca1-5e970d2c1a6d')" title="Convert this dataframe to an interactive table." style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"></path><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"></path>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-2e14032f-453e-4880-8ca1-5e970d2c1a6d button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-2e14032f-453e-4880-8ca1-5e970d2c1a6d');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+</div>
+<div class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> CollabDataLoaders.from_df(df)</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="25ab3f69-7971-463c-f7a3-6f9be4dc3f4f" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch() <span class="co">## 데이터들의 뭉치를 보여준다고 생각</span></span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>user</th>
+      <th>item</th>
+      <th>rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>38</td>
+      <td>10</td>
+      <td>4.050465</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>42</td>
+      <td>20</td>
+      <td>1.292435</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>99</td>
+      <td>5</td>
+      <td>0.927884</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>6</td>
+      <td>18</td>
+      <td>1.124469</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>81</td>
+      <td>18</td>
+      <td>4.178587</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>97</td>
+      <td>13</td>
+      <td>4.071385</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>97</td>
+      <td>14</td>
+      <td>3.935935</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>86</td>
+      <td>10</td>
+      <td>0.878860</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>10</td>
+      <td>10</td>
+      <td>3.947756</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>81</td>
+      <td>3</td>
+      <td>1.140266</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-outputid="6872bf3e-17e4-4a87-851b-6fbf1219aa89" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="bu">type</span>(dls.one_batch())</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<pre><code>tuple</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="720a8e2a-ddc0-4fc4-e6e3-eebe232f02e7" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(dls.one_batch())</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>2</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> dls.one_batch()</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="b94ea51a-a40c-46fb-ed22-7056c591c9a4" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>X[:<span class="dv">5</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>tensor([[94, 18],
+        [48, 15],
+        [49, 12],
+        [96,  8],
+        [42, 20]])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="cc13738a-cdd4-4ec3-a2b8-5794af42de62" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>y[:<span class="dv">5</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>tensor([[4.1571],
+        [1.3672],
+        [0.9212],
+        [0.6784],
+        [1.2924]])</code></pre>
+</div>
+</div>
+<ul>
+<li><p>평점이 <code>y</code>, X의 2번째 열은 <code>item</code>의 인덱스 즉, 커피, 홍차의 <code>인덱스</code>이다.</p></li>
+<li><p>유저는 1-100 까지, 아이템은 1-20 까지 번호가 매겨짐</p></li>
+</ul>
+<div class="cell" data-outputid="b4a09288-8c5b-4a64-e15e-0e4263f0466f" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>df.user.unique(), df.item.unique()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="97">
+<pre><code>(array([  1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,
+         14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,
+         27,  28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,
+         40,  41,  42,  43,  44,  45,  46,  47,  48,  49,  50,  51,  52,
+         53,  54,  55,  56,  57,  58,  59,  60,  61,  62,  63,  64,  65,
+         66,  67,  68,  69,  70,  71,  72,  73,  74,  75,  76,  77,  78,
+         79,  80,  81,  82,  83,  84,  85,  86,  87,  88,  89,  90,  91,
+         92,  93,  94,  95,  96,  97,  98,  99, 100]),
+ array([15,  1, 11,  5,  4, 14,  6, 20, 12, 17,  8,  9, 13, 19, 18, 16,  2,
+         3, 10,  7]))</code></pre>
+</div>
+</div>
+</section>
+<section id="단계-lrnr-생성" class="level2">
+<h2 class="anchored" data-anchor-id="단계-lrnr-생성">2단계 : lrnr 생성</h2>
+<div class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>?collab_learner</span></code></pre></div>
+</div>
+<div class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> collab_learner(dls,y_range <span class="op">=</span> (<span class="dv">0</span>,<span class="dv">5</span>))</span></code></pre></div>
+</div>
+</section>
+<section id="단계-학습" class="level2">
+<h2 class="anchored" data-anchor-id="단계-학습">3단계 : 학습</h2>
+<div class="cell" data-outputid="6c80db98-b114-4c12-e016-cfd5cfed6e00" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>lrnr.fit(<span class="dv">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2.303518</td>
+      <td>2.387814</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>2.296435</td>
+      <td>2.382961</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>2.290963</td>
+      <td>2.361562</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>2.273144</td>
+      <td>2.310360</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>2.237350</td>
+      <td>2.212338</td>
+      <td>00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="단계-예측" class="level2">
+<h2 class="anchored" data-anchor-id="단계-예측">4단계 : 예측</h2>
+<div class="cell" data-outputid="5498f89f-9b60-4c78-e9eb-83ecdf7707e7" data-execution_count="107">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>nvidia<span class="op">-</span>smi <span class="co">## gpu 메모리에 데이터를 올려야 gpu를 쓸 수 있다.</span></span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>            <span class="co">## 현재 40960MIB 중에, 6508MIB를 쓴거</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mon Feb 13 03:02:41 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 510.47.03    Driver Version: 510.47.03    CUDA Version: 11.6     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA A100-SXM...  Off  | 00000000:00:04.0 Off |                    0 |
+| N/A   31C    P0    52W / 400W |   6508MiB / 40960MiB |      0%      Default |
+|                               |                      |             Disabled |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A     38267      C                                    6505MiB |
++-----------------------------------------------------------------------------+</code></pre>
+</div>
+</div>
+<ul>
+<li>동작을 하지 않는 이유 <span class="math inline">\(\to\)</span> 데이터를 GPU메모리에 올리지 않았기 때문, 즉 <code>X</code>를 GPU에 올리지않았음</li>
+</ul>
+<div class="cell" data-outputid="f8299d08-7e44-4988-f500-df41f4b86e19" data-execution_count="108">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(X.to(<span class="st">"cuda:0"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="108">
+<pre><code>tensor([2.6203, 2.4078, 2.4296, 2.4147, 2.4379, 2.4201, 2.5469, 2.3894, 2.4491,
+        2.5716, 2.4053, 2.5628, 2.5315, 2.5821, 2.4122, 2.5509, 2.4293, 2.4100,
+        2.3865, 2.5788, 2.4476, 2.4217, 2.4088, 2.4145, 2.5559, 2.5627, 2.4015,
+        2.4415, 2.4449, 2.4041, 2.5609, 2.4372, 2.5280, 2.5970, 2.5629, 2.5665,
+        2.5634, 2.4260, 2.5410, 2.3713, 2.4034, 2.4298, 2.5526, 2.5474, 2.4270,
+        2.5978, 2.5144, 2.4287, 2.5997, 2.3872, 2.3990, 2.4277, 2.4715, 2.4507,
+        2.4164, 2.5287, 2.6307, 2.4279, 2.4225, 2.5513, 2.3779, 2.4348, 2.5664,
+        2.3808], device='cuda:0', grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="ef35b621-c368-4255-d3aa-01ba752cc936" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>y.reshape(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="110">
+<pre><code>tensor([4.1571, 1.3672, 0.9212, 0.6784, 1.2924, 1.2927, 4.4312, 1.1095, 0.6699,
+        4.2545, 1.3018, 4.1020, 4.1378, 3.9670, 1.0989, 4.1546, 0.9216, 1.6479,
+        0.7114, 4.3233, 0.8254, 0.9476, 1.2973, 1.2095, 4.0181, 4.1052, 1.0210,
+        1.1272, 1.0811, 0.9954, 3.8129, 1.2068, 3.7339, 3.7450, 3.7918, 3.9419,
+        3.9602, 1.1130, 4.0269, 0.8396, 0.6148, 1.0967, 3.9091, 3.6707, 1.2705,
+        4.3294, 3.8896, 0.9221, 4.0591, 0.7438, 0.5774, 0.9987, 1.0781, 1.4077,
+        1.2158, 3.7970, 3.9063, 0.8789, 0.9647, 3.9110, 0.9113, 1.4332, 4.0734,
+        0.7531])</code></pre>
+</div>
+</div>
+<ul>
+<li><p>가만보니까 예측을 한것이 아니라 걍 찍는 것같음.</p></li>
+<li><p>다시 10번학습, 총 15번 학습한것!</p></li>
+</ul>
+<div class="cell" data-outputid="e3662844-1d22-42bd-d06b-21a633d64e0c" data-execution_count="111">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>lrnr.fit(<span class="dv">10</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>2.024679</td>
+      <td>2.062938</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.915701</td>
+      <td>1.863412</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>1.786727</td>
+      <td>1.625497</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>1.634479</td>
+      <td>1.367636</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>1.463962</td>
+      <td>1.107142</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>1.286827</td>
+      <td>0.865784</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>1.110320</td>
+      <td>0.655676</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.942005</td>
+      <td>0.483732</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.786892</td>
+      <td>0.351725</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>0.649683</td>
+      <td>0.254381</td>
+      <td>00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-outputid="4d74a2e5-c2cd-4a8f-a0a5-a8e2e0efc991" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(X.to(<span class="st">"cuda:0"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="112">
+<pre><code>tensor([3.8132, 1.3016, 1.3479, 1.3472, 1.3713, 1.3401, 3.6193, 1.2546, 1.3294,
+        3.7289, 1.2876, 3.6382, 3.5721, 3.5878, 1.3477, 3.6536, 1.3710, 1.4517,
+        1.2269, 3.6255, 1.4529, 1.3778, 1.2844, 1.3243, 3.6570, 3.4017, 1.2812,
+        1.3968, 1.3998, 1.2739, 3.5619, 1.2896, 3.5557, 3.7600, 3.5782, 3.5810,
+        3.6740, 1.3642, 3.6071, 1.2202, 1.3395, 1.3461, 3.6561, 3.6573, 1.3087,
+        3.7091, 3.5337, 1.3310, 3.7013, 1.3189, 1.3117, 1.3816, 1.4482, 1.4022,
+        1.3442, 3.5761, 3.7976, 1.3848, 1.2933, 3.5884, 1.2519, 1.4102, 3.6621,
+        1.2266], device='cuda:0', grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="d036c29e-c406-4f11-ce83-a5b92aa2c88b" data-execution_count="113">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>y.reshape(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="113">
+<pre><code>tensor([4.1571, 1.3672, 0.9212, 0.6784, 1.2924, 1.2927, 4.4312, 1.1095, 0.6699,
+        4.2545, 1.3018, 4.1020, 4.1378, 3.9670, 1.0989, 4.1546, 0.9216, 1.6479,
+        0.7114, 4.3233, 0.8254, 0.9476, 1.2973, 1.2095, 4.0181, 4.1052, 1.0210,
+        1.1272, 1.0811, 0.9954, 3.8129, 1.2068, 3.7339, 3.7450, 3.7918, 3.9419,
+        3.9602, 1.1130, 4.0269, 0.8396, 0.6148, 1.0967, 3.9091, 3.6707, 1.2705,
+        4.3294, 3.8896, 0.9221, 4.0591, 0.7438, 0.5774, 0.9987, 1.0781, 1.4077,
+        1.2158, 3.7970, 3.9063, 0.8789, 0.9647, 3.9110, 0.9113, 1.4332, 4.0734,
+        0.7531])</code></pre>
+</div>
+</div>
+<ul>
+<li>전 보단 결과가 좋으나 아직까지도 자신감이 부족함</li>
+</ul>
+<div class="cell" data-outputid="c84c08ec-2f8d-4812-e16c-4f0db548692d" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a>lrnr.fit(<span class="dv">20</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>0.140063</td>
+      <td>0.186549</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0.115944</td>
+      <td>0.139581</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.097311</td>
+      <td>0.109824</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.082672</td>
+      <td>0.090060</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.071270</td>
+      <td>0.077270</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>0.062843</td>
+      <td>0.069694</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>0.056643</td>
+      <td>0.064374</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>0.051726</td>
+      <td>0.060618</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>0.047778</td>
+      <td>0.058101</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>0.044731</td>
+      <td>0.056307</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>0.042384</td>
+      <td>0.055452</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>0.040487</td>
+      <td>0.054989</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>0.038892</td>
+      <td>0.054412</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>0.037757</td>
+      <td>0.054033</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>0.036721</td>
+      <td>0.053958</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>0.035906</td>
+      <td>0.053978</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>0.035152</td>
+      <td>0.053730</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>0.034605</td>
+      <td>0.053580</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>0.034082</td>
+      <td>0.053545</td>
+      <td>00:00</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>0.033564</td>
+      <td>0.053754</td>
+      <td>00:00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<div class="cell" data-outputid="ef1fd0ea-166c-4393-85a8-ca6ced6d9382" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(X.to(<span class="st">"cuda:0"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="117">
+<pre><code>tensor([4.1396, 1.0046, 0.9150, 0.9528, 1.0421, 1.0685, 3.9525, 0.8296, 0.9267,
+        4.1958, 1.0089, 3.9822, 3.9842, 3.9823, 1.0656, 4.0215, 1.0202, 1.1260,
+        0.9742, 4.1417, 1.0290, 1.0583, 1.0669, 1.0596, 3.9959, 3.9538, 1.0101,
+        1.0808, 1.0498, 1.0109, 4.0697, 1.0221, 3.8955, 3.9628, 4.0330, 4.0100,
+        4.1104, 1.0817, 3.9374, 0.8868, 0.9833, 1.0597, 3.9288, 3.9056, 0.9954,
+        4.1319, 3.9341, 1.0133, 4.0659, 0.8576, 0.9358, 0.9670, 1.0936, 1.0714,
+        1.1292, 3.8640, 3.9320, 0.9894, 0.9393, 3.8178, 0.9363, 1.1871, 3.9079,
+        0.9397], device='cuda:0', grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="e9aba3d1-1058-46e1-fc54-b66e1b3f4480" data-execution_count="118">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>y.reshape(<span class="op">-</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="118">
+<pre><code>tensor([4.1571, 1.3672, 0.9212, 0.6784, 1.2924, 1.2927, 4.4312, 1.1095, 0.6699,
+        4.2545, 1.3018, 4.1020, 4.1378, 3.9670, 1.0989, 4.1546, 0.9216, 1.6479,
+        0.7114, 4.3233, 0.8254, 0.9476, 1.2973, 1.2095, 4.0181, 4.1052, 1.0210,
+        1.1272, 1.0811, 0.9954, 3.8129, 1.2068, 3.7339, 3.7450, 3.7918, 3.9419,
+        3.9602, 1.1130, 4.0269, 0.8396, 0.6148, 1.0967, 3.9091, 3.6707, 1.2705,
+        4.3294, 3.8896, 0.9221, 4.0591, 0.7438, 0.5774, 0.9987, 1.0781, 1.4077,
+        1.2158, 3.7970, 3.9063, 0.8789, 0.9647, 3.9110, 0.9113, 1.4332, 4.0734,
+        0.7531])</code></pre>
+</div>
+</div>
+<ul>
+<li>이제 거의 비슷해짐</li>
+</ul>
+<p><code>-</code> 이제 없는 데이터를 예측해보자.</p>
+<p><code>-</code> 첫번째 유저가 커피 2를 먹었을 때? <span class="math inline">\(\to\)</span> 예상 4점 근처</p>
+<div class="cell" data-outputid="c28cd026-8c35-45d6-9645-16cd40b09eeb" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a>X[<span class="dv">0</span>:<span class="dv">1</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="120">
+<pre><code>tensor([[94, 18]])</code></pre>
+</div>
+</div>
+<div class="cell" data-outputid="99c6a41a-b1fd-43f0-93ff-17c331370121" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(tensor([[<span class="dv">1</span>,<span class="dv">2</span>]])) <span class="co">## 첫 번째 유저가 커피2를 먹었을 때</span></span></code></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>RuntimeError: ignored</code></pre>
+</div>
+</div>
+<p><code>-</code> 에러가 나는 이유는 데이터가 하나는 gpu, 하나는 cpu에 있기 때문이다.</p>
+<div class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb89-1"><a href="#cb89-1" aria-hidden="true" tabindex="-1"></a>Xnew <span class="op">=</span> tensor([[<span class="dv">1</span>,<span class="dv">2</span>]])</span></code></pre></div>
+</div>
+<div class="cell" data-outputid="06827bef-8f42-4e54-ad94-004fafa06295" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a>lrnr.model(Xnew.to(<span class="st">"cuda:0"</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="124">
+<pre><code>tensor([4.0007], device='cuda:0', grad_fn=&lt;AddBackward0&gt;)</code></pre>
+</div>
+</div>
+<p><code>-</code> 우리가 예상한 결과가 나온다!</p>
+</section>
+</section>
+<section id="텍스트분석-실습" class="level1">
+<h1>텍스트분석 실습</h1>
+<p><code>-</code> RNN 사용</p>
+<p><code>-</code> “h e l l o” 라는 단어를 학습하고 <code>h</code>를 넘겨주면 다음 문자를 맞추는 것을 학습</p>
+<p><code>-</code> 사실 단어 단위, 문장단위로 학습할 수도 있음.</p>
+<section id="단계-dls-생성-1" class="level2">
+<h2 class="anchored" data-anchor-id="단계-dls-생성-1">1단계 : dls 생성</h2>
+<div class="cell" data-outputid="e79be360-7b98-4802-b826-92cf2e9601cc" data-execution_count="126">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">'text'</span>:[<span class="st">'h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??'</span>]<span class="op">*</span><span class="dv">20000</span>})</span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="126">
+
+
+  <div id="df-e6a437a2-d7ac-47b3-b732-7b003b6456b5">
+    <div class="colab-df-container">
+      <div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-e6a437a2-d7ac-47b3-b732-7b003b6456b5')" title="Convert this dataframe to an interactive table." style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewbox="0 0 24 24" width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"></path>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"></path><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"></path>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-e6a437a2-d7ac-47b3-b732-7b003b6456b5 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-e6a437a2-d7ac-47b3-b732-7b003b6456b5');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  
+</div>
+</div>
+<div class="cell" data-outputid="c068a772-a14d-4056-e933-4a8fdc180250" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> TextDataLoaders.from_df(df,text_col<span class="op">=</span><span class="st">"text"</span>,is_lm<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+</div>
+<p><code>-</code> is_lm = True는 단어에 대한 예측, is_lm = False는 긍정, 부정과 같이 이 텍스트가 최종적으로 어떤 클래스에 속하는지 예측한다.</p>
+<div class="cell" data-outputid="764f73f2-24b2-451c-bfa2-d81990fbf9fc" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>text</th>
+      <th>text_</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o</td>
+      <td>h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o .</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l</td>
+      <td>xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l</td>
+      <td>? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e</td>
+      <td>? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h</td>
+      <td>o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos</td>
+      <td>l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ?</td>
+      <td>l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ?</td>
+      <td>e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ?</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o</td>
+      <td>h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ?</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p><code>-</code> <code>xxbos</code>는 하나의 내용이 끝나고 다른 내용이 시작된다는 의미</p>
+<ul>
+<li><code>text</code>와, <code>text_</code>의 차이는 <code>text</code>는 예측전, <code>text_</code>는 예측 후라고 생각하자. <span class="math inline">\(\to\)</span> 즉, X와 y</li>
+</ul>
+</section>
+<section id="단계-lrnr-생성-1" class="level2">
+<h2 class="anchored" data-anchor-id="단계-lrnr-생성-1">2단계 : lrnr 생성</h2>
+<div class="cell" data-outputid="0008c12a-bf4e-45e8-c6a6-27ff126d20a2" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>lnnr <span class="op">=</span> language_model_learner(dls,arch<span class="op">=</span>AWD_LSTM)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+    <div>
+      <progress value="105070592" class="" max="105067061" style="width:300px; height:20px; vertical-align: middle;"></progress>
+      100.00% [105070592/105067061 00:01&lt;00:00]
+    </div>
+    
+</div>
+</div>
+</section>
+<section id="단계-학습-1" class="level2">
+<h2 class="anchored" data-anchor-id="단계-학습-1">3단계 : 학습</h2>
+<div class="cell" data-outputid="8e20cb17-702b-491f-b43b-fac22ca1c4ab" data-execution_count="132">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a>lnnr.fit(<span class="dv">5</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>1.965570</td>
+      <td>0.897048</td>
+      <td>00:22</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>1.031884</td>
+      <td>0.373120</td>
+      <td>00:21</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0.640392</td>
+      <td>0.251359</td>
+      <td>00:21</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0.492017</td>
+      <td>0.212869</td>
+      <td>00:21</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>0.389751</td>
+      <td>0.186374</td>
+      <td>00:21</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="단계-예측-1" class="level2">
+<h2 class="anchored" data-anchor-id="단계-예측-1">4단계 : 예측</h2>
+<div class="cell" data-outputid="3d4ca420-7aa6-4a08-dfb6-1628bd56da98" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>lnnr.predict(<span class="st">'h e'</span>,n_words<span class="op">=</span><span class="dv">30</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display" data-execution_count="133">
+<pre><code>'h e l l o ? h e l l o ! h e l l o ? ? h e l l o ! h e l l o !'</code></pre>
+</div>
+</div>
+<ul>
+<li>오 예측이 되게 잘됬당</li>
+</ul>
+</section>
+</section>
+<section id="gan-intro" class="level1">
+<h1>GAN intro</h1>
+<p><code>-</code> 저자 : 이안굿펠로우 (지도교수 : 요수아벤지오)</p>
+<p><code>-</code> 최근 10년간 머신러닝 분야에서 가장 혁신적인 아이디어(2014년 시점, 얀르쿤)</p>
+<p><code>-</code> 생성모형 : 만들수 없다면 이해하지 못한것이다, 리처드 파인만 (천재 물리학자)</p>
+<p><code>-</code> 개라는 단어를 주면 개를 그린다.</p>
+<p><code>-</code> 즉, 이미지를 생성하는 모형을 만들어본다.</p>
+<section id="생성모형" class="level2">
+<h2 class="anchored" data-anchor-id="생성모형">생성모형</h2>
+<p><code>-</code> 데이터의 생성확률 <span class="math inline">\(p(\bf{x}, y)\)</span> 을 알면 클래스의 사후확률 <span class="math inline">\(p(y|\bf{x})\)</span> 를 알 수 있음(일반적인 예측모형), 하지만 역은 불가능</p>
+<p><code>-</code> 생성모형은 <span class="math inline">\(p(x,y)\)</span>에 관심이 있다. 따라서, 이미지를 생성하는일은 분류문제보다 더 어려운 일이라 해석가능</p>
+</section>
+<section id="gan의-원리" class="level2">
+<h2 class="anchored" data-anchor-id="gan의-원리">GAN의 원리</h2>
+<p><code>-</code> 생성모형중 하나</p>
+<p><code>-</code> GAN의 원리는 경찰과 위조지폐범이 서로 선의의(?) 경쟁을 통하여 서로 발전하는 모형으로 설명할 수 있다.</p>
+<blockquote class="blockquote">
+<p>The generative model can be thought of as analogous to a team of counterfeiters, trying to produce fake currency and use it without detection, while the discriminative model is analogous to the police, trying to detect the counterfeit currency. Competition in this game drives both teams to improve their methods until the counterfeits are indistiguishable from the genuine articles.</p>
+</blockquote>
+<p><code>-</code> 서로 적대적인(adversarial) 네트워크(network)를 동시에 학습시켜 가짜이미지를 만든다(generate)</p>
+<p><code>-</code> 상황극 : 경찰이 CNN, 위조범이 GAN</p>
+<ul>
+<li>위조범: 가짜돈을 만들어서 부자가 되어야지! (가짜돈을 그림)</li>
+<li>경찰: (위조범이 만든 돈을 보고) 이건 가짜다!</li>
+<li>위조범: 걸렸군.. 더 정교하게 만들어야지..</li>
+<li>경찰: 이건 진짠가?… –&gt; 상사에게 혼남. 그것도 구분못하냐고</li>
+<li>위조범: 더 정교하게 만들자..</li>
+<li>경찰: 더 판별능력을 업그레이드 하자!</li>
+<li>반복..</li>
+</ul>
+<p><code>-</code> 굉장히 우수한 경찰조차도 진짜와 가짜를 구분하지 못할때(=진짜 이미지를 0.5의 확률로만 진짜라고 말할때 = 가짜 이미지를 0.5의 확률로만 가짜라고 말할때) 학습을 멈춘다.</p>
+</section>
+</section>
+<section id="gan-실습" class="level1">
+<h1>GAN 실습</h1>
+<section id="단계-dls-생성-2" class="level2">
+<h2 class="anchored" data-anchor-id="단계-dls-생성-2">1단계 : dls 생성</h2>
+<div class="cell" data-outputid="ca3ecd79-d438-4b1d-fec5-97d2878da4aa" data-execution_count="134">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> untar_data(URLs.MNIST_SAMPLE)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+    <div>
+      <progress value="3219456" class="" max="3214948" style="width:300px; height:20px; vertical-align: middle;"></progress>
+      100.14% [3219456/3214948 00:00&lt;00:00]
+    </div>
+    
+</div>
+</div>
+<div class="cell" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1" aria-hidden="true" tabindex="-1"></a>dblock <span class="op">=</span> DataBlock(blocks<span class="op">=</span>(TransformBlock,ImageBlock),</span>
+<span id="cb100-2"><a href="#cb100-2" aria-hidden="true" tabindex="-1"></a>          get_x <span class="op">=</span> generate_noise,</span>
+<span id="cb100-3"><a href="#cb100-3" aria-hidden="true" tabindex="-1"></a>          get_items<span class="op">=</span>get_image_files,</span>
+<span id="cb100-4"><a href="#cb100-4" aria-hidden="true" tabindex="-1"></a>          item_tfms<span class="op">=</span>Resize(<span class="dv">32</span>))</span>
+<span id="cb100-5"><a href="#cb100-5" aria-hidden="true" tabindex="-1"></a>dls <span class="op">=</span> dblock.dataloaders(path) </span></code></pre></div>
+</div>
+<div class="cell" data-outputid="ebfeb7d6-84dd-4858-bfa1-c27fd313690c" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-02-01-Overview_files/figure-html/cell-68-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="단계-lrnr-생성-2" class="level2">
+<h2 class="anchored" data-anchor-id="단계-lrnr-생성-2">2단계 : lrnr 생성</h2>
+<p><code>-</code> 재료가 되는 경찰과 위조지폐범을 만듬</p>
+<p><code>-</code> 위조지폐범의 32 : 입력데이터를 32 x 32로 생성해라</p>
+<p><code>-</code> police의 32 : 32 x 32로 입력을 받아 0또는 1로 출력을해라</p>
+<div class="cell" data-execution_count="138">
+<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1" aria-hidden="true" tabindex="-1"></a>counterfeiter <span class="op">=</span> basic_generator(<span class="dv">32</span>,n_channels<span class="op">=</span><span class="dv">3</span>,n_extra_layers<span class="op">=</span><span class="dv">1</span>) </span>
+<span id="cb102-2"><a href="#cb102-2" aria-hidden="true" tabindex="-1"></a>police <span class="op">=</span> basic_critic(<span class="dv">32</span>,n_channels<span class="op">=</span><span class="dv">3</span>,n_extra_layers<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div>
+</div>
+<p><code>-</code> 위조지폐범과 경찰을 집어넣음</p>
+<div class="cell" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1" aria-hidden="true" tabindex="-1"></a>lrnr <span class="op">=</span> GANLearner.wgan(dls,counterfeiter,police) </span></code></pre></div>
+</div>
+</section>
+<section id="단계-학습-2" class="level2">
+<h2 class="anchored" data-anchor-id="단계-학습-2">3단계 : 학습</h2>
+<div class="cell" data-outputid="cfb50283-01fa-4b39-8fb8-c85088750457" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a>lrnr.fit(<span class="dv">60</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>epoch</th>
+      <th>train_loss</th>
+      <th>valid_loss</th>
+      <th>gen_loss</th>
+      <th>crit_loss</th>
+      <th>time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>-0.501905</td>
+      <td>0.272452</td>
+      <td>0.272452</td>
+      <td>-0.732317</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>-0.560972</td>
+      <td>0.261339</td>
+      <td>0.261339</td>
+      <td>-0.738020</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>-0.426593</td>
+      <td>0.238372</td>
+      <td>0.238372</td>
+      <td>-0.638903</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>-0.549378</td>
+      <td>0.277994</td>
+      <td>0.277994</td>
+      <td>-0.735531</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>-0.530167</td>
+      <td>0.310435</td>
+      <td>0.310435</td>
+      <td>-0.731865</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>-0.546979</td>
+      <td>0.303683</td>
+      <td>0.303683</td>
+      <td>-0.734299</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>-0.439625</td>
+      <td>0.263317</td>
+      <td>0.263317</td>
+      <td>-0.623146</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>-0.501293</td>
+      <td>0.257658</td>
+      <td>0.257658</td>
+      <td>-0.528969</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>-0.301703</td>
+      <td>0.209601</td>
+      <td>0.209601</td>
+      <td>-0.312943</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>-0.424916</td>
+      <td>0.251544</td>
+      <td>0.251544</td>
+      <td>-0.586661</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>-0.461934</td>
+      <td>0.139101</td>
+      <td>0.139101</td>
+      <td>-0.633617</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>-0.410035</td>
+      <td>0.199125</td>
+      <td>0.199125</td>
+      <td>-0.536341</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>-0.493449</td>
+      <td>0.256345</td>
+      <td>0.256345</td>
+      <td>-0.658428</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>-0.312562</td>
+      <td>0.312208</td>
+      <td>0.312208</td>
+      <td>-0.493477</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>-0.382400</td>
+      <td>0.347141</td>
+      <td>0.347141</td>
+      <td>-0.643486</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>-0.331892</td>
+      <td>0.385739</td>
+      <td>0.385739</td>
+      <td>-0.476501</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>-0.170304</td>
+      <td>0.169395</td>
+      <td>0.169395</td>
+      <td>-0.212899</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>-0.310682</td>
+      <td>0.243360</td>
+      <td>0.243360</td>
+      <td>-0.433320</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>-0.220975</td>
+      <td>0.251129</td>
+      <td>0.251129</td>
+      <td>-0.409254</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>-0.349662</td>
+      <td>0.202146</td>
+      <td>0.202146</td>
+      <td>-0.615371</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>-0.233808</td>
+      <td>0.050910</td>
+      <td>0.050910</td>
+      <td>-0.315928</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>-0.307061</td>
+      <td>0.267279</td>
+      <td>0.267279</td>
+      <td>-0.485837</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>-0.311691</td>
+      <td>0.241707</td>
+      <td>0.241707</td>
+      <td>-0.362771</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>-0.268940</td>
+      <td>-0.232714</td>
+      <td>-0.232714</td>
+      <td>-0.096314</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>-0.216904</td>
+      <td>0.140780</td>
+      <td>0.140780</td>
+      <td>-0.359679</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>-0.168833</td>
+      <td>0.148477</td>
+      <td>0.148477</td>
+      <td>-0.130964</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>26</td>
+      <td>-0.177647</td>
+      <td>0.264623</td>
+      <td>0.264623</td>
+      <td>-0.359113</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>27</td>
+      <td>-0.082595</td>
+      <td>0.003874</td>
+      <td>0.003874</td>
+      <td>-0.091398</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>28</td>
+      <td>-0.063921</td>
+      <td>0.037485</td>
+      <td>0.037485</td>
+      <td>-0.131270</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>29</td>
+      <td>-0.109081</td>
+      <td>0.241590</td>
+      <td>0.241590</td>
+      <td>-0.193368</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>30</td>
+      <td>-0.070794</td>
+      <td>-0.298603</td>
+      <td>-0.298603</td>
+      <td>-0.082873</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>31</td>
+      <td>-0.058322</td>
+      <td>0.064523</td>
+      <td>0.064523</td>
+      <td>-0.107654</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>32</td>
+      <td>-0.054619</td>
+      <td>-0.114057</td>
+      <td>-0.114057</td>
+      <td>-0.096975</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>33</td>
+      <td>-0.063974</td>
+      <td>-0.228303</td>
+      <td>-0.228303</td>
+      <td>0.002836</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>34</td>
+      <td>-0.038850</td>
+      <td>0.239098</td>
+      <td>0.239098</td>
+      <td>-0.018863</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>35</td>
+      <td>-0.049034</td>
+      <td>0.035363</td>
+      <td>0.035363</td>
+      <td>-0.068695</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>36</td>
+      <td>-0.096864</td>
+      <td>-0.048236</td>
+      <td>-0.048236</td>
+      <td>-0.320945</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>37</td>
+      <td>-0.076138</td>
+      <td>-0.369186</td>
+      <td>-0.369186</td>
+      <td>-0.017232</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>38</td>
+      <td>-0.054198</td>
+      <td>0.369465</td>
+      <td>0.369465</td>
+      <td>0.003171</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>39</td>
+      <td>-0.039503</td>
+      <td>0.065342</td>
+      <td>0.065342</td>
+      <td>-0.055770</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>40</td>
+      <td>-0.039892</td>
+      <td>-0.491991</td>
+      <td>-0.491991</td>
+      <td>0.008136</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>41</td>
+      <td>-0.029983</td>
+      <td>0.247375</td>
+      <td>0.247375</td>
+      <td>0.003377</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>42</td>
+      <td>-0.083779</td>
+      <td>0.239754</td>
+      <td>0.239754</td>
+      <td>-0.122858</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>43</td>
+      <td>-0.051302</td>
+      <td>-0.126592</td>
+      <td>-0.126592</td>
+      <td>-0.027422</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>44</td>
+      <td>-0.035274</td>
+      <td>-0.013859</td>
+      <td>-0.013859</td>
+      <td>-0.084820</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>45</td>
+      <td>-0.046283</td>
+      <td>-0.002334</td>
+      <td>-0.002334</td>
+      <td>-0.093167</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>46</td>
+      <td>-0.045804</td>
+      <td>-0.077428</td>
+      <td>-0.077428</td>
+      <td>-0.180404</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>-0.018050</td>
+      <td>0.009938</td>
+      <td>0.009938</td>
+      <td>-0.031895</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>48</td>
+      <td>-0.073091</td>
+      <td>0.134628</td>
+      <td>0.134628</td>
+      <td>-0.073974</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>49</td>
+      <td>-0.059265</td>
+      <td>0.106770</td>
+      <td>0.106770</td>
+      <td>-0.112714</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>50</td>
+      <td>-0.068173</td>
+      <td>-0.260318</td>
+      <td>-0.260318</td>
+      <td>-0.042849</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>-0.057045</td>
+      <td>0.302212</td>
+      <td>0.302212</td>
+      <td>-0.068016</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>-0.104484</td>
+      <td>0.112291</td>
+      <td>0.112291</td>
+      <td>-0.152773</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>-0.089554</td>
+      <td>0.157628</td>
+      <td>0.157628</td>
+      <td>-0.191660</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>-0.111737</td>
+      <td>-0.104993</td>
+      <td>-0.104993</td>
+      <td>-0.192626</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>-0.094386</td>
+      <td>0.111732</td>
+      <td>0.111732</td>
+      <td>-0.142037</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>-0.071494</td>
+      <td>0.141211</td>
+      <td>0.141211</td>
+      <td>-0.037046</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>-0.053501</td>
+      <td>0.174928</td>
+      <td>0.174928</td>
+      <td>-0.102489</td>
+      <td>00:05</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>-0.068883</td>
+      <td>-0.012831</td>
+      <td>-0.012831</td>
+      <td>-0.137998</td>
+      <td>00:06</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>-0.082970</td>
+      <td>-0.072856</td>
+      <td>-0.072856</td>
+      <td>-0.257704</td>
+      <td>00:05</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+<p><code>-</code> 가짜 숫자의 결과</p>
+<div class="cell" data-outputid="7a9d2b89-b7d8-4b0d-fe86-1b8c40be6c4d" data-execution_count="145">
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1" aria-hidden="true" tabindex="-1"></a>dls.show_batch()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-02-01-Overview_files/figure-html/cell-72-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-outputid="04cabb59-1782-409d-ed7d-024c8a3bd7df" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1" aria-hidden="true" tabindex="-1"></a>lrnr.show_results()</span></code></pre></div>
+<div class="cell-output cell-output-display">
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+</div>
+<div class="cell-output cell-output-display">
+
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-02-01-Overview_files/figure-html/cell-73-output-3.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="단계-없음" class="level2">
+<h2 class="anchored" data-anchor-id="단계-없음">4단계 : 없음</h2>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"0d3a507a55f34e7a84ab4b2bca7dbaa3":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"0f8e425b6feb4b0f9ea3dd1eed1a01e5":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_d6818bf159eb492a945b94e5a5e902d2","placeholder":"​","style":"IPY_MODEL_1312b7caaec04a81940526651d489b7f","value":" 83.3M/83.3M [00:01&lt;00:00, 64.7MB/s]"}},"1312b7caaec04a81940526651d489b7f":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","description_width":""}},"612521bb94d0423ca95ec63e62e9e8f2":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HTMLView","description":"","description_tooltip":null,"layout":"IPY_MODEL_e6a9259b9062423ca86bb18c244ed913","placeholder":"​","style":"IPY_MODEL_0d3a507a55f34e7a84ab4b2bca7dbaa3","value":"100%"}},"7da038a0a6f241c48585557422801911":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"9162ce7c0e4949a8bc909ad31e264c4d":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"FloatProgressModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"FloatProgressModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"ProgressView","bar_style":"success","description":"","description_tooltip":null,"layout":"IPY_MODEL_fb6dfd6b2bb84a1f885ded31eb723f05","max":87319819,"min":0,"orientation":"horizontal","style":"IPY_MODEL_cd419cae99ae4b5eac6e834201bf8bdb","value":87319819}},"cd419cae99ae4b5eac6e834201bf8bdb":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"ProgressStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"ProgressStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"StyleView","bar_color":null,"description_width":""}},"d6818bf159eb492a945b94e5a5e902d2":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"d898420ab1fe49598b1e88a343d214b5":{"model_module":"@jupyter-widgets/controls","model_module_version":"1.5.0","model_name":"HBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"1.5.0","_model_name":"HBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"1.5.0","_view_name":"HBoxView","box_style":"","children":["IPY_MODEL_612521bb94d0423ca95ec63e62e9e8f2","IPY_MODEL_9162ce7c0e4949a8bc909ad31e264c4d","IPY_MODEL_0f8e425b6feb4b0f9ea3dd1eed1a01e5"],"layout":"IPY_MODEL_7da038a0a6f241c48585557422801911"}},"e6a9259b9062423ca86bb18c244ed913":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"fb6dfd6b2bb84a1f885ded31eb723f05":{"model_module":"@jupyter-widgets/base","model_module_version":"1.2.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"1.2.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"1.2.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"overflow_x":null,"overflow_y":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
