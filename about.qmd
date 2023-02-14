@@ -55,19 +55,19 @@ about:
 
 ## Post
 
-`-` Statistical Computing | 2021. 03 ~ 2021. 06
+`-` Statistical Computing
 
-`-` Theoritical Statistics | 2021. 03 ~ 2021. 06
+`-` Theoritical Statistics
 
-`-` [R for Data Science](https://gangcheol.github.io/mysite/post/R%20for%20the%20Data%20Scienece/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A0%84%EC%B2%98%EB%A6%AC/%EA%B2%B0%EC%B8%A1%EC%B9%98(1205).html) | 2021. 06 ~ 
+`-` [R for Data Science](https://gangcheol.github.io/mysite/post/R%20for%20Data%20Scienece/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A0%84%EC%B2%98%EB%A6%AC/%EA%B2%B0%EC%B8%A1%EC%B9%98(1205).html)
 
-`-` Data Visualization | 2021. 09 ~ 2021. 12
+`-` Data Visualization
 
-`-` Time Series Analysis | 2021. 09 ~ 2021. 12
+`-` Time Series Analysis 
 
-`-` [BigData Analysis](https://gangcheol.github.io/mysite/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html) | 2022. 08 ~
+`-` [BigData Analysis](https://gangcheol.github.io/mysite/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html)
 
-`-` [Ml with Pytorch](https://gangcheol.github.io/mysite/post/Ml%20with%20pytorch/2023-01-27-Intro.html) | 2023. 01 ~
+`-` [Ml with Pytorch](https://gangcheol.github.io/mysite/post/Ml%20with%20pytorch/2023-01-27-Intro.html)
 
 
 ## Conctact
