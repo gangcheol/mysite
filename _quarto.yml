@@ -17,13 +17,11 @@ format:
   html:
     css: styles.css
     toc: true
-    code-fold : false
-    code-line-numbers : false
-    code-copy : false
-    fontsize : 1.0em
+    code-fold : False
+    code-line-numbers : True
+    code-copy : True
 
 theme :
-  dark : darkly
   light : flatly
   
 editor : visual

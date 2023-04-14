@@ -1,9 +1,9 @@
 ---
-title: "About Me"
+title: "**About Me**"
 about:
   id: hero-heading
   template: jolla
-  image: 증명사진.jpg
+  image: cic.png
   links:
     - icon: github
       text: Github

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GANGCHEOL LEE">
+<meta name="dcterms.date" content="2023-03-30">
+
+<title>Gangcheol - 01. 코딩테스트 고득점 Kit 맛보기</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../../">
+<script src="../../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../../../../about.html" aria-current="page">
+ <span class="menu-text"><strong>About Me</strong></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/"><i class="bi bi-github" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">01. 코딩테스트 고득점 Kit 맛보기</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../about.html" class="sidebar-item-text sidebar-link"><strong>About Me</strong></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true"><strong>Lectures</strong></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../BDA(2022).html" class="sidebar-item-text sidebar-link">SBDA(2022)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../MLP(2023).html" class="sidebar-item-text sidebar-link">MLP(2023)</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../SDV(2021).html" class="sidebar-item-text sidebar-link">SDV(2021)</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true"><strong>R for Data Science</strong></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../RDA(01.EDA).html" class="sidebar-item-text sidebar-link">01. EDA</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../RDA(02.SA).html" class="sidebar-item-text sidebar-link">02. Statistical Analysis</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../RDA(03.SDM).html" class="sidebar-item-text sidebar-link">03. Data Mining</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true"><strong>etc</strong></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../etc(1).html" class="sidebar-item-text sidebar-link">TS</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../etc(2).html" class="sidebar-item-text sidebar-link">CT</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#폰켓몬" id="toc-폰켓몬" class="nav-link active" data-scroll-target="#폰켓몬">1. 폰켓몬</a>
+  <ul class="collapse">
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  </ul></li>
+  <li><a href="#완주하지-못한-선수" id="toc-완주하지-못한-선수" class="nav-link" data-scroll-target="#완주하지-못한-선수">2. 완주하지 못한 선수</a>
+  <ul class="collapse">
+  <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
+  </ul></li>
+  <li><a href="#전화번호-목록" id="toc-전화번호-목록" class="nav-link" data-scroll-target="#전화번호-목록">3. 전화번호 목록</a>
+  <ul class="collapse">
+  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
+  </ul></li>
+  <li><a href="#위장" id="toc-위장" class="nav-link" data-scroll-target="#위장">4. 위장</a>
+  <ul class="collapse">
+  <li><a href="#solution-3" id="toc-solution-3" class="nav-link" data-scroll-target="#solution-3">Solution</a></li>
+  </ul></li>
+  <li><a href="#베스트앨범" id="toc-베스트앨범" class="nav-link" data-scroll-target="#베스트앨범">5. 베스트앨범</a>
+  <ul class="collapse">
+  <li><a href="#제한사항" id="toc-제한사항" class="nav-link" data-scroll-target="#제한사항">제한사항</a></li>
+  <li><a href="#입출력-예시" id="toc-입출력-예시" class="nav-link" data-scroll-target="#입출력-예시">입출력 예시</a></li>
+  <li><a href="#solution-4" id="toc-solution-4" class="nav-link" data-scroll-target="#solution-4">Solution</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">01. 코딩테스트 고득점 Kit 맛보기</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Python</div>
+    <div class="quarto-category">coding test</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>GANGCHEOL LEE </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 30, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="폰켓몬" class="level1">
+<h1>1. 폰켓몬</h1>
+<p>당신은 폰켓몬을 잡기 위한 오랜 여행 끝에, 홍 박사님의 연구실에 도착했습니다. 홍 박사님은 당신에게 자신의 연구실에 있는 총 N 마리의 폰켓몬 중에서 N/2마리를 가져가도 좋다고 했습니다. 홍 박사님 연구실의 폰켓몬은 종류에 따라 번호를 붙여 구분합니다. 따라서 같은 종류의 폰켓몬은 같은 번호를 가지고 있습니다. 예를 들어 연구실에 총 4마리의 폰켓몬이 있고, 각 폰켓몬의 종류 번호가 [3번, 1번, 2번, 3번]이라면 이는 3번 폰켓몬 두 마리, 1번 폰켓몬 한 마리, 2번 폰켓몬 한 마리가 있음을 나타냅니다. 이때, 4마리의 폰켓몬 중 2마리를 고르는 방법은 다음과 같이 6가지가 있습니다.</p>
+<p>첫 번째(3번), 두 번째(1번) 폰켓몬을 선택</p>
+<p>첫 번째(3번), 세 번째(2번) 폰켓몬을 선택</p>
+<p>첫 번째(3번), 네 번째(3번) 폰켓몬을 선택</p>
+<p>두 번째(1번), 세 번째(2번) 폰켓몬을 선택</p>
+<p>두 번째(1번), 네 번째(3번) 폰켓몬을 선택</p>
+<p>세 번째(2번), 네 번째(3번) 폰켓몬을 선택</p>
+<p>이때, 첫 번째(3번) 폰켓몬과 네 번째(3번) 폰켓몬을 선택하는 방법은 한 종류(3번 폰켓몬 두 마리)의 폰켓몬만 가질 수 있지만, 다른 방법들은 모두 두 종류의 폰켓몬을 가질 수 있습니다. 따라서 위 예시에서 가질 수 있는 폰켓몬 종류 수의 최댓값은 2가 됩니다. 당신은 최대한 다양한 종류의 폰켓몬을 가지길 원하기 때문에, 최대한 많은 종류의 폰켓몬을 포함해서 N/2마리를 선택하려 합니다. N마리 폰켓몬의 종류 번호가 담긴 배열 nums가 매개변수로 주어질 때, N/2마리의 폰켓몬을 선택하는 방법 중, 가장 많은 종류의 폰켓몬을 선택하는 방법을 찾아, 그때의 폰켓몬 종류 번호의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680158617646,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>ls1 <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>]</span>
+<span id="cb1-2"><a href="#cb1-2"></a>ls2 <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb1-3"><a href="#cb1-3"></a>ls3 <span class="op">=</span> [<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 해설 : <span class="math inline">\(N/2\)</span> 마리 중 가장 많은 폰켓몬 종류를 뽑는 방법을 물어보는 문제</p>
+<ul>
+<li>그렇다면, 전체 폰켓몬의 유니크한 개수와, <span class="math inline">\(N/2\)</span>를 비교해 적은 수를 뽑으면 된다.</li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680158619268,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">def</span> solution(ls):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="cf">return</span> <span class="bu">min</span>(<span class="bu">len</span>(ls)<span class="op">/</span><span class="dv">2</span>, <span class="bu">len</span>(<span class="bu">set</span>(ls)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:294,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680158619991,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="58fa0e94-36d1-4f96-b9ee-40518bb17838" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>solution(ls1), solution(ls2), solution(ls3) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="24">
+<pre><code>(1, 2, 2)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="완주하지-못한-선수" class="level1">
+<h1>2. 완주하지 못한 선수</h1>
+<p>수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.</p>
+<p>마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.</p>
+<p>제안사항</p>
+<ul>
+<li><p>마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.</p></li>
+<li><p>completion의 길이는 participant의 길이보다 1 작습니다</p></li>
+<li><p>참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.</p></li>
+<li><p>참가자 중에는 동명이인이 있을 수 있습니다</p></li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160519942,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>p1 <span class="op">=</span> [<span class="st">"leo"</span>, <span class="st">"kiki"</span>, <span class="st">"eden"</span>]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>p2 <span class="op">=</span> [<span class="st">"marina"</span>, <span class="st">"josipa"</span>, <span class="st">"nikola"</span>, <span class="st">"vinko"</span>, <span class="st">"filipa"</span>]</span>
+<span id="cb5-3"><a href="#cb5-3"></a>p3 <span class="op">=</span> [<span class="st">"mislav"</span>, <span class="st">"stanko"</span>, <span class="st">"mislav"</span>, <span class="st">"ana"</span>]</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>c1 <span class="op">=</span> [<span class="st">"eden"</span>, <span class="st">"kiki"</span>]</span>
+<span id="cb5-6"><a href="#cb5-6"></a>c2 <span class="op">=</span> [<span class="st">"josipa"</span>, <span class="st">"filipa"</span>, <span class="st">"marina"</span>, <span class="st">"nikola"</span>]</span>
+<span id="cb5-7"><a href="#cb5-7"></a>c3 <span class="op">=</span> [<span class="st">"stanko"</span>, <span class="st">"ana"</span>, <span class="st">"mislav"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="solution-1" class="level2">
+<h2 class="anchored" data-anchor-id="solution-1">Solution</h2>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160834181,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c63d2135-9266-4c4c-d4b3-0503bd740296" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>collections.Counter(p3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="85">
+<pre><code>Counter({'mislav': 2, 'stanko': 1, 'ana': 1})</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160837041,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b5e8579a-3285-4a61-b188-c78bbba7510f" data-execution_count="86">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a> collections.Counter(c3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="86">
+<pre><code>Counter({'stanko': 1, 'ana': 1, 'mislav': 1})</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160842656,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="87">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>answer <span class="op">=</span> collections.Counter(p3) <span class="op">-</span> collections.Counter(c3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160843929,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f99680dd-a730-41c3-e871-4015c6eb97ea" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>answer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="88">
+<pre><code>Counter({'mislav': 1})</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160845755,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="eb70c66d-7fbc-4f7e-b7f3-b5c892c479f5" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="bu">list</span>(answer.keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="89">
+<pre><code>['mislav']</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160772639,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="im">import</span> collections</span>
+<span id="cb15-2"><a href="#cb15-2"></a></span>
+<span id="cb15-3"><a href="#cb15-3"></a></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="kw">def</span> solution(participant, completion):</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    answer <span class="op">=</span> collections.Counter(participant) <span class="op">-</span> collections.Counter(completion)</span>
+<span id="cb15-6"><a href="#cb15-6"></a>    <span class="cf">return</span> <span class="bu">list</span>(answer.keys())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160812462,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="8495a412-c793-41a6-98c1-4da366e2d537" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>solution(p1,c1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="82">
+<pre><code>['leo']</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160816935,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="55ca0404-4b60-4ff6-b4b6-7160cb34ef4a" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>solution(p2,c2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<pre><code>['vinko']</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680160821297,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="7c5659ef-c5f2-4036-e3c4-43c1e29a4c6d" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>solution(p3,c3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="84">
+<pre><code>['mislav']</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="전화번호-목록" class="level1">
+<h1>3. 전화번호 목록</h1>
+<p>전화번호부에 적힌 전화번호 중, 한 번호가 다른 번호의 접두어인 경우가 있는지 확인하려 합니다. 전화번호가 다음과 같을 경우, 구조대 전화번호는 영석이의 전화번호의 접두사입니다.</p>
+<ul>
+<li>구조대 : 119</li>
+<li>박준영 : 97 674 223</li>
+<li>지영석 : 11 9552 4421</li>
+</ul>
+<p>전화번호부에 적힌 전화번호를 담은 배열 phone_book 이 solution 함수의 매개변수로 주어질 때, 어떤 번호가 다른 번호의 접두어인 경우가 있으면 false를 그렇지 않으면 true를 return 하도록 solution 함수를 작성해주세요.</p>
+<p>제한사항</p>
+<ul>
+<li>phone_book의 길이는 1 이상 1,000,000 이하입니다.</li>
+<li>각 전화번호의 길이는 1 이상 20 이하입니다.</li>
+<li>같은 전화번호가 중복해서 들어있지 않습니다.</li>
+</ul>
+<section id="solution-2" class="level2">
+<h2 class="anchored" data-anchor-id="solution-2">Solution</h2>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680161531799,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>p1 <span class="op">=</span> [<span class="st">"119"</span>, <span class="st">"97674223"</span>, <span class="st">"1195524421"</span>]  </span>
+<span id="cb22-2"><a href="#cb22-2"></a>p2 <span class="op">=</span> [<span class="st">"123"</span>,<span class="st">"456"</span>,<span class="st">"789"</span>]</span>
+<span id="cb22-3"><a href="#cb22-3"></a>p3 <span class="op">=</span> [<span class="st">"12"</span>,<span class="st">"123"</span>,<span class="st">"1235"</span>,<span class="st">"567"</span>,<span class="st">"88"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:346,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680161693586,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> s (p) :</span>
+<span id="cb23-2"><a href="#cb23-2"></a>    ans <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>    hash_map <span class="op">=</span> {}</span>
+<span id="cb23-4"><a href="#cb23-4"></a>    <span class="cf">for</span> p_n <span class="kw">in</span> p :</span>
+<span id="cb23-5"><a href="#cb23-5"></a>        hash_map[p_n] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb23-6"><a href="#cb23-6"></a>    <span class="cf">for</span> p_n <span class="kw">in</span> p :</span>
+<span id="cb23-7"><a href="#cb23-7"></a>        temp <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb23-8"><a href="#cb23-8"></a>        <span class="cf">for</span> number <span class="kw">in</span> p_n : </span>
+<span id="cb23-9"><a href="#cb23-9"></a>            temp <span class="op">+=</span>number</span>
+<span id="cb23-10"><a href="#cb23-10"></a>            <span class="cf">if</span> temp <span class="kw">in</span> hash_map <span class="kw">and</span> temp <span class="op">!=</span> p_n :</span>
+<span id="cb23-11"><a href="#cb23-11"></a>               ans <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb23-12"><a href="#cb23-12"></a>    <span class="cf">return</span> ans    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="위장" class="level1">
+<h1>4. 위장</h1>
+<p>스파이들은 매일 다른 옷을 조합하여 입어 자신을 위장합니다.</p>
+<p>예를 들어 스파이가 가진 옷이 아래와 같고 오늘 스파이가 동그란 안경, 긴 코트, 파란색 티셔츠를 입었다면 다음날은 청바지를 추가로 입거나 동그란 안경 대신 검정 선글라스를 착용하거나 해야 합니다.</p>
+<p>종류 | 이름</p>
+<p>얼굴 | 동그란 안경, 검정 선글라스</p>
+<p>상의 | 파란색 티셔츠</p>
+<p>하의 | 청바지</p>
+<p>겉옷 | 긴 코트</p>
+<p>스파이가 가진 의상들이 담긴 2차원 배열 clothes가 주어질 때 서로 다른 옷의 조합의 수를 return 하도록 solution 함수를 작성해주세요.</p>
+<p>제한사항 * clothes의 각 행은 [의상의 이름, 의상의 종류]로 이루어져 있습니다. * 스파이가 가진 의상의 수는 1개 이상 30개 이하입니다. * 같은 이름을 가진 의상은 존재하지 않습니다. * clothes의 모든 원소는 문자열로 이루어져 있습니다. * 모든 문자열의 길이는 1 이상 20 이하인 자연수이고 알파벳 소문자 또는 ’_’ 로만 이루어져 있습니다. * 스파이는 하루에 최소 한 개의 의상은 입습니다.</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680162050068,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="103">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>c1 <span class="op">=</span> [[<span class="st">"yellow_hat"</span>, <span class="st">"headgear"</span>], [<span class="st">"blue_sunglasses"</span>, <span class="st">"eyewear"</span>], [<span class="st">"green_turban"</span>, <span class="st">"headgear"</span>]]</span>
+<span id="cb24-2"><a href="#cb24-2"></a>c2 <span class="op">=</span> [[<span class="st">"crow_mask"</span>, <span class="st">"face"</span>], [<span class="st">"blue_sunglasses"</span>, <span class="st">"face"</span>], [<span class="st">"smoky_makeup"</span>, <span class="st">"face"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>입출력 예 <code>c1</code> 설명</p>
+<ol type="1">
+<li>yellow_hat</li>
+<li>blue_sunglasses</li>
+<li>green_turban</li>
+<li>yellow_hat + blue_sunglasses</li>
+<li>green_turban + blue_sunglasses</li>
+</ol>
+<section id="solution-3" class="level2">
+<h2 class="anchored" data-anchor-id="solution-3">Solution</h2>
+<p><code>-</code> 이거 왜그런지 모르겠음..</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:410,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680162656811,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="121">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">def</span> solution(clothes):</span>
+<span id="cb25-2"><a href="#cb25-2"></a>    clothes_type <span class="op">=</span> {}</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a>    <span class="cf">for</span> c, t <span class="kw">in</span> clothes:</span>
+<span id="cb25-5"><a href="#cb25-5"></a>        <span class="cf">if</span> t <span class="kw">not</span> <span class="kw">in</span> clothes_type:</span>
+<span id="cb25-6"><a href="#cb25-6"></a>            clothes_type[t] <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb25-7"><a href="#cb25-7"></a>        <span class="cf">else</span>:</span>
+<span id="cb25-8"><a href="#cb25-8"></a>            clothes_type[t] <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb25-9"><a href="#cb25-9"></a></span>
+<span id="cb25-10"><a href="#cb25-10"></a>    cnt <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb25-11"><a href="#cb25-11"></a>    <span class="cf">for</span> num <span class="kw">in</span> clothes_type.values():</span>
+<span id="cb25-12"><a href="#cb25-12"></a>        cnt <span class="op">*=</span> num</span>
+<span id="cb25-13"><a href="#cb25-13"></a></span>
+<span id="cb25-14"><a href="#cb25-14"></a>    <span class="cf">return</span> cnt <span class="op">-</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="베스트앨범" class="level1">
+<h1>5. 베스트앨범</h1>
+<p>스트리밍 사이트에서 장르 별로 가장 많이 재생된 노래를 두 개씩 모아 베스트 앨범을 출시하려 합니다. 노래는 고유 번호로 구분하며, 노래를 수록하는 기준은 다음과 같습니다.</p>
+<ol type="1">
+<li>속한 노래가 많이 재생된 장르를 먼저 수록합니다.</li>
+<li>장르 내에서 많이 재생된 노래를 먼저 수록합니다.</li>
+<li>장르 내에서 재생 횟수가 같은 노래 중에서는 고유 번호가 낮은 노래를 먼저 수록합니다.</li>
+</ol>
+<p>노래의 장르를 나타내는 문자열 배열 genres와 노래별 재생 횟수를 나타내는 정수 배열 plays가 주어질 때, 베스트 앨범에 들어갈 노래의 고유 번호를 순서대로 return 하도록 solution 함수를 완성하세요.</p>
+<section id="제한사항" class="level2">
+<h2 class="anchored" data-anchor-id="제한사항">제한사항</h2>
+<ul>
+<li>genres[i]는 고유번호가 i인 노래의 장르입니다.</li>
+<li>plays[i]는 고유번호가 i인 노래가 재생된 횟수입니다.</li>
+<li>genres와 plays의 길이는 같으며, 이는 1 이상 10,000 이하입니다.</li>
+<li>장르 종류는 100개 미만입니다.</li>
+<li>장르에 속한 곡이 하나라면, 하나의 곡만 선택합니다.</li>
+<li>모든 장르는 재생된 횟수가 다릅니다.</li>
+</ul>
+</section>
+<section id="입출력-예시" class="level2">
+<h2 class="anchored" data-anchor-id="입출력-예시">입출력 예시</h2>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680163237453,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="128">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>genres <span class="op">=</span> [<span class="st">"classic"</span>, <span class="st">"pop"</span>, <span class="st">"classic"</span>, <span class="st">"classic"</span>, <span class="st">"pop"</span>]</span>
+<span id="cb26-2"><a href="#cb26-2"></a>plays <span class="op">=</span> [<span class="dv">500</span>,<span class="dv">600</span>,<span class="dv">150</span>,<span class="dv">800</span>,<span class="dv">2500</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>classic 장르는 1,450회 재생되었으며, classic 노래는 다음과 같습니다.</p>
+<ul>
+<li>고유 번호 3: 800회 재생</li>
+<li>고유 번호 0: 500회 재생</li>
+<li>고유 번호 2: 150회 재생</li>
+</ul>
+<p>pop 장르는 3,100회 재생되었으며, pop 노래는 다음과 같습니다.</p>
+<ul>
+<li>고유 번호 4: 2,500회 재생</li>
+<li>고유 번호 1: 600회 재생</li>
+</ul>
+<p>따라서 pop 장르의 [4, 1]번 노래를 먼저, classic 장르의 [3, 0]번 노래를 그다음에 수록합니다.</p>
+<p>장르 별로 가장 많이 재생된 노래를 최대 두 개까지 모아 베스트 앨범을 출시하므로 2번 노래는 수록되지 않습니다.</p>
+</section>
+<section id="solution-4" class="level2">
+<h2 class="anchored" data-anchor-id="solution-4">Solution</h2>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680163552002,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="13e1475f-987e-4222-b4d5-6480c28e2bf0" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>answer <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">0</span>]</span>
+<span id="cb27-2"><a href="#cb27-2"></a>answer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="141">
+<pre><code>[4, 1, 3, 0]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164250901,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>genres <span class="op">=</span> [<span class="st">"classic"</span>, <span class="st">"pop"</span>, <span class="st">"classic"</span>, <span class="st">"classic"</span>, <span class="st">"pop"</span>]</span>
+<span id="cb29-2"><a href="#cb29-2"></a>plays <span class="op">=</span> [<span class="dv">500</span>,<span class="dv">600</span>,<span class="dv">150</span>,<span class="dv">800</span>,<span class="dv">2500</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:275,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164428444,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="175">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>answer <span class="op">=</span> []</span>
+<span id="cb30-2"><a href="#cb30-2"></a></span>
+<span id="cb30-3"><a href="#cb30-3"></a>dic1 <span class="op">=</span> {}</span>
+<span id="cb30-4"><a href="#cb30-4"></a>dic2 <span class="op">=</span> {}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> enumerate : 인덱스와 원소로 이루어진 튜플을 만들어줌</p>
+<ul>
+<li><p>장르별 고유번호와 재생횟수를 가지는 <code>dic1</code> 을 만듬</p></li>
+<li><p>장르별 총 재생횟수를 기록하는 <code>dic2</code> 를 만듬</p></li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:298,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164509978,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="178">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>answer <span class="op">=</span> []</span>
+<span id="cb31-2"><a href="#cb31-2"></a></span>
+<span id="cb31-3"><a href="#cb31-3"></a>dic1 <span class="op">=</span> {}</span>
+<span id="cb31-4"><a href="#cb31-4"></a>dic2 <span class="op">=</span> {}</span>
+<span id="cb31-5"><a href="#cb31-5"></a></span>
+<span id="cb31-6"><a href="#cb31-6"></a><span class="cf">for</span> i, (g,p) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(genres, plays)) : </span>
+<span id="cb31-7"><a href="#cb31-7"></a>    <span class="cf">if</span> g <span class="kw">not</span> <span class="kw">in</span> dic1 :</span>
+<span id="cb31-8"><a href="#cb31-8"></a>        dic1[g] <span class="op">=</span> [(i,p)]</span>
+<span id="cb31-9"><a href="#cb31-9"></a>    <span class="cf">else</span> :</span>
+<span id="cb31-10"><a href="#cb31-10"></a>        dic1[g].append((i,p))</span>
+<span id="cb31-11"><a href="#cb31-11"></a>    </span>
+<span id="cb31-12"><a href="#cb31-12"></a>    <span class="cf">if</span> g <span class="kw">not</span> <span class="kw">in</span> dic2:</span>
+<span id="cb31-13"><a href="#cb31-13"></a>        dic2[g] <span class="op">=</span> p</span>
+<span id="cb31-14"><a href="#cb31-14"></a>    <span class="cf">else</span> :</span>
+<span id="cb31-15"><a href="#cb31-15"></a>        dic2[g] <span class="op">+=</span> p </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164515521,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d3ac69bd-e0c3-4c1f-fa11-bedd34910ade" data-execution_count="179">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>dic1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="179">
+<pre><code>{'classic': [(0, 500), (2, 150), (3, 800)], 'pop': [(1, 600), (4, 2500)]}</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164517690,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="7d7b3103-0235-4dc7-8aac-75368ca8f802" data-execution_count="180">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>dic2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="180">
+<pre><code>{'classic': 1450, 'pop': 3100}</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164681834,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a7209462-4607-47c5-d88e-0307615fe1c6" data-execution_count="182">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>dic2.items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="182">
+<pre><code>dict_items([('classic', 1450), ('pop', 3100)])</code></pre>
+</div>
+</div>
+<ul>
+<li>key=lambda x:x[1] : 여기서 <code>x[1]</code> 은 dic2의 첫 번째 원소 즉, 재생횟수를 나타낸다.</li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164747330,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d30f0098-41be-47b0-d53a-b5f623592317" data-execution_count="186">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>dic2.items()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="186">
+<pre><code>dict_items([('classic', 1450), ('pop', 3100)])</code></pre>
+</div>
+</div>
+<p>즉, 아래 코드에 의미는 총 재생횟수를 기준으로 내림차 순으로 정렬</p>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164580011,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="94589616-8981-4078-93db-a2b223d51723" data-execution_count="181">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="bu">sorted</span>(dic2.items(), key<span class="op">=</span><span class="kw">lambda</span> x:x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="181">
+<pre><code>[('pop', 3100), ('classic', 1450)]</code></pre>
+</div>
+</div>
+<ul>
+<li>(k,v) : 장르와 총 재생횟수를 나열열</li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680164845743,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="47edce71-f6d2-4a5c-daff-fcff6fb6b673" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>dic1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="188">
+<pre><code>{'classic': [(0, 500), (2, 150), (3, 800)], 'pop': [(1, 600), (4, 2500)]}</code></pre>
+</div>
+</div>
+<ul>
+<li><p>각 장르에서 고유번호와 재생횟수 출력</p></li>
+<li><p><code>[:2]</code> 각 장르에서 두 번째로 많은 재생횟수를 가진 노래만 수록하므로!</p></li>
+</ul>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680165042844,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="62eb16d5-aaf5-4120-9ef0-0c44d586f018" data-execution_count="195">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="bu">sorted</span>(dic1[<span class="st">"classic"</span>],key <span class="op">=</span> <span class="kw">lambda</span> x:x[<span class="dv">1</span>],reverse<span class="op">=</span><span class="va">True</span>)[:<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="195">
+<pre><code>[(3, 800), (0, 500)]</code></pre>
+</div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680165054060,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="196">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="cf">for</span> (k,v) <span class="kw">in</span> <span class="bu">sorted</span>(dic2.items(), key<span class="op">=</span><span class="kw">lambda</span> x:x[<span class="dv">1</span>], reverse<span class="op">=</span><span class="va">True</span>) :</span>
+<span id="cb46-2"><a href="#cb46-2"></a>    <span class="cf">for</span> (i,p) <span class="kw">in</span> <span class="bu">sorted</span>(dic1[k],key <span class="op">=</span> <span class="kw">lambda</span> x:x[<span class="dv">1</span>],reverse<span class="op">=</span><span class="va">True</span>)[:<span class="dv">2</span>] :</span>
+<span id="cb46-3"><a href="#cb46-3"></a>        answer.append(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1680165059474,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d082a302-bbfb-451d-9732-e21d83c793f6" data-execution_count="197">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>answer</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="197">
+<pre><code>[4, 1, 3, 0]</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

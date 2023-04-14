@@ -2,7 +2,7 @@
 title: "Gang Cheol Portfolio"
 listing:
   contents: post
-  sort: "date desc"
+  sort: [date desc, title]
   type: table
   categories: true
   sort-ui: false
@@ -10,4 +10,3 @@ listing:
 page-layout: full
 title-block-banner: true
 ---
-
