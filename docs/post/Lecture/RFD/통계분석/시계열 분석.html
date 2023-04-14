@@ -659,28 +659,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="practice-with-r" class="level4">
 <h4 class="anchored" data-anchor-id="practice-with-r">Practice with R</h4>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forecast) <span class="do">## 예측값을 구하기 위한 패키지</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(TTR) <span class="do">## 이동평균법을 이용하기 위한 패키지</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest) <span class="do">## 더비-왓슨 검정 </span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="do">## 전처리 패키지</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(forecast) <span class="do">## 예측값을 구하기 위한 패키지</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(TTR) <span class="do">## 이동평균법을 이용하기 위한 패키지</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(lmtest) <span class="do">## 더비-왓슨 검정 </span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(tidyverse) <span class="do">## 전처리 패키지</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">고급시계열 분석</span><span class="sc">\\</span><span class="st">제5판_시계열분석_프로그램</span><span class="sc">\\</span><span class="st">제5판 시계열분석 data"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">고급시계열 분석</span><span class="sc">\\</span><span class="st">제5판_시계열분석_프로그램</span><span class="sc">\\</span><span class="st">제5판 시계열분석 data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>데이터 호출 : 주기는 12로 월별 데이터임</li>
 </ul>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"food.txt"</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(z)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>food <span class="ot">&lt;-</span> <span class="fu">ts</span>(z, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1981</span>,<span class="dv">1</span>), <span class="at">frequency=</span><span class="dv">12</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"food.txt"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>t <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(z)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>food <span class="ot">&lt;-</span> <span class="fu">ts</span>(z, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1981</span>,<span class="dv">1</span>), <span class="at">frequency=</span><span class="dv">12</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>시도표 확인 <br> <code>1</code>. 추세성분이 보인다. <br> <code>2</code>. 계절성분이 보인다. <br> <code>3</code>. 이분산성이 보인다. <br></li>
 </ul>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">6</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(food)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">6</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">plot.ts</span>(food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
@@ -689,8 +689,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>이분산성을 제거하기 위해 로그변환을 시도</li>
 </ul>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>log_food <span class="ot">&lt;-</span> <span class="fu">log</span>(food)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(log_food)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>log_food <span class="ot">&lt;-</span> <span class="fu">log</span>(food)</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">plot.ts</span>(log_food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
@@ -702,10 +702,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>stl</strong> function을 이용하여 모델 적합</li>
 </ul>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>stl_fit1  <span class="ot">&lt;-</span> <span class="fu">stl</span>(log_food,<span class="at">s.window=</span><span class="dv">12</span>) <span class="do">## s.window=12 : 계절성분의 주기가 12이다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>stl_fit1  <span class="ot">&lt;-</span> <span class="fu">stl</span>(log_food,<span class="at">s.window=</span><span class="dv">12</span>) <span class="do">## s.window=12 : 계절성분의 주기가 12이다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>stl_fit1<span class="sc">$</span>time.series[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>stl_fit1<span class="sc">$</span>time.series[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -733,7 +733,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>추세성분으로 추정한 경우 <span class="math inline">\(\hat {\beta}_0 + \hat{\beta}_1z_t= 0.07 + 3.7z_t\)</span>로 앞서 구한 데이터와 동일(이건 수업시간에 한거에 나와있음)</p></li>
 </ul>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(stl_fit1)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">plot</span>(stl_fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
@@ -742,18 +742,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>추정값을 구해보자</li>
 </ul>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pred_stl <span class="ot">&lt;-</span> stl_fit1<span class="sc">$</span>time.series[,<span class="dv">1</span>] <span class="sc">+</span> stl_fit1<span class="sc">$</span>time.series[,<span class="dv">2</span>] <span class="do">## 추세성분 + 계절성분</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(log_food, pred_stl, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"원시계열과 분해법에 의한 추정값"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"원시계열"</span>, <span class="st">"추정값"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>pred_stl <span class="ot">&lt;-</span> stl_fit1<span class="sc">$</span>time.series[,<span class="dv">1</span>] <span class="sc">+</span> stl_fit1<span class="sc">$</span>time.series[,<span class="dv">2</span>] <span class="do">## 추세성분 + 계절성분</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="fu">ts.plot</span>(log_food, pred_stl, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4"></a>        <span class="at">main=</span><span class="st">"원시계열과 분해법에 의한 추정값"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"원시계열"</span>, <span class="st">"추정값"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>irregular <span class="ot">&lt;-</span> log_food<span class="sc">-</span>pred_stl</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(irregular<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(log_food)<span class="sc">-</span><span class="dv">1</span>) <span class="do">## MSE 계산</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>irregular <span class="ot">&lt;-</span> log_food<span class="sc">-</span>pred_stl</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">sum</span>(irregular<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="fu">length</span>(log_food)<span class="sc">-</span><span class="dv">1</span>) <span class="do">## MSE 계산</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.001245257904363
 </div>
@@ -765,10 +765,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><strong>decompose</strong> function을 이용하여 모형 적합</li>
 </ul>
 <div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>dec_fit  <span class="ot">&lt;-</span> <span class="fu">decompose</span>(log_food)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>dec_fit  <span class="ot">&lt;-</span> <span class="fu">decompose</span>(log_food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dec_fit<span class="sc">$</span>trend[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>dec_fit<span class="sc">$</span>trend[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -779,7 +779,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dec_fit<span class="sc">$</span>seasonal[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>dec_fit<span class="sc">$</span>seasonal[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -790,7 +790,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>dec_fit<span class="sc">$</span>random[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="do">## 불규칙성분</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>dec_fit<span class="sc">$</span>random[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>] <span class="do">## 불규칙성분</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -801,7 +801,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dec_fit)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">plot</span>(dec_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
 </div>
@@ -810,11 +810,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>추정치 구하기</li>
 </ul>
 <div class="cell" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pred_dec <span class="ot">&lt;-</span>dec_fit<span class="sc">$</span>trend<span class="sc">+</span>dec_fit<span class="sc">$</span>seasonal</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(pred_stl, pred_dec, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"원시계열과 분해법에 의한 추정값"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"원시계열"</span>, <span class="st">"추정값"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>pred_dec <span class="ot">&lt;-</span>dec_fit<span class="sc">$</span>trend<span class="sc">+</span>dec_fit<span class="sc">$</span>seasonal</span>
+<span id="cb16-2"><a href="#cb16-2"></a></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">ts.plot</span>(pred_stl, pred_dec, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
+<span id="cb16-4"><a href="#cb16-4"></a>        <span class="at">main=</span><span class="st">"원시계열과 분해법에 의한 추정값"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"원시계열"</span>, <span class="st">"추정값"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
@@ -823,9 +823,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>stl vs decompose</li>
 </ul>
 <div class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(pred_stl, pred_dec, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"stl vs. decompose"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"stl"</span>, <span class="st">"decompose"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">ts.plot</span>(pred_stl, pred_dec, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
+<span id="cb17-2"><a href="#cb17-2"></a>        <span class="at">main=</span><span class="st">"stl vs. decompose"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"stl"</span>, <span class="st">"decompose"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
 </div>
@@ -834,8 +834,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>stl과 달리 decompose는 승법모형을 지원해준다.</li>
 </ul>
 <div class="cell" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dec_fit2 <span class="ot">&lt;-</span> <span class="fu">decompose</span>(food, <span class="at">type =</span> <span class="st">"multiplicative"</span>)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>dec_fit2<span class="sc">$</span>trend[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>dec_fit2 <span class="ot">&lt;-</span> <span class="fu">decompose</span>(food, <span class="at">type =</span> <span class="st">"multiplicative"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>dec_fit2<span class="sc">$</span>trend[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -846,7 +846,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dec_fit2<span class="sc">$</span>seasonal[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>dec_fit2<span class="sc">$</span>seasonal[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -857,7 +857,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>dec_fit2<span class="sc">$</span>random[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>dec_fit2<span class="sc">$</span>random[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -868,17 +868,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dec_fit2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">plot</span>(dec_fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pred_dec2 <span class="ot">&lt;-</span>dec_fit2<span class="sc">$</span>trend<span class="sc">*</span>dec_fit2<span class="sc">$</span>seasonal</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(food, pred_dec2, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"원시계열과 분해법에 의한 추정값"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"원시계열"</span>, <span class="st">"추정값"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>pred_dec2 <span class="ot">&lt;-</span>dec_fit2<span class="sc">$</span>trend<span class="sc">*</span>dec_fit2<span class="sc">$</span>seasonal</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">ts.plot</span>(food, pred_dec2, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4"></a>        <span class="at">main=</span><span class="st">"원시계열과 분해법에 의한 추정값"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"원시계열"</span>, <span class="st">"추정값"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
 </div>
@@ -887,9 +887,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>가법모형 vs 승법모형</li>
 </ul>
 <div class="cell" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">exp</span>(pred_dec), pred_dec2, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"가법모형과 승법모형 추정값"</span>)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"가법모형"</span>, <span class="st">"승법모형"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ts.plot</span>(<span class="fu">exp</span>(pred_dec), pred_dec2, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">ylab=</span><span class="st">"food"</span>, <span class="at">xlab=</span><span class="st">"time"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2"></a>        <span class="at">main=</span><span class="st">"가법모형과 승법모형 추정값"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="at">col=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="fu">c</span>(<span class="st">"가법모형"</span>, <span class="st">"승법모형"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
 </div>
@@ -924,9 +924,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="단순지수-평활법" class="level4">
 <h4 class="anchored" data-anchor-id="단순지수-평활법">단순지수 평활법</h4>
 <div class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>rain  <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"precip1.txt"</span>,<span class="at">skip=</span><span class="dv">1</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>rainseries <span class="ot">&lt;-</span> <span class="fu">ts</span>(rain,<span class="at">start=</span><span class="fu">c</span>(<span class="dv">1813</span>))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>rainseries <span class="do">## 1년 주기 데이터</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>rain  <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"precip1.txt"</span>,<span class="at">skip=</span><span class="dv">1</span>)</span>
+<span id="cb24-2"><a href="#cb24-2"></a>rainseries <span class="ot">&lt;-</span> <span class="fu">ts</span>(rain,<span class="at">start=</span><span class="fu">c</span>(<span class="dv">1813</span>))</span>
+<span id="cb24-3"><a href="#cb24-3"></a>rainseries <span class="do">## 1년 주기 데이터</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 A Time Series:<br><style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -940,7 +940,7 @@ A Time Series:<br><style>
 <li>시도료를 살펴본결과 추세와 계절성분이 관측되지 않아 단순지수평활법을 사용하겠음</li>
 </ul>
 <div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(rainseries)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">plot.ts</span>(rainseries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
 </div>
@@ -949,9 +949,9 @@ A Time Series:<br><style>
 <li>[단순지수평활법] HoltWinters</li>
 </ul>
 <div class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>rainforecasts <span class="ot">=</span> <span class="fu">HoltWinters</span>(rainseries, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>) </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>rainforecasts <span class="do">## alpha=단순지수 평활법, beta = 추세성분 가중치 , gamma = 계절성분 가중치</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="do">## alpha 값을 지정하지 않으면 최적의 alpha를 찾아줌</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>rainforecasts <span class="ot">=</span> <span class="fu">HoltWinters</span>(rainseries, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>) </span>
+<span id="cb26-2"><a href="#cb26-2"></a>rainforecasts <span class="do">## alpha=단순지수 평활법, beta = 추세성분 가중치 , gamma = 계절성분 가중치</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="do">## alpha 값을 지정하지 않으면 최적의 alpha를 찾아줌</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing without trend and without seasonal component.
 
@@ -973,7 +973,7 @@ a 24.67819</code></pre>
 <li><span class="math inline">\(\alpha\)</span>가 작다는 것은 과거값의 가중치를 더 많이 주는 것이므로 <strong>smoothing</strong> 효과가 더욱 커진다.</li>
 </ul>
 <div class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(rainforecasts<span class="sc">$</span>fitted)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">head</span>(rainforecasts<span class="sc">$</span>fitted)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -993,7 +993,7 @@ a 24.67819</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rainforecasts) <span class="do">## 빨간색은 smoothing 효과가 반영된 것이다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">plot</span>(rainforecasts) <span class="do">## 빨간색은 smoothing 효과가 반영된 것이다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
 </div>
@@ -1002,7 +1002,7 @@ a 24.67819</code></pre>
 <li>오차제곱합 계산</li>
 </ul>
 <div class="cell" data-execution_count="117">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>rainforecasts<span class="sc">$</span>SSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>rainforecasts<span class="sc">$</span>SSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 1828.8548918638
 </div>
@@ -1011,26 +1011,26 @@ a 24.67819</code></pre>
 <li><span class="math inline">\(\alpha\)</span> 값을 변화해가며 비교</li>
 </ul>
 <div class="cell" data-execution_count="120">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.3</span>,</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.3"</span>)</span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.7</span>,</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.7"</span>)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="dv">1</span>,</span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=1"</span>) <span class="do">## 1은 직전값만 보겠다는 뜻이다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.3</span>,</span>
+<span id="cb31-3"><a href="#cb31-3"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.3"</span>)</span>
+<span id="cb31-4"><a href="#cb31-4"></a></span>
+<span id="cb31-5"><a href="#cb31-5"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.7</span>,</span>
+<span id="cb31-6"><a href="#cb31-6"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.7"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="dv">1</span>,</span>
+<span id="cb31-9"><a href="#cb31-9"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=1"</span>) <span class="do">## 1은 직전값만 보겠다는 뜻이다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="121">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>alpha1<span class="ot">=</span><span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>alpha1<span class="sc">$</span>SSE</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>alpha07<span class="ot">=</span><span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>alpha07<span class="sc">$</span>SSE</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>alpha03<span class="ot">=</span><span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.3</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>alpha03<span class="sc">$</span>SSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>alpha1<span class="ot">=</span><span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a>alpha1<span class="sc">$</span>SSE</span>
+<span id="cb32-3"><a href="#cb32-3"></a>alpha07<span class="ot">=</span><span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a>alpha07<span class="sc">$</span>SSE</span>
+<span id="cb32-5"><a href="#cb32-5"></a>alpha03<span class="ot">=</span><span class="fu">HoltWinters</span>(rainseries, <span class="at">alpha=</span><span class="fl">0.3</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb32-6"><a href="#cb32-6"></a>alpha03<span class="sc">$</span>SSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 3738.1784
 </div>
@@ -1045,8 +1045,8 @@ a 24.67819</code></pre>
 <li>[단순지수평활] 초기값 변경 <span class="math inline">\(\to\)</span> 기존의 경우 관측값의 첫 번째 값을 사용</li>
 </ul>
 <div class="cell" data-execution_count="124">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rainforecasts35 <span class="ot">=</span> <span class="fu">HoltWinters</span>(rainseries, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>, <span class="at">l.start=</span><span class="dv">35</span>)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>rainforecasts35</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>rainforecasts35 <span class="ot">=</span> <span class="fu">HoltWinters</span>(rainseries, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>, <span class="at">l.start=</span><span class="dv">35</span>)</span>
+<span id="cb33-2"><a href="#cb33-2"></a>rainforecasts35</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing without trend and without seasonal component.
 
@@ -1068,32 +1068,32 @@ a 25.28555</code></pre>
 <li><p>스무딩 효과도 줄어들었다.</p></li>
 </ul>
 <div class="cell" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>rainforecasts35<span class="sc">$</span>SSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>rainforecasts35<span class="sc">$</span>SSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 2209.42164806169
 </div>
 </div>
 <div class="cell" data-execution_count="127">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rainforecasts35)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">plot</span>(rainforecasts35)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>rainforecasts2 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(rainforecasts, <span class="at">h=</span><span class="dv">5</span>) <span class="do">## h=예측할 시점, 즉 5개 시점을 예측해서 보겠다</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(rainforecasts2) <span class="do">## 회색은 95%신뢰구간, 보라색은 80%신뢰구간</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>rainforecasts2 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(rainforecasts, <span class="at">h=</span><span class="dv">5</span>) <span class="do">## h=예측할 시점, 즉 5개 시점을 예측해서 보겠다</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a><span class="fu">plot</span>(rainforecasts2) <span class="do">## 회색은 95%신뢰구간, 보라색은 80%신뢰구간</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-36-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="134">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"mindex.txt"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>Z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"mindex.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="137">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>mindex  <span class="ot">&lt;-</span> <span class="fu">ts</span>(Z,<span class="at">start=</span><span class="fu">c</span>(<span class="dv">1986</span>,<span class="dv">1</span>),<span class="at">frequency =</span> <span class="dv">12</span>) <span class="do">## 1986년 1월부터 주기가 12인 데이터를 생성</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>mindex  <span class="ot">&lt;-</span> <span class="fu">ts</span>(Z,<span class="at">start=</span><span class="fu">c</span>(<span class="dv">1986</span>,<span class="dv">1</span>),<span class="at">frequency =</span> <span class="dv">12</span>) <span class="do">## 1986년 1월부터 주기가 12인 데이터를 생성</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mindex</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>mindex</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1119,14 +1119,14 @@ a 25.28555</code></pre>
 <li>시도표를 확인해본 결과 추세와 계절 성분이 없는 것을 확인하였다. 따라서 단순지수평활법을 적용</li>
 </ul>
 <div class="cell" data-execution_count="139">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(mindex)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">plot.ts</span>(mindex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="140">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>mindexforecasts <span class="ot">=</span> <span class="fu">HoltWinters</span>(mindex, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>mindexforecasts</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>mindexforecasts <span class="ot">=</span> <span class="fu">HoltWinters</span>(mindex, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb42-2"><a href="#cb42-2"></a>mindexforecasts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing without trend and without seasonal component.
 
@@ -1144,26 +1144,26 @@ a 11.15433</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.3</span>,</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.3"</span>)</span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.7</span>,</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.7"</span>)</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="dv">1</span>,</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=1"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>))</span>
+<span id="cb44-2"><a href="#cb44-2"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.3</span>,</span>
+<span id="cb44-3"><a href="#cb44-3"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.3"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4"></a></span>
+<span id="cb44-5"><a href="#cb44-5"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.7</span>,</span>
+<span id="cb44-6"><a href="#cb44-6"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=0.7"</span>)</span>
+<span id="cb44-7"><a href="#cb44-7"></a></span>
+<span id="cb44-8"><a href="#cb44-8"></a><span class="fu">plot</span>(<span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="dv">1</span>,</span>
+<span id="cb44-9"><a href="#cb44-9"></a>                 <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>), <span class="at">main=</span><span class="st">"Alpha=1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-42-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="142">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>alpha1<span class="ot">=</span><span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>alpha1<span class="sc">$</span>SSE</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>alpha07<span class="ot">=</span><span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>alpha07<span class="sc">$</span>SSE</span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>alpha03<span class="ot">=</span><span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.3</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>alpha03<span class="sc">$</span>SSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>alpha1<span class="ot">=</span><span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="dv">1</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb45-2"><a href="#cb45-2"></a>alpha1<span class="sc">$</span>SSE</span>
+<span id="cb45-3"><a href="#cb45-3"></a>alpha07<span class="ot">=</span><span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.7</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb45-4"><a href="#cb45-4"></a>alpha07<span class="sc">$</span>SSE</span>
+<span id="cb45-5"><a href="#cb45-5"></a>alpha03<span class="ot">=</span><span class="fu">HoltWinters</span>(mindex, <span class="at">alpha=</span><span class="fl">0.3</span>, <span class="at">beta=</span><span class="cn">FALSE</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb45-6"><a href="#cb45-6"></a>alpha03<span class="sc">$</span>SSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 443.23
 </div>
@@ -1178,29 +1178,29 @@ a 11.15433</code></pre>
 <li>직접적으로 최적의 평활상수를 구해보자</li>
 </ul>
 <div class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.8</span>,<span class="fl">0.1</span>), <span class="fu">seq</span>(<span class="fl">0.81</span>, <span class="fl">0.99</span>, <span class="fl">0.01</span>)) </span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>sse <span class="ot">&lt;-</span> <span class="fu">sapply</span>(w, <span class="cf">function</span>(x) </span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(<span class="fu">ses</span>(mindex, <span class="at">alpha =</span> x)<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>w <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fu">seq</span>(<span class="fl">0.1</span>,<span class="fl">0.8</span>,<span class="fl">0.1</span>), <span class="fu">seq</span>(<span class="fl">0.81</span>, <span class="fl">0.99</span>, <span class="fl">0.01</span>)) </span>
+<span id="cb46-2"><a href="#cb46-2"></a>sse <span class="ot">&lt;-</span> <span class="fu">sapply</span>(w, <span class="cf">function</span>(x) </span>
+<span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">return</span>(<span class="fu">sum</span>(<span class="fu">ses</span>(mindex, <span class="at">alpha =</span> x)<span class="sc">$</span>residuals<span class="sc">^</span><span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="145">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>w1 <span class="ot">=</span> w[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)]  <span class="co"># xaxis from 0.7 to 1.0</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>sse1 <span class="ot">=</span> sse[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)]</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(w1,sse1, <span class="at">type=</span><span class="st">"o"</span>, <span class="at">xlab=</span><span class="st">"weight"</span>, <span class="at">ylab=</span><span class="st">"sse"</span>, <span class="at">pch=</span><span class="dv">16</span>,</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">"1 시차 후 예측오차의 제곱합"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>w1 <span class="ot">=</span> w[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)]  <span class="co"># xaxis from 0.7 to 1.0</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>sse1 <span class="ot">=</span> sse[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)]</span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">plot</span>(w1,sse1, <span class="at">type=</span><span class="st">"o"</span>, <span class="at">xlab=</span><span class="st">"weight"</span>, <span class="at">ylab=</span><span class="st">"sse"</span>, <span class="at">pch=</span><span class="dv">16</span>,</span>
+<span id="cb47-4"><a href="#cb47-4"></a>     <span class="at">main=</span><span class="st">"1 시차 후 예측오차의 제곱합"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-45-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>opt_w <span class="ot">&lt;-</span> w[<span class="fu">which.min</span>(sse)]  <span class="co"># 최적 평활상수값</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>opt_w</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>opt_w <span class="ot">&lt;-</span> w[<span class="fu">which.min</span>(sse)]  <span class="co"># 최적 평활상수값</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>opt_w</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.9
 </div>
 </div>
 <div class="cell" data-execution_count="153">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">ses</span>(mindex, <span class="at">alpha=</span>w[<span class="fu">which.min</span>(sse)], <span class="at">h=</span><span class="dv">6</span>) <span class="do">## ses 함수는 더 예측할 시점을 설정하여 모형을 적합할 수 있음</span></span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>fit1</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">ses</span>(mindex, <span class="at">alpha=</span>w[<span class="fu">which.min</span>(sse)], <span class="at">h=</span><span class="dv">6</span>) <span class="do">## ses 함수는 더 예측할 시점을 설정하여 모형을 적합할 수 있음</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>fit1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>         Point Forecast    Lo 80    Hi 80    Lo 95    Hi 95
 May 1994       11.14643 8.438328 13.85454 7.004743 15.28812
@@ -1212,12 +1212,12 @@ Oct 1994       11.14643 5.060723 17.23214 1.839142 20.45372</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit1, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>, </span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="fu">paste0</span>(<span class="st">"중간재 출하지수와 단순지수평활값 alpha="</span>,opt_w), </span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty=</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">"black"</span> )</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit1), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Mindex"</span>, opt_w), </span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">"black"</span>,<span class="st">"red"</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">plot</span>(fit1, <span class="at">xlab=</span><span class="st">""</span>, <span class="at">ylab=</span><span class="st">""</span>, </span>
+<span id="cb51-2"><a href="#cb51-2"></a>     <span class="at">main=</span><span class="fu">paste0</span>(<span class="st">"중간재 출하지수와 단순지수평활값 alpha="</span>,opt_w), </span>
+<span id="cb51-3"><a href="#cb51-3"></a>     <span class="at">lty=</span><span class="dv">1</span>,<span class="at">col=</span><span class="st">"black"</span> )</span>
+<span id="cb51-4"><a href="#cb51-4"></a><span class="fu">lines</span>(<span class="fu">fitted</span>(fit1), <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lty=</span><span class="dv">2</span>)</span>
+<span id="cb51-5"><a href="#cb51-5"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">legend=</span><span class="fu">c</span>(<span class="st">"Mindex"</span>, opt_w), </span>
+<span id="cb51-6"><a href="#cb51-6"></a>       <span class="at">lty=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">"black"</span>,<span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-48-output-1.png" class="img-fluid"></p>
 </div>
@@ -1229,10 +1229,10 @@ Oct 1994       11.14643 5.060723 17.23214 1.839142 20.45372</code></pre>
 <li>치맛단 길이 데이터를 사용</li>
 </ul>
 <div class="cell" data-execution_count="159">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>skirts<span class="ot">=</span><span class="fu">scan</span>(<span class="st">"http://robjhyndman.com/tsdldata/roberts/skirts.dat"</span>,</span>
-<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">skip=</span><span class="dv">5</span>)</span>
-<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>skirtsseries <span class="ot">&lt;-</span> <span class="fu">ts</span>(skirts,<span class="at">start=</span><span class="fu">c</span>(<span class="dv">1866</span>))</span>
-<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>skirtsseries <span class="co"># 주기가 1년인 데이터</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a>skirts<span class="ot">=</span><span class="fu">scan</span>(<span class="st">"http://robjhyndman.com/tsdldata/roberts/skirts.dat"</span>,</span>
+<span id="cb52-2"><a href="#cb52-2"></a>            <span class="at">skip=</span><span class="dv">5</span>)</span>
+<span id="cb52-3"><a href="#cb52-3"></a>skirtsseries <span class="ot">&lt;-</span> <span class="fu">ts</span>(skirts,<span class="at">start=</span><span class="fu">c</span>(<span class="dv">1866</span>))</span>
+<span id="cb52-4"><a href="#cb52-4"></a>skirtsseries <span class="co"># 주기가 1년인 데이터</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 A Time Series:<br><style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1248,15 +1248,15 @@ A Time Series:<br><style>
 <li>따라서 일반적인 추세모형을 적합할 수 없으므로 이중지수평활법을 사용</li>
 </ul>
 <div class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(skirtsseries)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">plot.ts</span>(skirtsseries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-50-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>[이중지수평활법] gamma =F</p>
 <div class="cell" data-execution_count="161">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>skirtforecasts <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(skirtsseries, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>skirtforecasts </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>skirtforecasts <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(skirtsseries, <span class="at">gamma=</span><span class="cn">FALSE</span>)</span>
+<span id="cb54-2"><a href="#cb54-2"></a>skirtforecasts </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing with trend and without seasonal component.
 
@@ -1278,23 +1278,23 @@ b   5.690464</code></pre>
 <li><span class="math inline">\(\beta = 1, \alpha = 0.83\dots\)</span>로 최근값에 가중치가 더 많이 들어간 것으로 확인된다.</li>
 </ul>
 <div class="cell" data-execution_count="162">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(skirtforecasts)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">plot</span>(skirtforecasts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-52-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <p>[이중지수평활법] 예측</p>
 <div class="cell" data-execution_count="164">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>skirtsforecasts2<span class="ot">=</span><span class="fu">forecast</span>(skirtforecasts, <span class="at">h=</span><span class="dv">10</span>)</span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(skirtsforecasts2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a>skirtsforecasts2<span class="ot">=</span><span class="fu">forecast</span>(skirtforecasts, <span class="at">h=</span><span class="dv">10</span>)</span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="fu">plot</span>(skirtsforecasts2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="167">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"stock.txt"</span>)</span>
-<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>stock <span class="ot">&lt;-</span> <span class="fu">ts</span>(z, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1984</span>,<span class="dv">1</span>), <span class="at">frequency=</span><span class="dv">12</span>)</span>
-<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>stock</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"stock.txt"</span>)</span>
+<span id="cb58-2"><a href="#cb58-2"></a>stock <span class="ot">&lt;-</span> <span class="fu">ts</span>(z, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1984</span>,<span class="dv">1</span>), <span class="at">frequency=</span><span class="dv">12</span>)</span>
+<span id="cb58-3"><a href="#cb58-3"></a>stock</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1319,14 +1319,14 @@ b   5.690464</code></pre>
 <li>레벨과 추세가 시간에 따라 변하는 것을 알 수 있다.</li>
 </ul>
 <div class="cell" data-execution_count="168">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(stock, <span class="at">main=</span><span class="st">'월별주가지수'</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="fu">plot.ts</span>(stock, <span class="at">main=</span><span class="st">'월별주가지수'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-55-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="170">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>fit4 <span class="ot">=</span> <span class="fu">HoltWinters</span>(stock, <span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">beta=</span><span class="fl">0.6</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>) </span>
-<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>fit4</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1"></a>fit4 <span class="ot">=</span> <span class="fu">HoltWinters</span>(stock, <span class="at">alpha=</span><span class="fl">0.6</span>, <span class="at">beta=</span><span class="fl">0.6</span>, <span class="at">gamma=</span><span class="cn">FALSE</span>) </span>
+<span id="cb60-2"><a href="#cb60-2"></a>fit4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing with trend and without seasonal component.
 
@@ -1345,7 +1345,7 @@ b -26.14166</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit4)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1"></a><span class="fu">plot</span>(fit4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-57-output-1.png" class="img-fluid"></p>
 </div>
@@ -1354,8 +1354,8 @@ b -26.14166</code></pre>
 <li><span class="math inline">\(\alpha=1, \beta = 0.109\dots\)</span> 알파는 최근값, 베타는 과거값에 가중치를 더 많이 주었다.</li>
 </ul>
 <div class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>fit5 <span class="ot">=</span> <span class="fu">HoltWinters</span>(stock, <span class="at">gamma=</span><span class="cn">FALSE</span>) </span>
-<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>fit5</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>fit5 <span class="ot">=</span> <span class="fu">HoltWinters</span>(stock, <span class="at">gamma=</span><span class="cn">FALSE</span>) </span>
+<span id="cb63-2"><a href="#cb63-2"></a>fit5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing with trend and without seasonal component.
 
@@ -1374,8 +1374,8 @@ b  -7.097122</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="174">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>fit5_2<span class="ot">=</span><span class="fu">forecast</span>(fit5, <span class="at">h=</span><span class="dv">10</span>)</span>
-<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit5_2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>fit5_2<span class="ot">=</span><span class="fu">forecast</span>(fit5, <span class="at">h=</span><span class="dv">10</span>)</span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="fu">plot</span>(fit5_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-59-output-1.png" class="img-fluid"></p>
 </div>
@@ -1384,10 +1384,10 @@ b  -7.097122</code></pre>
 <section id="계절지수-평활법" class="level4">
 <h4 class="anchored" data-anchor-id="계절지수-평활법">계절지수 평활법</h4>
 <div class="cell" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>souvenir<span class="ot">=</span><span class="fu">scan</span>(<span class="st">"http://robjhyndman.com/tsdldata/data/fancy.dat"</span>)</span>
-<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>souvenirtimeseries<span class="ot">=</span><span class="fu">ts</span>(souvenir, <span class="at">frequency=</span><span class="dv">12</span>, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1987</span>,<span class="dv">1</span>))</span>
-<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>souvenirtimeseries</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1"></a>souvenir<span class="ot">=</span><span class="fu">scan</span>(<span class="st">"http://robjhyndman.com/tsdldata/data/fancy.dat"</span>)</span>
+<span id="cb66-2"><a href="#cb66-2"></a>souvenirtimeseries<span class="ot">=</span><span class="fu">ts</span>(souvenir, <span class="at">frequency=</span><span class="dv">12</span>, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1987</span>,<span class="dv">1</span>))</span>
+<span id="cb66-3"><a href="#cb66-3"></a></span>
+<span id="cb66-4"><a href="#cb66-4"></a>souvenirtimeseries</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1412,21 +1412,21 @@ b  -7.097122</code></pre>
 <li>따라서 로그변환 후 계절지수평활법을 적용</li>
 </ul>
 <div class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(souvenirtimeseries) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="fu">plot.ts</span>(souvenirtimeseries) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-61-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>logsouvenirtimeseries <span class="ot">&lt;-</span> <span class="fu">log</span>(souvenirtimeseries)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(logsouvenirtimeseries)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a>logsouvenirtimeseries <span class="ot">&lt;-</span> <span class="fu">log</span>(souvenirtimeseries)</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="fu">plot.ts</span>(logsouvenirtimeseries)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-62-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="183">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a>souvenirforecasts <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(logsouvenirtimeseries)</span>
-<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a>souvenirforecasts</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a>souvenirforecasts <span class="ot">&lt;-</span> <span class="fu">HoltWinters</span>(logsouvenirtimeseries)</span>
+<span id="cb69-2"><a href="#cb69-2"></a>souvenirforecasts</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing with trend and additive seasonal component.
 
@@ -1460,23 +1460,23 @@ s12  1.18088423</code></pre>
 <li><span class="math inline">\(s_1,\dots s_{12}\)</span>는 계절성분의 평활상수 이다.</li>
 </ul>
 <div class="cell" data-execution_count="184">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(souvenirforecasts)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">plot</span>(souvenirforecasts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-64-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="185">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>souvenirforecasts2 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(souvenirforecasts, <span class="at">h=</span><span class="dv">36</span>)</span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(souvenirforecasts2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a>souvenirforecasts2 <span class="ot">&lt;-</span> <span class="fu">forecast</span>(souvenirforecasts, <span class="at">h=</span><span class="dv">36</span>)</span>
+<span id="cb72-2"><a href="#cb72-2"></a><span class="fu">plot</span>(souvenirforecasts2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-65-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"koreapass.txt"</span>)</span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>pass <span class="ot">&lt;-</span> <span class="fu">ts</span>(z, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1981</span>,<span class="dv">1</span>), <span class="at">frequency=</span><span class="dv">12</span>) </span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>pass</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"koreapass.txt"</span>)</span>
+<span id="cb73-2"><a href="#cb73-2"></a>pass <span class="ot">&lt;-</span> <span class="fu">ts</span>(z, <span class="at">start=</span><span class="fu">c</span>(<span class="dv">1981</span>,<span class="dv">1</span>), <span class="at">frequency=</span><span class="dv">12</span>) </span>
+<span id="cb73-3"><a href="#cb73-3"></a></span>
+<span id="cb73-4"><a href="#cb73-4"></a>pass</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -1499,7 +1499,7 @@ s12  1.18088423</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(pass)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="fu">plot.ts</span>(pass)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-67-output-1.png" class="img-fluid"></p>
 </div>
@@ -1508,8 +1508,8 @@ s12  1.18088423</code></pre>
 <li>가법모형 적용</li>
 </ul>
 <div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>fit6 <span class="ot">=</span> <span class="fu">HoltWinters</span>(pass, <span class="at">seasonal=</span><span class="st">"additive"</span>) </span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>fit6</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>fit6 <span class="ot">=</span> <span class="fu">HoltWinters</span>(pass, <span class="at">seasonal=</span><span class="st">"additive"</span>) </span>
+<span id="cb75-2"><a href="#cb75-2"></a>fit6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing with trend and additive seasonal component.
 
@@ -1543,15 +1543,15 @@ s12 -38683.394</code></pre>
 <li>잔차 그림</li>
 </ul>
 <div class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">resid</span>(fit6), <span class="at">ylab=</span><span class="st">"residual"</span>, </span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"가법모형의 예측오차"</span>); <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="fu">ts.plot</span>(<span class="fu">resid</span>(fit6), <span class="at">ylab=</span><span class="st">"residual"</span>, </span>
+<span id="cb77-2"><a href="#cb77-2"></a>        <span class="at">main=</span><span class="st">"가법모형의 예측오차"</span>); <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-69-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="192">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>fit6_2<span class="ot">=</span><span class="fu">forecast</span>(fit6, <span class="at">h=</span><span class="dv">12</span>)</span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit6_2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a>fit6_2<span class="ot">=</span><span class="fu">forecast</span>(fit6, <span class="at">h=</span><span class="dv">12</span>)</span>
+<span id="cb78-2"><a href="#cb78-2"></a><span class="fu">plot</span>(fit6_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-70-output-1.png" class="img-fluid"></p>
 </div>
@@ -1560,8 +1560,8 @@ s12 -38683.394</code></pre>
 <li>승법모형 적용</li>
 </ul>
 <div class="cell" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a>fit7 <span class="ot">=</span>  <span class="fu">HoltWinters</span>(pass, <span class="at">seasonal=</span><span class="st">"multiplicative"</span>) </span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>fit7</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>fit7 <span class="ot">=</span>  <span class="fu">HoltWinters</span>(pass, <span class="at">seasonal=</span><span class="st">"multiplicative"</span>) </span>
+<span id="cb79-2"><a href="#cb79-2"></a>fit7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Holt-Winters exponential smoothing with trend and multiplicative seasonal component.
 
@@ -1592,14 +1592,14 @@ s12 8.552947e-01</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(<span class="fu">resid</span>(fit7), <span class="at">ylab=</span><span class="st">"residual"</span>, </span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"승법모형의 예측오차"</span>); <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">ts.plot</span>(<span class="fu">resid</span>(fit7), <span class="at">ylab=</span><span class="st">"residual"</span>, </span>
+<span id="cb81-2"><a href="#cb81-2"></a>        <span class="at">main=</span><span class="st">"승법모형의 예측오차"</span>); <span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-72-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="197">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a>fit6<span class="sc">$</span>SSE; fit7<span class="sc">$</span>SSE</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>fit6<span class="sc">$</span>SSE; fit7<span class="sc">$</span>SSE</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 13764737658.0239
 </div>
@@ -1608,8 +1608,8 @@ s12 8.552947e-01</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="198">
-<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a>fit7_2<span class="ot">=</span><span class="fu">forecast</span>(fit7, <span class="at">h=</span><span class="dv">12</span>)</span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit7_2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a>fit7_2<span class="ot">=</span><span class="fu">forecast</span>(fit7, <span class="at">h=</span><span class="dv">12</span>)</span>
+<span id="cb83-2"><a href="#cb83-2"></a><span class="fu">plot</span>(fit7_2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-74-output-1.png" class="img-fluid"></p>
 </div>
@@ -1657,9 +1657,9 @@ s12 8.552947e-01</code></pre>
 <li>딱히 이렇다할 추세나 계절 성분은 보이진 않는다.</li>
 </ul>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a>king <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"http://robjhyndman.com/tsdldata/misc/kings.dat"</span>,<span class="at">skip=</span><span class="dv">3</span>)</span>
-<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>king.ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(king) <span class="do">## 1년 주기로 데이터를 생성</span></span>
-<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(king.ts)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>king <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"http://robjhyndman.com/tsdldata/misc/kings.dat"</span>,<span class="at">skip=</span><span class="dv">3</span>)</span>
+<span id="cb84-2"><a href="#cb84-2"></a>king.ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(king) <span class="do">## 1년 주기로 데이터를 생성</span></span>
+<span id="cb84-3"><a href="#cb84-3"></a><span class="fu">plot</span>(king.ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-75-output-1.png" class="img-fluid"></p>
 </div>
@@ -1668,8 +1668,8 @@ s12 8.552947e-01</code></pre>
 <li>acf값과 pacf값을 확인</li>
 </ul>
 <div class="cell" data-execution_count="212">
-<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb85-2"><a href="#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(king.ts); <span class="fu">pacf</span>(king.ts)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb85-2"><a href="#cb85-2"></a><span class="fu">acf</span>(king.ts); <span class="fu">pacf</span>(king.ts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-76-output-1.png" class="img-fluid"></p>
 </div>
@@ -1679,14 +1679,14 @@ s12 8.552947e-01</code></pre>
 <li><p>그러나 실제 ACF가 유의한지 아닌 지 검증을 수행하여 차분여부를 결정하자</p></li>
 </ul>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fUnitRoots)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">library</span>(fUnitRoots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">adfTest</span>(king.ts,<span class="at">lags=</span><span class="dv">0</span>, <span class="at">type=</span><span class="st">"c"</span>) <span class="do">## type="c" 는 적합할 모형에 상수항(절편)이 존재하는 경우</span></span>
-<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>                                  <span class="do">## type= "nc"는 적합할 모형에 상수항이 0인 경우</span></span>
-<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="do">## type= "ct" 적합할 모형에 추세와 절편이 존재하는 경우</span></span>
-<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="fu">adfTest</span>(king.ts,<span class="at">lags=</span><span class="dv">1</span>, <span class="at">type=</span><span class="st">"c"</span>)</span>
-<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="fu">adfTest</span>(king.ts,<span class="at">lags=</span><span class="dv">2</span>, <span class="at">type=</span><span class="st">"c"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">adfTest</span>(king.ts,<span class="at">lags=</span><span class="dv">0</span>, <span class="at">type=</span><span class="st">"c"</span>) <span class="do">## type="c" 는 적합할 모형에 상수항(절편)이 존재하는 경우</span></span>
+<span id="cb87-2"><a href="#cb87-2"></a>                                  <span class="do">## type= "nc"는 적합할 모형에 상수항이 0인 경우</span></span>
+<span id="cb87-3"><a href="#cb87-3"></a>                                  <span class="do">## type= "ct" 적합할 모형에 추세와 절편이 존재하는 경우</span></span>
+<span id="cb87-4"><a href="#cb87-4"></a><span class="fu">adfTest</span>(king.ts,<span class="at">lags=</span><span class="dv">1</span>, <span class="at">type=</span><span class="st">"c"</span>)</span>
+<span id="cb87-5"><a href="#cb87-5"></a><span class="fu">adfTest</span>(king.ts,<span class="at">lags=</span><span class="dv">2</span>, <span class="at">type=</span><span class="st">"c"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning message in adfTest(king.ts, lags = 0, type = "c"):
 "p-value smaller than printed p-value"</code></pre>
@@ -1745,9 +1745,9 @@ Description:
 <li><p>검정결과만 보면 굳이 차분을 안해도 될 것 같긴하다.</p></li>
 </ul>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>king.ff1 <span class="ot">&lt;-</span> <span class="fu">diff</span>(king.ts,<span class="at">differences=</span><span class="dv">1</span>)</span>
-<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ts</span>(king.ts);<span class="fu">plot.ts</span>(king.ff1)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb92-2"><a href="#cb92-2"></a>king.ff1 <span class="ot">&lt;-</span> <span class="fu">diff</span>(king.ts,<span class="at">differences=</span><span class="dv">1</span>)</span>
+<span id="cb92-3"><a href="#cb92-3"></a><span class="fu">plot.ts</span>(king.ts);<span class="fu">plot.ts</span>(king.ff1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-79-output-1.png" class="img-fluid"></p>
 </div>
@@ -1756,8 +1756,8 @@ Description:
 <li>시도표를 그려보았을 때는 기존보다 평균과 분산이 어느 정도 일정해짐을 볼 수 있었다.</li>
 </ul>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb93-2"><a href="#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(king.ff1); <span class="fu">pacf</span>(king.ff1)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb93-2"><a href="#cb93-2"></a><span class="fu">acf</span>(king.ff1); <span class="fu">pacf</span>(king.ff1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="시계열 분석_files/figure-html/cell-80-output-1.png" class="img-fluid"></p>
 </div>
@@ -1768,10 +1768,10 @@ Description:
 <li><p>모형의 해석력을 고려하여 <span class="math inline">\(MA(1)\)</span>을 선택하는 것이 좋겠지만, auto.arima함수를 이용하여 적절한 모형을 선택</p></li>
 </ul>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forecast)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">library</span>(forecast)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="fu">auto.arima</span>(king) <span class="do">##기존 데이터를 넣어 주어야함</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1"></a><span class="fu">auto.arima</span>(king) <span class="do">##기존 데이터를 넣어 주어야함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Series: king 
 ARIMA(0,1,1) 
@@ -1794,10 +1794,10 @@ AIC=344.13   AICc=344.44   BIC=347.56</code></pre>
 <li><p>예측값을 살펴본 결과 43~52 번째 왕의 사망예측 나이는 67.75살로 추정된다.</p></li>
 </ul>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>king.arima <span class="ot">&lt;-</span> <span class="fu">arima</span>(king,<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
-<span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a>king.forecasts <span class="ot">&lt;-</span> <span class="fu">forecast</span>(king.arima)</span>
-<span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>king.forecasts</span>
-<span id="cb97-4"><a href="#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(king.forecasts)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1"></a>king.arima <span class="ot">&lt;-</span> <span class="fu">arima</span>(king,<span class="at">order =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>))</span>
+<span id="cb97-2"><a href="#cb97-2"></a>king.forecasts <span class="ot">&lt;-</span> <span class="fu">forecast</span>(king.arima)</span>
+<span id="cb97-3"><a href="#cb97-3"></a>king.forecasts</span>
+<span id="cb97-4"><a href="#cb97-4"></a><span class="fu">plot</span>(king.forecasts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>   Point Forecast    Lo 80    Hi 80    Lo 95     Hi 95
 43       67.75063 48.29647 87.20479 37.99806  97.50319
@@ -1848,6 +1848,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,

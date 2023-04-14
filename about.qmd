@@ -52,24 +52,6 @@ about:
 
 `-` 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01
     
-
-## Post
-
-`-` Statistical Computing
-
-`-` Theoretical Statistics
-
-`-` [R for Data Science](https://gangcheol.github.io/mysite/post/R%20for%20Data%20Scienece/%EB%8D%B0%EC%9D%B4%ED%84%B0%20%EC%A0%84%EC%B2%98%EB%A6%AC/%EA%B2%B0%EC%B8%A1%EC%B9%98(1205).html)
-
-`-` Data Visualization
-
-`-` Time Series Analysis 
-
-`-` [BigData Analysis](https://gangcheol.github.io/mysite/post/Bigdata%20Analysis/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html)
-
-`-` [Ml with Pytorch](https://gangcheol.github.io/mysite/post/Ml%20with%20pytorch/2023-01-27-Intro.html)
-
-
 ## Conctact
 
 `-` <rkdcjf8232@gmail.com>

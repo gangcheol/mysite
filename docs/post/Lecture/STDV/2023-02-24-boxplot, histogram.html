@@ -616,8 +616,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="import" class="level1">
 <h1>import</h1>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:883,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233082255,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> numpy <span class="im">as</span> np </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="boxplot" class="level1">
@@ -627,11 +627,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> 평균은 좋은 추정값인가?</p>
 <p><code>-</code> 전북고등학교에서 통계학을 수업하는 A선생님과 B선생님의 있다. A선생님에게서 수업을 들을 학생들의 평균은 79.1이고 B선생님에게서 수업을 들은 학생들의 평균은 78.3이다.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233137308,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y1<span class="op">=</span>[<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">98</span>] <span class="co"># A선생님에게 통계학을 배운 학생의 점수들</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>y2<span class="op">=</span>[<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">78</span>,<span class="dv">78</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">81</span>] <span class="co"># B선생님에게 통계학을 배운 학생의 점수들 </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>y1<span class="op">=</span>[<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">98</span>] <span class="co"># A선생님에게 통계학을 배운 학생의 점수들</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>y2<span class="op">=</span>[<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">78</span>,<span class="dv">78</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">81</span>] <span class="co"># B선생님에게 통계학을 배운 학생의 점수들 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233184330,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c57fa0e2-e7f4-4eac-e6f7-fc9e3457c62d" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>np.mean(y1), np.mean(y2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>np.mean(y1), np.mean(y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>(79.1, 78.3)</code></pre>
 </div>
@@ -646,8 +646,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="matplotlib" class="level2">
 <h2 class="anchored" data-anchor-id="matplotlib">matplotlib</h2>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1835,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233360642,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="aa691706-d26b-4f6f-c525-e8d445d1e601" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot([y1,y2])</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"A"</span>,<span class="st">"B"</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>plt.boxplot([y1,y2])</span>
+<span id="cb5-2"><a href="#cb5-2"></a>plt.legend([<span class="st">"A"</span>,<span class="st">"B"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f211ac18c70&gt;</code></pre>
 </div>
@@ -659,16 +659,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="plotly" class="level2">
 <h2 class="anchored" data-anchor-id="plotly">plotly</h2>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1199,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233418157,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233443534,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y1<span class="op">=</span>[<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">98</span>] <span class="co"># A선생님에게 통계학을 배운 학생의 점수들</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y2<span class="op">=</span>[<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">78</span>,<span class="dv">78</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">81</span>] <span class="co"># B선생님에게 통계학을 배운 학생의 점수들 </span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>y1<span class="op">=</span>[<span class="dv">75</span>,<span class="dv">75</span>,<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">79</span>,<span class="dv">98</span>] <span class="co"># A선생님에게 통계학을 배운 학생의 점수들</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a>y2<span class="op">=</span>[<span class="dv">76</span>,<span class="dv">76</span>,<span class="dv">77</span>,<span class="dv">77</span>,<span class="dv">78</span>,<span class="dv">78</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">80</span>,<span class="dv">81</span>] <span class="co"># B선생님에게 통계학을 배운 학생의 점수들 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233495869,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="6a28801e-2ada-4ede-897a-f0d461025685" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span> pd.DataFrame({<span class="st">'score'</span>:y1<span class="op">+</span>y2,<span class="st">'class'</span>:[<span class="st">'A'</span>]<span class="op">*</span><span class="bu">len</span>(y1) <span class="op">+</span> [<span class="st">'B'</span>]<span class="op">*</span><span class="bu">len</span>(y2)})</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>df<span class="op">=</span> pd.DataFrame({<span class="st">'score'</span>:y1<span class="op">+</span>y2,<span class="st">'class'</span>:[<span class="st">'A'</span>]<span class="op">*</span><span class="bu">len</span>(y1) <span class="op">+</span> [<span class="st">'B'</span>]<span class="op">*</span><span class="bu">len</span>(y2)})</span>
+<span id="cb9-2"><a href="#cb9-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 
 
@@ -789,7 +789,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2273,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233511813,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4ac44e2e-ef6a-4522-e368-a3a656e4275a" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>px.box(df,x<span class="op">=</span><span class="st">"class"</span>, y<span class="op">=</span> <span class="st">"score"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>px.box(df,x<span class="op">=</span><span class="st">"class"</span>, y<span class="op">=</span> <span class="st">"score"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 
@@ -836,18 +836,18 @@ if (outputEl) {{
 <p><code>-</code> boxplot으로 전체 분포를 파악해도 어떠한 반이 더 공부를 잘한다는 기준을 잡는것이 애매함.</p>
 <p><code>-</code> 특수한 경우(정규분포)에는 평균으로 누가 더 공부를 잘하는지 확인할 수있다.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:430,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677234566385,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">202150256</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> np.random.randn(<span class="dv">10000</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> np.random.randn(<span class="dv">10000</span>) <span class="op">+</span> <span class="fl">0.5</span> </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>np.random.seed(<span class="dv">202150256</span>)</span>
+<span id="cb11-2"><a href="#cb11-2"></a>y1 <span class="op">=</span> np.random.randn(<span class="dv">10000</span>)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>y2 <span class="op">=</span> np.random.randn(<span class="dv">10000</span>) <span class="op">+</span> <span class="fl">0.5</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:810,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233740467,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="17ab9958-53dd-4829-b912-3268e4e64439" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>np.mean(y1)<span class="op">-</span>np.mean(y2)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>np.mean(y1)<span class="op">-</span>np.mean(y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>-0.5097056259662253</code></pre>
 </div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:886,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233755283,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e4487d71-ce94-48c4-e9c6-58aff9f7935a" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.boxplot([y1,y2])<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>plt.boxplot([y1,y2])<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="2023-02-24-boxplot, histogram_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
@@ -857,8 +857,8 @@ if (outputEl) {{
 <section id="matplotlib-1" class="level2">
 <h2 class="anchored" data-anchor-id="matplotlib-1">matplotlib</h2>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2250,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233915333,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="dd992655-cabd-48e9-fc07-f5efe57c12b0" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.hist([y1,y2],bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">"A"</span>,<span class="st">"B"</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.hist([y1,y2],bins<span class="op">=</span><span class="dv">50</span>)<span class="op">;</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>plt.legend([<span class="st">"A"</span>,<span class="st">"B"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>&lt;matplotlib.legend.Legend at 0x7f20e830abb0&gt;</code></pre>
 </div>
@@ -870,11 +870,11 @@ if (outputEl) {{
 <section id="seaborn" class="level2">
 <h2 class="anchored" data-anchor-id="seaborn">seaborn</h2>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1437,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233930395,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233981506,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="56051743-760c-486a-eadd-5d30af4b84e9" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.DataFrame({<span class="st">'score'</span>:np.concatenate([y1,y2]), <span class="st">'class'</span>:[<span class="st">'A'</span>]<span class="op">*</span><span class="bu">len</span>(y1)<span class="op">+</span>[<span class="st">'B'</span>]<span class="op">*</span><span class="bu">len</span>(y2)})</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df.head()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>df<span class="op">=</span>pd.DataFrame({<span class="st">'score'</span>:np.concatenate([y1,y2]), <span class="st">'class'</span>:[<span class="st">'A'</span>]<span class="op">*</span><span class="bu">len</span>(y1)<span class="op">+</span>[<span class="st">'B'</span>]<span class="op">*</span><span class="bu">len</span>(y2)})</span>
+<span id="cb18-2"><a href="#cb18-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 
 
@@ -995,7 +995,7 @@ if (outputEl) {{
 </div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1067,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677233985311,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f066cf5b-f45d-4143-b3ad-c11b7bbd8882" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>sns.histplot(df,x<span class="op">=</span><span class="st">"score"</span>,hue<span class="op">=</span><span class="st">"class"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>sns.histplot(df,x<span class="op">=</span><span class="st">"score"</span>,hue<span class="op">=</span><span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <pre><code>&lt;AxesSubplot:xlabel='score', ylabel='Count'&gt;</code></pre>
 </div>
@@ -1007,10 +1007,10 @@ if (outputEl) {{
 <section id="plotnine" class="level2">
 <h2 class="anchored" data-anchor-id="plotnine">plotnine</h2>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3392,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677234013668,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:649,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677234106475,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="742460c5-9f85-4fad-93b0-2c94ad65ee18" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ggplot(df) <span class="op">+</span> geom_histogram(aes(x<span class="op">=</span><span class="st">"score"</span>,fill<span class="op">=</span><span class="st">"class"</span>),position<span class="op">=</span><span class="st">"identity"</span>,alpha<span class="op">=</span><span class="fl">0.5</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>ggplot(df) <span class="op">+</span> geom_histogram(aes(x<span class="op">=</span><span class="st">"score"</span>,fill<span class="op">=</span><span class="st">"class"</span>),position<span class="op">=</span><span class="st">"identity"</span>,alpha<span class="op">=</span><span class="fl">0.5</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.8/dist-packages/plotnine/stats/stat_bin.py:95: PlotnineWarning: 'stat_bin()' using 'bins = 84'. Pick better value with 'binwidth'.</code></pre>
 </div>
@@ -1025,14 +1025,14 @@ if (outputEl) {{
 <section id="plotly-1" class="level2">
 <h2 class="anchored" data-anchor-id="plotly-1">plotly</h2>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1103,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677234185797,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.figure_factory <span class="im">as</span> ff</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="im">import</span> plotly.figure_factory <span class="im">as</span> ff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:1534,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677234572068,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="6f9c7e72-a072-48e1-c4eb-3e2fc410b387" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>hist_data <span class="op">=</span> [y1,y2]</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>group_labels <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>ff.create_distplot(hist_data, group_labels,bin_size<span class="op">=</span><span class="fl">0.2</span>,show_rug<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>hist_data <span class="op">=</span> [y1,y2]</span>
+<span id="cb26-2"><a href="#cb26-2"></a></span>
+<span id="cb26-3"><a href="#cb26-3"></a>group_labels <span class="op">=</span> [<span class="st">"A"</span>, <span class="st">"B"</span>]</span>
+<span id="cb26-4"><a href="#cb26-4"></a></span>
+<span id="cb26-5"><a href="#cb26-5"></a>ff.create_distplot(hist_data, group_labels,bin_size<span class="op">=</span><span class="fl">0.2</span>,show_rug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 
@@ -1073,15 +1073,15 @@ if (outputEl) {{
 <section id="exercise" class="level1">
 <h1>exercise</h1>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:13100,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1677234842936,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="5ddaba2c-7675-4600-9a55-fed6831c44de" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.figure_factory <span class="im">as</span> ff</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>)</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">1</span>, scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>)</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>hist_data <span class="op">=</span> [y1, y2]</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>group_labels <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>]</span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>ff.create_distplot(hist_data, group_labels, bin_size<span class="op">=</span><span class="fl">0.2</span>, show_rug<span class="op">=</span><span class="va">False</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a><span class="im">import</span> plotly.figure_factory <span class="im">as</span> ff</span>
+<span id="cb27-2"><a href="#cb27-2"></a></span>
+<span id="cb27-3"><a href="#cb27-3"></a>y1 <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a>y2 <span class="op">=</span> np.random.normal(loc<span class="op">=</span><span class="dv">1</span>, scale<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb27-5"><a href="#cb27-5"></a>hist_data <span class="op">=</span> [y1, y2]</span>
+<span id="cb27-6"><a href="#cb27-6"></a></span>
+<span id="cb27-7"><a href="#cb27-7"></a>group_labels <span class="op">=</span> [<span class="st">'A'</span>, <span class="st">'B'</span>]</span>
+<span id="cb27-8"><a href="#cb27-8"></a></span>
+<span id="cb27-9"><a href="#cb27-9"></a>ff.create_distplot(hist_data, group_labels, bin_size<span class="op">=</span><span class="fl">0.2</span>, show_rug<span class="op">=</span><span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1115,6 +1115,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,

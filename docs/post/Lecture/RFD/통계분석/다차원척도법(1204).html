@@ -630,25 +630,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="r-실습" class="level3">
 <h3 class="anchored" data-anchor-id="r-실습">R 실습</h3>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>MASS</code> 패키지 안에 내장된 자료를 이용</li>
 </ul>
 <div class="cell" data-execution_count="111">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>loc <span class="ot">&lt;-</span> <span class="fu">cmdscale</span>(eurodist,<span class="at">k=</span><span class="dv">2</span>) <span class="do">## 거리행렬을 다시 x,y좌표로 바꾸는 작업?</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>loc <span class="ot">&lt;-</span> <span class="fu">cmdscale</span>(eurodist,<span class="at">k=</span><span class="dv">2</span>) <span class="do">## 거리행렬을 다시 x,y좌표로 바꾸는 작업?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> loc[,<span class="dv">1</span>]</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span>loc[,<span class="dv">2</span>]  <span class="do">## y축은 북쪽 도시를 상단에 표시하기 위해 부호를 바꾼다.</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>x <span class="ot">&lt;-</span> loc[,<span class="dv">1</span>]</span>
+<span id="cb3-2"><a href="#cb3-2"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span>loc[,<span class="dv">2</span>]  <span class="do">## y축은 북쪽 도시를 상단에 표시하기 위해 부호를 바꾼다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="121">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="128">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">"n"</span>,<span class="at">asp=</span><span class="dv">1</span>,<span class="at">main=</span><span class="st">"metric MDS"</span> )</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.7</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>,<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="fl">0.5</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">plot</span>(x,y,<span class="at">type=</span><span class="st">"n"</span>,<span class="at">asp=</span><span class="dv">1</span>,<span class="at">main=</span><span class="st">"metric MDS"</span> )</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="fu">text</span>(x,y,<span class="fu">rownames</span>(loc),<span class="at">cex=</span><span class="fl">0.7</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="dv">0</span>,<span class="at">h=</span><span class="dv">0</span>,<span class="at">lty=</span><span class="dv">2</span>,<span class="at">lwd=</span><span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="다차원척도법(1204)_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
@@ -673,13 +673,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>기존의 데이터프레임을 행렬구조로 변환해줌</li>
 </ul>
 <div class="cell" data-execution_count="145">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>swiss.x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(swiss[,<span class="sc">-</span><span class="dv">1</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>swiss.x <span class="ot">&lt;-</span> <span class="fu">as.matrix</span>(swiss[,<span class="sc">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="146">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>swiss.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(swiss.x)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>swiss.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(swiss.x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="147">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>swiss.mds <span class="ot">&lt;-</span> <span class="fu">isoMDS</span>(swiss.dist)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>swiss.mds <span class="ot">&lt;-</span> <span class="fu">isoMDS</span>(swiss.dist)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>initial  value 2.979731 
 iter   5 value 2.431486
@@ -689,8 +689,8 @@ converged</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="152">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(swiss.mds<span class="sc">$</span>points,<span class="at">type=</span><span class="st">"n"</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(swiss.mds<span class="sc">$</span>points,<span class="at">labels=</span><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(swiss.x)))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">plot</span>(swiss.mds<span class="sc">$</span>points,<span class="at">type=</span><span class="st">"n"</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="fu">text</span>(swiss.mds<span class="sc">$</span>points,<span class="at">labels=</span><span class="fu">as.character</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(swiss.x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="다차원척도법(1204)_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
@@ -728,6 +728,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,

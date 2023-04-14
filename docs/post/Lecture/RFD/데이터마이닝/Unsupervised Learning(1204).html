@@ -651,7 +651,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>코사인 유사도 : 두 개체의 백터 내적의 코사인 값을 이용하여 측정된 벡터간의 유사한 정도</li>
 </ul>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -693,8 +693,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>US <span class="ot">&lt;-</span> USArrests</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(US)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>US <span class="ot">&lt;-</span> USArrests</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">head</span>(US)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -715,24 +715,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>US.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(US, <span class="st">"euclidean"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>US.dist <span class="ot">&lt;-</span> <span class="fu">dist</span>(US, <span class="st">"euclidean"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>dist^2</code>을 한 이유는 거리의 차이를 많이 두어 군집이 나뉘는 것을 쉽게 확인하기 위해서임.</li>
 </ul>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># hclust 함수를 이용하여 계층적 군집분석</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.hight=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">7</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>US.single <span class="ot">&lt;-</span> <span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>,<span class="at">method=</span><span class="st">"single"</span>)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># hclust 함수를 이용하여 계층적 군집분석</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.hight=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">7</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>US.single <span class="ot">&lt;-</span> <span class="fu">hclust</span>(US.dist<span class="sc">^</span><span class="dv">2</span>,<span class="at">method=</span><span class="st">"single"</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">plot</span>(US.single)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># cutree함수를 이용하여 계층적 군집결과를 그릅 나누기</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>group <span class="ot">&lt;-</span> <span class="fu">cutree</span>(US.single,<span class="at">k=</span><span class="dv">5</span>) <span class="do">## k는 군집의 수, h는 높이</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>group</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># cutree함수를 이용하여 계층적 군집결과를 그릅 나누기</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>group <span class="ot">&lt;-</span> <span class="fu">cutree</span>(US.single,<span class="at">k=</span><span class="dv">5</span>) <span class="do">## k는 군집의 수, h는 높이</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a>group</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -743,9 +743,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 각각의 그룹을 사각형으로 그룹지어 나타나기</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(US.single)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">rect.hclust</span>(US.single,<span class="at">k=</span><span class="dv">5</span>,<span class="at">border=</span><span class="st">"red"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="do">## 각각의 그룹을 사각형으로 그룹지어 나타나기</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="fu">plot</span>(US.single)</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="fu">rect.hclust</span>(US.single,<span class="at">k=</span><span class="dv">5</span>,<span class="at">border=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
@@ -762,10 +762,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>또한 잡음이나 이상값의 영향을 받으며 초기 군집 수를 결정해야 한다는 단점이 있다.</li>
 </ul>
 <div class="cell" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">PART 05 실습용 데이터"</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>credit_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"credit_final.csv"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#glimpse(credit_data) ## credit.rating의 경우 factor 변수이므로 변환</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>credit_data<span class="sc">$</span>credit.rating <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(credit_data<span class="sc">$</span>credit.rating)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">PART 05 실습용 데이터"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>credit_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"credit_final.csv"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">#glimpse(credit_data) ## credit.rating의 경우 factor 변수이므로 변환</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>credit_data<span class="sc">$</span>credit.rating <span class="ot">&lt;-</span> <span class="fu">as_factor</span>(credit_data<span class="sc">$</span>credit.rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 1000 Columns: 21
 
@@ -780,15 +780,15 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
 </div>
 </div>
 <div class="cell" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summary(credit_data)</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 데이터 분할 각각의 데이터를 7:3으로 나눔</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> credit_data <span class="sc">%&gt;%</span> <span class="fu">sample_frac</span>(<span class="fl">0.7</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> credit_data <span class="sc">%&gt;%</span> <span class="fu">setdiff</span>(train)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># summary(credit_data)</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="do">## 데이터 분할 각각의 데이터를 7:3으로 나눔</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>train <span class="ot">&lt;-</span> credit_data <span class="sc">%&gt;%</span> <span class="fu">sample_frac</span>(<span class="fl">0.7</span>)</span>
+<span id="cb9-4"><a href="#cb9-4"></a>test <span class="ot">&lt;-</span> credit_data <span class="sc">%&gt;%</span> <span class="fu">setdiff</span>(train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>train.data <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>credit.kmeans <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(train.data,<span class="at">centers=</span><span class="dv">2</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(credit.kmeans)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>train.data <span class="ot">&lt;-</span> train <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="cb10-2"><a href="#cb10-2"></a>credit.kmeans <span class="ot">&lt;-</span> <span class="fu">kmeans</span>(train.data,<span class="at">centers=</span><span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">names</span>(credit.kmeans)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -799,9 +799,9 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
 </div>
 </div>
 <div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(credit.kmeans<span class="sc">$</span>cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(cluster,train<span class="sc">$</span>credit.rating,<span class="at">positive =</span> <span class="st">"1"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>cluster <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(<span class="fu">ifelse</span>(credit.kmeans<span class="sc">$</span>cluster<span class="sc">==</span><span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>))</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">library</span>(caret)</span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">confusionMatrix</span>(cluster,train<span class="sc">$</span>credit.rating,<span class="at">positive =</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Confusion Matrix and Statistics
 
@@ -837,7 +837,7 @@ Prediction   0   1
 <li><p>또한 전체변동에서 군집 간 변동이 차지하는 비율을 보았을 때 약 70%로 좋은 모델이라고 판단할 수 없다.</p></li>
 </ul>
 <div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>credit.kmeans<span class="sc">$</span>betweenss<span class="sc">/</span>credit.kmeans<span class="sc">$</span>totss</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>credit.kmeans<span class="sc">$</span>betweenss<span class="sc">/</span>credit.kmeans<span class="sc">$</span>totss</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 0.690074654329468
 </div>
@@ -846,10 +846,10 @@ Prediction   0   1
 <li>NbClust함수를 이용하면 최적의 군집수를 찾을 수 있다.</li>
 </ul>
 <div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NbClust)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">library</span>(NbClust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>nc <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(train.data, <span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc =</span> <span class="dv">15</span>, <span class="at">method=</span><span class="st">"kmeans"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>nc <span class="ot">&lt;-</span> <span class="fu">NbClust</span>(train.data, <span class="at">min.nc=</span><span class="dv">2</span>, <span class="at">max.nc =</span> <span class="dv">15</span>, <span class="at">method=</span><span class="st">"kmeans"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>*** : The Hubert index is a graphical method of determining the number of clusters.
                 In the plot of Hubert index, we seek a significant knee that corresponds to a 
@@ -891,7 +891,7 @@ Prediction   0   1
 <li>Hubert index와 D index 값의 근거하여 최적의 군집의 수를 4로 채택 : 군집분석 타당성 지표 다시 공부</li>
 </ul>
 <div class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(nc)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">names</span>(nc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -902,7 +902,7 @@ Prediction   0   1
 </div>
 </div>
 <div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>nc<span class="sc">$</span>Best.partition</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>nc<span class="sc">$</span>Best.partition</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -925,18 +925,18 @@ Prediction   0   1
 <li><p><code>summary</code>함수의 <code>parameter = T</code> 하여 혼합분포의 모수추정치와 함께 각 군집별 해당 자료에 대한 요약결과를 확인할 수 있다.</p></li>
 </ul>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mclust)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">library</span>(mclust)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">Mclust</span>(iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Species),<span class="at">G=</span><span class="dv">3</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(mc,parameters=T)</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">Mclust</span>(iris <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>Species),<span class="at">G=</span><span class="dv">3</span>)</span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="co">#summary(mc,parameters=T)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(factoextra)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">library</span>(factoextra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>, <span class="at">repr.plot.height=</span><span class="dv">4</span>,<span class="at">repr.plot.width=</span><span class="dv">7</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_mclust</span>(mc,<span class="st">"classification"</span>,<span class="at">geom=</span><span class="st">"point"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>, <span class="at">repr.plot.height=</span><span class="dv">4</span>,<span class="at">repr.plot.width=</span><span class="dv">7</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">fviz_mclust</span>(mc,<span class="st">"classification"</span>,<span class="at">geom=</span><span class="st">"point"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
 </div>
@@ -975,11 +975,11 @@ Prediction   0   1
 <li>as함수를 이용하여 데이터프레임을 <code>transactions</code> 함수로 변형 후에 진행하여야 하나 예제 데이터는 이미 변형이 된 데이터이다.</li>
 </ul>
 <div class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(arules)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">library</span>(arules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(Groceries)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(Groceries[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]) <span class="do">##연관규칙 확인</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">data</span>(Groceries)</span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="fu">inspect</span>(Groceries[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>]) <span class="do">##연관규칙 확인</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    items                
 [1] {citrus fruit,       
@@ -993,9 +993,9 @@ Prediction   0   1
 </div>
 </div>
 <div class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(Groceries,</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>                 <span class="at">parameter =</span> <span class="fu">list</span>(<span class="at">support=</span><span class="fl">0.01</span>,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">confidence =</span> <span class="fl">0.3</span>))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(Groceries,</span>
+<span id="cb27-2"><a href="#cb27-2"></a>                 <span class="at">parameter =</span> <span class="fu">list</span>(<span class="at">support=</span><span class="fl">0.01</span>,</span>
+<span id="cb27-3"><a href="#cb27-3"></a>                                  <span class="at">confidence =</span> <span class="fl">0.3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Apriori
 
@@ -1024,7 +1024,7 @@ creating S4 object  ... done [0.00s].</code></pre>
 <li>총 125개의 연관규칙이 생성되었다.</li>
 </ul>
 <div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(<span class="fu">sort</span>(rules,<span class="at">by=</span><span class="fu">c</span>(<span class="st">"confidence"</span>),<span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">inspect</span>(<span class="fu">sort</span>(rules,<span class="at">by=</span><span class="fu">c</span>(<span class="st">"confidence"</span>),<span class="at">decreasing =</span> T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    lhs                                 rhs                support   
 [1] {citrus fruit,root vegetables}   =&gt; {other vegetables} 0.01037112
@@ -1044,36 +1044,36 @@ creating S4 object  ... done [0.00s].</code></pre>
 <li>좌항에서 우항, 우항에서 좌항의 규칙이 겹치는 경우가 있으므로 중복규칙 제거함수 구현</li>
 </ul>
 <div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>prune.dup.rules <span class="ot">&lt;-</span> <span class="cf">function</span>(rules) {</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>                    rule.subset.matrix <span class="ot">&lt;-</span> <span class="fu">is.subset</span>(rules,rules,<span class="at">sparse=</span>F)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                    rule.subset.matrix[<span class="fu">lower.tri</span>(rule.subset.matrix, <span class="at">diag =</span>T)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                    dup.rules <span class="ot">&lt;-</span> <span class="fu">colSums</span>(rule.subset.matrix,<span class="at">na.rm =</span>T) <span class="sc">&gt;=</span><span class="dv">1</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                    pruned.rules <span class="ot">&lt;-</span> rules[<span class="sc">!</span>dup.rules]</span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">return</span> (pruned.rules)</span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>                    }</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a>prune.dup.rules <span class="ot">&lt;-</span> <span class="cf">function</span>(rules) {</span>
+<span id="cb31-2"><a href="#cb31-2"></a>                    rule.subset.matrix <span class="ot">&lt;-</span> <span class="fu">is.subset</span>(rules,rules,<span class="at">sparse=</span>F)</span>
+<span id="cb31-3"><a href="#cb31-3"></a>                    rule.subset.matrix[<span class="fu">lower.tri</span>(rule.subset.matrix, <span class="at">diag =</span>T)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a>                    dup.rules <span class="ot">&lt;-</span> <span class="fu">colSums</span>(rule.subset.matrix,<span class="at">na.rm =</span>T) <span class="sc">&gt;=</span><span class="dv">1</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a>                    pruned.rules <span class="ot">&lt;-</span> rules[<span class="sc">!</span>dup.rules]</span>
+<span id="cb31-6"><a href="#cb31-6"></a>                    <span class="fu">return</span> (pruned.rules)</span>
+<span id="cb31-7"><a href="#cb31-7"></a>                    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>만약 우변의 아이템 구매를 이끌 아이템을 찾고 싶다면?</li>
 </ul>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>metric.params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">supp=</span><span class="fl">0.001</span>,<span class="at">conf=</span><span class="fl">0.5</span>,<span class="at">minlen=</span><span class="dv">2</span>) <span class="do">## minlen은 좌항과 우항을 합친 최소 물품수</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(Groceries,</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">parameter =</span> metric.params,</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">appearance =</span> <span class="fu">list</span>(<span class="at">default =</span> <span class="st">"lhs"</span>,<span class="at">rhs=</span><span class="st">"soda"</span>),</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">control =</span> <span class="fu">list</span>(<span class="at">verbose=</span>F))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>metric.params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">supp=</span><span class="fl">0.001</span>,<span class="at">conf=</span><span class="fl">0.5</span>,<span class="at">minlen=</span><span class="dv">2</span>) <span class="do">## minlen은 좌항과 우항을 합친 최소 물품수</span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(Groceries,</span>
+<span id="cb32-3"><a href="#cb32-3"></a>                 <span class="at">parameter =</span> metric.params,</span>
+<span id="cb32-4"><a href="#cb32-4"></a>                 <span class="at">appearance =</span> <span class="fu">list</span>(<span class="at">default =</span> <span class="st">"lhs"</span>,<span class="at">rhs=</span><span class="st">"soda"</span>),</span>
+<span id="cb32-5"><a href="#cb32-5"></a>                 <span class="at">control =</span> <span class="fu">list</span>(<span class="at">verbose=</span>F))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>apperance</code> : 우측의 <code>soda</code>를 사기위해 좌항의 아이템을 찾는 것으로 설정</li>
 <li><code>verbose</code> : <code>apriori</code> 함수 실행 결과를 나타낼지의 여부를 묻는 인자</li>
 </ul>
 <div class="cell" data-execution_count="108">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">prune.dup.rules</span>(rules)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">prune.dup.rules</span>(rules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="109">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">sort</span>(rules,<span class="at">decreasing=</span>T,<span class="at">by=</span><span class="st">"confidence"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">sort</span>(rules,<span class="at">decreasing=</span>T,<span class="at">by=</span><span class="st">"confidence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="110">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(rules[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="fu">inspect</span>(rules[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    lhs                                     rhs    support     confidence
 [1] {coffee,misc. beverages}             =&gt; {soda} 0.001016777 0.7692308 
@@ -1093,20 +1093,20 @@ creating S4 object  ... done [0.00s].</code></pre>
 <li>만약 좌변의 아이템 세트를 가지고 있을 때 물품을 찾고 싶다면?</li>
 </ul>
 <div class="cell" data-execution_count="113">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>metric.params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">supp=</span><span class="fl">0.001</span>,<span class="at">conf=</span><span class="fl">0.3</span>,<span class="at">minlen=</span><span class="dv">2</span>) <span class="do">## minlen은 좌항과 우항을 합친 최소 물품수</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(Groceries,</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">parameter =</span> metric.params,</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">appearance =</span> <span class="fu">list</span>(<span class="at">default =</span> <span class="st">"rhs"</span>,<span class="at">lhs=</span><span class="fu">c</span>(<span class="st">"yogurt"</span>,<span class="st">"sugar"</span>)),</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">control =</span> <span class="fu">list</span>(<span class="at">verbose=</span>F))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>metric.params <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">supp=</span><span class="fl">0.001</span>,<span class="at">conf=</span><span class="fl">0.3</span>,<span class="at">minlen=</span><span class="dv">2</span>) <span class="do">## minlen은 좌항과 우항을 합친 최소 물품수</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>rules <span class="ot">&lt;-</span> <span class="fu">apriori</span>(Groceries,</span>
+<span id="cb37-3"><a href="#cb37-3"></a>                 <span class="at">parameter =</span> metric.params,</span>
+<span id="cb37-4"><a href="#cb37-4"></a>                 <span class="at">appearance =</span> <span class="fu">list</span>(<span class="at">default =</span> <span class="st">"rhs"</span>,<span class="at">lhs=</span><span class="fu">c</span>(<span class="st">"yogurt"</span>,<span class="st">"sugar"</span>)),</span>
+<span id="cb37-5"><a href="#cb37-5"></a>                 <span class="at">control =</span> <span class="fu">list</span>(<span class="at">verbose=</span>F))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="114">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">prune.dup.rules</span>(rules)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">prune.dup.rules</span>(rules)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">sort</span>(rules,<span class="at">decreasing=</span>T, <span class="at">by=</span><span class="st">"confidence"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>rules <span class="ot">&lt;-</span> <span class="fu">sort</span>(rules,<span class="at">decreasing=</span>T, <span class="at">by=</span><span class="st">"confidence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect</span>(rules,<span class="at">decreasing=</span>T,<span class="at">by=</span><span class="st">"confidence"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">inspect</span>(rules,<span class="at">decreasing=</span>T,<span class="at">by=</span><span class="st">"confidence"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    lhs               rhs                  support     confidence coverage   
 [1] {sugar}        =&gt; {whole milk}         0.015048297 0.4444444  0.033858668
@@ -1129,15 +1129,15 @@ creating S4 object  ... done [0.00s].</code></pre>
 <section id="extra.-som-자기조직화지도" class="level2">
 <h2 class="anchored" data-anchor-id="extra.-som-자기조직화지도">Extra. SOM (자기조직화지도)</h2>
 <div class="cell" data-execution_count="107">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kohonen) <span class="do">## somgmgid를 위한함수</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">library</span>(kohonen) <span class="do">## somgmgid를 위한함수</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="122">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>, <span class="dv">100</span>) <span class="co">#무작위로 100개 추출 (학습데이터)</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>train_Set <span class="ot">&lt;-</span>  <span class="fu">list</span>( <span class="at">x =</span> <span class="fu">as.matrix</span>(iris[train,<span class="sc">-</span><span class="dv">5</span>]), <span class="at">Species =</span> <span class="fu">as.factor</span>(iris[train,<span class="dv">5</span>])) <span class="co">#학습데이터 list형</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>test_Set <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">as.matrix</span>(iris[<span class="sc">-</span>train,<span class="sc">-</span><span class="dv">5</span>]), <span class="at">Species =</span> <span class="fu">as.factor</span>(iris[<span class="sc">-</span>train,<span class="dv">5</span>])) <span class="co">#테스트 데이터 list형</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>gr <span class="ot">&lt;-</span> <span class="fu">somgrid</span>(<span class="at">xdim =</span> <span class="dv">3</span>, <span class="at">ydim =</span> <span class="dv">5</span>, <span class="at">topo =</span> <span class="st">"hexagonal"</span>) <span class="co">#grid 갯수 및 모양 설정</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="fu">supersom</span>(train_Set, gr, <span class="at">rlen =</span> <span class="dv">200</span>, <span class="at">alpha =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>)) <span class="co">#som 학습하기</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a></span>
+<span id="cb43-2"><a href="#cb43-2"></a>train <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">150</span>, <span class="dv">100</span>) <span class="co">#무작위로 100개 추출 (학습데이터)</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a>train_Set <span class="ot">&lt;-</span>  <span class="fu">list</span>( <span class="at">x =</span> <span class="fu">as.matrix</span>(iris[train,<span class="sc">-</span><span class="dv">5</span>]), <span class="at">Species =</span> <span class="fu">as.factor</span>(iris[train,<span class="dv">5</span>])) <span class="co">#학습데이터 list형</span></span>
+<span id="cb43-4"><a href="#cb43-4"></a>test_Set <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="fu">as.matrix</span>(iris[<span class="sc">-</span>train,<span class="sc">-</span><span class="dv">5</span>]), <span class="at">Species =</span> <span class="fu">as.factor</span>(iris[<span class="sc">-</span>train,<span class="dv">5</span>])) <span class="co">#테스트 데이터 list형</span></span>
+<span id="cb43-5"><a href="#cb43-5"></a>gr <span class="ot">&lt;-</span> <span class="fu">somgrid</span>(<span class="at">xdim =</span> <span class="dv">3</span>, <span class="at">ydim =</span> <span class="dv">5</span>, <span class="at">topo =</span> <span class="st">"hexagonal"</span>) <span class="co">#grid 갯수 및 모양 설정</span></span>
+<span id="cb43-6"><a href="#cb43-6"></a>ss <span class="ot">&lt;-</span> <span class="fu">supersom</span>(train_Set, gr, <span class="at">rlen =</span> <span class="dv">200</span>, <span class="at">alpha =</span> <span class="fu">c</span>(<span class="fl">0.05</span>, <span class="fl">0.01</span>)) <span class="co">#som 학습하기</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>grid : 경쟁층의 가충치 테이블을 <code>5 x 4</code>로 설정 topology 위상방법은 <code>rectangular, hexagonal</code> 두가지 중 하나를 설정한다.</p></li>
@@ -1145,7 +1145,7 @@ creating S4 object  ... done [0.00s].</code></pre>
 <li><p>alpha : 학습율, 변화의 양을 나타내는 두 개의 숫자의 벡터. 기본값은 rlen 업데이트에 대해 0.05에서 0.01로 선형적으로 감소하는 것이다.</p></li>
 </ul>
 <div class="cell" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ss)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">summary</span>(ss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>SOM of size 3x5 with a hexagonal topology and a bubble neighbourhood function.
 The number of data layers is 2.
@@ -1159,7 +1159,7 @@ Mean distance to the closest unit in the map: 0.008.</code></pre>
 <li><p>학습을 거듭하면서 뉴런과 학습 데이터의 거리가 짧아짐을 아래와 같이 확인할 수 있었다.</p></li>
 </ul>
 <div class="cell" data-execution_count="148">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ss,<span class="at">type=</span><span class="st">"change"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">plot</span>(ss,<span class="at">type=</span><span class="st">"change"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-37-output-1.png" class="img-fluid"></p>
 </div>
@@ -1169,7 +1169,7 @@ Mean distance to the closest unit in the map: 0.008.</code></pre>
 <li><p>결과적으로 보았을 때 매핑이 더ㅣ지않은 뉴런이 존재하는 것으로 보아 생성한 <code>som</code> 모델의 신경망 크기가 크다는 것을 의미한다.</p></li>
 </ul>
 <div class="cell" data-execution_count="149">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ss, <span class="at">type=</span><span class="st">"count"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a><span class="fu">plot</span>(ss, <span class="at">type=</span><span class="st">"count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-38-output-1.png" class="img-fluid"></p>
 </div>
@@ -1178,7 +1178,7 @@ Mean distance to the closest unit in the map: 0.008.</code></pre>
 <li>아래와 같이 통합거리매트릭스를 그려 각 뉴런의 이웃간 거리를 표현할 수 있었다. 값이 높을 수록 해당 뉴런은 이웃뉴련과 비유사하다고 할 수 있다.</li>
 </ul>
 <div class="cell" data-execution_count="150">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ss, <span class="at">type=</span><span class="st">"dist.neighbours"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="fu">plot</span>(ss, <span class="at">type=</span><span class="st">"dist.neighbours"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-39-output-1.png" class="img-fluid"></p>
 </div>
@@ -1187,7 +1187,7 @@ Mean distance to the closest unit in the map: 0.008.</code></pre>
 <li>또한 아래그림처럼 각 뉴런에서 <code>Species</code>의 속성들 가중치 기여율을 알 수 있다.</li>
 </ul>
 <div class="cell" data-execution_count="151">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ss, <span class="at">type=</span><span class="st">"codes"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">plot</span>(ss, <span class="at">type=</span><span class="st">"codes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="Unsupervised Learning(1204)_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
 </div>
@@ -1199,10 +1199,10 @@ Mean distance to the closest unit in the map: 0.008.</code></pre>
 <li>학습된 모델을 통해 학습에 사용된 데이터 분류와 모델분류를 확인하기 위해 혼동행렬을 그려보면 아래와 같다.</li>
 </ul>
 <div class="cell" data-execution_count="160">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>som.prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(ss, <span class="at">newdata =</span> test_Set[<span class="dv">1</span>],<span class="at">type=</span><span class="st">"class"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>som.prediction <span class="ot">&lt;-</span> <span class="fu">predict</span>(ss, <span class="at">newdata =</span> test_Set[<span class="dv">1</span>],<span class="at">type=</span><span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="163">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>som.prediction<span class="sc">$</span>predictions<span class="sc">$</span>Species</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>som.prediction<span class="sc">$</span>predictions<span class="sc">$</span>Species</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .list-inline {list-style: none; margin:0; padding: 0}
@@ -1225,10 +1225,10 @@ Mean distance to the closest unit in the map: 0.008.</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="158">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="164">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confusionMatrix</span>(som.prediction<span class="sc">$</span>predictions<span class="sc">$</span>Species,test_Set<span class="sc">$</span>Species)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">confusionMatrix</span>(som.prediction<span class="sc">$</span>predictions<span class="sc">$</span>Species,test_Set<span class="sc">$</span>Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Confusion Matrix and Statistics
 
@@ -1295,6 +1295,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,

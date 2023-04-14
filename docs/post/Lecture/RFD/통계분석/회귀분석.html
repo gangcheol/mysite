@@ -634,14 +634,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2 class="anchored" data-anchor-id="r실습---단순선형회귀분석">R실습 - 단순선형회귀분석</h2>
 <p><code>Cars93</code> 데이터의 <code>엔진크기(EngineSize)</code>를 독립변수, <code>가격(Price)</code>를 종속변수로 선정하여 단순 선형회귀분석을 실시한 후, 추정된 회귀모형에 대해 해석해보자.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmtest) <span class="do">## 더비왓슨 테스트를 위함</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>select <span class="ot">&lt;-</span> dplyr<span class="sc">::</span>select</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(lmtest) <span class="do">## 더비왓슨 테스트를 위함</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>select <span class="ot">&lt;-</span> dplyr<span class="sc">::</span>select</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize,<span class="at">data=</span>Cars93)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span>EngineSize,<span class="at">data=</span>Cars93)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -664,8 +664,8 @@ F-statistic: 50.51 on 1 and 91 DF,  p-value: 2.588e-10</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>fit1<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span> EngineSize <span class="sc">+</span>Horsepower <span class="sc">+</span>RPM <span class="sc">+</span> Width <span class="sc">+</span> Length <span class="sc">+</span> Weight,Cars93)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit1<span class="fl">.1</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>fit1<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(Price<span class="sc">~</span> EngineSize <span class="sc">+</span>Horsepower <span class="sc">+</span>RPM <span class="sc">+</span> Width <span class="sc">+</span> Length <span class="sc">+</span> Weight,Cars93)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">summary</span>(fit1<span class="fl">.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -694,24 +694,24 @@ F-statistic: 33.83 on 6 and 86 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>,<span class="at">repr.plot.height=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>,<span class="at">repr.plot.height=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(Cars93<span class="sc">$</span>EngineSize,Cars93<span class="sc">$</span>Price,<span class="at">lwd=</span><span class="dv">2</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coefficients</span>(fit1)[<span class="dv">2</span>],<span class="at">b=</span><span class="fu">coefficients</span>(fit1)[<span class="dv">1</span>],<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">plot</span>(Cars93<span class="sc">$</span>EngineSize,Cars93<span class="sc">$</span>Price,<span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">abline</span>(<span class="at">a=</span><span class="fu">coefficients</span>(fit1)[<span class="dv">2</span>],<span class="at">b=</span><span class="fu">coefficients</span>(fit1)[<span class="dv">1</span>],<span class="at">col=</span><span class="st">"red"</span>,<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="회귀분석_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit1,<span class="dv">1</span>); <span class="fu">plot</span>(fit1,<span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="fu">plot</span>(fit1,<span class="dv">1</span>); <span class="fu">plot</span>(fit1,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="회귀분석_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(fit1))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(fit1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Shapiro-Wilk normality test
@@ -721,7 +721,7 @@ W = 0.85365, p-value = 3.886e-08</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(fit1,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">dwtest</span>(fit1,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Durbin-Watson test
@@ -737,10 +737,10 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 <p><code>4.</code> 잔차 plot 을 그려본 결과 오차항의 정규성과 독립성 가정이 위배된 것 같다. * 실제로 test 결과 위배되었다는 결론이 통계적으로 유의미했다.</p>
 <p><code>5.</code> 따라서 모형의 식별 단계로 돌아가 새로운 모형을 적합할 필요가 있어보인다.</p>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> Cars93 <span class="sc">%&gt;%</span> <span class="fu">select</span>(EngineSize)  <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>test <span class="ot">&lt;-</span> Cars93 <span class="sc">%&gt;%</span> <span class="fu">select</span>(EngineSize)  <span class="sc">%&gt;%</span> <span class="fu">sample_n</span>(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit1,test,<span class="at">interval=</span><span class="st">"none"</span>) <span class="do">##점추정</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">predict</span>(fit1,test,<span class="at">interval=</span><span class="st">"none"</span>) <span class="do">##점추정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
 .dl-inline {width: auto; margin:0; padding: 0}
@@ -751,8 +751,8 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit1,test,<span class="at">interval=</span><span class="st">"confidence"</span>) <span class="co"># 회귀계수에 대한 신뢰구간을 고려한 구간</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit1,test,<span class="at">interval=</span><span class="st">"prediction"</span>) <span class="co"># 회귀계수에 대한 신뢰구간과 오차항을 고려한 구간</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">predict</span>(fit1,test,<span class="at">interval=</span><span class="st">"confidence"</span>) <span class="co"># 회귀계수에 대한 신뢰구간을 고려한 구간</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">predict</span>(fit1,test,<span class="at">interval=</span><span class="st">"prediction"</span>) <span class="co"># 회귀계수에 대한 신뢰구간과 오차항을 고려한 구간</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
 <table class="dataframe table table-sm table-striped">
@@ -794,8 +794,8 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 <li><p><code>R</code>에 <code>lm</code>함수는 범주형 변수를 자동으로 더미변수로 변환해줌</p></li>
 </ul>
 <div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Petal.Length<span class="sc">~</span>.,<span class="at">data=</span>iris)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit2) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Petal.Length<span class="sc">~</span>.,<span class="at">data=</span>iris)</span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">summary</span>(fit2) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
 Call:
@@ -822,7 +822,7 @@ F-statistic:  1317 on 5 and 144 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(fit2,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">dwtest</span>(fit2,<span class="at">alternative=</span><span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Durbin-Watson test
@@ -833,7 +833,7 @@ alternative hypothesis: true autocorrelation is not 0</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(fit2))</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(fit2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Shapiro-Wilk normality test
@@ -861,8 +861,8 @@ W = 0.99389, p-value = 0.78</code></pre>
 <section id="r실습-다중회귀모형-변수선택법" class="level2">
 <h2 class="anchored" data-anchor-id="r실습-다중회귀모형-변수선택법">R실습 : 다중회귀모형 + 변수선택법</h2>
 <div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">step</span>(<span class="fu">lm</span>(Price<span class="sc">~</span> EngineSize <span class="sc">+</span>Horsepower <span class="sc">+</span>RPM <span class="sc">+</span> Width <span class="sc">+</span> Length <span class="sc">+</span> Weight,Cars93),<span class="at">direction =</span> <span class="st">"both"</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit3)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">step</span>(<span class="fu">lm</span>(Price<span class="sc">~</span> EngineSize <span class="sc">+</span>Horsepower <span class="sc">+</span>RPM <span class="sc">+</span> Width <span class="sc">+</span> Length <span class="sc">+</span> Weight,Cars93),<span class="at">direction =</span> <span class="st">"both"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">summary</span>(fit3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Start:  AIC=322.11
 Price ~ EngineSize + Horsepower + RPM + Width + Length + Weight
@@ -934,16 +934,16 @@ F-statistic: 50.48 on 4 and 88 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p>일반적으로 <code>Cp</code>값이 작고, <code>p+상수</code>에 가까운 모형을 선택한다.</p></li>
 </ul>
 <div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(olsrr)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">library</span>(olsrr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_mallows_cp</span>(fit1, fit1<span class="fl">.1</span>)<span class="do">## fit1.1은 fullmodel이라고 생각</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">ols_mallows_cp</span>(fit1, fit1<span class="fl">.1</span>)<span class="do">## fit1.1은 fullmodel이라고 생각</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 96.8503933522773
 </div>
 </div>
 <div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ols_mallows_cp</span>(fit3,fit1<span class="fl">.1</span>) <span class="do">## fit1.1은 fullmodel이라고 생각</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">ols_mallows_cp</span>(fit3,fit1<span class="fl">.1</span>) <span class="do">## fit1.1은 fullmodel이라고 생각</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 4.71880013093038
 </div>
@@ -985,6 +985,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,

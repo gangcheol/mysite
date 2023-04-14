@@ -603,15 +603,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section id="imports" class="level3">
 <h3 class="anchored" data-anchor-id="imports">imports</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> tensorflow.experimental.numpy <span class="im">as</span> tnp </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf </span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> tensorflow.experimental.numpy <span class="im">as</span> tnp </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>tnp.experimental_enable_numpy_behavior()</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>tnp.experimental_enable_numpy_behavior()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="우도함수와-최대우도추정량" class="level3">
@@ -622,8 +622,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>(예제)</strong></p>
 <p><span class="math inline">\(X_i \overset{iid}{\sim} Ber(p)\)</span>에서 얻은 샘플이 아래와 같다고 하자.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:328,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652673423032,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="1ca83735-4a43-4ad0-a0c8-3bda3f67eaf7">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>] </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>] </span>
+<span id="cb4-2"><a href="#cb4-2"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>[0, 1, 0, 1]</code></pre>
 </div>
@@ -633,7 +633,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> suppose: <span class="math inline">\(p=0.1\)</span> 이라고 하자.</p>
 <p>그렇다면 <span class="math inline">\((x_1,x_2,x_3,x_4)=(0,1,0,1)\)</span>와 같은 샘플이 얻어질 확률이 아래와 같다.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:312,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652673643953,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="600db7e4-ea58-40a6-d2b4-af4e4425874e">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.9</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="fl">0.9</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="co">## 우도함수 계산값</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="fl">0.9</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="op">*</span> <span class="fl">0.9</span> <span class="op">*</span> <span class="fl">0.1</span> <span class="co">## 우도함수 계산값</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>0.008100000000000001</code></pre>
 </div>
@@ -641,7 +641,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><code>-</code> suppose: <span class="math inline">\(p=0.2\)</span> 이라고 하자.</p>
 <p>그렇다면 <span class="math inline">\((x_1,x_2,x_3,x_4)=(0,1,0,1)\)</span>와 같은 샘플이 얻어질 확률이 아래와 같다.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652673645225,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="7dedc862-192c-4253-f484-216369ef909e">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.8</span> <span class="op">*</span> <span class="fl">0.2</span> <span class="op">*</span> <span class="fl">0.8</span> <span class="op">*</span> <span class="fl">0.2</span> <span class="co">## 우도함수 계산값</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="fl">0.8</span> <span class="op">*</span> <span class="fl">0.2</span> <span class="op">*</span> <span class="fl">0.8</span> <span class="op">*</span> <span class="fl">0.2</span> <span class="co">## 우도함수 계산값</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>0.025600000000000008</code></pre>
 </div>
@@ -656,25 +656,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>“<span class="math inline">\(p=0.2\)</span>인 확률” 이라는 개념이 성립하려면 아래코드에서 <code>sum([(1-p)*p*(1-p)*p for p in _plist])</code>이 1보다는 작아야 한다. (그런데 1보다 크다)</p>
 <p>즉, 아래와 같이 <code>p=0.499</code>일 때 샘플 (0,1,0,1)이 얻어질 확률</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:305,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652673988955,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d8e1ed41-25f7-41b9-98f3-be42c7825943">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.499</span>)<span class="op">*</span><span class="fl">0.499</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.499</span>)<span class="op">*</span><span class="fl">0.499</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.499</span>)<span class="op">*</span><span class="fl">0.499</span><span class="op">*</span>(<span class="dv">1</span><span class="op">-</span><span class="fl">0.499</span>)<span class="op">*</span><span class="fl">0.499</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>0.06249950000099999</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>_plist <span class="op">=</span> np.linspace(<span class="fl">0.499</span>,<span class="fl">0.501</span>,<span class="dv">1000</span>) </span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>_prob<span class="op">=</span>[(<span class="dv">1</span><span class="op">-</span>p)<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)<span class="op">*</span>p <span class="cf">for</span> p <span class="kw">in</span> _plist]</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>_plist <span class="op">=</span> np.linspace(<span class="fl">0.499</span>,<span class="fl">0.501</span>,<span class="dv">1000</span>) </span>
+<span id="cb12-2"><a href="#cb12-2"></a>_prob<span class="op">=</span>[(<span class="dv">1</span><span class="op">-</span>p)<span class="op">*</span>p<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>p)<span class="op">*</span>p <span class="cf">for</span> p <span class="kw">in</span> _plist]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:303,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652674106766,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d317f565-461d-4fa7-cacb-f21741ac65ed">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>_prob[:<span class="dv">1</span>] <span class="co"># p 가 0.499일확률</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>_prob[<span class="dv">2</span>] <span class="co"># p가 0.499 + epsilon</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>_prob[:<span class="dv">1</span>] <span class="co"># p 가 0.499일확률</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a>_prob[<span class="dv">2</span>] <span class="co"># p가 0.499 + epsilon</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>0.06249950399697206</code></pre>
 </div>
 </div>
 <p>아래와 같이 p의 합이 1보다 크기 때문에 <span class="math inline">\(p=0.1\,\, or \,\, p=0.2\)</span>일 확률이다 라고 정의할수 없다.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652674115163,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="7a82497b-3cb1-49c6-a5a7-492293dc3839">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">sum</span>(_prob)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="bu">sum</span>(_prob)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>62.49983299986714</code></pre>
 </div>
@@ -703,26 +703,26 @@ array([ 4.12539849,  5.46696729,  5.27243374, ...,  2.89712332,
 <p><strong>중간고사 1-(3)의 다른 풀이</strong></p>
 <p>step1: 생성</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span> tf.constant(np.arange(<span class="dv">1</span>,<span class="dv">10001</span>)<span class="op">/</span><span class="dv">10000</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span> tnp.random.randn(<span class="dv">10000</span>) <span class="op">+</span> (<span class="fl">0.5</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>x) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>x<span class="op">=</span> tf.constant(np.arange(<span class="dv">1</span>,<span class="dv">10001</span>)<span class="op">/</span><span class="dv">10000</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>y<span class="op">=</span> tnp.random.randn(<span class="dv">10000</span>) <span class="op">+</span> (<span class="fl">0.5</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>x) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>step2: minimize MSEloss (원래는 maximize log-likelihood)</p>
 <ul>
 <li>maximize likelihood였던 문제를 minimize MSEloss로 바꾸어도 되는근거? 주어진 함수(=가능도함수)를 최대화하는 <span class="math inline">\(\beta_0,\beta_1\)</span>은 MSE를 최소화하는 <span class="math inline">\(\beta_0,\beta_1\)</span>과 동일하므로</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>beta0<span class="op">=</span> tf.Variable(<span class="fl">1.0</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>beta1<span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape: </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">#minus_log_likelihood = tf.reduce_sum((y-beta0-beta1*x)**2)</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span>  tf.reduce_sum((y<span class="op">-</span>beta0<span class="op">-</span>beta1<span class="op">*</span>x)<span class="op">**</span><span class="dv">2</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    slope1, slope2 <span class="op">=</span> tape.gradient(loss,[beta0,beta1]) </span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    beta0.assign_sub(slope1<span class="op">*</span> <span class="fl">0.1</span><span class="op">/</span><span class="dv">10000</span>) <span class="co"># N=10000 </span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    beta1.assign_sub(slope2<span class="op">*</span> <span class="fl">0.1</span><span class="op">/</span><span class="dv">10000</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>beta0<span class="op">=</span> tf.Variable(<span class="fl">1.0</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>beta1<span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2000</span>):</span>
+<span id="cb20-4"><a href="#cb20-4"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape: </span>
+<span id="cb20-5"><a href="#cb20-5"></a>        <span class="co">#minus_log_likelihood = tf.reduce_sum((y-beta0-beta1*x)**2)</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a>        loss <span class="op">=</span>  tf.reduce_sum((y<span class="op">-</span>beta0<span class="op">-</span>beta1<span class="op">*</span>x)<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>    slope1, slope2 <span class="op">=</span> tape.gradient(loss,[beta0,beta1]) </span>
+<span id="cb20-8"><a href="#cb20-8"></a>    beta0.assign_sub(slope1<span class="op">*</span> <span class="fl">0.1</span><span class="op">/</span><span class="dv">10000</span>) <span class="co"># N=10000 </span></span>
+<span id="cb20-9"><a href="#cb20-9"></a>    beta1.assign_sub(slope2<span class="op">*</span> <span class="fl">0.1</span><span class="op">/</span><span class="dv">10000</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:337,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652675439248,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="97831a5c-f43e-48eb-acd3-29bc1952817c">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>beta0,beta1</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>beta0,beta1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <pre><code>(&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=0.4626273&gt;,
  &lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=2.0632904&gt;)</code></pre>
@@ -733,30 +733,30 @@ array([ 4.12539849,  5.46696729,  5.27243374, ...,  2.89712332,
 <p>아래의 모형을 생각하자. - <span class="math inline">\(Y_i \overset{iid}{\sim} Ber(\pi_i)\)</span> - <span class="math inline">\(\pi_i = \frac{\exp(w_0+w_1x_i)}{1+\exp(w_0+w_1x_i)}=\frac{\exp(-1+5x_i)}{1+\exp(-1+5x_i)}\)</span></p>
 <p>아래는 위의 모형에서 얻은 샘플이다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> tnp.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2000</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>pi <span class="op">=</span> tnp.exp(<span class="op">-</span><span class="dv">1</span><span class="op">+</span><span class="dv">5</span><span class="op">*</span>x) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>tnp.exp(<span class="op">-</span><span class="dv">1</span><span class="op">+</span><span class="dv">5</span><span class="op">*</span>x))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.random.binomial(<span class="dv">1</span>,pi)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> tf.constant(y)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="op">=</span> tnp.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">2000</span>)</span>
+<span id="cb23-2"><a href="#cb23-2"></a>pi <span class="op">=</span> tnp.exp(<span class="op">-</span><span class="dv">1</span><span class="op">+</span><span class="dv">5</span><span class="op">*</span>x) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>tnp.exp(<span class="op">-</span><span class="dv">1</span><span class="op">+</span><span class="dv">5</span><span class="op">*</span>x))</span>
+<span id="cb23-3"><a href="#cb23-3"></a>y <span class="op">=</span> np.random.binomial(<span class="dv">1</span>,pi)</span>
+<span id="cb23-4"><a href="#cb23-4"></a>y <span class="op">=</span> tf.constant(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>함수 <span class="math inline">\(L(w_0,w_1)\)</span>을 최대화하는 <span class="math inline">\((w_0,w_1)\)</span>를 <code>tf.GradeintTape()</code>를 활용하여 추정하라. (경사하강법 혹은 경사상승법을 사용하고 <span class="math inline">\((w_0,w_1)\)</span>의 초기값은 모두 0.1로 설정할 것)</p>
 <p><span class="math display">\[L(w_0,w_1)=\prod_{i=1}^{n}f(y_i), \quad f(x_i)={\pi_i}^{y_i}(1-\pi_i)^{1-y_i},\quad \pi_i=\text{sigmoid}(w_0+w_1x_i)\]</span></p>
 <p>(풀이1)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>w0hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>w1hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>w0hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span>
+<span id="cb24-2"><a href="#cb24-2"></a>w1hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): </span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape: </span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>        pihat <span class="op">=</span> tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x))</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>        pdf <span class="op">=</span> pihat<span class="op">**</span>y <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>pihat)<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>y) </span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>        logL <span class="op">=</span> tf.reduce_mean(tnp.log(pdf)) </span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    slope1,slope2 <span class="op">=</span> tape.gradient(logL,[w0hat,w1hat])</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    w0hat.assign_add(slope1<span class="op">*</span><span class="fl">0.1</span>) </span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    w1hat.assign_add(slope2<span class="op">*</span><span class="fl">0.1</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): </span>
+<span id="cb25-2"><a href="#cb25-2"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape: </span>
+<span id="cb25-3"><a href="#cb25-3"></a>        pihat <span class="op">=</span> tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x))</span>
+<span id="cb25-4"><a href="#cb25-4"></a>        pdf <span class="op">=</span> pihat<span class="op">**</span>y <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>pihat)<span class="op">**</span>(<span class="dv">1</span><span class="op">-</span>y) </span>
+<span id="cb25-5"><a href="#cb25-5"></a>        logL <span class="op">=</span> tf.reduce_mean(tnp.log(pdf)) </span>
+<span id="cb25-6"><a href="#cb25-6"></a>    slope1,slope2 <span class="op">=</span> tape.gradient(logL,[w0hat,w1hat])</span>
+<span id="cb25-7"><a href="#cb25-7"></a>    w0hat.assign_add(slope1<span class="op">*</span><span class="fl">0.1</span>) </span>
+<span id="cb25-8"><a href="#cb25-8"></a>    w1hat.assign_add(slope2<span class="op">*</span><span class="fl">0.1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:305,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652675482954,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ab4bea7d-ad0f-454b-d1c9-708a63e2dba1">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>w0hat,w1hat</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>w0hat,w1hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>(&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=-0.8487661&gt;,
  &lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=4.1949835&gt;)</code></pre>
@@ -769,20 +769,20 @@ array([ 4.12539849,  5.46696729,  5.27243374, ...,  2.89712332,
 <p>결국 로지스틱 모형에서 <span class="math inline">\((w_0,w_1)\)</span>의 MLE를 구하기 위해서는 BCEloss를 최소화하는 <span class="math inline">\((w_0,w_1)\)</span>을 구하면 된다!</p>
 <p>(풀이2)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>w0hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>w1hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>w0hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span>
+<span id="cb28-2"><a href="#cb28-2"></a>w1hat <span class="op">=</span> tf.Variable(<span class="fl">1.0</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): </span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape: </span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>        yhat <span class="op">=</span> tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x))</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>        loss <span class="op">=</span> tf.losses.binary_crossentropy(y,yhat)</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    slope1,slope2 <span class="op">=</span> tape.gradient(loss,[w0hat,w1hat])</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    w0hat.assign_sub(slope1<span class="op">*</span><span class="fl">0.1</span>) </span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>    w1hat.assign_sub(slope2<span class="op">*</span><span class="fl">0.1</span>) </span></code></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>): </span>
+<span id="cb29-2"><a href="#cb29-2"></a>    <span class="cf">with</span> tf.GradientTape() <span class="im">as</span> tape: </span>
+<span id="cb29-3"><a href="#cb29-3"></a>        yhat <span class="op">=</span> tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x) <span class="op">/</span> (<span class="dv">1</span><span class="op">+</span>tnp.exp(w0hat<span class="op">+</span>w1hat <span class="op">*</span>x))</span>
+<span id="cb29-4"><a href="#cb29-4"></a>        loss <span class="op">=</span> tf.losses.binary_crossentropy(y,yhat)</span>
+<span id="cb29-5"><a href="#cb29-5"></a>    slope1,slope2 <span class="op">=</span> tape.gradient(loss,[w0hat,w1hat])</span>
+<span id="cb29-6"><a href="#cb29-6"></a>    w0hat.assign_sub(slope1<span class="op">*</span><span class="fl">0.1</span>) </span>
+<span id="cb29-7"><a href="#cb29-7"></a>    w1hat.assign_sub(slope2<span class="op">*</span><span class="fl">0.1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:302,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1652675544811,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2ec5090f-e9b4-4fd6-ec0f-d1eedd42c9d9">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>w0hat,w1hat</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>w0hat,w1hat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <pre><code>(&lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=-0.8487661&gt;,
  &lt;tf.Variable 'Variable:0' shape=() dtype=float32, numpy=4.1949835&gt;)</code></pre>
@@ -829,6 +829,44 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
