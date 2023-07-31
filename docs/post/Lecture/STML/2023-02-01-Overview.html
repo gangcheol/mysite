@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.313">
+<meta name="generator" content="quarto-1.3.433">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,9 +19,10 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -48,43 +49,13 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 
@@ -122,7 +93,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
@@ -130,6 +102,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 <script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../styles.css">
@@ -147,30 +120,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <span class="navbar-title">Gangcheol</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="../../../about.html" aria-current="page">
+    <a class="nav-link active" href="../../../about.html" rel="" target="" aria-current="page">
  <span class="menu-text"><strong>About Me</strong></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/"><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
-  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-    <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title">02. Overview</h1>
-      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
-        <i class="bi bi-chevron-right"></i>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../post/Lecture/STML/2022-01-27-Intro.html">STML</a></li><li class="breadcrumb-item"><a href="../../../post/Lecture/STML/2023-02-01-Overview.html">02. Overview</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
       </button>
     </div>
   </nav>
@@ -179,7 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">02. Overview</h1>
+      <h1 class="title">02. Overview</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Python</div>
               </div>
@@ -209,91 +189,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
-      <div class="mt-2 flex-shrink-0 align-items-center">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
         </div>
-      </div>
+        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../about.html" class="sidebar-item-text sidebar-link"><strong>About Me</strong></a>
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>About Me</strong></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Post</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Post</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">Etc</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Etc</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">Tableau</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Tableau</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/tableau/2023-07-26-ch.1.html" class="sidebar-item-text sidebar-link">ch1. 태블로 이해하기</a>
+  <a href="../../../post/etc/tableau/2023-07-26-ch.1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ch1. 태블로 이해하기</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/tableau/2023-07-27-ch.2.html" class="sidebar-item-text sidebar-link">ch2. 태블로 기초 이해</a>
+  <a href="../../../post/etc/tableau/2023-07-27-ch.2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">ch2. 태블로 기초 이해</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">toeic speaking</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">toeic speaking</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">part 1</a>
+  <a href="../../../post/etc/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/toeic speaking/part2.html" class="sidebar-item-text sidebar-link">part 2</a>
+  <a href="../../../post/etc/toeic speaking/part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/toeic speaking/part3.html" class="sidebar-item-text sidebar-link">part 3</a>
+  <a href="../../../post/etc/toeic speaking/part3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 3</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/toeic speaking/part4.html" class="sidebar-item-text sidebar-link">part 4</a>
+  <a href="../../../post/etc/toeic speaking/part4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 4</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/toeic speaking/part5.html" class="sidebar-item-text sidebar-link">part 5</a>
+  <a href="../../../post/etc/toeic speaking/part5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">part 5</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/etc/toeic speaking/summary.html" class="sidebar-item-text sidebar-link">summary</a>
+  <a href="../../../post/etc/toeic speaking/summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">summary</span></a>
   </div>
 </li>
       </ul>
@@ -302,151 +295,176 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Lecture</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Lecture</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth2 show">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">IP</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">IP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/IP/2023-05-16-01wk.html" class="sidebar-item-text sidebar-link">01. 자료형</a>
+  <a href="../../../post/Lecture/IP/2023-05-16-01wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 자료형</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/IP/2023-05-23-02wk.html" class="sidebar-item-text sidebar-link">02. 리스트</a>
+  <a href="../../../post/Lecture/IP/2023-05-23-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 리스트</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">RFD</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">RFD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">데이터마이닝</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">데이터마이닝</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/데이터마이닝/Supervised Learning.html" class="sidebar-item-text sidebar-link">01. Supervised Learning</a>
+  <a href="../../../post/Lecture/RFD/데이터마이닝/텍스트마이닝.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Text Mining</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/데이터마이닝/Unsupervised Learning(1204).html" class="sidebar-item-text sidebar-link">02. unsupervised learning</a>
+  <a href="../../../post/Lecture/RFD/데이터마이닝/Supervised Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Supervised Learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/데이터마이닝/텍스트마이닝.html" class="sidebar-item-text sidebar-link">03. Text Mining</a>
+  <a href="../../../post/Lecture/RFD/데이터마이닝/Unsupervised Learning(1204).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. unsupervised learning</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">데이터전처리</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">데이터전처리</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/데이터전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">01. 결측치 처리</a>
+  <a href="../../../post/Lecture/RFD/데이터전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 결측치 처리</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/데이터전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">02. 표준화와 정규화</a>
+  <a href="../../../post/Lecture/RFD/데이터전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 날짜 데이터</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/데이터전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">03. 날짜 데이터</a>
+  <a href="../../../post/Lecture/RFD/데이터전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 표준화와 정규화</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">통계분석</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">통계분석</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">01. sampling</a>
+  <a href="../../../post/Lecture/RFD/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. regression analysis-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/T-검정.html" class="sidebar-item-text sidebar-link">02. T-test</a>
+  <a href="../../../post/Lecture/RFD/통계분석/교차분석.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. chi-square test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">03. ANOVA</a>
+  <a href="../../../post/Lecture/RFD/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Multidimensional scaling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/교차분석.html" class="sidebar-item-text sidebar-link">04. chi-square test</a>
+  <a href="../../../post/Lecture/RFD/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. sampling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">05. cor-test</a>
+  <a href="../../../post/Lecture/RFD/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ANOVA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">06. regression analysis</a>
+  <a href="../../../post/Lecture/RFD/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. cor-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">07. regression analysis-2</a>
+  <a href="../../../post/Lecture/RFD/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Time-seris analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">08. PCA</a>
+  <a href="../../../post/Lecture/RFD/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Factor Analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link">09. Factor Analysis</a>
+  <a href="../../../post/Lecture/RFD/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. PCA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">10. Multidimensional scaling</a>
+  <a href="../../../post/Lecture/RFD/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. regression analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/RFD/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">11. Time-seris analysis</a>
+  <a href="../../../post/Lecture/RFD/통계분석/T-검정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. T-test</span></a>
   </div>
 </li>
       </ul>
@@ -455,250 +473,297 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">STBD</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">STBD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-03-08-(1주차).html" class="sidebar-item-text sidebar-link">01. 단순선형회귀</a>
+  <a href="../../../post/Lecture/STBD/2020-04-12-(6주차) 과제.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. layer 과제</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-03-14-(2주차).html" class="sidebar-item-text sidebar-link">02. Tensorflow-1</a>
+  <a href="../../../post/Lecture/STBD/2022-03-08-(1주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 단순선형회귀</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-03-21-(3주차).html" class="sidebar-item-text sidebar-link">03. Tensorflow-2</a>
+  <a href="../../../post/Lecture/STBD/2022-03-14-(2주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Tensorflow-1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-03-28-(4주차).html" class="sidebar-item-text sidebar-link">04. 경사하강법-1</a>
+  <a href="../../../post/Lecture/STBD/2022-03-21-(3주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Tensorflow-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-03-30-(5주차).html" class="sidebar-item-text sidebar-link">05. 경사하강법-2</a>
+  <a href="../../../post/Lecture/STBD/2022-03-28-(4주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 경사하강법-1</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-04-11-(6주차).html" class="sidebar-item-text sidebar-link">06. layer</a>
+  <a href="../../../post/Lecture/STBD/2022-03-30-(5주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 경사하강법-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2020-04-12-(6주차) 과제.html" class="sidebar-item-text sidebar-link">06. layer 과제</a>
+  <a href="../../../post/Lecture/STBD/2022-04-11-(6주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. layer</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-04-18-(7주차).html" class="sidebar-item-text sidebar-link">07. Adam</a>
+  <a href="../../../post/Lecture/STBD/2022-04-18-(7주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. Adam</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-04-27-중간고사 해설.html" class="sidebar-item-text sidebar-link">08. Mid term</a>
+  <a href="../../../post/Lecture/STBD/2022-04-27-중간고사 해설.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. Mid term</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-05-01-(9주차).html" class="sidebar-item-text sidebar-link">09. MLE</a>
+  <a href="../../../post/Lecture/STBD/2022-05-01-(9주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. MLE</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-05-02-lecture.html" class="sidebar-item-text sidebar-link">10. 확률적 경사하강법</a>
+  <a href="../../../post/Lecture/STBD/2022-05-02-lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 확률적 경사하강법</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-05-08-lecture.html" class="sidebar-item-text sidebar-link">11. softmax</a>
+  <a href="../../../post/Lecture/STBD/2022-05-08-lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. softmax</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-05-11-(11주차).html" class="sidebar-item-text sidebar-link">12. Max pooling, CNN</a>
+  <a href="../../../post/Lecture/STBD/2022-05-11-(11주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Max pooling, CNN</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-05-23-(12주차).html" class="sidebar-item-text sidebar-link">13. CNN-2</a>
+  <a href="../../../post/Lecture/STBD/2022-05-23-(12주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. CNN-2</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-05-30-(13주차).html" class="sidebar-item-text sidebar-link">13. model fitting</a>
+  <a href="../../../post/Lecture/STBD/2022-05-30-(13주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. model fitting</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STBD/2022-06-13-기말고사 문제풀이.html" class="sidebar-item-text sidebar-link">14. Final term</a>
+  <a href="../../../post/Lecture/STBD/2022-06-13-기말고사 문제풀이.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Final term</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">STDV</a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">STDV</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-02-24-boxplot, histogram.html" class="sidebar-item-text sidebar-link">01. intro</a>
+  <a href="../../../post/Lecture/STDV/2022-04-22-5wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. qqplot, 찰스미나도의 도표</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-04-08-02wk.html" class="sidebar-item-text sidebar-link">02. Histogram equalization</a>
+  <a href="../../../post/Lecture/STDV/2023-02-24-boxplot, histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-04-15-4wk.html" class="sidebar-item-text sidebar-link">03. 그래프를 그리는 여러 방법</a>
+  <a href="../../../post/Lecture/STDV/2023-04-08-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Histogram equalization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2022-04-22-5wk.html" class="sidebar-item-text sidebar-link">04. qqplot, 찰스미나도의 도표</a>
+  <a href="../../../post/Lecture/STDV/2023-04-15-4wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 그래프를 그리는 여러 방법</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-04-29-6wk.html" class="sidebar-item-text sidebar-link">05. Plotnine &amp; Pandas</a>
+  <a href="../../../post/Lecture/STDV/2023-04-29-6wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Plotnine &amp; Pandas</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-06-7wk.html" class="sidebar-item-text sidebar-link">06. Partial Correlation &amp; Pandas Handling</a>
+  <a href="../../../post/Lecture/STDV/2023-05-06-7wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Partial Correlation &amp; Pandas Handling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-13-8wk.html" class="sidebar-item-text sidebar-link">07. tidydata</a>
+  <a href="../../../post/Lecture/STDV/2023-05-13-8wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. tidydata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-14-midsol.html" class="sidebar-item-text sidebar-link">08. mid term</a>
+  <a href="../../../post/Lecture/STDV/2023-05-14-midsol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. mid term</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-15-11wk.html" class="sidebar-item-text sidebar-link">09. folium</a>
+  <a href="../../../post/Lecture/STDV/2023-05-15-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. folium</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-16-12wk.html" class="sidebar-item-text sidebar-link">10. Choropleth Map</a>
+  <a href="../../../post/Lecture/STDV/2023-05-16-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Choropleth Map</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-17-13wk.html" class="sidebar-item-text sidebar-link">11. Choropleth Map &amp; Plotly</a>
+  <a href="../../../post/Lecture/STDV/2023-05-17-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Choropleth Map &amp; Plotly</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STDV/2023-05-17-final term.html" class="sidebar-item-text sidebar-link">12. final term</a>
+  <a href="../../../post/Lecture/STDV/2023-05-17-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. final term</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">STML</a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true">
+ <span class="menu-text">STML</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2022-01-27-Intro.html" class="sidebar-item-text sidebar-link">01. Intro</a>
+  <a href="../../../post/Lecture/STML/2022-01-27-Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Intro</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-02-01-Overview.html" class="sidebar-item-text sidebar-link active">02. Overview</a>
+  <a href="../../../post/Lecture/STML/2023-02-01-Overview.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">02. Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-02-04-DNN 딥러닝의 기초 (1).html" class="sidebar-item-text sidebar-link">03. 딥러닝의 기초 (1)</a>
+  <a href="../../../post/Lecture/STML/2023-02-04-DNN 딥러닝의 기초 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 딥러닝의 기초 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-02-11 DNN 딥러닝의 기초 (2).html" class="sidebar-item-text sidebar-link">04. 딥러닝의 기초 (2)</a>
+  <a href="../../../post/Lecture/STML/2023-02-11 DNN 딥러닝의 기초 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 딥러닝의 기초 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-02-18 DNN 딥러닝의 기초 (3).html" class="sidebar-item-text sidebar-link">05. 딥러닝의 기초 (3)</a>
+  <a href="../../../post/Lecture/STML/2023-02-18 DNN 딥러닝의 기초 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 딥러닝의 기초 (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-02-25 DNN 딥러닝의 기초 (4).html" class="sidebar-item-text sidebar-link">06. 딥러닝의 기초 (4)</a>
+  <a href="../../../post/Lecture/STML/2023-02-25 DNN 딥러닝의 기초 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. 딥러닝의 기초 (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-03-01-DNN 딥러닝의 기초(5).html" class="sidebar-item-text sidebar-link">07. 딥러닝의 기초 (5)</a>
+  <a href="../../../post/Lecture/STML/2023-03-01-DNN 딥러닝의 기초(5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. 딥러닝의 기초 (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-03-08-8wk2.html" class="sidebar-item-text sidebar-link">08. 이미지분석 (1)</a>
+  <a href="../../../post/Lecture/STML/2023-03-07-8wk1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. 이미지분석 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-03-07-8wk1.html" class="sidebar-item-text sidebar-link">09. 이미지분석 (2)</a>
+  <a href="../../../post/Lecture/STML/2023-03-08-8wk2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. 이미지분석 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-03-22-9wk.html" class="sidebar-item-text sidebar-link">10. 순환신경망 (1)</a>
+  <a href="../../../post/Lecture/STML/2023-03-22-9wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 순환신경망 (1)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-03-29-10wk.html" class="sidebar-item-text sidebar-link">11. 순환신경망 (2)</a>
+  <a href="../../../post/Lecture/STML/2023-03-29-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. 순환신경망 (2)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-04-05-11wk.html" class="sidebar-item-text sidebar-link">12. 순환신경망 (3)</a>
+  <a href="../../../post/Lecture/STML/2023-04-05-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. 순환신경망 (3)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-04-12-12wk.html" class="sidebar-item-text sidebar-link">13. 순환신경망 (4)</a>
+  <a href="../../../post/Lecture/STML/2023-04-12-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. 순환신경망 (4)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-04-19-13wk.html" class="sidebar-item-text sidebar-link">14. 순환신경망 (5)</a>
+  <a href="../../../post/Lecture/STML/2023-04-19-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. 순환신경망 (5)</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-04-26-Extra-1.html" class="sidebar-item-text sidebar-link">15. Extra-1: 추천시스템</a>
+  <a href="../../../post/Lecture/STML/2023-04-26-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15. Extra-1: 추천시스템</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../post/Lecture/STML/2023-05-03-Extra-2.html" class="sidebar-item-text sidebar-link">16. Extra-2: 생성모형 (GAN)</a>
+  <a href="../../../post/Lecture/STML/2023-05-03-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Extra-2: 생성모형 (GAN)</span></a>
   </div>
 </li>
       </ul>
@@ -710,6 +775,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </ul>
     </div>
 </nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -869,7 +935,7 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"d898420ab1fe49598b1e88a343d214b5","version_major":2,"version_minor":0}
+{"model_id":"d898420ab1fe49598b1e88a343d214b5","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
@@ -915,26 +981,25 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>error_rate</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.141714</td>
-      <td>0.015523</td>
-      <td>0.007442</td>
-      <td>00:16</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">error_rate</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.141714</td>
+<td>0.015523</td>
+<td>0.007442</td>
+<td>00:16</td>
+</tr>
+</tbody>
 </table>
 </div>
 <div class="cell-output cell-output-display">
@@ -956,26 +1021,25 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>error_rate</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.046919</td>
-      <td>0.023695</td>
-      <td>0.006766</td>
-      <td>00:10</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">error_rate</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.046919</td>
+<td>0.023695</td>
+<td>0.006766</td>
+<td>00:10</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1120,155 +1184,157 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 <span id="cb49-2"><a href="#cb49-2"></a>df_view.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="69">
 
-
   <div id="df-118c775b-1c28-445a-bed1-8760485634fb">
     <div class="colab-df-container">
       <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>커피1</th>
-      <th>커피2</th>
-      <th>커피3</th>
-      <th>커피4</th>
-      <th>커피5</th>
-      <th>커피6</th>
-      <th>커피7</th>
-      <th>커피8</th>
-      <th>커피9</th>
-      <th>커피10</th>
-      <th>홍차1</th>
-      <th>홍차2</th>
-      <th>홍차3</th>
-      <th>홍차4</th>
-      <th>홍차5</th>
-      <th>홍차6</th>
-      <th>홍차7</th>
-      <th>홍차8</th>
-      <th>홍차9</th>
-      <th>홍차10</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>4.149209</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.078139</td>
-      <td>4.033415</td>
-      <td>4.071871</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.142659</td>
-      <td>1.109452</td>
-      <td>NaN</td>
-      <td>0.603118</td>
-      <td>1.084308</td>
-      <td>NaN</td>
-      <td>0.906524</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.903826</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.031811</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.822704</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.071410</td>
-      <td>3.996206</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.839565</td>
-      <td>1.011315</td>
-      <td>NaN</td>
-      <td>1.120552</td>
-      <td>0.911340</td>
-      <td>NaN</td>
-      <td>0.860954</td>
-      <td>0.871482</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.082178</td>
-      <td>4.196436</td>
-      <td>NaN</td>
-      <td>3.956876</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.450931</td>
-      <td>3.972090</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0.983838</td>
-      <td>NaN</td>
-      <td>0.918576</td>
-      <td>1.206796</td>
-      <td>0.913116</td>
-      <td>NaN</td>
-      <td>0.956194</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>NaN</td>
-      <td>4.000621</td>
-      <td>3.89557</td>
-      <td>NaN</td>
-      <td>3.838781</td>
-      <td>3.967183</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>4.105741</td>
-      <td>1.147554</td>
-      <td>NaN</td>
-      <td>1.346860</td>
-      <td>NaN</td>
-      <td>0.614099</td>
-      <td>1.297301</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>1.147545</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>3.888208</td>
-      <td>NaN</td>
-      <td>3.97033</td>
-      <td>3.979490</td>
-      <td>NaN</td>
-      <td>4.010982</td>
-      <td>NaN</td>
-      <td>0.920995</td>
-      <td>1.081111</td>
-      <td>0.999345</td>
-      <td>NaN</td>
-      <td>1.195183</td>
-      <td>NaN</td>
-      <td>0.818332</td>
-      <td>1.236331</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">커피1</th>
+<th data-quarto-table-cell-role="th">커피2</th>
+<th data-quarto-table-cell-role="th">커피3</th>
+<th data-quarto-table-cell-role="th">커피4</th>
+<th data-quarto-table-cell-role="th">커피5</th>
+<th data-quarto-table-cell-role="th">커피6</th>
+<th data-quarto-table-cell-role="th">커피7</th>
+<th data-quarto-table-cell-role="th">커피8</th>
+<th data-quarto-table-cell-role="th">커피9</th>
+<th data-quarto-table-cell-role="th">커피10</th>
+<th data-quarto-table-cell-role="th">홍차1</th>
+<th data-quarto-table-cell-role="th">홍차2</th>
+<th data-quarto-table-cell-role="th">홍차3</th>
+<th data-quarto-table-cell-role="th">홍차4</th>
+<th data-quarto-table-cell-role="th">홍차5</th>
+<th data-quarto-table-cell-role="th">홍차6</th>
+<th data-quarto-table-cell-role="th">홍차7</th>
+<th data-quarto-table-cell-role="th">홍차8</th>
+<th data-quarto-table-cell-role="th">홍차9</th>
+<th data-quarto-table-cell-role="th">홍차10</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>4.149209</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>4.078139</td>
+<td>4.033415</td>
+<td>4.071871</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.142659</td>
+<td>1.109452</td>
+<td>NaN</td>
+<td>0.603118</td>
+<td>1.084308</td>
+<td>NaN</td>
+<td>0.906524</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.903826</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>4.031811</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.822704</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>4.071410</td>
+<td>3.996206</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.839565</td>
+<td>1.011315</td>
+<td>NaN</td>
+<td>1.120552</td>
+<td>0.911340</td>
+<td>NaN</td>
+<td>0.860954</td>
+<td>0.871482</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4.082178</td>
+<td>4.196436</td>
+<td>NaN</td>
+<td>3.956876</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>4.450931</td>
+<td>3.972090</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.983838</td>
+<td>NaN</td>
+<td>0.918576</td>
+<td>1.206796</td>
+<td>0.913116</td>
+<td>NaN</td>
+<td>0.956194</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>NaN</td>
+<td>4.000621</td>
+<td>3.89557</td>
+<td>NaN</td>
+<td>3.838781</td>
+<td>3.967183</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>4.105741</td>
+<td>1.147554</td>
+<td>NaN</td>
+<td>1.346860</td>
+<td>NaN</td>
+<td>0.614099</td>
+<td>1.297301</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.147545</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.888208</td>
+<td>NaN</td>
+<td>3.97033</td>
+<td>3.979490</td>
+<td>NaN</td>
+<td>4.010982</td>
+<td>NaN</td>
+<td>0.920995</td>
+<td>1.081111</td>
+<td>0.999345</td>
+<td>NaN</td>
+<td>1.195183</td>
+<td>NaN</td>
+<td>0.818332</td>
+<td>1.236331</td>
+<td>NaN</td>
+</tr>
+</tbody>
 </table>
+
+
 </div>
       <button class="colab-df-convert" onclick="convertToInteractive('df-118c775b-1c28-445a-bed1-8760485634fb')" title="Convert this dataframe to an interactive table." style="display:none;">
         
@@ -1358,59 +1424,61 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 <span id="cb52-2"><a href="#cb52-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="75">
 
-
   <div id="df-2e14032f-453e-4880-8ca1-5e970d2c1a6d">
     <div class="colab-df-container">
       <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>user</th>
-      <th>item</th>
-      <th>rating</th>
-      <th>item_name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>15</td>
-      <td>1.084308</td>
-      <td>홍차5</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>1</td>
-      <td>4.149209</td>
-      <td>커피1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>11</td>
-      <td>1.142659</td>
-      <td>홍차1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>5</td>
-      <td>4.033415</td>
-      <td>커피5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>4</td>
-      <td>4.078139</td>
-      <td>커피4</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">user</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">rating</th>
+<th data-quarto-table-cell-role="th">item_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>15</td>
+<td>1.084308</td>
+<td>홍차5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1</td>
+<td>1</td>
+<td>4.149209</td>
+<td>커피1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>1</td>
+<td>11</td>
+<td>1.142659</td>
+<td>홍차1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>1</td>
+<td>5</td>
+<td>4.033415</td>
+<td>커피5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1</td>
+<td>4</td>
+<td>4.078139</td>
+<td>커피4</td>
+</tr>
+</tbody>
 </table>
+
+
 </div>
       <button class="colab-df-convert" onclick="convertToInteractive('df-2e14032f-453e-4880-8ca1-5e970d2c1a6d')" title="Convert this dataframe to an interactive table." style="display:none;">
         
@@ -1493,78 +1561,77 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1676256806308,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="25ab3f69-7971-463c-f7a3-6f9be4dc3f4f" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>dls.show_batch() <span class="co">## 데이터들의 뭉치를 보여준다고 생각</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>user</th>
-      <th>item</th>
-      <th>rating</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>38</td>
-      <td>10</td>
-      <td>4.050465</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>42</td>
-      <td>20</td>
-      <td>1.292435</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>99</td>
-      <td>5</td>
-      <td>0.927884</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>6</td>
-      <td>18</td>
-      <td>1.124469</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>81</td>
-      <td>18</td>
-      <td>4.178587</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>97</td>
-      <td>13</td>
-      <td>4.071385</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>97</td>
-      <td>14</td>
-      <td>3.935935</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>86</td>
-      <td>10</td>
-      <td>0.878860</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>10</td>
-      <td>10</td>
-      <td>3.947756</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>81</td>
-      <td>3</td>
-      <td>1.140266</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">user</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">rating</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>38</td>
+<td>10</td>
+<td>4.050465</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>42</td>
+<td>20</td>
+<td>1.292435</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>99</td>
+<td>5</td>
+<td>0.927884</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>6</td>
+<td>18</td>
+<td>1.124469</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>81</td>
+<td>18</td>
+<td>4.178587</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>97</td>
+<td>13</td>
+<td>4.071385</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>97</td>
+<td>14</td>
+<td>3.935935</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>86</td>
+<td>10</td>
+<td>0.878860</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>10</td>
+<td>10</td>
+<td>3.947756</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>81</td>
+<td>3</td>
+<td>1.140266</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1655,48 +1722,47 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>2.303518</td>
-      <td>2.387814</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>2.296435</td>
-      <td>2.382961</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>2.290963</td>
-      <td>2.361562</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>2.273144</td>
-      <td>2.310360</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>2.237350</td>
-      <td>2.212338</td>
-      <td>00:00</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>2.303518</td>
+<td>2.387814</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>2.296435</td>
+<td>2.382961</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>2.290963</td>
+<td>2.361562</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>2.273144</td>
+<td>2.310360</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>2.237350</td>
+<td>2.212338</td>
+<td>00:00</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1783,78 +1849,77 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>2.024679</td>
-      <td>2.062938</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1.915701</td>
-      <td>1.863412</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>1.786727</td>
-      <td>1.625497</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>1.634479</td>
-      <td>1.367636</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>1.463962</td>
-      <td>1.107142</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>1.286827</td>
-      <td>0.865784</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>1.110320</td>
-      <td>0.655676</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>0.942005</td>
-      <td>0.483732</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>0.786892</td>
-      <td>0.351725</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>0.649683</td>
-      <td>0.254381</td>
-      <td>00:00</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>2.024679</td>
+<td>2.062938</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1.915701</td>
+<td>1.863412</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>1.786727</td>
+<td>1.625497</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>1.634479</td>
+<td>1.367636</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>1.463962</td>
+<td>1.107142</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>1.286827</td>
+<td>0.865784</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>1.110320</td>
+<td>0.655676</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0.942005</td>
+<td>0.483732</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>0.786892</td>
+<td>0.351725</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>0.649683</td>
+<td>0.254381</td>
+<td>00:00</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -1908,138 +1973,137 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>0.140063</td>
-      <td>0.186549</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>0.115944</td>
-      <td>0.139581</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.097311</td>
-      <td>0.109824</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.082672</td>
-      <td>0.090060</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.071270</td>
-      <td>0.077270</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>0.062843</td>
-      <td>0.069694</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>0.056643</td>
-      <td>0.064374</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>0.051726</td>
-      <td>0.060618</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>0.047778</td>
-      <td>0.058101</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>0.044731</td>
-      <td>0.056307</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>0.042384</td>
-      <td>0.055452</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>0.040487</td>
-      <td>0.054989</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>0.038892</td>
-      <td>0.054412</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>0.037757</td>
-      <td>0.054033</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>0.036721</td>
-      <td>0.053958</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>0.035906</td>
-      <td>0.053978</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>0.035152</td>
-      <td>0.053730</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>0.034605</td>
-      <td>0.053580</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>0.034082</td>
-      <td>0.053545</td>
-      <td>00:00</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>0.033564</td>
-      <td>0.053754</td>
-      <td>00:00</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0.140063</td>
+<td>0.186549</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.115944</td>
+<td>0.139581</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.097311</td>
+<td>0.109824</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.082672</td>
+<td>0.090060</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.071270</td>
+<td>0.077270</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0.062843</td>
+<td>0.069694</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0.056643</td>
+<td>0.064374</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0.051726</td>
+<td>0.060618</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>0.047778</td>
+<td>0.058101</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>0.044731</td>
+<td>0.056307</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>0.042384</td>
+<td>0.055452</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>0.040487</td>
+<td>0.054989</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>0.038892</td>
+<td>0.054412</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>0.037757</td>
+<td>0.054033</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td>0.036721</td>
+<td>0.053958</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>0.035906</td>
+<td>0.053978</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>0.035152</td>
+<td>0.053730</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td>0.034605</td>
+<td>0.053580</td>
+<td>00:00</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>0.034082</td>
+<td>0.053545</td>
+<td>00:00</td>
+</tr>
+<tr class="even">
+<td>19</td>
+<td>0.033564</td>
+<td>0.053754</td>
+<td>00:00</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -2111,41 +2175,43 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 <span id="cb92-2"><a href="#cb92-2"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="126">
 
-
   <div id="df-e6a437a2-d7ac-47b3-b732-7b003b6456b5">
     <div class="colab-df-container">
       <div>
 
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>text</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
-    </tr>
-  </tbody>
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">text</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>h e l l o . h e l l o ! h e l l o ? h e l l o !! h e l l o ??</td>
+</tr>
+</tbody>
 </table>
+
+
 </div>
       <button class="colab-df-convert" onclick="convertToInteractive('df-e6a437a2-d7ac-47b3-b732-7b003b6456b5')" title="Convert this dataframe to an interactive table." style="display:none;">
         
@@ -2250,62 +2316,61 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:633,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1676259059690,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="764f73f2-24b2-451c-bfa2-d81990fbf9fc" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a>dls.show_batch()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th>text</th>
-      <th>text_</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o</td>
-      <td>h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o .</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l</td>
-      <td>xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l</td>
-      <td>? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e</td>
-      <td>? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h</td>
-      <td>o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos</td>
-      <td>l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ?</td>
-      <td>l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ?</td>
-      <td>e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ?</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o</td>
-      <td>h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ?</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">text</th>
+<th data-quarto-table-cell-role="th">text_</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o</td>
+<td>h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o .</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l</td>
+<td>xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l</td>
+<td>? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e</td>
+<td>? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h</td>
+<td>o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos</td>
+<td>l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ?</td>
+<td>l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ?</td>
+<td>e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ?</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o</td>
+<td>h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ? ? xxbos h e l l o . h e l l o ! h e l l o ? h e l l o ! ! h e l l o ?</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -2369,48 +2434,47 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>1.965570</td>
-      <td>0.897048</td>
-      <td>00:22</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>1.031884</td>
-      <td>0.373120</td>
-      <td>00:21</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>0.640392</td>
-      <td>0.251359</td>
-      <td>00:21</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>0.492017</td>
-      <td>0.212869</td>
-      <td>00:21</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>0.389751</td>
-      <td>0.186374</td>
-      <td>00:21</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>1.965570</td>
+<td>0.897048</td>
+<td>00:22</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1.031884</td>
+<td>0.373120</td>
+<td>00:21</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0.640392</td>
+<td>0.251359</td>
+<td>00:21</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0.492017</td>
+<td>0.212869</td>
+<td>00:21</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0.389751</td>
+<td>0.186374</td>
+<td>00:21</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -2566,500 +2630,499 @@ Downloading: "https://download.pytorch.org/models/resnet34-b627a593.pth" to /roo
 </style>
 </div>
 <div class="cell-output cell-output-display">
-
-<table class="dataframe table table-sm table-striped">
-  <thead>
-    <tr>
-      <th>epoch</th>
-      <th>train_loss</th>
-      <th>valid_loss</th>
-      <th>gen_loss</th>
-      <th>crit_loss</th>
-      <th>time</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>0</td>
-      <td>-0.501905</td>
-      <td>0.272452</td>
-      <td>0.272452</td>
-      <td>-0.732317</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>1</td>
-      <td>-0.560972</td>
-      <td>0.261339</td>
-      <td>0.261339</td>
-      <td>-0.738020</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>2</td>
-      <td>-0.426593</td>
-      <td>0.238372</td>
-      <td>0.238372</td>
-      <td>-0.638903</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td>-0.549378</td>
-      <td>0.277994</td>
-      <td>0.277994</td>
-      <td>-0.735531</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>4</td>
-      <td>-0.530167</td>
-      <td>0.310435</td>
-      <td>0.310435</td>
-      <td>-0.731865</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>-0.546979</td>
-      <td>0.303683</td>
-      <td>0.303683</td>
-      <td>-0.734299</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>-0.439625</td>
-      <td>0.263317</td>
-      <td>0.263317</td>
-      <td>-0.623146</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>7</td>
-      <td>-0.501293</td>
-      <td>0.257658</td>
-      <td>0.257658</td>
-      <td>-0.528969</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>8</td>
-      <td>-0.301703</td>
-      <td>0.209601</td>
-      <td>0.209601</td>
-      <td>-0.312943</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>9</td>
-      <td>-0.424916</td>
-      <td>0.251544</td>
-      <td>0.251544</td>
-      <td>-0.586661</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>10</td>
-      <td>-0.461934</td>
-      <td>0.139101</td>
-      <td>0.139101</td>
-      <td>-0.633617</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>11</td>
-      <td>-0.410035</td>
-      <td>0.199125</td>
-      <td>0.199125</td>
-      <td>-0.536341</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>12</td>
-      <td>-0.493449</td>
-      <td>0.256345</td>
-      <td>0.256345</td>
-      <td>-0.658428</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>13</td>
-      <td>-0.312562</td>
-      <td>0.312208</td>
-      <td>0.312208</td>
-      <td>-0.493477</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>14</td>
-      <td>-0.382400</td>
-      <td>0.347141</td>
-      <td>0.347141</td>
-      <td>-0.643486</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>15</td>
-      <td>-0.331892</td>
-      <td>0.385739</td>
-      <td>0.385739</td>
-      <td>-0.476501</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>16</td>
-      <td>-0.170304</td>
-      <td>0.169395</td>
-      <td>0.169395</td>
-      <td>-0.212899</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>17</td>
-      <td>-0.310682</td>
-      <td>0.243360</td>
-      <td>0.243360</td>
-      <td>-0.433320</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>18</td>
-      <td>-0.220975</td>
-      <td>0.251129</td>
-      <td>0.251129</td>
-      <td>-0.409254</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>19</td>
-      <td>-0.349662</td>
-      <td>0.202146</td>
-      <td>0.202146</td>
-      <td>-0.615371</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>20</td>
-      <td>-0.233808</td>
-      <td>0.050910</td>
-      <td>0.050910</td>
-      <td>-0.315928</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>21</td>
-      <td>-0.307061</td>
-      <td>0.267279</td>
-      <td>0.267279</td>
-      <td>-0.485837</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>22</td>
-      <td>-0.311691</td>
-      <td>0.241707</td>
-      <td>0.241707</td>
-      <td>-0.362771</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>23</td>
-      <td>-0.268940</td>
-      <td>-0.232714</td>
-      <td>-0.232714</td>
-      <td>-0.096314</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>24</td>
-      <td>-0.216904</td>
-      <td>0.140780</td>
-      <td>0.140780</td>
-      <td>-0.359679</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>25</td>
-      <td>-0.168833</td>
-      <td>0.148477</td>
-      <td>0.148477</td>
-      <td>-0.130964</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>26</td>
-      <td>-0.177647</td>
-      <td>0.264623</td>
-      <td>0.264623</td>
-      <td>-0.359113</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>27</td>
-      <td>-0.082595</td>
-      <td>0.003874</td>
-      <td>0.003874</td>
-      <td>-0.091398</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>28</td>
-      <td>-0.063921</td>
-      <td>0.037485</td>
-      <td>0.037485</td>
-      <td>-0.131270</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>29</td>
-      <td>-0.109081</td>
-      <td>0.241590</td>
-      <td>0.241590</td>
-      <td>-0.193368</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>30</td>
-      <td>-0.070794</td>
-      <td>-0.298603</td>
-      <td>-0.298603</td>
-      <td>-0.082873</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>31</td>
-      <td>-0.058322</td>
-      <td>0.064523</td>
-      <td>0.064523</td>
-      <td>-0.107654</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>32</td>
-      <td>-0.054619</td>
-      <td>-0.114057</td>
-      <td>-0.114057</td>
-      <td>-0.096975</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>33</td>
-      <td>-0.063974</td>
-      <td>-0.228303</td>
-      <td>-0.228303</td>
-      <td>0.002836</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>34</td>
-      <td>-0.038850</td>
-      <td>0.239098</td>
-      <td>0.239098</td>
-      <td>-0.018863</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>35</td>
-      <td>-0.049034</td>
-      <td>0.035363</td>
-      <td>0.035363</td>
-      <td>-0.068695</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>36</td>
-      <td>-0.096864</td>
-      <td>-0.048236</td>
-      <td>-0.048236</td>
-      <td>-0.320945</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>37</td>
-      <td>-0.076138</td>
-      <td>-0.369186</td>
-      <td>-0.369186</td>
-      <td>-0.017232</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>38</td>
-      <td>-0.054198</td>
-      <td>0.369465</td>
-      <td>0.369465</td>
-      <td>0.003171</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>39</td>
-      <td>-0.039503</td>
-      <td>0.065342</td>
-      <td>0.065342</td>
-      <td>-0.055770</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>40</td>
-      <td>-0.039892</td>
-      <td>-0.491991</td>
-      <td>-0.491991</td>
-      <td>0.008136</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>41</td>
-      <td>-0.029983</td>
-      <td>0.247375</td>
-      <td>0.247375</td>
-      <td>0.003377</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>42</td>
-      <td>-0.083779</td>
-      <td>0.239754</td>
-      <td>0.239754</td>
-      <td>-0.122858</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>43</td>
-      <td>-0.051302</td>
-      <td>-0.126592</td>
-      <td>-0.126592</td>
-      <td>-0.027422</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>44</td>
-      <td>-0.035274</td>
-      <td>-0.013859</td>
-      <td>-0.013859</td>
-      <td>-0.084820</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>45</td>
-      <td>-0.046283</td>
-      <td>-0.002334</td>
-      <td>-0.002334</td>
-      <td>-0.093167</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>46</td>
-      <td>-0.045804</td>
-      <td>-0.077428</td>
-      <td>-0.077428</td>
-      <td>-0.180404</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>47</td>
-      <td>-0.018050</td>
-      <td>0.009938</td>
-      <td>0.009938</td>
-      <td>-0.031895</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>48</td>
-      <td>-0.073091</td>
-      <td>0.134628</td>
-      <td>0.134628</td>
-      <td>-0.073974</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>49</td>
-      <td>-0.059265</td>
-      <td>0.106770</td>
-      <td>0.106770</td>
-      <td>-0.112714</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>50</td>
-      <td>-0.068173</td>
-      <td>-0.260318</td>
-      <td>-0.260318</td>
-      <td>-0.042849</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>51</td>
-      <td>-0.057045</td>
-      <td>0.302212</td>
-      <td>0.302212</td>
-      <td>-0.068016</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>52</td>
-      <td>-0.104484</td>
-      <td>0.112291</td>
-      <td>0.112291</td>
-      <td>-0.152773</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>53</td>
-      <td>-0.089554</td>
-      <td>0.157628</td>
-      <td>0.157628</td>
-      <td>-0.191660</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>54</td>
-      <td>-0.111737</td>
-      <td>-0.104993</td>
-      <td>-0.104993</td>
-      <td>-0.192626</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>55</td>
-      <td>-0.094386</td>
-      <td>0.111732</td>
-      <td>0.111732</td>
-      <td>-0.142037</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>56</td>
-      <td>-0.071494</td>
-      <td>0.141211</td>
-      <td>0.141211</td>
-      <td>-0.037046</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>57</td>
-      <td>-0.053501</td>
-      <td>0.174928</td>
-      <td>0.174928</td>
-      <td>-0.102489</td>
-      <td>00:05</td>
-    </tr>
-    <tr>
-      <td>58</td>
-      <td>-0.068883</td>
-      <td>-0.012831</td>
-      <td>-0.012831</td>
-      <td>-0.137998</td>
-      <td>00:06</td>
-    </tr>
-    <tr>
-      <td>59</td>
-      <td>-0.082970</td>
-      <td>-0.072856</td>
-      <td>-0.072856</td>
-      <td>-0.257704</td>
-      <td>00:05</td>
-    </tr>
-  </tbody>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">epoch</th>
+<th data-quarto-table-cell-role="th">train_loss</th>
+<th data-quarto-table-cell-role="th">valid_loss</th>
+<th data-quarto-table-cell-role="th">gen_loss</th>
+<th data-quarto-table-cell-role="th">crit_loss</th>
+<th data-quarto-table-cell-role="th">time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>-0.501905</td>
+<td>0.272452</td>
+<td>0.272452</td>
+<td>-0.732317</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>-0.560972</td>
+<td>0.261339</td>
+<td>0.261339</td>
+<td>-0.738020</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>-0.426593</td>
+<td>0.238372</td>
+<td>0.238372</td>
+<td>-0.638903</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>-0.549378</td>
+<td>0.277994</td>
+<td>0.277994</td>
+<td>-0.735531</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>-0.530167</td>
+<td>0.310435</td>
+<td>0.310435</td>
+<td>-0.731865</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>-0.546979</td>
+<td>0.303683</td>
+<td>0.303683</td>
+<td>-0.734299</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>-0.439625</td>
+<td>0.263317</td>
+<td>0.263317</td>
+<td>-0.623146</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>-0.501293</td>
+<td>0.257658</td>
+<td>0.257658</td>
+<td>-0.528969</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>-0.301703</td>
+<td>0.209601</td>
+<td>0.209601</td>
+<td>-0.312943</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>-0.424916</td>
+<td>0.251544</td>
+<td>0.251544</td>
+<td>-0.586661</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>10</td>
+<td>-0.461934</td>
+<td>0.139101</td>
+<td>0.139101</td>
+<td>-0.633617</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>11</td>
+<td>-0.410035</td>
+<td>0.199125</td>
+<td>0.199125</td>
+<td>-0.536341</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td>-0.493449</td>
+<td>0.256345</td>
+<td>0.256345</td>
+<td>-0.658428</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>13</td>
+<td>-0.312562</td>
+<td>0.312208</td>
+<td>0.312208</td>
+<td>-0.493477</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td>-0.382400</td>
+<td>0.347141</td>
+<td>0.347141</td>
+<td>-0.643486</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>-0.331892</td>
+<td>0.385739</td>
+<td>0.385739</td>
+<td>-0.476501</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>-0.170304</td>
+<td>0.169395</td>
+<td>0.169395</td>
+<td>-0.212899</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>17</td>
+<td>-0.310682</td>
+<td>0.243360</td>
+<td>0.243360</td>
+<td>-0.433320</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>18</td>
+<td>-0.220975</td>
+<td>0.251129</td>
+<td>0.251129</td>
+<td>-0.409254</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>19</td>
+<td>-0.349662</td>
+<td>0.202146</td>
+<td>0.202146</td>
+<td>-0.615371</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>20</td>
+<td>-0.233808</td>
+<td>0.050910</td>
+<td>0.050910</td>
+<td>-0.315928</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>21</td>
+<td>-0.307061</td>
+<td>0.267279</td>
+<td>0.267279</td>
+<td>-0.485837</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td>-0.311691</td>
+<td>0.241707</td>
+<td>0.241707</td>
+<td>-0.362771</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>23</td>
+<td>-0.268940</td>
+<td>-0.232714</td>
+<td>-0.232714</td>
+<td>-0.096314</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>24</td>
+<td>-0.216904</td>
+<td>0.140780</td>
+<td>0.140780</td>
+<td>-0.359679</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>-0.168833</td>
+<td>0.148477</td>
+<td>0.148477</td>
+<td>-0.130964</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>26</td>
+<td>-0.177647</td>
+<td>0.264623</td>
+<td>0.264623</td>
+<td>-0.359113</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>27</td>
+<td>-0.082595</td>
+<td>0.003874</td>
+<td>0.003874</td>
+<td>-0.091398</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>28</td>
+<td>-0.063921</td>
+<td>0.037485</td>
+<td>0.037485</td>
+<td>-0.131270</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>29</td>
+<td>-0.109081</td>
+<td>0.241590</td>
+<td>0.241590</td>
+<td>-0.193368</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>-0.070794</td>
+<td>-0.298603</td>
+<td>-0.298603</td>
+<td>-0.082873</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>31</td>
+<td>-0.058322</td>
+<td>0.064523</td>
+<td>0.064523</td>
+<td>-0.107654</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>32</td>
+<td>-0.054619</td>
+<td>-0.114057</td>
+<td>-0.114057</td>
+<td>-0.096975</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>33</td>
+<td>-0.063974</td>
+<td>-0.228303</td>
+<td>-0.228303</td>
+<td>0.002836</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>34</td>
+<td>-0.038850</td>
+<td>0.239098</td>
+<td>0.239098</td>
+<td>-0.018863</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>35</td>
+<td>-0.049034</td>
+<td>0.035363</td>
+<td>0.035363</td>
+<td>-0.068695</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>36</td>
+<td>-0.096864</td>
+<td>-0.048236</td>
+<td>-0.048236</td>
+<td>-0.320945</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>37</td>
+<td>-0.076138</td>
+<td>-0.369186</td>
+<td>-0.369186</td>
+<td>-0.017232</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>38</td>
+<td>-0.054198</td>
+<td>0.369465</td>
+<td>0.369465</td>
+<td>0.003171</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>39</td>
+<td>-0.039503</td>
+<td>0.065342</td>
+<td>0.065342</td>
+<td>-0.055770</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>40</td>
+<td>-0.039892</td>
+<td>-0.491991</td>
+<td>-0.491991</td>
+<td>0.008136</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>41</td>
+<td>-0.029983</td>
+<td>0.247375</td>
+<td>0.247375</td>
+<td>0.003377</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>42</td>
+<td>-0.083779</td>
+<td>0.239754</td>
+<td>0.239754</td>
+<td>-0.122858</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>43</td>
+<td>-0.051302</td>
+<td>-0.126592</td>
+<td>-0.126592</td>
+<td>-0.027422</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>44</td>
+<td>-0.035274</td>
+<td>-0.013859</td>
+<td>-0.013859</td>
+<td>-0.084820</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>45</td>
+<td>-0.046283</td>
+<td>-0.002334</td>
+<td>-0.002334</td>
+<td>-0.093167</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>46</td>
+<td>-0.045804</td>
+<td>-0.077428</td>
+<td>-0.077428</td>
+<td>-0.180404</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>47</td>
+<td>-0.018050</td>
+<td>0.009938</td>
+<td>0.009938</td>
+<td>-0.031895</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>48</td>
+<td>-0.073091</td>
+<td>0.134628</td>
+<td>0.134628</td>
+<td>-0.073974</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>49</td>
+<td>-0.059265</td>
+<td>0.106770</td>
+<td>0.106770</td>
+<td>-0.112714</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>50</td>
+<td>-0.068173</td>
+<td>-0.260318</td>
+<td>-0.260318</td>
+<td>-0.042849</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>51</td>
+<td>-0.057045</td>
+<td>0.302212</td>
+<td>0.302212</td>
+<td>-0.068016</td>
+<td>00:06</td>
+</tr>
+<tr class="odd">
+<td>52</td>
+<td>-0.104484</td>
+<td>0.112291</td>
+<td>0.112291</td>
+<td>-0.152773</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>53</td>
+<td>-0.089554</td>
+<td>0.157628</td>
+<td>0.157628</td>
+<td>-0.191660</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>54</td>
+<td>-0.111737</td>
+<td>-0.104993</td>
+<td>-0.104993</td>
+<td>-0.192626</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>55</td>
+<td>-0.094386</td>
+<td>0.111732</td>
+<td>0.111732</td>
+<td>-0.142037</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>56</td>
+<td>-0.071494</td>
+<td>0.141211</td>
+<td>0.141211</td>
+<td>-0.037046</td>
+<td>00:05</td>
+</tr>
+<tr class="even">
+<td>57</td>
+<td>-0.053501</td>
+<td>0.174928</td>
+<td>0.174928</td>
+<td>-0.102489</td>
+<td>00:05</td>
+</tr>
+<tr class="odd">
+<td>58</td>
+<td>-0.068883</td>
+<td>-0.012831</td>
+<td>-0.012831</td>
+<td>-0.137998</td>
+<td>00:06</td>
+</tr>
+<tr class="even">
+<td>59</td>
+<td>-0.082970</td>
+<td>-0.072856</td>
+<td>-0.072856</td>
+<td>-0.257704</td>
+<td>00:05</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -3136,9 +3199,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -3203,6 +3280,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
