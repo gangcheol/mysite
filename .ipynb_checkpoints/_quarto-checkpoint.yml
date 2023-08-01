@@ -5,8 +5,14 @@ website:
   title: "Gangcheol"
   page-navigation: true
   navbar:
+    left:
+       - text : "Lecture"
+         href : https://gangcheol.github.io/mysite/
+       - text : "Tableau"
+         href : https://gangcheol.github.io/TI2023/
+       - text : "DX"
+         href : https://gangcheol.github.io/mysite2/
     right:
-      - about.qmd
       - icon: github
         href: https://github.com/gangcheol/
   sidebar:
