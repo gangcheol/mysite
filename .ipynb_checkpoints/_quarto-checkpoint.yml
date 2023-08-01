@@ -1,0 +1,28 @@
+project:
+  type: website
+  output-dir : docs  
+website:
+  title: "Gangcheol"
+  page-navigation: true
+  navbar:
+    right:
+      - about.qmd
+      - icon: github
+        href: https://github.com/gangcheol/
+  sidebar:
+    style: "docked"
+    search: True
+    contents: auto
+    
+format:
+  html:
+    css: styles.css
+    toc: true
+    code-fold : False
+    code-line-numbers : True
+    code-copy : True
+
+theme :
+  light : flatly
+  
+editor : visual
