@@ -727,5 +727,47 @@
   },
   "post/Lecture/RFD/데이터마이닝/2021-07-24-03 Text Mining.ipynb": {
     "2021-07-24-03 Text Mining.html": "a576e092"
+  },
+  "post/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.ipynb": {
+    "2021-12-05-01. 결측치.html": "7f8719ba"
+  },
+  "post/Lecture/RFD/데이터전처리/2021-12-06-02. 표준화와 정규화.ipynb": {
+    "2021-12-06-02. 표준화와 정규화.html": "1c56bd15"
+  },
+  "post/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.ipynb": {
+    "2021-12-07.03. 날짜 데이터.html": "1acbf152"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-01-01. sampling.ipynb": {
+    "2021-06-01-01. sampling.html": "899ebded"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-03.02. T-test.ipynb": {
+    "2021-06-03.02. T-test.html": "74897eba"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.ipynb": {
+    "2021-06-05-03. ANOVA.html": "b62ed888"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-07-04. chi-square test.ipynb": {
+    "2021-06-07-04. chi-square test.html": "979e1aeb"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.ipynb": {
+    "2021-06-09. 05. cor-test.html": "f00fb5e2"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-15-06. regression analysis.ipynb": {
+    "2021-06-15-06. regression analysis.html": "feecbd83"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.ipynb": {
+    "2021-06-16-07. regression analysis-2.html": "9f37f126"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-17-08. PCA.ipynb": {
+    "2021-06-17-08. PCA.html": "aa726d3f"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-21-09. Factor Analysis.ipynb": {
+    "2021-06-21-09. Factor Analysis.html": "5c513c50"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-24-10. Multidimensional scaling.ipynb": {
+    "2021-06-24-10. Multidimensional scaling.html": "5ce74594"
+  },
+  "post/Lecture/RFD/통계분석/2021-06-28-11. Time-seris analysis.ipynb": {
+    "2021-06-28-11. Time-seris analysis.html": "d665ba80"
   }
 }

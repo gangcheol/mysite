@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GANGCHEOL LEE">
-<meta name="dcterms.date" content="2021-06-03">
+<meta name="dcterms.date" content="2021-12-07">
 
-<title>Gangcheol - 02. T-test</title>
+<title>Gangcheol - 03. 날짜 데이터</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,9 +95,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 </head>
@@ -150,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/고급회귀분석.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/T-검정.html">02. T-test</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html">데이터전처리</a></li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.html">03. 날짜 데이터</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,7 +164,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">02. T-test</h1>
+      <h1 class="title">03. 날짜 데이터</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
               </div>
@@ -183,7 +184,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 3, 2021</p>
+        <p class="date">December 7, 2021</p>
       </div>
     </div>
     
@@ -294,106 +295,106 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
  <span class="menu-text">데이터전처리</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 결측치 처리</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03. 날짜 데이터</span></a>
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-06-02. 표준화와 정규화.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 표준화와 정규화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02. 표준화와 정규화</span></a>
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">03. 날짜 데이터</span></a>
   </div>
 </li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
  <span class="menu-text">통계분석</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth4 show">  
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07. regression analysis-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/교차분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04. chi-square test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10. Multidimensional scaling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-01-01. sampling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. sampling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-03.02. T-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. T-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. ANOVA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-07-04. chi-square test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. chi-square test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05. cor-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11. Time-seris analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09. Factor Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08. PCA</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-15-06. regression analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">06. regression analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/T-검정.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">02. T-test</span></a>
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. regression analysis-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-17-08. PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-21-09. Factor Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Factor Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-24-10. Multidimensional scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Multidimensional scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-28-11. Time-seris analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Time-seris analysis</span></a>
   </div>
 </li>
       </ul>
@@ -758,17 +759,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#일표본-t-검정-one-sample-t-test" id="toc-일표본-t-검정-one-sample-t-test" class="nav-link active" data-scroll-target="#일표본-t-검정-one-sample-t-test">1. 일표본 T-검정 (One sample T-test)</a>
+  <li><a href="#현재-날짜와-시간을-파악해보기" id="toc-현재-날짜와-시간을-파악해보기" class="nav-link active" data-scroll-target="#현재-날짜와-시간을-파악해보기">현재 날짜와 시간을 파악해보기</a></li>
+  <li><a href="#unclass" id="toc-unclass" class="nav-link" data-scroll-target="#unclass">unclass()</a></li>
+  <li><a href="#sys.time-함수를-이용하여-현재-시간을-구하고-이름-time-변수에-저장-후-time을-posixlt-형식으로-변환-뒤-시간정보-추출" id="toc-sys.time-함수를-이용하여-현재-시간을-구하고-이름-time-변수에-저장-후-time을-posixlt-형식으로-변환-뒤-시간정보-추출" class="nav-link" data-scroll-target="#sys.time-함수를-이용하여-현재-시간을-구하고-이름-time-변수에-저장-후-time을-posixlt-형식으로-변환-뒤-시간정보-추출">Sys.time 함수를 이용하여 현재 시간을 구하고 이름 time 변수에 저장 후, time을 POSIXlt 형식으로 변환 뒤 시간정보 추출</a></li>
+  <li><a href="#날짜-표시형식-변경" id="toc-날짜-표시형식-변경" class="nav-link" data-scroll-target="#날짜-표시형식-변경">날짜 표시형식 변경</a></li>
+  <li><a href="#날짜-데이터의-연산" id="toc-날짜-데이터의-연산" class="nav-link" data-scroll-target="#날짜-데이터의-연산">날짜 데이터의 연산</a>
   <ul class="collapse">
-  <li><a href="#r-실습" id="toc-r-실습" class="nav-link" data-scroll-target="#r-실습">1.1 R 실습</a></li>
-  </ul></li>
-  <li><a href="#대응표본-t-검정-paired-sample-t-test" id="toc-대응표본-t-검정-paired-sample-t-test" class="nav-link" data-scroll-target="#대응표본-t-검정-paired-sample-t-test">2. 대응표본 T-검정 (Paired Sample T-Test)</a>
-  <ul class="collapse">
-  <li><a href="#r-실습-1" id="toc-r-실습-1" class="nav-link" data-scroll-target="#r-실습-1">2-1. R 실습</a></li>
-  </ul></li>
-  <li><a href="#독립표본-t-검정-independent-sample-t-test" id="toc-독립표본-t-검정-independent-sample-t-test" class="nav-link" data-scroll-target="#독립표본-t-검정-independent-sample-t-test">3. 독립표본 T-검정 (Independent Sample T-Test)</a>
-  <ul class="collapse">
-  <li><a href="#r-실습-2" id="toc-r-실습-2" class="nav-link" data-scroll-target="#r-실습-2">3-1. R 실습</a></li>
+  <li><a href="#현재-날자로부터-100일-후의-날짜-구하기" id="toc-현재-날자로부터-100일-후의-날짜-구하기" class="nav-link" data-scroll-target="#현재-날자로부터-100일-후의-날짜-구하기">현재 날자로부터 100일 후의 날짜 구하기</a></li>
+  <li><a href="#로-표현된-데이터로부터-365일-후-의-날짜-구하기" id="toc-로-표현된-데이터로부터-365일-후-의-날짜-구하기" class="nav-link" data-scroll-target="#로-표현된-데이터로부터-365일-후-의-날짜-구하기">“2020-01-01”로 표현된 데이터로부터 365일 후 의 날짜 구하기</a></li>
+  <li><a href="#과-2025-01-01-사이의-일-수-구하기" id="toc-과-2025-01-01-사이의-일-수-구하기" class="nav-link" data-scroll-target="#과-2025-01-01-사이의-일-수-구하기">“1990-01-01”과 “2025-01-01” 사이의 일 수 구하기</a></li>
+  <li><a href="#구한-일수만-알고싶다면" id="toc-구한-일수만-알고싶다면" class="nav-link" data-scroll-target="#구한-일수만-알고싶다면">구한 일수만 알고싶다면?</a></li>
+  <li><a href="#시간-차이를-구할-경우" id="toc-시간-차이를-구할-경우" class="nav-link" data-scroll-target="#시간-차이를-구할-경우">시간 차이를 구할 경우?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -779,162 +780,221 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="일표본-t-검정-one-sample-t-test" class="level1">
-<h1>1. 일표본 T-검정 (One sample T-test)</h1>
-<ul>
-<li>개념 : 단일모집단에서 관심이 있는 연속형 벼수의 평균값을 특정기준값과 비교하고자 할 때 사용</li>
-</ul>
-<p><span class="math display">\[ H_0 : \mu_0 = \mu_1 \quad H_1 : not\,\, H_0\]</span></p>
-<ul>
-<li><p>모집단이 정규성을 따른다고 가정하고 표본의 크기가 30보다 클 경우, 중심극한정리에 따라 정규분포를 따른다고 가정함.</p></li>
-<li><p>정규성을 만족할 경우 <code>t-test</code>, 그렇지 않은 경우 <code>wilcox.test</code> 함수를 이용하여 T-검정을 수행</p></li>
-</ul>
-<section id="r-실습" class="level2">
-<h2 class="anchored" data-anchor-id="r-실습">1.1 R 실습</h2>
-<p><span class="math display">\[H_0 : \mu = 2.6 \quad H_1 :  not \, H_0\]</span></p>
+<section id="현재-날짜와-시간을-파악해보기" class="level1">
+<h1>현재 날짜와 시간을 파악해보기</h1>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a> <span class="fu">str</span>(cats) <span class="do">## </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   144 obs. of  3 variables:
- $ Sex: Factor w/ 2 levels "F","M": 1 1 1 1 1 1 1 1 1 1 ...
- $ Bwt: num  2 2 2 2.1 2.1 2.1 2.1 2.1 2.1 2.1 ...
- $ Hwt: num  7 7.4 9.5 7.2 7.3 7.6 8.1 8.2 8.3 8.5 ...</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>today <span class="ot">&lt;-</span> <span class="fu">Sys.Date</span>()</span>
+<span id="cb1-2"><a href="#cb1-2"></a>today</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<time datetime="2021-12-05">2021-12-05</time>
 </div>
 </div>
-<ul>
-<li>표본의 크기가 30보다 크므로 정규성을 만족한다고 가정</li>
-</ul>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">t.test</span>(cats<span class="sc">$</span>Bwt,<span class="at">mu=</span><span class="fl">2.6</span>,<span class="at">alternative=</span> <span class="st">"two.sided"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">class</span>(today)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>
-    One Sample t-test
-
-data:  cats$Bwt
-t = 3.0565, df = 143, p-value = 0.002673
-alternative hypothesis: true mean is not equal to 2.6
-95 percent confidence interval:
- 2.643669 2.803553
-sample estimates:
-mean of x 
- 2.723611 </code></pre>
+'Date'
 </div>
 </div>
-<ul>
-<li>검정통계량의 근거한 p-value 값을 보았을 때 귀무가설을 기각한다.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="대응표본-t-검정-paired-sample-t-test" class="level1">
-<h1>2. 대응표본 T-검정 (Paired Sample T-Test)</h1>
-<ul>
-<li>단일모집단에 대해 두번의 처리를 가했을 때, 두 개의 처리에 따른 평균 차이를 비교하고자 할 때 사용</li>
-</ul>
-<p><span class="math display">\[ H_0 : \mu_x = \mu_y \quad H_1 : not \,\,H_0\]</span></p>
-<ul>
-<li><p>표본 내의 개체들에 대해서 두 번의 측정을 실시 <span class="math inline">\(\to\)</span> 즉, 관측값들은 서로 독립적이지 않고 쌍으로 이루어져 있다.</p></li>
-<li><p>가정 : 정규성을 가정하며, 종속변수는 연속형 변수이다.</p></li>
-</ul>
-<section id="r-실습-1" class="level2">
-<h2 class="anchored" data-anchor-id="r-실습-1">2-1. R 실습</h2>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>time <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span>
+<span id="cb3-2"><a href="#cb3-2"></a>time</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>[1] "2021-12-05 14:46:38 KST"</code></pre>
+</div>
+</div>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">before =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">5</span>,<span class="dv">4</span>),</span>
-<span id="cb6-2"><a href="#cb6-2"></a>                  <span class="at">after =</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">8</span>,<span class="dv">6</span>,<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">shapiro.test</span>(<span class="fu">c</span>(data<span class="sc">$</span>before,data<span class="sc">$</span>after)) <span class="do">## 정규성을 만족</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">class</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>
-    Shapiro-Wilk normality test
-
-data:  c(data$before, data$after)
-W = 0.95961, p-value = 0.5362</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">t.test</span>(data<span class="sc">$</span>before,data<span class="sc">$</span>after, <span class="at">paired=</span>T,<span class="at">alternative=</span><span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<pre><code>
-    Paired t-test
-
-data:  data$before and data$after
-t = -4.7434, df = 9, p-value = 0.0005269
-alternative hypothesis: true difference in means is less than 0
-95 percent confidence interval:
-       -Inf -0.6135459
-sample estimates:
-mean of the differences 
-                     -1 </code></pre>
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'POSIXct'</li><li>'POSIXt'</li></ol>
 </div>
 </div>
 <ul>
-<li>결과적으로 영양제 복용 후 수면시간이 더 길었다.</li>
+<li>각각의 형식을 보면 생성된 객체들의 특성을 파악할 수 있다.</li>
 </ul>
-<hr>
 </section>
-</section>
-<section id="독립표본-t-검정-independent-sample-t-test" class="level1">
-<h1>3. 독립표본 T-검정 (Independent Sample T-Test)</h1>
+<section id="unclass" class="level1">
+<h1>unclass()</h1>
 <ul>
-<li><p>두 개의 독립된 모집단의 평균을 비교하고자 할 때 사용하는 검정 방법</p></li>
-<li><p>가정 : 두 모집단은 정규성을 만족하며, 서로 독립적이어야 한다. 또한 등분산성 가정을 확인해야함.</p></li>
+<li><p>unclass()는 데이터의 클래스 속성을 제거해주는 기능을 함</p></li>
+<li><p>unclass 함수를 이용해 today, time 의 내부적으로 저장하고 있는 값을 확인해보자.</p></li>
 </ul>
-<section id="r-실습-2" class="level2">
-<h2 class="anchored" data-anchor-id="r-실습-2">3-1. R 실습</h2>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">str</span>(cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   144 obs. of  3 variables:
- $ Sex: Factor w/ 2 levels "F","M": 1 1 1 1 1 1 1 1 1 1 ...
- $ Bwt: num  2 2 2 2.1 2.1 2.1 2.1 2.1 2.1 2.1 ...
- $ Hwt: num  7 7.4 9.5 7.2 7.3 7.6 8.1 8.2 8.3 8.5 ...</code></pre>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">unclass</span>(today)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+18966
 </div>
 </div>
+<ul>
+<li>today : 1970년 1월 1일 이후로 경과한 일 수를 의미함.</li>
+</ul>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">unclass</span>(time)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+1638683198.04487
+</div>
+</div>
+<ul>
+<li>1970년 1월 1일 00:00:00 이후로 경과한 초 수를 의미함.</li>
+</ul>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">as.POSIXct</span>(<span class="fu">unclass</span>(time),<span class="at">origin=</span><span class="st">"1970-01-01"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>[1] "2021-12-05 14:46:38 KST"</code></pre>
+</div>
+</div>
+<ul>
+<li>unclass(time)은 1970년 1월 1일 이후로 경과한 초 수를 의미하므로, <code>origin</code> 인자 값으로 <code>1970-01-01</code>을 지정</li>
+</ul>
+</section>
+<section id="sys.time-함수를-이용하여-현재-시간을-구하고-이름-time-변수에-저장-후-time을-posixlt-형식으로-변환-뒤-시간정보-추출" class="level1">
+<h1>Sys.time 함수를 이용하여 현재 시간을 구하고 이름 time 변수에 저장 후, time을 POSIXlt 형식으로 변환 뒤 시간정보 추출</h1>
+<ul>
+<li>POSIXlt : 연도, 월, 일, 시, 분, 초를 포함하는 9개의 정보를 리스트에 저장</li>
+</ul>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">var.test</span>(Bwt<span class="sc">~</span>Sex,<span class="at">data=</span>cats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>time <span class="ot">&lt;-</span> <span class="fu">as.POSIXlt</span>(<span class="fu">Sys.time</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>year에는 1900년 이후의 경과년도수가 저장되어있음</li>
+</ul>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>time<span class="sc">$</span>year<span class="sc">+</span><span class="dv">1900</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>
-    F test to compare two variances
-
-data:  Bwt by Sex
-F = 0.3435, num df = 46, denom df = 96, p-value = 0.0001157
-alternative hypothesis: true ratio of variances is not equal to 1
-95 percent confidence interval:
- 0.2126277 0.5803475
-sample estimates:
-ratio of variances 
-         0.3435015 </code></pre>
+2021
 </div>
 </div>
 <ul>
-<li>등분산 검정결과 성별에 따른 두집단은 등분산성을 만족하지 않음</li>
+<li>month : 월 정보는 0-11값으로 저장되어 있기 때문에 1을 더함</li>
 </ul>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">t.test</span>(Bwt<span class="sc">~</span>Sex, <span class="at">data=</span>cats, <span class="at">alternative=</span><span class="st">"two.sided"</span>,<span class="at">var.equal =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>time<span class="sc">$</span>mon<span class="sc">+</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  Bwt by Sex
-t = -8.7095, df = 136.84, p-value = 8.831e-15
-alternative hypothesis: true difference in means between group F and group M is not equal to 0
-95 percent confidence interval:
- -0.6631268 -0.4177242
-sample estimates:
-mean in group F mean in group M 
-       2.359574        2.900000 </code></pre>
+12
 </div>
 </div>
 <ul>
-<li><strong>“고양이들의 성별에 따른 평균 몸무게에는 통계적으로 유의한 차이가 존재한다.”</strong> 고 결론을 내릴 수 있다.</li>
+<li>mday : 1-31 일</li>
 </ul>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>time<span class="sc">$</span>mday</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+5
+</div>
+</div>
+<ul>
+<li>wday : 0-6 -&gt; 요일을 나타내며, 0은 일요일</li>
+</ul>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>time<span class="sc">$</span>wday</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+0
+</div>
+</div>
+<ul>
+<li>그 밖에 sec, min, hour 이 있음</li>
+</ul>
+</section>
+<section id="날짜-표시형식-변경" class="level1">
+<h1>날짜 표시형식 변경</h1>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>now <span class="ot">&lt;-</span> <span class="fu">Sys.time</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">class</span>(now)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class="list-inline"><li>'POSIXct'</li><li>'POSIXt'</li></ol>
+</div>
+</div>
+<ul>
+<li>%u : 요일로 1-7을 나타냄 1은 월요일</li>
+</ul>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">format</span>(now, <span class="st">"%y-%m-%d %H:%M:%S:%u"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'21-12-05 15:04:22:7'
+</div>
+</div>
+<div class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">class</span>(<span class="fu">format</span>(now, <span class="st">"%y-%m-%d %H:%M:%S:%u"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'character'
+</div>
+</div>
+<ul>
+<li>“20200101” 이라는 문자열을 Date 형식으로 변경 후, date 변수에 저장하여 class를 확인해보자.</li>
+</ul>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="st">"20200101"</span>,<span class="at">format =</span> <span class="st">"%Y%m%d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="66">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">class</span>(date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+'Date'
+</div>
+</div>
+</section>
+<section id="날짜-데이터의-연산" class="level1">
+<h1>날짜 데이터의 연산</h1>
+<section id="현재-날자로부터-100일-후의-날짜-구하기" class="level2">
+<h2 class="anchored" data-anchor-id="현재-날자로부터-100일-후의-날짜-구하기">현재 날자로부터 100일 후의 날짜 구하기</h2>
+<div class="cell" data-execution_count="67">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">Sys.Date</span>() <span class="sc">+</span> <span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<time datetime="2022-03-15">2022-03-15</time>
+</div>
+</div>
+</section>
+<section id="로-표현된-데이터로부터-365일-후-의-날짜-구하기" class="level2">
+<h2 class="anchored" data-anchor-id="로-표현된-데이터로부터-365일-후-의-날짜-구하기">“2020-01-01”로 표현된 데이터로부터 365일 후 의 날짜 구하기</h2>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">as.Date</span>(<span class="st">"2020-01-01"</span>,<span class="at">format=</span><span class="st">"%Y-%m-%d"</span>) <span class="sc">+</span> <span class="dv">365</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<time datetime="2020-12-31">2020-12-31</time>
+</div>
+</div>
+</section>
+<section id="과-2025-01-01-사이의-일-수-구하기" class="level2">
+<h2 class="anchored" data-anchor-id="과-2025-01-01-사이의-일-수-구하기">“1990-01-01”과 “2025-01-01” 사이의 일 수 구하기</h2>
+<div class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">as.Date</span>(<span class="st">"2025-01-01"</span>)<span class="sc">-</span><span class="fu">as.Date</span>(<span class="st">"1990-01-01"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Time difference of 12784 days</code></pre>
+</div>
+</div>
+</section>
+<section id="구한-일수만-알고싶다면" class="level2">
+<h2 class="anchored" data-anchor-id="구한-일수만-알고싶다면">구한 일수만 알고싶다면?</h2>
+<div class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">as.numeric</span>(<span class="fu">as.Date</span>(<span class="st">"2025-01-01"</span>)<span class="sc">-</span><span class="fu">as.Date</span>(<span class="st">"1990-01-01"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+12784
+</div>
+</div>
+<div class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">difftime</span>(<span class="st">"2025-01-01"</span>,<span class="st">"1990-01-01"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Time difference of 12784 days</code></pre>
+</div>
+</div>
+</section>
+<section id="시간-차이를-구할-경우" class="level2">
+<h2 class="anchored" data-anchor-id="시간-차이를-구할-경우">시간 차이를 구할 경우?</h2>
+<div class="cell" data-execution_count="75">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">as.difftime</span>(<span class="st">"09:40:00"</span>)<span class="sc">-</span><span class="fu">as.difftime</span>(<span class="st">"18:30:00"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>Time difference of -8.833333 hours</code></pre>
+</div>
+</div>
 
 
 </section>

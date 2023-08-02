@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GANGCHEOL LEE">
-<meta name="dcterms.date" content="2021-06-21">
+<meta name="dcterms.date" content="2021-06-16">
 
-<title>Gangcheol - 09. Factor Analysis</title>
+<title>Gangcheol - 07. regression analysis-2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,6 +95,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -150,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/고급회귀분석.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/요인분석(1205).html">09. Factor Analysis</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/2021-06-01-01. sampling.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.html">07. regression analysis-2</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">09. Factor Analysis</h1>
+      <h1 class="title">07. regression analysis-2</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
               </div>
@@ -183,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 21, 2021</p>
+        <p class="date">June 16, 2021</p>
       </div>
     </div>
     
@@ -303,20 +306,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 결측치 처리</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03. 날짜 데이터</span></a>
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-06-02. 표준화와 정규화.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 표준화와 정규화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02. 표준화와 정규화</span></a>
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 날짜 데이터</span></a>
   </div>
 </li>
       </ul>
@@ -332,68 +335,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth4 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07. regression analysis-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/교차분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">04. chi-square test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10. Multidimensional scaling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-01-01. sampling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. sampling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-03.02. T-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. T-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. ANOVA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-07-04. chi-square test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. chi-square test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">05. cor-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11. Time-seris analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">09. Factor Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08. PCA</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-15-06. regression analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">06. regression analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/T-검정.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02. T-test</span></a>
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">07. regression analysis-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-17-08. PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-21-09. Factor Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Factor Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-24-10. Multidimensional scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Multidimensional scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-28-11. Time-seris analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Time-seris analysis</span></a>
   </div>
 </li>
       </ul>
@@ -758,23 +761,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#요인분석" id="toc-요인분석" class="nav-link active" data-scroll-target="#요인분석">요인분석</a></li>
-  <li><a href="#개념" id="toc-개념" class="nav-link" data-scroll-target="#개념">개념</a></li>
-  <li><a href="#용어" id="toc-용어" class="nav-link" data-scroll-target="#용어">용어</a></li>
-  <li><a href="#요인추출-방법" id="toc-요인추출-방법" class="nav-link" data-scroll-target="#요인추출-방법">요인추출 방법</a></li>
-  <li><a href="#요인의-수-결정" id="toc-요인의-수-결정" class="nav-link" data-scroll-target="#요인의-수-결정">요인의 수 결정</a></li>
-  <li><a href="#요인분석-절차" id="toc-요인분석-절차" class="nav-link" data-scroll-target="#요인분석-절차">요인분석 절차</a>
+  <li><a href="#regularized-linear-regression" id="toc-regularized-linear-regression" class="nav-link active" data-scroll-target="#regularized-linear-regression">Regularized Linear Regression</a>
   <ul class="collapse">
-  <li><a href="#참고" id="toc-참고" class="nav-link" data-scroll-target="#참고">참고</a>
+  <li><a href="#lambda-의-선택" id="toc-lambda-의-선택" class="nav-link" data-scroll-target="#lambda-의-선택"><span class="math inline">\(\lambda\)</span> 의 선택</a></li>
+  </ul></li>
+  <li><a href="#ridge-regression" id="toc-ridge-regression" class="nav-link" data-scroll-target="#ridge-regression">RIdge Regression</a>
   <ul class="collapse">
-  <li><a href="#비직각회전사각회전-회전-결과에서-요인간의-상관이-0이-아님" id="toc-비직각회전사각회전-회전-결과에서-요인간의-상관이-0이-아님" class="nav-link" data-scroll-target="#비직각회전사각회전-회전-결과에서-요인간의-상관이-0이-아님">비직각회전(=사각회전) : 회전 결과에서 요인간의 상관이 0이 아님</a></li>
-  <li><a href="#요약" id="toc-요약" class="nav-link" data-scroll-target="#요약">요약</a></li>
+  <li><a href="#r-실습" id="toc-r-실습" class="nav-link" data-scroll-target="#r-실습">R 실습</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#r-실습" id="toc-r-실습" class="nav-link" data-scroll-target="#r-실습">R 실습</a>
-  <ul class="collapse">
-  <li><a href="#요인분석파트-주성분분석-함수써서-정리해야됨" id="toc-요인분석파트-주성분분석-함수써서-정리해야됨" class="nav-link" data-scroll-target="#요인분석파트-주성분분석-함수써서-정리해야됨">요인분석파트 주성분분석 함수써서 정리해야됨</a></li>
-  </ul></li>
+  <li><a href="#lasso-regression" id="toc-lasso-regression" class="nav-link" data-scroll-target="#lasso-regression">Lasso Regression</a></li>
+  <li><a href="#r실습" id="toc-r실습" class="nav-link" data-scroll-target="#r실습">R실습</a></li>
   </ul>
 </nav>
     </div>
@@ -784,160 +780,226 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="요인분석" class="level1">
-<h1>요인분석</h1>
-</section>
-<section id="개념" class="level1">
-<h1>개념</h1>
+<section id="regularized-linear-regression" class="level1">
+<h1>Regularized Linear Regression</h1>
 <ul>
-<li><p>변수들간의 상관관계를 고려하여 서로 유사한 변수들을 묶어 새로운 잠재요인을 추출해내는 분석 방법</p></li>
-<li><p>주성분 분석과의 차이는 새로운 잠재요인의 연구자가 이름을 명명한다는 것이다.</p></li>
-<li><p>주성분 분석은 제 1주성분이 가장 중요하고, 그 다음으로 제2 주성분이 중요하게 취급되나, 요인분석에서 생성한 잠재요인들간에는 대등한 관계이다.</p></li>
-<li><p>또한 목표변수 <span class="math inline">\(y\)</span> 를 고려하지 않고 주어진 변수들을 비슷한 성격으로 묶어서 새로운 잠재 변수를 생성</p></li>
+<li><p>정규화 선형회귀는 선형회귀 계수에 대한 제약 조건을 추가하여 모델이 과도하게 최적화되는 현상을 막는 방법이다.</p></li>
+<li><p>즉, 불편성은 포기하되 모형의 해석력을 단순화하자는 것이 초점이다.</p></li>
+</ul>
+<section id="lambda-의-선택" class="level2">
+<h2 class="anchored" data-anchor-id="lambda-의-선택"><span class="math inline">\(\lambda\)</span> 의 선택</h2>
+<ul>
+<li><p>교차타당법에 의한 선택이 일반적임</p></li>
+<li><p>또는 임의의 <span class="math inline">\(\lambda\)</span> grid를 선택하고 가능한 모든 값 중 가장 우수한 <span class="math inline">\(\lambda\)</span>를 선택</p></li>
 </ul>
 </section>
-<section id="용어" class="level1">
-<h1>용어</h1>
+</section>
+<section id="ridge-regression" class="level1">
+<h1>RIdge Regression</h1>
 <ul>
-<li><p>요인(factor) : 상관계수가 높은 변수들을 묶어 새롭게 생성한 변수 집단.</p></li>
-<li><p>요인 적재값(factor loading) : 변수와 해당 요인간의 <strong>상관계수</strong></p>
-<ul>
-<li>요인 적재값의 제곱은 해당 변수가 요인에 의해 설명되는 분산의 비율을 의미함.</li>
-</ul></li>
-<li><p>요인 행렬 (factor matrix) : 요인들에 대한 모든 변수의 요인 적재값을 모은 행렬</p></li>
-<li><p>고유값 (eigenvalue) : 각 요인에 대한 모든 변수들의 <strong>요인 적재값 제곱의 합</strong></p>
-<ul>
-<li>해당 요인이 설명할 수 있는 변수들의 분산 총합으로, 변수 속 정보(분산)가 어떤 요인에 의해 어느 정도 설명될 수 있는지를 나타내는 비율임. 즉 해당 요인이 얼마만큼에 설명력을 가지고 있냐는 것!!</li>
-</ul></li>
-<li><p>공통성(community) : 여러 요인이 설명할 수 있는 한 변수의 분산의 양을 백분율로 나타낸 것</p>
-<ul>
-<li>한 변수의 공통성은 <strong>추출된 요인들이 그 변수의 정보(분산)</strong>를 얼마만큼 설명할 수 있는지를 의미하며 0과 1사이의 값을 가짐</li>
-</ul></li>
+<li>아래의 경우는 기존의 <code>LSE</code> 최소제곱법으로 <span class="math inline">\(\beta_i\)</span>를 추정할 때 사용한다.</li>
 </ul>
-</section>
-<section id="요인추출-방법" class="level1">
-<h1>요인추출 방법</h1>
-<p><code>1</code>. 주성분분석 : 변수들로부터 요인을 추출해내는 방식으로, 전체 분산을 토대로 요인을 추출한다. 요인분석에서 가장 많이 사용되는 방식</p>
-<p><code>2</code>. 공통요인분석 : 잠재요인으로부터 변수들이 산출된 것으로 보는 방식으로, 공통분산만을 토대로 요인을 추출한다.</p>
-</section>
-<section id="요인의-수-결정" class="level1">
-<h1>요인의 수 결정</h1>
-<p><code>1</code>. 고유값을 기준으로 할 때는, <strong>고유값이 1 이상에 해당하는 요인들을 추출한다.</strong></p>
-<p><code>2</code>. 스크린 도표에서 요인의 설명력이 하락하다가 완만한 하락으로 추세가 바뀌기 직전 요인의 수를 기준으로 요인을 추출한다.</p>
-<p><code>3</code>. 경우에 따라 추출할 요인의 수를 사전에 정의한 후 요인분석을 수행할 수도 있다.</p>
-</section>
-<section id="요인분석-절차" class="level1">
-<h1>요인분석 절차</h1>
-<p><code>1</code>. 데이터 입력</p>
-<p><code>2</code>. 상관계수 산출 : 동질적이거나 유사한 변수들을 하나의 요인으로 나타내기 위해 변수들 간의 상관계수를 계산한다.</p>
-<p><code>3</code>. 요인 추출 : 주성분분석 또는 공통요인분석을 통해 요인을 추출하고, 고유값과 스크리 도표 등을 활용하여 적절한 요인의 수를 선택한다.</p>
-<p><code>4</code>. 요인 적재량 산출</p>
-<p><code>5</code>. 요인회전 : 최초 요인행렬은 변수들의 분산을 어느 정도는 설명할 수 있지만, 요인과 각 변수들 간의 관계를 명확하게 나타내지 않는다. <br><br> * 원활한 요인 해석과 의미있는 요인패턴(변수와 요인의 상관행렬)을 찾기 위해 분산을 재분배 시키는 <code>요인 회전</code> 단계는 매우 중요하다.<br><br> * 요인회전의 종류로는 직각회전(쿼티멕스, 베리맥스, 미쿼맥스)과 비직각회전(오블리민,프로맥스)이 있다.</p>
-<p><code>6</code>. 생성된 요인 해석</p>
-<p><code>7</code>. 요인점수 산출 : 관측치별 요인점수는 요인점수 계수와 표준화된 관측치의 곱으로 구하며, 요인별로 이 값을 합하면 요인별 요인점수가 된다.</p>
-<p><code>8</code>. 요인점수를 산출하는 방법에는 <strong>“회귀분석(LSE : 요인값과 추정된 요인값 간 차이 제곱의 합이 최소가 되게함), Bartlett(요인들의 제곱합이 최소가 되게)”</strong> 등이 있다.</p>
-<section id="참고" class="level2">
-<h2 class="anchored" data-anchor-id="참고">참고</h2>
-<p>### 직각회전 : 회전된 인자들이 서로 상관되지 않도록 제약</p>
-<p><code>1</code>. 베리맥스 (Variance is maximized) : 요인행렬을 변환할 때 행렬의 열을 기준으로 하여 더 큰 값은 크게, 작은 값은 더 작게 회전하는 길을 찾는다.</p>
-<p><code>2</code>. 쿼티맥스 : 요인행렬의 행을 기준으로 분산을 극대화한다. 제 1요인만 과대 해석하고 기타 요인은 과소해석하는 문제가 있어, 단일요인 구조가 존재한다는 확신이 있을 때에나 한정적으로 사용한다.</p>
-<section id="비직각회전사각회전-회전-결과에서-요인간의-상관이-0이-아님" class="level3">
-<h3 class="anchored" data-anchor-id="비직각회전사각회전-회전-결과에서-요인간의-상관이-0이-아님">비직각회전(=사각회전) : 회전 결과에서 요인간의 상관이 0이 아님</h3>
-<p><code>1</code>. 회전된 요인간의 상관이 있다고 확신이 들 때 사용</p>
-<p><code>2</code>.오블리민과 프로맥스가 있으나 R에서는 프로맥스를 제공</p>
-</section>
-<section id="요약" class="level3">
-<h3 class="anchored" data-anchor-id="요약">요약</h3>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">display_png</span>(<span class="at">file =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">rkdcj</span><span class="sc">\\</span><span class="st">OneDrive</span><span class="sc">\\</span><span class="st">바탕 화면</span><span class="sc">\\</span><span class="st">요인분석.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="요인분석(1205)_files/figure-html/cell-2-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-</section>
-</section>
-<section id="r-실습" class="level1">
-<h1>R 실습</h1>
+<p><span class="math display">\[RSS = \sum_{i=1}^n(y_i - \beta_0 -\sum_{j=1}^p\beta_jx_{ij})^2\]</span></p>
 <ul>
-<li><p>요인추출법으로 주성분분석을 사용할 때는 procmp 혹은 principal 함수를 활용하며, 공통요인분석을 사용할 때는 <code>factanal</code> 함수를 활용한다.</p></li>
-<li><p>factanal</p>
-<ul>
-<li>데이터</li>
-<li>factors : 요인의 개수를 지정</li>
-<li>rotation : 요인 회전방법을 선택(“varimax”,“promax”,“none”)</li>
-<li>scores : 요인점수 계산방식을 선택 (“regression, Barlett”)</li>
-</ul></li>
-<li><p>swiss data : 1888년 경 스위스 내 47개 주의 사회경제적 지표와 출산율에 대한 데이터</p></li>
-<li><p>원활한 분석을 위해 6가지 변수들을 <code>min-max</code> 정규화한 뒤 축소해보자.</p></li>
+<li>Ridge 추정량은 <code>LSE</code>와 매우 유사하나 <code>shrinkage penalty</code>를 추가로 고려하여 최소화한다.</li>
 </ul>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">data</span>(swiss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math display">\[\sum_{i=1}^n(y_i - \beta_0 -\sum_{j=1}^p\beta_jx_{ij})^2 + \lambda \sum_{i=1}^p \beta_j^2\]</span></p>
+<p><span class="math display">\[\lambda \,:\,tuning \,\,parameter\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\lambda\)</span>가 0이되면 일반적인 선형회귀모형이되고, <span class="math inline">\(\lambda\)</span>가 커지면 <strong>정규화 정도가 커진다.(회귀계수들이 작아진다.)</strong> <span class="math inline">\(\to\)</span> <code>bias</code>는 증가 <code>variance</code>는 감소</p></li>
+<li><p>릿지회귀모형에서는 <strong>L2 penalty</strong> 를 사용하여 베타계수들이 0에 근사하도록 한다.</p></li>
+</ul>
+<section id="r-실습" class="level2">
+<h2 class="anchored" data-anchor-id="r-실습">R 실습</h2>
+<div class="cell" data-execution_count="109">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(mosaicData)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(glmnet) <span class="do">## 리지 및 라쏘 회귀를 적합하기 위한 패키지</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(swiss)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">glimpse</span>(RailTrail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   47 obs. of  6 variables:
- $ Fertility       : num  80.2 83.1 92.5 85.8 76.9 76.1 83.8 92.4 82.4 82.9 ...
- $ Agriculture     : num  17 45.1 39.7 36.5 43.5 35.3 70.2 67.8 53.3 45.2 ...
- $ Examination     : int  15 6 5 12 17 9 16 14 12 16 ...
- $ Education       : int  12 9 5 7 15 7 7 8 7 13 ...
- $ Catholic        : num  9.96 84.84 93.4 33.77 5.16 ...
- $ Infant.Mortality: num  22.2 22.2 20.2 20.3 20.6 26.6 23.6 24.9 21 24.4 ...</code></pre>
+<pre><code>Rows: 90
+Columns: 11
+$ hightemp   &lt;int&gt; 83, 73, 74, 95, 44, 69, 66, 66, 80, 79, 78, 65, 41, 59, 50,~
+$ lowtemp    &lt;int&gt; 50, 49, 52, 61, 52, 54, 39, 38, 55, 45, 55, 48, 49, 35, 35,~
+$ avgtemp    &lt;dbl&gt; 66.5, 61.0, 63.0, 78.0, 48.0, 61.5, 52.5, 52.0, 67.5, 62.0,~
+$ spring     &lt;int&gt; 0, 0, 1, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0,~
+$ summer     &lt;int&gt; 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0,~
+$ fall       &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1,~
+$ cloudcover &lt;dbl&gt; 7.6, 6.3, 7.5, 2.6, 10.0, 6.6, 2.4, 0.0, 3.8, 4.1, 8.5, 7.2~
+$ precip     &lt;dbl&gt; 0.00, 0.29, 0.32, 0.00, 0.14, 0.02, 0.00, 0.00, 0.00, 0.00,~
+$ volume     &lt;int&gt; 501, 419, 397, 385, 200, 375, 417, 629, 533, 547, 432, 418,~
+$ weekday    &lt;lgl&gt; TRUE, TRUE, TRUE, FALSE, TRUE, TRUE, TRUE, FALSE, FALSE, TR~
+$ dayType    &lt;chr&gt; "weekday", "weekday", "weekday", "weekend", "weekday", "wee~</code></pre>
 </div>
-</div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>min <span class="ot">&lt;-</span> <span class="fu">apply</span>(swiss,<span class="dv">2</span>,min)</span>
-<span id="cb5-2"><a href="#cb5-2"></a>max <span class="ot">&lt;-</span> <span class="fu">apply</span>(swiss,<span class="dv">2</span>,max)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>아래와 같이 정규화를 수행</li>
+<li>model.matrix는 기본적으로 절편을 포함한 모형을 산정한다. 절편을 제외시킨 모형을 고려해보자</li>
 </ul>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>swiss_fa <span class="ot">&lt;-</span> <span class="fu">scale</span>(swiss, <span class="at">center =</span> min, <span class="at">scale =</span> (max<span class="sc">-</span>min))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="118">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="ot">&lt;-</span> <span class="fu">model.matrix</span>(volume<span class="sc">~</span>.<span class="sc">-</span><span class="dv">1</span> ,RailTrail) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>y <span class="ot">&lt;-</span> RailTrail<span class="sc">$</span>volume</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
-<li>factanal 함수의 rotation 기본값은 <code>varimax</code>임</li>
+<li>모형적합</li>
 </ul>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>result <span class="ot">&lt;-</span> <span class="fu">factanal</span>(swiss_fa,<span class="at">factors=</span><span class="dv">3</span>)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>ridge.fit <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x,y,<span class="at">alpha=</span><span class="dv">0</span>) <span class="do">## 모형적합 alpha=0 은 릿지를 말함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>교차타당에러를 최소로하는 람다값을 구한결과 <code>11.757</code>로 산출되었다.</li>
+</ul>
+<div class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>bestlam <span class="ot">&lt;-</span> ridge.fit<span class="sc">$</span>lambda.min</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">log</span>(bestlam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<pre><code>
-Call:
-factanal(x = swiss_fa, factors = 3)
-
-Uniquenesses:
-       Fertility      Agriculture      Examination        Education 
-           0.005            0.286            0.213            0.114 
-        Catholic Infant.Mortality 
-           0.083            0.743 
-
-Loadings:
-                 Factor1 Factor2 Factor3
-Fertility        -0.512   0.203   0.832 
-Agriculture      -0.774   0.312  -0.129 
-Examination       0.751  -0.423  -0.211 
-Education         0.901          -0.262 
-Catholic         -0.186   0.913   0.220 
-Infant.Mortality                  0.500 
-
-               Factor1 Factor2 Factor3
-SS loadings      2.273   1.164   1.120
-Proportion Var   0.379   0.194   0.187
-Cumulative Var   0.379   0.573   0.759
-
-The degrees of freedom for the model is 0 and the fit was 1e-04 </code></pre>
+2.65058474242334
+</div>
+</div>
+<div class="cell" data-execution_count="122">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">coef</span>(ridge.fit, <span class="at">s =</span> <span class="st">"lambda.min"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>12 x 1 sparse Matrix of class "dgCMatrix"
+                       s1
+(Intercept)     97.879570
+hightemp         3.923302
+lowtemp         -1.148241
+avgtemp          1.971339
+spring          10.236204
+summer           3.316273
+fall           -27.057463
+cloudcover      -8.082976
+precip         -90.969378
+weekdayFALSE    13.410258
+weekdayTRUE    -13.487794
+dayTypeweekend  13.616159</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">4</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>bestlam에서 <code>MSE</code>가 최소가 되는 지점을 확인</li>
+</ul>
+<div class="cell" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">plot</span>(ridge.fit)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">log</span>(bestlam),<span class="at">lty=</span><span class="st">"dashed"</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2021-06-16-07. regression analysis-2_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <ul>
-<li><code>cumulative Var</code>를 보았을 때 세 요인은 전체 데이터 분산의 약 76%를 설명할 수 있다고 해석이 가능하다.</li>
+<li>산출된 <code>best.lam</code>값으로 모형을 다시 적합 후 <code>MSE</code>를 구해보자.</li>
 </ul>
-<section id="요인분석파트-주성분분석-함수써서-정리해야됨" class="level2">
-<h2 class="anchored" data-anchor-id="요인분석파트-주성분분석-함수써서-정리해야됨">요인분석파트 주성분분석 함수써서 정리해야됨</h2>
-
-
+<div class="cell" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>train  <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(x),<span class="fu">nrow</span>(x)<span class="sc">*</span><span class="fl">0.7</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>test  <span class="ot">&lt;-</span> <span class="sc">-</span>train</span>
+<span id="cb12-3"><a href="#cb12-3"></a>y.test <span class="ot">&lt;-</span> y[test]</span>
+<span id="cb12-4"><a href="#cb12-4"></a>y.train <span class="ot">&lt;-</span> y[train]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>ridge.fit <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train,],y.train,<span class="at">alpha=</span><span class="dv">0</span>,<span class="at">lambda=</span>bestlam,<span class="at">family=</span><span class="st">"gaussian"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="142">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>ridge.pred <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge.fit,<span class="at">s=</span>bestlam,<span class="at">newx=</span>x[test,]) <span class="do">## type="coefficients"로 하면 예측된 베타계수를 보여줌</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="147">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>ridge.coef <span class="ot">&lt;-</span> <span class="fu">predict</span>(ridge.fit,<span class="at">s=</span>bestlam,<span class="at">newx=</span>x[test,],<span class="at">type=</span><span class="st">"coefficients"</span>) <span class="do">## type="coefficients"로 하면 예측된 베타계수를 보여줌</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="148">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>ridge.coef</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>12 x 1 sparse Matrix of class "dgCMatrix"
+                        s1
+(Intercept)     64.9007304
+hightemp         3.9758591
+lowtemp         -0.7261573
+avgtemp          2.0855905
+spring          20.3027908
+summer         -13.1841751
+fall           -18.2167429
+cloudcover      -6.5169836
+precip         -59.6275608
+weekdayFALSE    12.1230181
+weekdayTRUE    -12.6441270
+dayTypeweekend  12.3701010</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">mean</span>((ridge.pred <span class="sc">-</span> y.test)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+11360.201935448
+</div>
+</div>
+<ul>
+<li>mse가 만 단위가 넘게 나왔는데. 지나치게 모형을 단순화 하였다는 생각이 든다.</li>
+</ul>
+<hr>
 </section>
+</section>
+<section id="lasso-regression" class="level1">
+<h1>Lasso Regression</h1>
+<ul>
+<li><p>라쏘는 릿지와 다르게 베타계수를 <strong>“0값으로 보낸다.”</strong></p></li>
+<li><p>이것을 <strong>“L1 penalty”</strong> 라고 부른다.</p></li>
+</ul>
+<p><span class="math display">\[\sum_{i=1}^n(y_i - \beta_0 -\sum_{j=1}^p\beta_jx_{ij})^2 + \lambda \sum_{i=1}^p |\beta_j|\]</span></p>
+</section>
+<section id="r실습" class="level1">
+<h1>R실습</h1>
+<div class="cell" data-execution_count="161">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a>lasso.fit <span class="ot">&lt;-</span> <span class="fu">cv.glmnet</span>(x,y,<span class="at">alpha=</span><span class="dv">1</span>) <span class="do">## 모형적합 alpha=1 은 라쏘를 말함</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="162">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>bestlam <span class="ot">&lt;-</span> lasso.fit<span class="sc">$</span>lambda.min</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">log</span>(bestlam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+1.5109214135677
+</div>
+</div>
+<ul>
+<li>교차타당검정시 발생하는 에러값이 최소가되는 지점임을 확인</li>
+</ul>
+<div class="cell" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">min</span>(lasso.fit<span class="sc">$</span>cvm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+9549.05291718447
+</div>
+</div>
+<div class="cell" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">plot</span>(lasso.fit)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">abline</span>(<span class="at">v=</span><span class="fu">log</span>(bestlam),<span class="at">lty=</span><span class="st">"dashed"</span>,<span class="at">lwd=</span><span class="dv">2</span>,<span class="at">col=</span><span class="st">"blue"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">points</span>(<span class="at">x=</span><span class="fu">log</span>(bestlam),<span class="at">y=</span><span class="fu">min</span>(lasso.fit<span class="sc">$</span>cvm),<span class="at">cex=</span><span class="fl">1.5</span>,<span class="at">col=</span><span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2021-06-16-07. regression analysis-2_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>실제 예측을 하여 <code>MSE</code>값을 구해보자.</li>
+</ul>
+<div class="cell" data-execution_count="182">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>lasss <span class="ot">&lt;-</span> <span class="fu">glmnet</span>(x[train,],y.train,<span class="at">alpha=</span><span class="dv">1</span>,<span class="at">family=</span><span class="st">"gaussian"</span>,<span class="at">lambda=</span>bestlam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="184">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a>lasss<span class="sc">$</span>lambda</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+4.53090370767974
+</div>
+</div>
+<div class="cell" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>pred.lasso <span class="ot">&lt;-</span> <span class="fu">predict</span>(lasss,<span class="at">newx=</span>x[test,],<span class="at">s=</span>bestlam)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="189">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">mean</span>((pred.lasso<span class="sc">-</span>y.test)<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+11635.8271566842
+</div>
+</div>
+
+
 </section>
 
 </main> <!-- /main -->

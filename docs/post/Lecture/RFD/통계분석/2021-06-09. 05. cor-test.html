@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="GANGCHEOL LEE">
-<meta name="dcterms.date" content="2021-06-07">
+<meta name="dcterms.date" content="2021-06-09">
 
-<title>Gangcheol - 04. chi-square test</title>
+<title>Gangcheol - 05. cor-test</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -150,7 +150,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/고급회귀분석.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/교차분석.html">04. chi-square test</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Post</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/2021-06-01-01. sampling.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../post/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.html">05. cor-test</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -163,7 +163,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">04. chi-square test</h1>
+      <h1 class="title">05. cor-test</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
               </div>
@@ -183,7 +183,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">June 7, 2021</p>
+        <p class="date">June 9, 2021</p>
       </div>
     </div>
     
@@ -303,20 +303,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/결측치(1205).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. 결측치 처리</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/날짜 데이터 전처리.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">03. 날짜 데이터</span></a>
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-06-02. 표준화와 정규화.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 표준화와 정규화</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/데이터전처리/표준화와 정규화(1205).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02. 표준화와 정규화</span></a>
+  <a href="../../../../post/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 날짜 데이터</span></a>
   </div>
 </li>
       </ul>
@@ -332,68 +332,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth4 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/고급회귀분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">07. regression analysis-2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/교차분석.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">04. chi-square test</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/다차원척도법(1204).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">10. Multidimensional scaling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/데이터 샘플링.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-01-01. sampling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">01. sampling</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/분산분석(ANOVA).html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-03.02. T-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. T-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">03. ANOVA</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/상관분석.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-07-04. chi-square test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. chi-square test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">05. cor-test</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/시계열 분석.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">11. Time-seris analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/요인분석(1205).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">09. Factor Analysis</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/주성분분석(1204).html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">08. PCA</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/회귀분석.html" class="sidebar-item-text sidebar-link">
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-15-06. regression analysis.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">06. regression analysis</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../../post/Lecture/RFD/통계분석/T-검정.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">02. T-test</span></a>
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. regression analysis-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-17-08. PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-21-09. Factor Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Factor Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-24-10. Multidimensional scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Multidimensional scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../post/Lecture/RFD/통계분석/2021-06-28-11. Time-seris analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Time-seris analysis</span></a>
   </div>
 </li>
       </ul>
@@ -758,16 +758,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#교차분석" id="toc-교차분석" class="nav-link active" data-scroll-target="#교차분석">교차분석</a></li>
-  <li><a href="#적합성-검정" id="toc-적합성-검정" class="nav-link" data-scroll-target="#적합성-검정">적합성 검정</a>
+  <li><a href="#상관분석" id="toc-상관분석" class="nav-link active" data-scroll-target="#상관분석">상관분석</a>
   <ul class="collapse">
   <li><a href="#r-실습" id="toc-r-실습" class="nav-link" data-scroll-target="#r-실습">R 실습</a></li>
   </ul></li>
-  <li><a href="#독립성-검정" id="toc-독립성-검정" class="nav-link" data-scroll-target="#독립성-검정">독립성 검정</a>
-  <ul class="collapse">
-  <li><a href="#r-실습-1" id="toc-r-실습-1" class="nav-link" data-scroll-target="#r-실습-1">R 실습</a></li>
-  </ul></li>
-  <li><a href="#동질성-검정" id="toc-동질성-검정" class="nav-link" data-scroll-target="#동질성-검정">동질성 검정</a></li>
   </ul>
 </nav>
     </div>
@@ -777,103 +771,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="교차분석" class="level1">
-<h1>교차분석</h1>
+<section id="상관분석" class="level1">
+<h1>상관분석</h1>
+<p>$H_ 0 : $ 변수간에는 상관관계가 없다( 상관계수 <span class="math inline">\(= 0\)</span>)</p>
+<p>$H_1 : $ 변수간에는 상관관계가 있다.( 상관계수 <span class="math inline">\(\neq 0\)</span> )</p>
 <ul>
-<li><p>개념 : 범주형 자료(명목/서열)인 두 변수 간의 관계를 알아보기 위해 실시하는 분석 기법</p></li>
-<li><p>적합성, 독립성, 동질성 검정에 사용되며, <strong>카이제곱($ ^2$)</strong> 검정 통계량을 이용한다.</p></li>
-</ul>
-</section>
-<section id="적합성-검정" class="level1">
-<h1>적합성 검정</h1>
+<li>피어슨 상관계수
 <ul>
-<li><p>실험에서 얻어진 관측값들이 예상한 이론과 일치하는지 아닌지를 검정하는 방법</p></li>
-<li><p>즉, 모집단 분포에 대한 가정이 옳게 됐는지를 관측 자료와 비교하여 검정하는 것이다.</p></li>
+<li>두 연속형 자료가 모두 정규성을 따른다는 가정하에 선형적 상관관계를 측정</li>
+</ul></li>
+<li>스피어만 상관계수
+<ul>
+<li>데이터가 정규성을 만족하지 않거나 순위 및 순서 형태로 주어지는 경우 사용</li>
+<li>피어슨 상관계수와 달리 비선형 관계의 연관성을 파악할 수 있다.</li>
+<li>비모수적 방법</li>
+</ul></li>
+<li>켄달의 순위상관계수
+<ul>
+<li><span class="math inline">\(X_i\)</span>가 커짐에 따라 <span class="math inline">\(Y_i\)</span>도 커질 경우 부합, 작아질 경우 비부합이라고 본다.</li>
+<li>전체 데이터에서 비부합쌍에 대한 부합쌍의 비율로 상관계수를 산출한다.</li>
+<li>순위상관계수가 -1 일 경우 비부합쌍의 비율이 100%, 0일 경우 두 변수 <span class="math inline">\(X,Y\)</span>는 상관성이 없음을 의미한다.</li>
+</ul></li>
 </ul>
+<p><span class="math inline">\(\divideontimes\)</span> 원래의 경우 독립이면 상관계수는 0이지만, 이것에 대한 역은 반드시 성립하지 않는다.</p>
+<p>https://techntalk.tistory.com/entry/%ED%86%B5%EA%B3%84%EC%A0%81%EC%9C%BC%EB%A1%9C-%EB%91%90-%EB%B3%80%EC%88%98%EC%9D%98-%EB%8F%85%EB%A6%BDindependence%EA%B3%BC-%EC%83%81%EA%B4%80%EA%B3%84%EC%88%98correlation%EC%99%80%EC%9D%98-%EA%B4%80%EA%B3%84</p>
 <section id="r-실습" class="level2">
 <h2 class="anchored" data-anchor-id="r-실습">R 실습</h2>
-<p>$H_0 : $ 전체 응답자 중 왼손잡이의 비율이 20%, 오른손잡이의 비율이 80% 이다.</p>
-<p><span class="math inline">\(H_1 : not\,\,H_0\)</span></p>
-<div class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">str</span>(survey)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>'data.frame':   237 obs. of  12 variables:
- $ Sex   : Factor w/ 2 levels "Female","Male": 1 2 2 2 2 1 2 1 2 2 ...
- $ Wr.Hnd: num  18.5 19.5 18 18.8 20 18 17.7 17 20 18.5 ...
- $ NW.Hnd: num  18 20.5 13.3 18.9 20 17.7 17.7 17.3 19.5 18.5 ...
- $ W.Hnd : Factor w/ 2 levels "Left","Right": 2 1 2 2 2 2 2 2 2 2 ...
- $ Fold  : Factor w/ 3 levels "L on R","Neither",..: 3 3 1 3 2 1 1 3 3 3 ...
- $ Pulse : int  92 104 87 NA 35 64 83 74 72 90 ...
- $ Clap  : Factor w/ 3 levels "Left","Neither",..: 1 1 2 2 3 3 3 3 3 3 ...
- $ Exer  : Factor w/ 3 levels "Freq","None",..: 3 2 2 2 3 3 1 1 3 3 ...
- $ Smoke : Factor w/ 4 levels "Heavy","Never",..: 2 4 3 2 2 2 2 2 2 2 ...
- $ Height: num  173 178 NA 160 165 ...
- $ M.I   : Factor w/ 2 levels "Imperial","Metric": 2 1 NA 2 2 1 1 2 2 2 ...
- $ Age   : num  18.2 17.6 16.9 20.3 23.7 ...</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">data</span>(<span class="st">"airquality"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>data <span class="ot">&lt;-</span> <span class="fu">table</span>(survey<span class="sc">$</span>W.Hnd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   153 obs. of  6 variables:
+ $ Ozone  : int  41 36 12 18 NA 28 23 19 8 NA ...
+ $ Solar.R: int  190 118 149 313 NA NA 299 99 19 194 ...
+ $ Wind   : num  7.4 8 12.6 11.5 14.3 14.9 8.6 13.8 20.1 8.6 ...
+ $ Temp   : int  67 72 74 62 56 66 65 59 61 69 ...
+ $ Month  : int  5 5 5 5 5 5 5 5 5 5 ...
+ $ Day    : int  1 2 3 4 5 6 7 8 9 10 ...</code></pre>
 </div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">chisq.test</span>(data, <span class="at">p =</span> <span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>air <span class="ot">&lt;-</span> airquality <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(Day,Month))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>air_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(air,<span class="at">use=</span><span class="st">"pairwise.complete.obs"</span>,<span class="at">method=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>use
+<ul>
+<li>everything : 결측값 존재 시 NA출력</li>
+<li>all.obs : 결측값 존재 시 오류 메시지 출력</li>
+<li>complete.obs : 변수별로 결측값을 제외하고 상관계수 계산</li>
+<li>pairwise.complete.obs : 모든 변수 쌍에서 결측값이 없는 데이터들에 대해 상관계수 계산</li>
+</ul></li>
+</ul>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">library</span>(corrplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>testRes <span class="ot">&lt;-</span> <span class="fu">cor.mtest</span>(air,<span class="at">method=</span><span class="st">"pearson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="fu">corrplot</span>(air_cor,<span class="at">diag=</span>F,<span class="at">type=</span><span class="st">"upper"</span>,<span class="at">p.mat=</span>testRes<span class="sc">$</span>p,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>            <span class="at">method=</span><span class="st">"circle"</span>,<span class="at">number.cex=</span><span class="fl">1.5</span>,<span class="at">addCoef.col=</span><span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="2021-06-09. 05. cor-test_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<ul>
+<li>위 그래프를 해석하면 <code>Wind</code>와 <code>Solar.R</code>간에는 상관관계가 없다고 해석할 수 있다.</li>
+</ul>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">cor.test</span>(air<span class="sc">$</span>Wind,air<span class="sc">$</span>Solar.R) <span class="do">##실제 검정 결과도 동일하다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
-    Chi-squared test for given probabilities
+    Pearson's product-moment correlation
 
-data:  data
-X-squared = 22.581, df = 1, p-value = 2.015e-06</code></pre>
+data:  air$Wind and air$Solar.R
+t = -0.6826, df = 144, p-value = 0.496
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.2172359  0.1066406
+sample estimates:
+        cor 
+-0.05679167 </code></pre>
 </div>
 </div>
-<ul>
-<li>유의확률이 0.05보다 작으므로 <strong>“전체 응답자 중 왼손잡이의 20%, 오른손잡이의 80%이다.”</strong> 라는 귀무가설을 기각한다.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="독립성-검정" class="level1">
-<h1>독립성 검정</h1>
-<ul>
-<li>모집단이 두 개의 변수 A, B에 의해 범주화 되었을 때, 이 두 변수들 사이의 관계가 독립인지 아닌지를 검정하는 것이다.</li>
-</ul>
-<section id="r-실습-1" class="level2">
-<h2 class="anchored" data-anchor-id="r-실습-1">R 실습</h2>
-<p>$H_0 : $ 주로 사용하는 손(W.Hnd)와 운동 빈도(Exer)는 독립이다.</p>
-<p><span class="math inline">\(H_1: not \,\, H_0\)</span></p>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>data <span class="ot">&lt;-</span> <span class="fu">table</span>(survey<span class="sc">$</span>W.Hnd,survey<span class="sc">$</span>Exer)</span>
-<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">chisq.test</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning message in chisq.test(data):
-"Chi-squared approximation may be incorrect"</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<pre><code>
-    Pearson's Chi-squared test
-
-data:  data
-X-squared = 1.2065, df = 2, p-value = 0.547</code></pre>
-</div>
-</div>
-<ul>
-<li>검정결과 주로 사용하는 손과 운동 빈도는 서로 독립이라고 말할 수 있다.</li>
-</ul>
-<hr>
-</section>
-</section>
-<section id="동질성-검정" class="level1">
-<h1>동질성 검정</h1>
-<ul>
-<li><p>모집단이 임의의 변수에 다라 <span class="math inline">\(R\)</span>개의 속성으로 범주화 되었을 때, <span class="math inline">\(R\)</span> 개의 부분 모집단에서 추출한 각 표본인 <span class="math inline">\(C\)</span>개의 범주화된 집단의 분포가 서로 동일한지를 검정하는 것 (검정 통계량 값을 계산할 때는 교차표를 활용하며, 계산법과 검증법이 모두 독립성 검정과 같은 방법으로 진행됨.)</p></li>
-<li><p>example</p></li>
-</ul>
-<p>$H_0 : $ 교육방법에 따른 교육생들의 만족도 차이가 없다.</p>
-<p><span class="math inline">\(H_1\)</span> : 교육방법에 따른 교육생들의 만족도 차이가 있다.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
