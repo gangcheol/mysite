@@ -2055,7 +2055,105 @@
     "href": "post/Lecture/IP/2023-05-23-02wk.html",
     "title": "02. 리스트",
     "section": "",
-    "text": "- D드라이브로 작업환경 옮긴 후 확인"
+    "text": "- 리스트는 사칙연산 중 덧셈, 곱하기만 지원한다.\\(\\to\\) 그렇다고 그 연산이, 실제 더하기나 곱하기를 수행하지 않음\n- 리스트에 더하기와 곱하기 연산은 두 개의 리스트가 주어졌을 때 단순히 이어 붙인다는 느낌이다.\n\n\n\na = [1,2,3]\nb = [4,5,6]\n\n\na+b\n\n[1, 2, 3, 4, 5, 6]\n\n\n- R에서처럼 브로드캐스팅이 수행되지 않음\n\na+1\n\nTypeError: can only concatenate list (not \"int\") to list\n\n\n\n\n\n- 아래와 같은 연산은 수행되지 않음\n\na*b\n\nTypeError: can't multiply sequence by non-int of type 'list'\n\n\n\na*3\n\n[1, 2, 3, 1, 2, 3, 1, 2, 3]\n\n\n- 즉, 곱하기 연산은 특정 리스트를 얼마만큼 반복해서 채워넣느냐를 의미한다.\n\n\n\n- 리스트에서 실제 더하기를 수행은 다음과 같이 이루어진다.\n\na,b\n\n([1, 2, 3], [4, 5, 6])\n\n\n\n[a[0]+b[0],a[1]+b[1],a[2]+b[2]]\n\n[5, 7, 9]\n\n\n\n\n- 패키지를 설치하는 방법\n\npip install numpy \\(\\to\\) 최신버전 설치\nconda install -c conda-forge numpy -y \\(\\to\\) 안전한 버전을 설치\n\n\n#conda install -c conda-forge numpy -y\n\n\nimport numpy as np\n\n\na,b\n\n([1, 2, 3], [4, 5, 6])\n\n\n\naa = np.array(a)\nbb = np.array(b)\n\n\naa+bb\n\narray([5, 7, 9])"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#ex1.-더하기",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#ex1.-더하기",
+    "title": "02. 리스트",
+    "section": "",
+    "text": "a = [1,2,3]\nb = [4,5,6]\n\n\na+b\n\n[1, 2, 3, 4, 5, 6]\n\n\n- R에서처럼 브로드캐스팅이 수행되지 않음\n\na+1\n\nTypeError: can only concatenate list (not \"int\") to list"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#ex.2-곱하기",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#ex.2-곱하기",
+    "title": "02. 리스트",
+    "section": "",
+    "text": "- 아래와 같은 연산은 수행되지 않음\n\na*b\n\nTypeError: can't multiply sequence by non-int of type 'list'\n\n\n\na*3\n\n[1, 2, 3, 1, 2, 3, 1, 2, 3]\n\n\n- 즉, 곱하기 연산은 특정 리스트를 얼마만큼 반복해서 채워넣느냐를 의미한다."
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#ex3.-실제-더하기-수행",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#ex3.-실제-더하기-수행",
+    "title": "02. 리스트",
+    "section": "",
+    "text": "- 리스트에서 실제 더하기를 수행은 다음과 같이 이루어진다.\n\na,b\n\n([1, 2, 3], [4, 5, 6])\n\n\n\n[a[0]+b[0],a[1]+b[1],a[2]+b[2]]\n\n[5, 7, 9]\n\n\n\n\n- 패키지를 설치하는 방법\n\npip install numpy \\(\\to\\) 최신버전 설치\nconda install -c conda-forge numpy -y \\(\\to\\) 안전한 버전을 설치\n\n\n#conda install -c conda-forge numpy -y\n\n\nimport numpy as np\n\n\na,b\n\n([1, 2, 3], [4, 5, 6])\n\n\n\naa = np.array(a)\nbb = np.array(b)\n\n\naa+bb\n\narray([5, 7, 9])"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#ex1",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#ex1",
+    "title": "02. 리스트",
+    "section": "ex1",
+    "text": "ex1\n\nlst = [1, 3.14, True, \"a\",[1,2],(1,2),\n        {\"namme\" :\"iu\", \"age\":27},{1,2,3}]\n\n\nfor i in range(len(lst)) :\n        print(lst[i],\" \",type(lst[i]))\n\n1   &lt;class 'int'&gt;\n3.14   &lt;class 'float'&gt;\nTrue   &lt;class 'bool'&gt;\na   &lt;class 'str'&gt;\n[1, 2]   &lt;class 'list'&gt;\n(1, 2)   &lt;class 'tuple'&gt;\n{'namme': 'iu', 'age': 27}   &lt;class 'dict'&gt;\n{1, 2, 3}   &lt;class 'set'&gt;\n\n\n- 또한, 리스트는 가면 객체, 즉 원소를 수정할 수 있다."
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#ex2",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#ex2",
+    "title": "02. 리스트",
+    "section": "ex2",
+    "text": "ex2\n\na =[1,2,3]\n\n\na\n\n[1, 2, 3]\n\n\n\na[0] =1000\n\n\na\n\n[1000, 2, 3]\n\n\n- 또한, 가변 객체이므로 삭제 기능 또한 제공한다."
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#ex3",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#ex3",
+    "title": "02. 리스트",
+    "section": "ex3",
+    "text": "ex3\n\na = list(range(7))\na\n\n[0, 1, 2, 3, 4, 5, 6]\n\n\n\ndel a[0]\n\n\na\n\n[1, 2, 3, 4, 5, 6]\n\n\n\na.pop(0)\n\n1\n\n\n\na\n\n[2, 3, 4, 5, 6]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#길이가-0인-리스트-생성",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#길이가-0인-리스트-생성",
+    "title": "02. 리스트",
+    "section": "(1) 길이가 0인 리스트 생성",
+    "text": "(1) 길이가 0인 리스트 생성\n\nSolution\n\na=[]\n\n\nlen(a)\n\n0"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#다음의-실행값-중-가장-큰-숫자가-나오는-보기를-골라라.",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#다음의-실행값-중-가장-큰-숫자가-나오는-보기를-골라라.",
+    "title": "02. 리스트",
+    "section": "(2) 다음의 실행값 중 가장 큰 숫자가 나오는 보기를 골라라.",
+    "text": "(2) 다음의 실행값 중 가장 큰 숫자가 나오는 보기를 골라라.\n(a) len(3.14) \n(b) len([3.14]) \n(c) len('3.14')\n\nSolution\n\nlen(3.14)\n\nTypeError: object of type 'float' has no len()\n\n\n\nlen([3.14])\n\n1\n\n\n\nlen('3.14')\n\n4\n\n\n따라서 답은 (c)"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#아래의-예제를-관찰하라",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#아래의-예제를-관찰하라",
+    "title": "02. 리스트",
+    "section": "(3) 아래의 예제를 관찰하라",
+    "text": "(3) 아래의 예제를 관찰하라\n\n'제 이름은 {}입니다'.format('이강철')\n\n'제 이름은 이강철입니다'\n\n\n이 예제를 바탕으로 문자열에 포함된 .format() 함수의 기능을 유추하라. 그리고 아래의 결과를 확인하라.\n\nSolution\n\nst = '전북대학교 학생엠티가 {}월{}일-{}월{}일 완주 곶감펜션에서 있다고 합니다. 자세한 일정 등은 다시 공지하겠습니다.' \nst\n\n'전북대학교 학생엠티가 {}월{}일-{}월{}일 완주 곶감펜션에서 있다고 합니다. 자세한 일정 등은 다시 공지하겠습니다.'\n\n\n\nst.format(3,24,3,25)\n\n'전북대학교 학생엠티가 3월24일-3월25일 완주 곶감펜션에서 있다고 합니다. 자세한 일정 등은 다시 공지하겠습니다.'"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#아래의-예제를-관찰하라.",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#아래의-예제를-관찰하라.",
+    "title": "02. 리스트",
+    "section": "(4) 아래의 예제를 관찰하라.",
+    "text": "(4) 아래의 예제를 관찰하라.\n\n'abcdefg'.replace('g','u')\n\n'abcdefu'\n\n\n이 예제를 바탕으로 문자열의 .replace() 기능을 유추하라.\n\nSolution\nreplace 함수는 string 객체의 특정 문자열을 새로운 문자로 바꿔주는 함수이다.\n\na = [\"a\",\"a\",\"a\"]\n\n\na.replace(\"a\",\"b\")\n\nAttributeError: 'list' object has no attribute 'replace'\n\n\n위와 같이 list객체에 적용 시 수행되지 않는다. 이 경우 loop를 이용해서 바쭤주어야 한다.\n\nb = []\nfor i in a :\n    b.append(i.replace(\"a\",\"b\"))\n\n\nb\n\n['b', 'b', 'b']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#리스트-자료형의-을-이용하여-아래와-같은-list를-생성",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#리스트-자료형의-을-이용하여-아래와-같은-list를-생성",
+    "title": "02. 리스트",
+    "section": "(5) 리스트 자료형의 +, * 을 이용하여 아래와 같은 list를 생성",
+    "text": "(5) 리스트 자료형의 +, * 을 이용하여 아래와 같은 list를 생성\n\n[1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]\n\n[1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]\n\n\n\nSolution\n\nresult = []\nfor i in range(1,6) :\n    temp =[i]\n    result += temp*i    \n\n\nresult\n\n[1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#넘파이를-이용하여-아래와-같은-결과가-나오도록-코드를-작성하라.",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#넘파이를-이용하여-아래와-같은-결과가-나오도록-코드를-작성하라.",
+    "title": "02. 리스트",
+    "section": "(6) 넘파이를 이용하여 아래와 같은 결과가 나오도록 코드를 작성하라.",
+    "text": "(6) 넘파이를 이용하여 아래와 같은 결과가 나오도록 코드를 작성하라.\n\\[\\begin{bmatrix}1 \\\\ 2 \\end{bmatrix} + \\begin{bmatrix}11 \\\\ 22 \\end{bmatrix}= \\begin{bmatrix}12 \\\\ 24 \\end{bmatrix}\\]\n\nSolution\n\na = np.array([1,2])\nb = np.array([11,22])\na,b\n\n(array([1, 2]), array([11, 22]))\n\n\n\nlist(a+b)\n\n[12, 24]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#다음과-같은-결과를-출력하는-코드를-작성",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#다음과-같은-결과를-출력하는-코드를-작성",
+    "title": "02. 리스트",
+    "section": "(7) 다음과 같은 결과를 출력하는 코드를 작성",
+    "text": "(7) 다음과 같은 결과를 출력하는 코드를 작성\n\\[a = \\begin{bmatrix} 12 \\\\ 24\\end{bmatrix}\\]\n\\[2a = \\begin{bmatrix} 24 \\\\ 48\\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-05-23-02wk.html#solution-6",
+    "href": "post/Lecture/IP/2023-05-23-02wk.html#solution-6",
+    "title": "02. 리스트",
+    "section": "Solution",
+    "text": "Solution\n\na = np.array([12,24])\n\n\na2 = list(2*a)\n\n\na2\n\n[24, 48]"
   },
   {
     "objectID": "post/Lecture/RFD/데이터마이닝/Unsupervised Learning(1204).html",
