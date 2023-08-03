@@ -1925,6 +1925,153 @@
     "text": "2-2. multiple classification\n\ndt.model2 &lt;- rpart(Species ~. ,data=train.iris)\n\n\nrpart.plot(dt.model2,extra=2)\n\n\n\n\n\n총 105개의 데이터에서 39개의 데이터가 virginica로 분류되었고, Petal.Length &lt; 2.5인 34개의 데이터는 모두 setosa로 분류되었다.\n\n\npred.dt2 &lt;- predict(dt.model2, test.iris %&gt;% select(-5),type=\"class\")\n\n\nconfusionMatrix(pred.dt2,test.iris$Species)\n\nConfusion Matrix and Statistics\n\n            Reference\nPrediction   setosa versicolor virginica\n  setosa         13          0         0\n  versicolor      0         16         3\n  virginica       0          1        12\n\nOverall Statistics\n                                          \n               Accuracy : 0.9111          \n                 95% CI : (0.7878, 0.9752)\n    No Information Rate : 0.3778          \n    P-Value [Acc &gt; NIR] : 1.099e-13       \n                                          \n                  Kappa : 0.8655          \n                                          \n Mcnemar's Test P-Value : NA              \n\nStatistics by Class:\n\n                     Class: setosa Class: versicolor Class: virginica\nSensitivity                 1.0000            0.9412           0.8000\nSpecificity                 1.0000            0.8929           0.9667\nPos Pred Value              1.0000            0.8421           0.9231\nNeg Pred Value              1.0000            0.9615           0.9062\nPrevalence                  0.2889            0.3778           0.3333\nDetection Rate              0.2889            0.3556           0.2667\nDetection Prevalence        0.2889            0.4222           0.2889\nBalanced Accuracy           1.0000            0.9170           0.8833\n\n\n\n정확도의 0.9556, 각각의 class에서 특이도와 민감도를 확인해보니 적절한 분류가 이루어졌음을 알 수 있다."
   },
   {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "- 딕셔너리는 key 값과 value로 구성되어있다.\n- 순서대로 정리된 자료를 검색할 때는 시퀀스형(리스트, 튜플,string)이 유리하나, 키워드로 검색하고 싶을때는 딕셔너리 타입이 유리하다.\n\n\n\n\n\ndct=  {\"a\" : 1, \"b\":2}\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\ndct = dict(a=1, b=2)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\ndct = dict([[\"a\",1],[\"b\",2]])\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\ndct = (\"a\",1),(\"b\",2)\n\n\ndict(dct)\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\n- key값을 이용해서 추출해야한다.\n\ndct = dict(dct)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\ndct[\"a\"]\n\n1\n\n\n\n\n- 아래와 같은 구조가 있다고 하자.\n\nlst = [[\"a\",1],[\"b\",2]]\n\n\nlst\n\n[['a', 1], ['b', 2]]\n\n\n- 여기에서 a의 값을 알려면?\n\n\n\n기존의 우리가 배운 리스트 컴프리헨션 방식으로\n\n\n[s for n,s in lst if n==\"a\"]\n\n[1]\n\n\n\n\n\n\ndict(lst)[\"a\"]\n\n1\n\n\n\n\n\n\n\n\ndct = dict(lst)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\ndct[\"c\"] = 3\n\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}\n\n\n\n\n\n- 방법 1\n\ndel dct[\"a\"]\n\n\ndct\n\n{'b': 2, 'c': 3}\n\n\n- 방법 2\n\ndct.pop(\"b\")\n\n2\n\n\n\ndct\n\n{'c': 3}\n\n\n\n\n\n\ndct = dict(lst)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n[[n,s] for n,s in lst if n!= \"a\"]\n\n[['b', 2]]\n\n\n\n\n\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\"a\" in dct\n\nTrue\n\n\n\n\"b\" in dct\n\nTrue\n\n\n- 아래의 경우를 보고 딕셔너리의 in은 key값의 유무를 판단한다.\n\n1 in dct\n\nFalse\n\n\n\n\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\ndct.keys()\n\ndict_keys(['a', 'b'])\n\n\n\ndct.values()\n\ndict_values([1, 2])\n\n\n\ndct.items()\n\ndict_items([('a', 1), ('b', 2)])\n\n\n\ndct.get(\"a\")\n\n1\n\n\n\n\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\nfor k in dct.keys():\n    print(k)\n\na\nb\n\n\n\nfor k in dct:\n    print(k)\n\na\nb\n\n\n\nlist(dct)\n\n['a', 'b']\n\n\n\nfor k in list(dct):\n    print(k)\n\na\nb\n\n\n- 딕셔너리 그 자체도 for문에 넣을 수 있음.\n- 단 key값만 들어감\n\nfor v in dct.values():\n    print(v)\n\n1\n2\n\n\n\nfor i in dct.items():\n    print(i)\n\n('a', 1)\n('b', 2)\n\n\n\nfor n,s in dct.items():\n    print(\"{}은 {}입니다.\".format(n,s))\n\na은 1입니다.\nb은 2입니다."
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#선언",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#선언",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "dct=  {\"a\" : 1, \"b\":2}\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\ndct = dict(a=1, b=2)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\ndct = dict([[\"a\",1],[\"b\",2]])\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\n\ndct = (\"a\",1),(\"b\",2)\n\n\ndict(dct)\n\n{'a': 1, 'b': 2}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#원소-추출",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#원소-추출",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "- key값을 이용해서 추출해야한다.\n\ndct = dict(dct)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\ndct[\"a\"]\n\n1\n\n\n\n\n- 아래와 같은 구조가 있다고 하자.\n\nlst = [[\"a\",1],[\"b\",2]]\n\n\nlst\n\n[['a', 1], ['b', 2]]\n\n\n- 여기에서 a의 값을 알려면?\n\n\n\n기존의 우리가 배운 리스트 컴프리헨션 방식으로\n\n\n[s for n,s in lst if n==\"a\"]\n\n[1]\n\n\n\n\n\n\ndict(lst)[\"a\"]\n\n1"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#원소-추가-변경-삭제",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#원소-추가-변경-삭제",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "dct = dict(lst)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n\n\ndct[\"c\"] = 3\n\n\ndct\n\n{'a': 1, 'b': 2, 'c': 3}\n\n\n\n\n\n- 방법 1\n\ndel dct[\"a\"]\n\n\ndct\n\n{'b': 2, 'c': 3}\n\n\n- 방법 2\n\ndct.pop(\"b\")\n\n2\n\n\n\ndct\n\n{'c': 3}\n\n\n\n\n\n\ndct = dict(lst)\n\n\ndct\n\n{'a': 1, 'b': 2}\n\n\n\n[[n,s] for n,s in lst if n!= \"a\"]\n\n[['b', 2]]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#연산",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#연산",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "dct\n\n{'a': 1, 'b': 2}\n\n\n\n\"a\" in dct\n\nTrue\n\n\n\n\"b\" in dct\n\nTrue\n\n\n- 아래의 경우를 보고 딕셔너리의 in은 key값의 유무를 판단한다.\n\n1 in dct\n\nFalse"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#특수-기능",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#특수-기능",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "dct\n\n{'a': 1, 'b': 2}\n\n\n\ndct.keys()\n\ndict_keys(['a', 'b'])\n\n\n\ndct.values()\n\ndict_values([1, 2])\n\n\n\ndct.items()\n\ndict_items([('a', 1), ('b', 2)])\n\n\n\ndct.get(\"a\")\n\n1"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#for-dictstar",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#for-dictstar",
+    "title": "04. 딕셔너리",
+    "section": "",
+    "text": "dct\n\n{'a': 1, 'b': 2}\n\n\n\nfor k in dct.keys():\n    print(k)\n\na\nb\n\n\n\nfor k in dct:\n    print(k)\n\na\nb\n\n\n\nlist(dct)\n\n['a', 'b']\n\n\n\nfor k in list(dct):\n    print(k)\n\na\nb\n\n\n- 딕셔너리 그 자체도 for문에 넣을 수 있음.\n- 단 key값만 들어감\n\nfor v in dct.values():\n    print(v)\n\n1\n2\n\n\n\nfor i in dct.items():\n    print(i)\n\n('a', 1)\n('b', 2)\n\n\n\nfor n,s in dct.items():\n    print(\"{}은 {}입니다.\".format(n,s))\n\na은 1입니다.\nb은 2입니다."
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#key값만-뽑기",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#key값만-뽑기",
+    "title": "04. 딕셔너리",
+    "section": "key값만 뽑기",
+    "text": "key값만 뽑기\n\nlist(dct)\n\n['a', 'b']\n\n\n\nlist(dct.keys())\n\n['a', 'b']\n\n\n\n[k for k in dct]\n\n['a', 'b']\n\n\n\n[k for k,v in dct.items()]\n\n['a', 'b']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#value만-뽑기",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#value만-뽑기",
+    "title": "04. 딕셔너리",
+    "section": "value만 뽑기",
+    "text": "value만 뽑기\n\n[v for k,v in dct.items()]\n\n[1, 2]\n\n\n\nlist(dct.values())\n\n[1, 2]\n\n\n\n[v for v in dct.values()]\n\n[1, 2]\n\n\n\n[dct[k] for k in dct ]\n\n[1, 2]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex1-변환",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex1-변환",
+    "title": "04. 딕셔너리",
+    "section": "ex1) 변환",
+    "text": "ex1) 변환\n\nlst = list(\"abcd\"*2)\n\n\nlst\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']\n\n\n\n\n\n변환전\n변환후\n\n\n\n\na\n[1,0,0,0]\n\n\nb\n[0,1,0,0]\n\n\nc\n[0,0,1,0]\n\n\nd\n[0,0,0,1]\n\n\n\n\ndct = {\"a\": [1,0,0,0],\n      \"b\": [0,1,0,0],\n      \"c\": [0,0,1,0],\n      \"d\": [0,0,0,1]}\n\n\ndct\n\n{'a': [1, 0, 0, 0], 'b': [0, 1, 0, 0], 'c': [0, 0, 1, 0], 'd': [0, 0, 0, 1]}\n\n\n\nSol\n\n[v for v in dct.values()]\n\n[[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]]"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex2-역변환",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex2-역변환",
+    "title": "04. 딕셔너리",
+    "section": "ex2) 역변환",
+    "text": "ex2) 역변환\n\nlst=[v for v in dct.values()]*2\n\n\nlst\n\n[[1, 0, 0, 0],\n [0, 1, 0, 0],\n [0, 0, 1, 0],\n [0, 0, 0, 1],\n [1, 0, 0, 0],\n [0, 1, 0, 0],\n [0, 0, 1, 0],\n [0, 0, 0, 1]]\n\n\n\nSol\n\n[k for i in lst for k,v in dct.items() if v == i]\n\n['a', 'b', 'c', 'd', 'a', 'b', 'c', 'd']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex3",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex3",
+    "title": "04. 딕셔너리",
+    "section": "ex3)",
+    "text": "ex3)\n\nlst = ['딸기','사과','바나나','딸기','사과','오토바이','자동차','버스','기차','오토바이','자동차']\n\n\nlst\n\n['딸기', '사과', '바나나', '딸기', '사과', '오토바이', '자동차', '버스', '기차', '오토바이', '자동차']\n\n\n\n\n\n변환전\n변환후\n\n\n\n\n딸기\n과일\n\n\n사과\n과일\n\n\n바나나\n과일\n\n\n오토바이\n탈것\n\n\n자동차\n탈것\n\n\n버스\n탈것\n\n\n기차\n탈것\n\n\n\n\ndct = {\"과일\" :[\"딸기\",\"사과\",\"바나나\"],\n       \"탈것\" : [\"오토바이\", \"자동차\",\"버스\",\"기차\"]}\n\n\ndct\n\n{'과일': ['딸기', '사과', '바나나'], '탈것': ['오토바이', '자동차', '버스', '기차']}\n\n\n\n[k for i in lst for k,v in dct.items() if i in v]\n\n['과일', '과일', '과일', '과일', '과일', '탈것', '탈것', '탈것', '탈것', '탈것', '탈것']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#아래-규칙에-따라-리스트의-원소를-문자로-변환",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#아래-규칙에-따라-리스트의-원소를-문자로-변환",
+    "title": "04. 딕셔너리",
+    "section": "(1) 아래 규칙에 따라 리스트의 원소를 문자로 변환",
+    "text": "(1) 아래 규칙에 따라 리스트의 원소를 문자로 변환\n\nlst = [1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1]\n\n\nlst\n\n[1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1]\n\n\n\n\n\n문자\n숫자\n\n\n\n\na\n1\n\n\nb\n0\n\n\n\n\nsol\n\ndct = {\"a\":1,\"b\":0}\n\n\n[k for i in lst for k,v in dct.items() if v==i]\n\n['a', 'b', 'a', 'b', 'a', 'b', 'a', 'a', 'a', 'a', 'b', 'b', 'a', 'b', 'a']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#번과-동일",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#번과-동일",
+    "title": "04. 딕셔너리",
+    "section": "(2) 1번과 동일",
+    "text": "(2) 1번과 동일\n\nmonth = [1,2,2,3,4,5,6,7,8,9,9,10,11,12] \n\n\n\n\n월\n의미\n\n\n\n\n1,2\n겨울방학\n\n\n3,4,5,6\n1학기\n\n\n7,8\n여름방학\n\n\n9,10,11,12\n2학기\n\n\n\n\nsol\n\ndct = {\"겨울방학\":[1,2],\n       \"1학기\" : [3,4,5,6],\n       \"여름방학\" : [7,8],\n       \"2학기\" : [9,10,11,12]}\n\n\n[k for m in month for k,v in dct.items() if m in v ]\n\n['겨울방학',\n '겨울방학',\n '겨울방학',\n '1학기',\n '1학기',\n '1학기',\n '1학기',\n '여름방학',\n '여름방학',\n '2학기',\n '2학기',\n '2학기',\n '2학기',\n '2학기']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#규칙-1을-이용하여-주어진-리스트를-변환하라",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#규칙-1을-이용하여-주어진-리스트를-변환하라",
+    "title": "04. 딕셔너리",
+    "section": "(3) 규칙 1을 이용하여 주어진 리스트를 변환하라",
+    "text": "(3) 규칙 1을 이용하여 주어진 리스트를 변환하라\n(규칙1)\n\n\n\n문자\n숫자\n\n\n\n\n바나나\n0\n\n\n사과\n1\n\n\n오토바이\n2\n\n\n자동차\n3\n\n\n자전거\n4\n\n\n\n(규칙2)\n\n\n\n아이템\n카테고리\n\n\n\n\n바나나\n과일\n\n\n사과\n과일\n\n\n오토바이\n탈것\n\n\n자동차\n탈것\n\n\n자전거\n탈것\n\n\n\n- 각각의 규칙을 나타내는 딕셔너리\n\ndct1 = {'바나나':0, '사과':1, '오토바이':2, '자동차':3, '자전거':4} \ndct2 = {'과일':['바나나','사과'], '탈것':['오토바이','자동차','자전거']} \n\n\nlst = [0,1,0,1,4]\n\n\nsol\n\ndef f(lst) :\n    return [k for i in lst for k,v in dct1.items() if v==i ]\n\n\nf(lst)\n\n['바나나', '사과', '바나나', '사과', '자전거']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#규칙2를-이용하여-주어진-리스트를-변환하는-함수를-구현",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#규칙2를-이용하여-주어진-리스트를-변환하는-함수를-구현",
+    "title": "04. 딕셔너리",
+    "section": "(4) 규칙2를 이용하여 주어진 리스트를 변환하는 함수를 구현",
+    "text": "(4) 규칙2를 이용하여 주어진 리스트를 변환하는 함수를 구현\n\ndef g(lst) :\n    return [k for i in lst for k,v in dct2.items() if i in v ]\n\n\nlst = ['바나나','바나나','바나나','자동차']\n\n\ng(lst)\n\n['과일', '과일', '과일', '탈것']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#규칙-1과-2를-이용하여-주어진-입력을-과일탈것중-하나로-바꾸는-코드를-구현",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#규칙-1과-2를-이용하여-주어진-입력을-과일탈것중-하나로-바꾸는-코드를-구현",
+    "title": "04. 딕셔너리",
+    "section": "(5) 규칙 1과 2를 이용하여 주어진 입력을 “과일”,“탈것”중 하나로 바꾸는 코드를 구현",
+    "text": "(5) 규칙 1과 2를 이용하여 주어진 입력을 “과일”,“탈것”중 하나로 바꾸는 코드를 구현\n\nlst = [0,1,0,1,3,4,2,2,3,4,1,0]\n\n\nsol\n\ng(f(lst))\n\n['과일', '과일', '과일', '과일', '탈것', '탈것', '탈것', '탈것', '탈것', '탈것', '과일', '과일']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#key의-조건",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#key의-조건",
+    "title": "04. 딕셔너리",
+    "section": "Key의 조건",
+    "text": "Key의 조건\n- Key는 중복을 허용하지 않는다.\n\n{\"a\" : [1,2],\"a\" : [3,4],\"b\" : [5,6] }\n\n{'a': [3, 4], 'b': [5, 6]}\n\n\n- 또한, 리스트, dict의 key, set으로 선언 불가능\n\ndct = {[10,20,30,40]: 'guebin', [10,20,25,40]: 'hanni'} \ndct\n\nTypeError: unhashable type: 'list'\n\n\n\ndct = {{0:1}: 'guebin', {1:2}: 'hanni'} \ndct\n\nTypeError: unhashable type: 'dict'\n\n\n\ndct = {{'샌드위치','딸기우유'}:'점심', {'불고기','된장찌개','김','콩자반'}: '저녁'}\ndct\n\nTypeError: unhashable type: 'set'\n\n\n- 튜플은 가능하다\n\ndct = {(10,20,30,40): 'guebin', (10,20,25,40): 'hanni'} \ndct\n\n{(10, 20, 30, 40): 'guebin', (10, 20, 25, 40): 'hanni'}\n\n\n\ndct[10,20,30,40]\n\n'guebin'"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#value의-조건",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#value의-조건",
+    "title": "04. 딕셔너리",
+    "section": "value의 조건",
+    "text": "value의 조건\n- 없음"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#딕셔너리-컴프리헤션",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#딕셔너리-컴프리헤션",
+    "title": "04. 딕셔너리",
+    "section": "딕셔너리 컴프리헤션",
+    "text": "딕셔너리 컴프리헤션\n\nex1\n\nlst = [['딸기','사과'],['오토바이','자동차'],['컴퓨터','아이패드','마우스']]\nlst  \n\n[['딸기', '사과'], ['오토바이', '자동차'], ['컴퓨터', '아이패드', '마우스']]\n\n\n\n{i:lst[i] for i in range(3)}\n\n{0: ['딸기', '사과'], 1: ['오토바이', '자동차'], 2: ['컴퓨터', '아이패드', '마우스']}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex2",
+    "href": "post/Lecture/IP/2023-08-04-04.딕셔너리.html#ex2",
+    "title": "04. 딕셔너리",
+    "section": "ex2",
+    "text": "ex2\n\ndct = {'a':(1,0,0,0), 'b':(0,1,0,0), 'c':(0,0,1,0), 'd':(0,0,0,1)}\ndct\n\n{'a': (1, 0, 0, 0), 'b': (0, 1, 0, 0), 'c': (0, 0, 1, 0), 'd': (0, 0, 0, 1)}\n\n\n\n{v:k for k,v in dct.items()}\n\n{(1, 0, 0, 0): 'a', (0, 1, 0, 0): 'b', (0, 0, 1, 0): 'c', (0, 0, 0, 1): 'd'}"
+  },
+  {
     "objectID": "post/Lecture/IP/2023-08-02-02wk.html",
     "href": "post/Lecture/IP/2023-08-02-02wk.html",
     "title": "02. 리스트",
@@ -2132,7 +2279,7 @@
     "href": "index.html",
     "title": "Lecture",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nJun 1, 2021\n\n\n01. sampling\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 3, 2021\n\n\n02. T-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 5, 2021\n\n\n03. ANOVA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 7, 2021\n\n\n04. chi-square test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 9, 2021\n\n\n05. cor-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 15, 2021\n\n\n06. regression analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 16, 2021\n\n\n07. regression analysis-2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 17, 2021\n\n\n08. PCA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2021\n\n\n09. Factor Analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 24, 2021\n\n\n10. Multidimensional scaling\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 28, 2021\n\n\n11. Time-seris analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 10, 2021\n\n\n01. Supervised Learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 11, 2021\n\n\n02. unsupervised learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 24, 2021\n\n\n03. Text Mining\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 5, 2021\n\n\n01. 결측치 처리\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 6, 2021\n\n\n02. 표준화와 정규화\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 7, 2021\n\n\n03. 날짜 데이터\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2022\n\n\n01. 단순선형회귀\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 14, 2022\n\n\n02. Tensorflow-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 21, 2022\n\n\n03. Tensorflow-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 28, 2022\n\n\n04. 경사하강법-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 30, 2022\n\n\n05. 경사하강법-2\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer 과제\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 18, 2022\n\n\n07. Adam\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 27, 2022\n\n\n08. Mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 1, 2022\n\n\n09. MLE\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 2, 2022\n\n\n10. 확률적 경사하강법\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 8, 2022\n\n\n11. softmax\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 11, 2022\n\n\n12. Max pooling, CNN\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 23, 2022\n\n\n13. CNN-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 30, 2022\n\n\n13. model fitting\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 13, 2022\n\n\n14. Final term\n\n\nGANGCHEOL LEE\n\n\n\n\nJan 27, 2023\n\n\n01. Intro\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 1, 2023\n\n\n02. Overview\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 4, 2023\n\n\n03. 딥러닝의 기초 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 11, 2023\n\n\n04. 딥러닝의 기초 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 18, 2023\n\n\n05. 딥러닝의 기초 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 25, 2023\n\n\n06. 딥러닝의 기초 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 1, 2023\n\n\n07. 딥러닝의 기초 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 7, 2023\n\n\n08. 이미지분석 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2023\n\n\n09. 이미지분석 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 22, 2023\n\n\n10. 순환신경망 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 29, 2023\n\n\n11. 순환신경망 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 1, 2023\n\n\n01. intro\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 5, 2023\n\n\n12. 순환신경망 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 8, 2023\n\n\n02. Histogram equalization\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 12, 2023\n\n\n13. 순환신경망 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 15, 2023\n\n\n03. 그래프를 그리는 여러 방법\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 19, 2023\n\n\n14. 순환신경망 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 22, 2023\n\n\n04. qqplot, 찰스미나도의 도표\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 26, 2023\n\n\n15. Extra-1: 추천시스템\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 29, 2023\n\n\n05. Plotnine & Pandas\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 3, 2023\n\n\n16. Extra-2: 생성모형 (GAN)\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 6, 2023\n\n\n06. Partial Correlation & Pandas Handling\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 13, 2023\n\n\n07. tidydata\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 14, 2023\n\n\n08. mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 15, 2023\n\n\n09. folium\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 16, 2023\n\n\n10. Choropleth Map\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n12. final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n11. Choropleth Map & Plotly\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 19, 2023\n\n\npart 1\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 20, 2023\n\n\npart 2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2023\n\n\npart 3\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 22, 2023\n\n\npart 4\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 23, 2023\n\n\npart 5\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 30, 2023\n\n\nsummary\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 1, 2023\n\n\n01. 자료형\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 2, 2023\n\n\n02. 리스트\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 3, 2023\n\n\n03. 튜플\n\n\nGANGCHEOL LEE\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 4, 2023\n\n\n05. 집합\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n04. 딕셔너리\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 3, 2023\n\n\n03. 튜플\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 2, 2023\n\n\n02. 리스트\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 1, 2023\n\n\n01. 자료형\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 30, 2023\n\n\nsummary\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 23, 2023\n\n\npart 5\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 22, 2023\n\n\npart 4\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2023\n\n\npart 3\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 20, 2023\n\n\npart 2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 19, 2023\n\n\npart 1\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n12. final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n11. Choropleth Map & Plotly\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 16, 2023\n\n\n10. Choropleth Map\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 15, 2023\n\n\n09. folium\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 14, 2023\n\n\n08. mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 13, 2023\n\n\n07. tidydata\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 6, 2023\n\n\n06. Partial Correlation & Pandas Handling\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 3, 2023\n\n\n16. Extra-2: 생성모형 (GAN)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 29, 2023\n\n\n05. Plotnine & Pandas\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 26, 2023\n\n\n15. Extra-1: 추천시스템\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 22, 2023\n\n\n04. qqplot, 찰스미나도의 도표\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 19, 2023\n\n\n14. 순환신경망 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 15, 2023\n\n\n03. 그래프를 그리는 여러 방법\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 12, 2023\n\n\n13. 순환신경망 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 8, 2023\n\n\n02. Histogram equalization\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 5, 2023\n\n\n12. 순환신경망 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 1, 2023\n\n\n01. intro\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 29, 2023\n\n\n11. 순환신경망 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 22, 2023\n\n\n10. 순환신경망 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2023\n\n\n09. 이미지분석 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 7, 2023\n\n\n08. 이미지분석 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 1, 2023\n\n\n07. 딥러닝의 기초 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 25, 2023\n\n\n06. 딥러닝의 기초 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 18, 2023\n\n\n05. 딥러닝의 기초 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 11, 2023\n\n\n04. 딥러닝의 기초 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 4, 2023\n\n\n03. 딥러닝의 기초 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 1, 2023\n\n\n02. Overview\n\n\nGANGCHEOL LEE\n\n\n\n\nJan 27, 2023\n\n\n01. Intro\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 13, 2022\n\n\n14. Final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 30, 2022\n\n\n13. model fitting\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 23, 2022\n\n\n13. CNN-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 11, 2022\n\n\n12. Max pooling, CNN\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 8, 2022\n\n\n11. softmax\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 2, 2022\n\n\n10. 확률적 경사하강법\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 1, 2022\n\n\n09. MLE\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 27, 2022\n\n\n08. Mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 18, 2022\n\n\n07. Adam\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer 과제\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 30, 2022\n\n\n05. 경사하강법-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 28, 2022\n\n\n04. 경사하강법-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 21, 2022\n\n\n03. Tensorflow-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 14, 2022\n\n\n02. Tensorflow-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2022\n\n\n01. 단순선형회귀\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 7, 2021\n\n\n03. 날짜 데이터\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 6, 2021\n\n\n02. 표준화와 정규화\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 5, 2021\n\n\n01. 결측치 처리\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 24, 2021\n\n\n03. Text Mining\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 11, 2021\n\n\n02. unsupervised learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 10, 2021\n\n\n01. Supervised Learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 28, 2021\n\n\n11. Time-seris analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 24, 2021\n\n\n10. Multidimensional scaling\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2021\n\n\n09. Factor Analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 17, 2021\n\n\n08. PCA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 16, 2021\n\n\n07. regression analysis-2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 15, 2021\n\n\n06. regression analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 9, 2021\n\n\n05. cor-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 7, 2021\n\n\n04. chi-square test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 5, 2021\n\n\n03. ANOVA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 3, 2021\n\n\n02. T-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 1, 2021\n\n\n01. sampling\n\n\nGANGCHEOL LEE\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html#education",
@@ -2336,6 +2483,76 @@
     "title": "03. 튜플",
     "section": "if + 컴프리헨션",
     "text": "if + 컴프리헨션\n\n예제1\n- 제곱수중에서 12로 나누어 떨어지는 수만 원소로 가지는 리스트를 만들고 싶다.\n\nSol\n- 풀이1\n\nresult = [i**2 for i in range(1,101) if i**2 % 12==0]\n\n\nprint(result)\n\n[36, 144, 324, 576, 900, 1296, 1764, 2304, 2916, 3600, 4356, 5184, 6084, 7056, 8100, 9216]\n\n\n- 위 결과는 아래와 같다.\n\nlst=[]\nfor i in range(1,101) :\n    if i**2 % 12 == 0:\n        lst.append(i**2)\n\n\nprint(lst)\n\n[36, 144, 324, 576, 900, 1296, 1764, 2304, 2916, 3600, 4356, 5184, 6084, 7056, 8100, 9216]\n\n\n\n\n\n예제2\n- 홀짝 함수 + 컴프리헨션\n\ndef test(x) :\n    return \"even\" if x % 2==0 else \"odd\"\n\n\n[test(i) for i in range(1,10)]\n\n['odd', 'even', 'odd', 'even', 'odd', 'even', 'odd', 'even', 'odd']"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#선언",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#선언",
+    "title": "05. 집합",
+    "section": "선언",
+    "text": "선언\n\ns = {\"a\",\"b\"}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#원소추출",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#원소추출",
+    "title": "05. 집합",
+    "section": "원소추출",
+    "text": "원소추출\n- 일반 인덱스로는 못한다.\n\ns[0]\n\nTypeError: 'set' object is not subscriptable\n\n\n- 딱히 하는 방법이 없음\n- 무엇보다 이걸 하는 의미가 없다.(원소에 접근해서 하는거 자체가 무의미한 행위)"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#원소-추가",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#원소-추가",
+    "title": "05. 집합",
+    "section": "원소 추가",
+    "text": "원소 추가\n\ns.add(\"c\")\ns\n\n{'a', 'b', 'c'}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#원소-삭제",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#원소-삭제",
+    "title": "05. 집합",
+    "section": "원소 삭제",
+    "text": "원소 삭제\n\ns.remove(\"c\")\n\n\ns\n\n{'a', 'b'}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#연산",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#연산",
+    "title": "05. 집합",
+    "section": "연산",
+    "text": "연산\n\nin\n\n\"a\" in s\n\nTrue\n\n\n\n\n합,교,차집합\n\nset1 = {\"a\",\"b\",\"c\"}\nset2 = {\"b\",\"c\",\"d\"}\n\n- 합집합\n\nset1|set2\n\n{'a', 'b', 'c', 'd'}\n\n\n\nset1.union(set2)\n\n{'a', 'b', 'c', 'd'}\n\n\n- 교집합\n\nset1 & set2\n\n{'b', 'c'}\n\n\n\nset1.intersection(set2)\n\n{'b', 'c'}\n\n\n- 차집합\n\nset2-set1\n\n{'d'}\n\n\n\n\n부분집합\n\nset3 = set2|set1\n\n\nset1&lt;set3 \n\nTrue\n\n\n\nset2&lt;set3\n\nTrue"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#for문과-set",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#for문과-set",
+    "title": "05. 집합",
+    "section": "for문과 set",
+    "text": "for문과 set\n\nfor i in set1|set2:\n    print(i)\n\nb\nd\nc\na"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#강아지와-고양이의-종류는-몇-가지인가",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#강아지와-고양이의-종류는-몇-가지인가",
+    "title": "05. 집합",
+    "section": "(2) 강아지와 고양이의 종류는 몇 가지인가?",
+    "text": "(2) 강아지와 고양이의 종류는 몇 가지인가?\n\nSol\n- 고양이는 대문자, 강아지는 소문자로 시작한다.\n\nset1 = set(lst)\n\n- 고양이\n\n[s[0].isupper() for s in set1].count(True)\n\n12\n\n\n- 강아지\n\n[s[0].isupper() for s in set1].count(False)\n\n23"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#강아지-종은-dog-고양이-종은-cat으로-변환",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#강아지-종은-dog-고양이-종은-cat으로-변환",
+    "title": "05. 집합",
+    "section": "(3) 강아지 종은 dog, 고양이 종은 cat으로 변환",
+    "text": "(3) 강아지 종은 dog, 고양이 종은 cat으로 변환\n\nsol\n\nlst2 =[\"cat\"if i[0].isupper() else \"dog\" for i in lst]\n\n\nset(lst2)\n\n{'cat', 'dog'}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#강아지와-고양이-사진은-모두-몇장인가",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#강아지와-고양이-사진은-모두-몇장인가",
+    "title": "05. 집합",
+    "section": "(4) 강아지와 고양이 사진은 모두 몇장인가?",
+    "text": "(4) 강아지와 고양이 사진은 모두 몇장인가?\n\nsol\n\n{s:lst2.count(s) for s in set(lst2)}\n\n{'dog': 4990, 'cat': 2403}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-05. 집합.html#txt에-각-종별로-몇장의-사긴이-있는지-조사",
+    "href": "post/Lecture/IP/2023-08-04-05. 집합.html#txt에-각-종별로-몇장의-사긴이-있는지-조사",
+    "title": "05. 집합",
+    "section": "(5) txt에 각 종별로 몇장의 사긴이 있는지 조사",
+    "text": "(5) txt에 각 종별로 몇장의 사긴이 있는지 조사\n\nsol\n\n{s:lst.count(s) for s in set(lst)}\n\n{'saint': 200,\n 'pomeranian': 200,\n 'newfoundland': 200,\n 'Sphynx': 200,\n 'Abyssinian': 203,\n 'miniature': 200,\n 'basset': 200,\n 'Maine': 200,\n 'beagle': 200,\n 'japanese': 200,\n 'Egyptian': 200,\n 'samoyed': 200,\n 'keeshond': 200,\n 'wheaten': 200,\n 'chihuahua': 200,\n 'havanese': 200,\n 'american': 400,\n 'Persian': 200,\n 'pug': 200,\n 'Russian': 200,\n 'Siamese': 200,\n 'Bombay': 200,\n 'english': 400,\n 'staffordshire': 191,\n 'boxer': 200,\n 'Bengal': 200,\n 'leonberger': 200,\n 'British': 200,\n 'scottish': 199,\n 'shiba': 200,\n 'yorkshire': 200,\n 'great': 200,\n 'german': 200,\n 'Ragdoll': 200,\n 'Birman': 200}"
   },
   {
     "objectID": "post/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html",

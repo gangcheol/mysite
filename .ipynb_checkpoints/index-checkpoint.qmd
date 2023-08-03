@@ -3,7 +3,7 @@ title: "Lecture"
 listing:
   contents: post
   sort: 
-      - "date"
+      - "date desc"
       - "title desc"
   type: table
   categories: true
