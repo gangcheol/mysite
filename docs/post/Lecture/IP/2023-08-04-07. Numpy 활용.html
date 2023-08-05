@@ -276,6 +276,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">07. Numpy 활용</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Lecture/IP/2023-08-04-08.pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Numpy와 Pandas 활용</span></a>
+  </div>
+</li>
       </ul>
   </li>
           <li class="sidebar-item sidebar-item-section">
@@ -809,6 +821,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ex4-1" id="toc-ex4-1" class="nav-link" data-scroll-target="#ex4-1">ex4</a></li>
   <li><a href="#ex5-1" id="toc-ex5-1" class="nav-link" data-scroll-target="#ex5-1">ex5</a></li>
   <li><a href="#ex6" id="toc-ex6" class="nav-link" data-scroll-target="#ex6">ex6</a></li>
+  <li><a href="#ex7" id="toc-ex7" class="nav-link" data-scroll-target="#ex7">ex7</a></li>
+  <li><a href="#ex8" id="toc-ex8" class="nav-link" data-scroll-target="#ex8">ex8</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1341,16 +1355,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>아래의 수시에 따르는 수열을 생성</p>
 <p><span class="math display">\[x_T = \sum_{t=1}^{T} \varepsilon_t\]</span></p>
 <p><code>-</code> 예비학습</p>
-<div class="cell" data-execution_count="178">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>e <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb69-2"><a href="#cb69-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>x <span class="op">=</span> np.cumsum(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>e <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>plt.plot(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>x <span class="op">=</span> np.cumsum(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>plt.plot(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-52-output-1.png" class="img-fluid"></p>
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1358,6 +1376,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="ex6">ex6</h2>
 <p>아래와 같은 변환을 수행하고 결과를 시각화해라.</p>
 <p><span class="math display">\[\bf{xx}_T = \frac 13 (x_{T-1}+ x_{T})\]</span></p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>M<span class="op">=</span> np.array([[<span class="bu">abs</span>(i<span class="op">-</span>j)<span class="op">&lt;</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>xx <span class="op">=</span> M <span class="op">@</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>plt.plot(x,label <span class="op">=</span> <span class="vs">r"$x$"</span>)</span>
+<span id="cb75-2"><a href="#cb75-2"></a>plt.plot(xx,label <span class="op">=</span> <span class="vs">r"$xx$"</span>)</span>
+<span id="cb75-3"><a href="#cb75-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="29">
+<pre><code>&lt;matplotlib.legend.Legend at 0x2175cdf0f50&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-56-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="ex7" class="level2">
+<h2 class="anchored" data-anchor-id="ex7">ex7</h2>
+<p><code>-</code> 아래와 같은 변환을 수행하고 결과를 시각화</p>
+<p>$xx_{1} = (x_1+x_1+x_2) $</p>
+<p>$xx_{t-1} = (x_{t-2}+x_{t-1}+x_t) $</p>
+<p>$xx_{t} = (x_{t-1}+x_{t}+x_t) $</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>M[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb77-2"><a href="#cb77-2"></a>M[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb77-3"><a href="#cb77-3"></a></span>
+<span id="cb77-4"><a href="#cb77-4"></a>plt.plot(x,label <span class="op">=</span> <span class="vs">r"$x$"</span>)</span>
+<span id="cb77-5"><a href="#cb77-5"></a>plt.plot(x<span class="op">@</span>M,label <span class="op">=</span> <span class="vs">r"$xx$"</span>)</span>
+<span id="cb77-6"><a href="#cb77-6"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<pre><code>&lt;matplotlib.legend.Legend at 0x21762a6aa90&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-57-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="ex8" class="level2">
+<h2 class="anchored" data-anchor-id="ex8">ex8</h2>
+<p><code>-</code> 7의 변환을 100번 반복하고 시각화</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>plt.plot(x,label<span class="op">=</span><span class="vs">r"$x$"</span>)</span>
+<span id="cb79-2"><a href="#cb79-2"></a>plt.plot(np.linalg.matrix_power(M,<span class="dv">100</span>)<span class="op">@</span>x,label<span class="op">=</span><span class="vs">r"$M^</span><span class="sc">{100}</span><span class="vs">@x$"</span>)</span>
+<span id="cb79-3"><a href="#cb79-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>&lt;matplotlib.legend.Legend at 0x217631f8150&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-58-output-2.png" class="img-fluid"></p>
+</div>
+</div>
 
 
 </section>

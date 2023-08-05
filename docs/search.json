@@ -1925,6 +1925,188 @@
     "text": "2-2. multiple classification\n\ndt.model2 &lt;- rpart(Species ~. ,data=train.iris)\n\n\nrpart.plot(dt.model2,extra=2)\n\n\n\n\n\n총 105개의 데이터에서 39개의 데이터가 virginica로 분류되었고, Petal.Length &lt; 2.5인 34개의 데이터는 모두 setosa로 분류되었다.\n\n\npred.dt2 &lt;- predict(dt.model2, test.iris %&gt;% select(-5),type=\"class\")\n\n\nconfusionMatrix(pred.dt2,test.iris$Species)\n\nConfusion Matrix and Statistics\n\n            Reference\nPrediction   setosa versicolor virginica\n  setosa         13          0         0\n  versicolor      0         16         3\n  virginica       0          1        12\n\nOverall Statistics\n                                          \n               Accuracy : 0.9111          \n                 95% CI : (0.7878, 0.9752)\n    No Information Rate : 0.3778          \n    P-Value [Acc &gt; NIR] : 1.099e-13       \n                                          \n                  Kappa : 0.8655          \n                                          \n Mcnemar's Test P-Value : NA              \n\nStatistics by Class:\n\n                     Class: setosa Class: versicolor Class: virginica\nSensitivity                 1.0000            0.9412           0.8000\nSpecificity                 1.0000            0.8929           0.9667\nPos Pred Value              1.0000            0.8421           0.9231\nNeg Pred Value              1.0000            0.9615           0.9062\nPrevalence                  0.2889            0.3778           0.3333\nDetection Rate              0.2889            0.3556           0.2667\nDetection Prevalence        0.2889            0.4222           0.2889\nBalanced Accuracy           1.0000            0.9170           0.8833\n\n\n\n정확도의 0.9556, 각각의 class에서 특이도와 민감도를 확인해보니 적절한 분류가 이루어졌음을 알 수 있다."
   },
   {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html",
+    "title": "08. pandas",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#pandas-개발",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#pandas-개발",
+    "title": "08. pandas",
+    "section": "pandas 개발",
+    "text": "pandas 개발\n\natt = np.random.choice(np.arange(10,21)*5,20)\n\nrep = np.random.choice(np.arange(5,21)*5,20)\nmid = np.random.choice(np.arange(0,21)*5,20)\nfin =  np.random.choice(np.arange(0,21)*5,20)\n\nkey = [\"2022-12\" + str(s) for s in np.random.choice(np.arange(300,501),20,replace=False)]\n\n학번이 2022-12350에 해당하는 학생의 출석점수를 알고 싶다.\n(풀이1) - dct로 자료를 저장하고 출력\n\ndct = {\"att\": {key[i]:att[i] for i in range(20)},\n      \"rep\": {key[i]:rep[i] for i in range(20)},\n      \"mid\": {key[i]:mid[i] for i in range(20)},\n      \"fin\": {key[i]:fin[i] for i in range(20)},\n      }\n\n\ndct[\"att\"][\"2022-12350\"]\n\n100\n\n\n(풀이2)-ndarray로 자료를 저장하고 출력\n\narr = np.array([att,rep,fin,key]).T\narr\n\narray([['75', '55', '60', '2022-12436'],\n       ['55', '80', '70', '2022-12408'],\n       ['50', '100', '100', '2022-12390'],\n       ['75', '45', '85', '2022-12325'],\n       ['60', '65', '80', '2022-12392'],\n       ['70', '95', '50', '2022-12450'],\n       ['70', '45', '75', '2022-12428'],\n       ['75', '55', '45', '2022-12393'],\n       ['100', '55', '20', '2022-12446'],\n       ['85', '45', '15', '2022-12421'],\n       ['90', '30', '100', '2022-12329'],\n       ['100', '70', '10', '2022-12350'],\n       ['75', '25', '95', '2022-12426'],\n       ['85', '65', '85', '2022-12335'],\n       ['80', '95', '95', '2022-12442'],\n       ['95', '85', '10', '2022-12331'],\n       ['70', '30', '0', '2022-12453'],\n       ['50', '85', '20', '2022-12422'],\n       ['60', '40', '65', '2022-12466'],\n       ['75', '90', '30', '2022-12347']], dtype='&lt;U11')\n\n\n\narr[arr[:,-1]==\"2022-12350\",0]\n\narray(['100'], dtype='&lt;U11')\n\n\n풀이2의 불편한점\n\n마지막 컬럼이 학번이고 첫번째 칼럼이 att라는 사실을 암기하고 있어야함\n자료형이 문자로 강제로 바뀌어서 저장되어 있음\n또한, 코드의 가독성이 없음(위치로 접근하기 때문)\npandas는 hash스타일의 key값을 제공하고 numpy스타일로 정보를 뽑을 수 도 있도록 만들어졌다."
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#엑셀처럼",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#엑셀처럼",
+    "title": "08. pandas",
+    "section": "엑셀처럼…",
+    "text": "엑셀처럼…\n\npd.DataFrame(dct).head()\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12436\n75\n55\n70\n60\n\n\n2022-12408\n55\n80\n10\n70\n\n\n2022-12390\n50\n100\n80\n100\n\n\n2022-12325\n75\n45\n85\n85\n\n\n2022-12392\n60\n65\n90\n80\n\n\n\n\n\n\n\n\ndf = pd.DataFrame({\"att\":att,\n              \"rep\":rep,\n              \"mid\": mid,\n              \"fin\":fin},index=key)\ndf.head()\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12436\n75\n55\n70\n60\n\n\n2022-12408\n55\n80\n10\n70\n\n\n2022-12390\n50\n100\n80\n100\n\n\n2022-12325\n75\n45\n85\n85\n\n\n2022-12392\n60\n65\n90\n80"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#출석점수-출력",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#출석점수-출력",
+    "title": "08. pandas",
+    "section": "출석점수 출력",
+    "text": "출석점수 출력\n\ndf[\"att\"][\"2022-12436\"]\n\n75\n\n\n\ndf.loc[\"2022-12436\",\"att\"]\n\n75"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#해싱-인덱싱",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#해싱-인덱싱",
+    "title": "08. pandas",
+    "section": "해싱 + 인덱싱",
+    "text": "해싱 + 인덱싱\n\nex1\n- 예제1 : “mid 20 &gt;= and att&lt;60”인 학생들의 “fin” 출력\n\nsol1. 데이터베이스 스타일\n\ndf.query(\"mid &gt;=20 and att&lt;60\")[\"fin\"]\n\n2022-12390    100\n2022-12422     20\nName: fin, dtype: int32\n\n\n\n\nsol2. numpy\n\narr[(arr[:,2].astype(dtype=np.int64) &gt;= 20) & (arr[:,0].astype(dtype=np.int64) &lt; 60),2]\n\narray(['70', '100', '20'], dtype='&lt;U11')\n\n\n\n\n\nex2\n- 중간고사&lt;기말고사 인학생들의 출석점수 평균\n\ndf.query(\"mid&lt;fin\")[\"att\"].mean()\n\n72.14285714285714"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#exercise",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#exercise",
+    "title": "08. pandas",
+    "section": "Exercise",
+    "text": "Exercise"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#아래와-같은-데이터-프레임을-선언",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#아래와-같은-데이터-프레임을-선언",
+    "title": "08. pandas",
+    "section": "(1) 아래와 같은 데이터 프레임을 선언",
+    "text": "(1) 아래와 같은 데이터 프레임을 선언\n\n\nCode\nfrom IPython.core.display import HTML \nHTML('&lt;table border=\"1\" class=\"dataframe\"&gt;\\n  &lt;thead&gt;\\n    &lt;tr style=\"text-align: right;\"&gt;\\n      &lt;th&gt;&lt;/th&gt;\\n      &lt;th&gt;A&lt;/th&gt;\\n      &lt;th&gt;B&lt;/th&gt;\\n    &lt;/tr&gt;\\n  &lt;/thead&gt;\\n  &lt;tbody&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;0&lt;/th&gt;\\n      &lt;td&gt;1&lt;/td&gt;\\n      &lt;td&gt;-2&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;1&lt;/th&gt;\\n      &lt;td&gt;2&lt;/td&gt;\\n      &lt;td&gt;-3&lt;/td&gt;\\n    &lt;/tr&gt;\\n    &lt;tr&gt;\\n      &lt;th&gt;2&lt;/th&gt;\\n      &lt;td&gt;3&lt;/td&gt;\\n      &lt;td&gt;-4&lt;/td&gt;\\n    &lt;/tr&gt;\\n  &lt;/tbody&gt;\\n&lt;/table&gt;')\n\n\n\n\n\n\nA\nB\n\n\n\n\n0\n1\n-2\n\n\n1\n2\n-3\n\n\n2\n3\n-4\n\n\n\n\n\n\nsol\n\ndf = pd.DataFrame({\"A\":[1,2,3],\"B\" : [-2,-3,-4]})\n\n\ndf\n\n\n\n\n\n\n\n\nA\nB\n\n\n\n\n0\n1\n-2\n\n\n1\n2\n-3\n\n\n2\n3\n-4"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#컬럼이름을-x1x2로-변경",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#컬럼이름을-x1x2로-변경",
+    "title": "08. pandas",
+    "section": "(2) 컬럼이름을 X1,X2로 변경",
+    "text": "(2) 컬럼이름을 X1,X2로 변경\n\nsol\n\ndf.columns = [\"X1\",\"X2\"]\n\n\ndf\n\n\n\n\n\n\n\n\nX1\nX2\n\n\n\n\n0\n1\n-2\n\n\n1\n2\n-3\n\n\n2\n3\n-4"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#다음-데이터-프레임에서-bd열을-선택",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#다음-데이터-프레임에서-bd열을-선택",
+    "title": "08. pandas",
+    "section": "(3) 다음 데이터 프레임에서 B,D열을 선택",
+    "text": "(3) 다음 데이터 프레임에서 B,D열을 선택\n\ndf = pd.DataFrame(np.random.normal(size=(100,5)),columns=list('ABCDE'))\ndf.head()\n\n\n\n\n\n\n\n\nA\nB\nC\nD\nE\n\n\n\n\n0\n0.248865\n0.895611\n0.089525\n0.976961\n-0.907373\n\n\n1\n-1.541892\n-0.113904\n-1.506780\n0.145914\n-0.039179\n\n\n2\n0.618049\n0.464153\n1.212350\n0.701788\n-1.077556\n\n\n3\n0.893047\n-1.388979\n-0.900623\n0.833062\n-0.691650\n\n\n4\n-0.778846\n-0.770769\n1.601176\n1.283867\n-0.110478\n\n\n\n\n\n\n\n\nsol\n\ndf.loc[:,[\"B\",\"D\"]]\n\n\n\n\n\n\n\n\nB\nD\n\n\n\n\n0\n0.895611\n0.976961\n\n\n1\n-0.113904\n0.145914\n\n\n2\n0.464153\n0.701788\n\n\n3\n-1.388979\n0.833062\n\n\n4\n-0.770769\n1.283867\n\n\n...\n...\n...\n\n\n95\n1.411654\n-0.795260\n\n\n96\n1.481368\n-0.755572\n\n\n97\n-0.100731\n-2.611382\n\n\n98\n0.663444\n1.067437\n\n\n99\n0.138120\n-0.777253\n\n\n\n\n100 rows × 2 columns"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#마지막-10개의-row를-출력",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#마지막-10개의-row를-출력",
+    "title": "08. pandas",
+    "section": "(4) 마지막 10개의 row를 출력",
+    "text": "(4) 마지막 10개의 row를 출력\n\nsol\n\ndf.iloc[-10:,:]\n\n\n\n\n\n\n\n\nA\nB\nC\nD\nE\n\n\n\n\n90\n-0.315609\n0.201108\n1.237544\n-1.322454\n-1.541894\n\n\n91\n-0.949342\n0.057856\n0.065429\n0.931203\n-1.137109\n\n\n92\n0.570043\n0.051667\n0.828303\n1.671300\n0.631333\n\n\n93\n0.728668\n-0.729015\n0.776093\n0.102270\n0.516913\n\n\n94\n-0.466797\n0.624024\n0.358107\n-0.474222\n0.432968\n\n\n95\n-0.322176\n1.411654\n-1.521602\n-0.795260\n0.628524\n\n\n96\n-1.626727\n1.481368\n-0.992218\n-0.755572\n-1.633161\n\n\n97\n-0.444244\n-0.100731\n-0.300905\n-2.611382\n1.151302\n\n\n98\n-0.532225\n0.663444\n1.084953\n1.067437\n-0.628104\n\n\n99\n-1.112164\n0.138120\n0.134880\n-0.777253\n-0.354412"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#ab-열의-처음-10개의-row를-출력",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#ab-열의-처음-10개의-row를-출력",
+    "title": "08. pandas",
+    "section": "(5) A,B 열의 처음 10개의 row를 출력",
+    "text": "(5) A,B 열의 처음 10개의 row를 출력\n\nsol\n\ndf.loc[:9, [\"A\",\"B\"]]\n\n\n\n\n\n\n\n\nA\nB\n\n\n\n\n0\n0.248865\n0.895611\n\n\n1\n-1.541892\n-0.113904\n\n\n2\n0.618049\n0.464153\n\n\n3\n0.893047\n-1.388979\n\n\n4\n-0.778846\n-0.770769\n\n\n5\n1.370019\n1.086862\n\n\n6\n0.832954\n-0.920285\n\n\n7\n-0.298321\n0.057971\n\n\n8\n0.332499\n0.192044\n\n\n9\n0.622278\n0.847585"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#주어진-자료의-칼럼-갯수",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#주어진-자료의-칼럼-갯수",
+    "title": "08. pandas",
+    "section": "(6) 주어진 자료의 칼럼 갯수",
+    "text": "(6) 주어진 자료의 칼럼 갯수\n\nsol\n\ndf=pd.read_csv('https://raw.githubusercontent.com/PacktPublishing/Pandas-Cookbook/master/data/movie.csv')\ndf.head()\n\n\n\n\n\n\n\n\ncolor\ndirector_name\nnum_critic_for_reviews\nduration\ndirector_facebook_likes\nactor_3_facebook_likes\nactor_2_name\nactor_1_facebook_likes\ngross\ngenres\n...\nnum_user_for_reviews\nlanguage\ncountry\ncontent_rating\nbudget\ntitle_year\nactor_2_facebook_likes\nimdb_score\naspect_ratio\nmovie_facebook_likes\n\n\n\n\n0\nColor\nJames Cameron\n723.0\n178.0\n0.0\n855.0\nJoel David Moore\n1000.0\n760505847.0\nAction|Adventure|Fantasy|Sci-Fi\n...\n3054.0\nEnglish\nUSA\nPG-13\n237000000.0\n2009.0\n936.0\n7.9\n1.78\n33000\n\n\n1\nColor\nGore Verbinski\n302.0\n169.0\n563.0\n1000.0\nOrlando Bloom\n40000.0\n309404152.0\nAction|Adventure|Fantasy\n...\n1238.0\nEnglish\nUSA\nPG-13\n300000000.0\n2007.0\n5000.0\n7.1\n2.35\n0\n\n\n2\nColor\nSam Mendes\n602.0\n148.0\n0.0\n161.0\nRory Kinnear\n11000.0\n200074175.0\nAction|Adventure|Thriller\n...\n994.0\nEnglish\nUK\nPG-13\n245000000.0\n2015.0\n393.0\n6.8\n2.35\n85000\n\n\n3\nColor\nChristopher Nolan\n813.0\n164.0\n22000.0\n23000.0\nChristian Bale\n27000.0\n448130642.0\nAction|Thriller\n...\n2701.0\nEnglish\nUSA\nPG-13\n250000000.0\n2012.0\n23000.0\n8.5\n2.35\n164000\n\n\n4\nNaN\nDoug Walker\nNaN\nNaN\n131.0\nNaN\nRob Walker\n131.0\nNaN\nDocumentary\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n12.0\n7.1\nNaN\n0\n\n\n\n\n5 rows × 28 columns\n\n\n\n\nlen(df.columns)\n\n28"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#데이터-프레임의-컬럼이릉이-c혹인-d로-시작하는-열은-몇개인가",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#데이터-프레임의-컬럼이릉이-c혹인-d로-시작하는-열은-몇개인가",
+    "title": "08. pandas",
+    "section": "(7) 데이터 프레임의 컬럼이릉이 c혹인 d로 시작하는 열은 몇개인가?",
+    "text": "(7) 데이터 프레임의 컬럼이릉이 c혹인 d로 시작하는 열은 몇개인가?\n\nsol\n\nlen([i for i in df.columns if i[0] == \"c\" or i[0] == \"d\"])\n\n7"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#actor라는-단어가-포함된-열의-갯수",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#actor라는-단어가-포함된-열의-갯수",
+    "title": "08. pandas",
+    "section": "(8) actor라는 단어가 포함된 열의 갯수",
+    "text": "(8) actor라는 단어가 포함된 열의 갯수\n\nsol\n\nlen([i for i in df.columns if \"actor\" in i])\n\n6"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#actor라는-단어가-포함된-열을-추출",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#actor라는-단어가-포함된-열을-추출",
+    "title": "08. pandas",
+    "section": "(9) actor라는 단어가 포함된 열을 추출",
+    "text": "(9) actor라는 단어가 포함된 열을 추출\n\nsol\n\ndf.loc[:,[\"actor\" in i for i in df.columns ]]\n\n\n\n\n\n\n\n\nactor_3_facebook_likes\nactor_2_name\nactor_1_facebook_likes\nactor_1_name\nactor_3_name\nactor_2_facebook_likes\n\n\n\n\n0\n855.0\nJoel David Moore\n1000.0\nCCH Pounder\nWes Studi\n936.0\n\n\n1\n1000.0\nOrlando Bloom\n40000.0\nJohnny Depp\nJack Davenport\n5000.0\n\n\n2\n161.0\nRory Kinnear\n11000.0\nChristoph Waltz\nStephanie Sigman\n393.0\n\n\n3\n23000.0\nChristian Bale\n27000.0\nTom Hardy\nJoseph Gordon-Levitt\n23000.0\n\n\n4\nNaN\nRob Walker\n131.0\nDoug Walker\nNaN\n12.0\n\n\n...\n...\n...\n...\n...\n...\n...\n\n\n4911\n318.0\nDaphne Zuniga\n637.0\nEric Mabius\nCrystal Lowe\n470.0\n\n\n4912\n319.0\nValorie Curry\n841.0\nNatalie Zea\nSam Underwood\n593.0\n\n\n4913\n0.0\nMaxwell Moody\n0.0\nEva Boehnke\nDavid Chandler\n0.0\n\n\n4914\n489.0\nDaniel Henney\n946.0\nAlan Ruck\nEliza Coupe\n719.0\n\n\n4915\n16.0\nBrian Herzlinger\n86.0\nJohn August\nJon Gunn\n23.0\n\n\n\n\n4916 rows × 6 columns"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#querystar",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#querystar",
+    "title": "08. pandas",
+    "section": "query(\\(\\star\\))",
+    "text": "query(\\(\\star\\))\n\n\nCode\nnp.random.seed(43052)\natt = np.random.choice(np.arange(10,21)*5,20)\nrep = np.random.choice(np.arange(5,21)*5,20)\nmid = np.random.choice(np.arange(0,21)*5,20)\nfin = np.random.choice(np.arange(0,21)*5,20)\nkey = ['2022-12'+str(s) for s in np.random.choice(np.arange(300,501),20,replace=False)]\ndf = pd.DataFrame({'att':att,'rep':rep,'mid':mid,'fin':fin},index=key)\ndf.head()\n\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12380\n65\n55\n50\n40\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12363\n65\n90\n60\n30\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n\n\n\n\n\n\ndf.query(\"att ==90 & fin &gt;30\")\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12354\n90\n90\n80\n90\n\n\n\n\n\n\n\n\ndf.query(\"att&lt;rep and mid &lt;fin\")\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12458\n50\n55\n15\n85\n\n\n\n\n\n\n\n\ndf.query(\"att&lt;rep&lt;80\")\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12318\n55\n75\n35\n25\n\n\n2022-12458\n50\n55\n15\n85\n\n\n\n\n\n\n\n\ndf.query(\"50&lt;att&lt;=90 and mid &lt; fin\")\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n2022-12463\n65\n45\n45\n90\n\n\n2022-12452\n65\n55\n15\n45\n\n\n2022-12354\n90\n90\n80\n90\n\n\n\n\n\n\n\n\ndf.query(\"(mid+fin)/2 &gt;= 60\")\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n2022-12463\n65\n45\n45\n90\n\n\n2022-12396\n95\n30\n30\n95\n\n\n2022-12354\n90\n90\n80\n90\n\n\n\n\n\n\n\n\n_m = df[\"att\"].mean()\ndf.query(\"att &gt; @_m\")\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n2022-12377\n75\n40\n100\n15\n\n\n2022-12400\n95\n65\n20\n10\n\n\n2022-12469\n90\n80\n80\n20\n\n\n2022-12432\n95\n95\n45\n0\n\n\n2022-12443\n95\n55\n15\n35\n\n\n2022-12396\n95\n30\n30\n95\n\n\n2022-12354\n90\n90\n80\n90"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#시계열-자료",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#시계열-자료",
+    "title": "08. pandas",
+    "section": "시계열 자료",
+    "text": "시계열 자료\n- 10개의 날짜데이터 생성\n\nindex = pd.date_range(\"20211226\",periods=10)\n\n- 데이터 프레임 생성\n\nc =list(\"ABCD\")\ndata = np.random.normal(size=(10,4))\n\n\ndf = pd.DataFrame(data,columns = c,index=index)\n\n\ndf.head()\n\n\n\n\n\n\n\n\nA\nB\nC\nD\n\n\n\n\n2021-12-26\n0.117038\n-0.350165\n0.410882\n-0.763975\n\n\n2021-12-27\n0.766821\n1.032189\n0.404380\n-0.134916\n\n\n2021-12-28\n-0.767637\n-0.642942\n-0.247824\n-1.457658\n\n\n2021-12-29\n-0.091060\n0.323402\n-0.774021\n0.659558\n\n\n2021-12-30\n-0.794595\n-2.605380\n0.283726\n-1.832944\n\n\n\n\n\n\n\n\nex1. 인덱싱\n\ndf.loc['2021-12-28':'2022-01-02',:]\n\n\n\n\n\n\n\n\nA\nB\nC\nD\n\n\n\n\n2021-12-28\n-0.767637\n-0.642942\n-0.247824\n-1.457658\n\n\n2021-12-29\n-0.091060\n0.323402\n-0.774021\n0.659558\n\n\n2021-12-30\n-0.794595\n-2.605380\n0.283726\n-1.832944\n\n\n2021-12-31\n0.292831\n0.287421\n0.283594\n-0.746875\n\n\n2022-01-01\n-0.918335\n0.402325\n0.485921\n0.122862\n\n\n2022-01-02\n-0.701718\n0.740156\n-0.898490\n1.038380\n\n\n\n\n\n\n\n\n\nex2. 스트라이딩(샘플링)\n\ndf.loc[::3,:]\n\n\n\n\n\n\n\n\nA\nB\nC\nD\n\n\n\n\n2021-12-26\n0.117038\n-0.350165\n0.410882\n-0.763975\n\n\n2021-12-29\n-0.091060\n0.323402\n-0.774021\n0.659558\n\n\n2022-01-01\n-0.918335\n0.402325\n0.485921\n0.122862\n\n\n2022-01-04\n-0.148996\n0.234815\n-1.412675\n-0.706377\n\n\n\n\n\n\n\n\n\nex3. query\n\ndf.query(\"index &lt;= '2021-12-30' or index=='2022-01-02'\")\n\n\n\n\n\n\n\n\nA\nB\nC\nD\n\n\n\n\n2021-12-26\n0.117038\n-0.350165\n0.410882\n-0.763975\n\n\n2021-12-27\n0.766821\n1.032189\n0.404380\n-0.134916\n\n\n2021-12-28\n-0.767637\n-0.642942\n-0.247824\n-1.457658\n\n\n2021-12-29\n-0.091060\n0.323402\n-0.774021\n0.659558\n\n\n2021-12-30\n-0.794595\n-2.605380\n0.283726\n-1.832944\n\n\n2022-01-02\n-0.701718\n0.740156\n-0.898490\n1.038380"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#더러운-자료",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#더러운-자료",
+    "title": "08. pandas",
+    "section": "더러운 자료",
+    "text": "더러운 자료\n\n\nCode\nnp.random.seed(43052)\natt = np.random.choice(np.arange(10,21)*5,20)\nrep = np.random.choice(np.arange(5,21)*5,20)\nmid = np.random.choice(np.arange(0,21)*5,20)\nfin = np.random.choice(np.arange(0,21)*5,20)\nkey = ['2022-12'+str(s) for s in np.random.choice(np.arange(300,501),20,replace=False)]\ndf = pd.DataFrame({'att':att,'rep':rep,'mid':mid,'fin':fin},index=key)\ndf.head()\n\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12380\n65\n55\n50\n40\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12363\n65\n90\n60\n30\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n\n\n\n\n\n\ndf.att\n\n2022-12380    65\n2022-12370    95\n2022-12363    65\n2022-12488    55\n2022-12312    80\n2022-12377    75\n2022-12463    65\n2022-12471    60\n2022-12400    95\n2022-12469    90\n2022-12318    55\n2022-12432    95\n2022-12443    95\n2022-12367    50\n2022-12458    50\n2022-12396    95\n2022-12482    50\n2022-12452    65\n2022-12387    70\n2022-12354    90\nName: att, dtype: int32\n\n\n- 위 방법을 쓰면 쉽게 원하는 컬럼의 접근할 수 있음\n- 그러나 컬럼이름에 스페이스가 있으면 쓸 수 없음.\n\ndf.columns = pd.Index(['att score', 'rep score', 'mid score', 'fin score'])\ndf.head()\n\n\n\n\n\n\n\n\natt score\nrep score\nmid score\nfin score\n\n\n\n\n2022-12380\n65\n55\n50\n40\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12363\n65\n90\n60\n30\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n\n\n\n\n\n\ndf.att score\n\nSyntaxError: invalid syntax (266787719.py, line 1)\n\n\n\ndf[\"att score\"]\n\n2022-12380    65\n2022-12370    95\n2022-12363    65\n2022-12488    55\n2022-12312    80\n2022-12377    75\n2022-12463    65\n2022-12471    60\n2022-12400    95\n2022-12469    90\n2022-12318    55\n2022-12432    95\n2022-12443    95\n2022-12367    50\n2022-12458    50\n2022-12396    95\n2022-12482    50\n2022-12452    65\n2022-12387    70\n2022-12354    90\nName: att score, dtype: int32"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#개인습관",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#개인습관",
+    "title": "08. pandas",
+    "section": "개인습관",
+    "text": "개인습관\n- Row의 이름은 없는게 낫다고 생각함// 시계열 자료는 제외\n\n# code-fold : true\nnp.random.seed(43052)\natt = np.random.choice(np.arange(10,21)*5,20)\nrep = np.random.choice(np.arange(5,21)*5,20)\nmid = np.random.choice(np.arange(0,21)*5,20)\nfin = np.random.choice(np.arange(0,21)*5,20)\nkey = ['2022-12'+str(s) for s in np.random.choice(np.arange(300,501),20,replace=False)]\ndf = pd.DataFrame({'att':att,'rep':rep,'mid':mid,'fin':fin},index=key)\ndf.head()\n\n\n\n\n\n\n\n\natt\nrep\nmid\nfin\n\n\n\n\n2022-12380\n65\n55\n50\n40\n\n\n2022-12370\n95\n100\n50\n80\n\n\n2022-12363\n65\n90\n60\n30\n\n\n2022-12488\n55\n80\n75\n80\n\n\n2022-12312\n80\n30\n30\n100\n\n\n\n\n\n\n\n\ndf2 = df.reset_index().rename(columns={\"index\":\"id\"})\n\n\ndf2.head()\n\n\n\n\n\n\n\n\nid\natt\nrep\nmid\nfin\n\n\n\n\n0\n2022-12380\n65\n55\n50\n40\n\n\n1\n2022-12370\n95\n100\n50\n80\n\n\n2\n2022-12363\n65\n90\n60\n30\n\n\n3\n2022-12488\n55\n80\n75\n80\n\n\n4\n2022-12312\n80\n30\n30\n100"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#컬럼추가starstar",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#컬럼추가starstar",
+    "title": "08. pandas",
+    "section": "컬럼추가(\\(\\star\\star\\))",
+    "text": "컬럼추가(\\(\\star\\star\\))\n\n# code-fold : true\n\nnp.random.seed(43052)\natt = np.random.choice(np.arange(10,21)*5,20)\nrep = np.random.choice(np.arange(5,21)*5,20)\nmid = np.random.choice(np.arange(0,21)*5,20)\nfin = np.random.choice(np.arange(0,21)*5,20)\nstudent_id = [ '2023-12362', '2022-12471', '2023-12333', '2022-12400', '2022-12377',\n               '2022-12469', '2023-12314', '2022-12363', '2023-12445', '2023-12336',\n               '2023-12426', '2022-12380', '2023-12422', '2022-12488', '2022-12370',\n               '2023-12443', '2022-12463', '2023-12491', '2023-12340', '2022-12312' ]\ndf = pd.DataFrame({'student_id':student_id,'att':att,'rep':rep,'mid':mid,'fin':fin})\ndf.head()\n\n\n\n\n\n\n\n\nstudent_id\natt\nrep\nmid\nfin\n\n\n\n\n0\n2023-12362\n65\n55\n50\n40\n\n\n1\n2022-12471\n95\n100\n50\n80\n\n\n2\n2023-12333\n65\n90\n60\n30\n\n\n3\n2022-12400\n55\n80\n75\n80\n\n\n4\n2022-12377\n80\n30\n30\n100\n\n\n\n\n\n\n\n\ntotal = df.att*0.1 + df.rep*0.2 + df.mid*0.3 + df.fin*0.4\n\n\ndf.assign(total=total).head()\n\n\n\n\n\n\n\n\nstudent_id\natt\nrep\nmid\nfin\ntotal\n\n\n\n\n0\n2023-12362\n65\n55\n50\n40\n48.5\n\n\n1\n2022-12471\n95\n100\n50\n80\n76.5\n\n\n2\n2023-12333\n65\n90\n60\n30\n54.5\n\n\n3\n2022-12400\n55\n80\n75\n80\n76.0\n\n\n4\n2022-12377\n80\n30\n30\n100\n63.0\n\n\n\n\n\n\n\n\ndf.eval('total = att*0.1 + rep*0.2 + mid*0.3 + fin*0.4').head() \n\n\n\n\n\n\n\n\nstudent_id\natt\nrep\nmid\nfin\ntotal\n\n\n\n\n0\n2023-12362\n65\n55\n50\n40\n48.5\n\n\n1\n2022-12471\n95\n100\n50\n80\n76.5\n\n\n2\n2023-12333\n65\n90\n60\n30\n54.5\n\n\n3\n2022-12400\n55\n80\n75\n80\n76.0\n\n\n4\n2022-12377\n80\n30\n30\n100\n63.0\n\n\n\n\n\n\n\n\ndf['total'] = df.att*0.1 + df.rep*0.2 + df.mid*0.3 + df.fin*0.4\ndf.head()\n\n\n\n\n\n\n\n\nstudent_id\natt\nrep\nmid\nfin\ntotal\n\n\n\n\n0\n2023-12362\n65\n55\n50\n40\n48.5\n\n\n1\n2022-12471\n95\n100\n50\n80\n76.5\n\n\n2\n2023-12333\n65\n90\n60\n30\n54.5\n\n\n3\n2022-12400\n55\n80\n75\n80\n76.0\n\n\n4\n2022-12377\n80\n30\n30\n100\n63.0\n\n\n\n\n\n\n\n- 입학년도 변수 추가\n\ndf.assign(year = [i.split(\"-\")[0] for i in df.student_id])\n\n\n\n\n\n\n\n\nstudent_id\natt\nrep\nmid\nfin\ntotal\nyear\n\n\n\n\n0\n2023-12362\n65\n55\n50\n40\n48.5\n2023\n\n\n1\n2022-12471\n95\n100\n50\n80\n76.5\n2022\n\n\n2\n2023-12333\n65\n90\n60\n30\n54.5\n2023\n\n\n3\n2022-12400\n55\n80\n75\n80\n76.0\n2022\n\n\n4\n2022-12377\n80\n30\n30\n100\n63.0\n2022\n\n\n5\n2022-12469\n75\n40\n100\n15\n51.5\n2022\n\n\n6\n2023-12314\n65\n45\n45\n90\n65.0\n2023\n\n\n7\n2022-12363\n60\n60\n25\n0\n25.5\n2022\n\n\n8\n2023-12445\n95\n65\n20\n10\n32.5\n2023\n\n\n9\n2023-12336\n90\n80\n80\n20\n57.0\n2023\n\n\n10\n2023-12426\n55\n75\n35\n25\n41.0\n2023\n\n\n11\n2022-12380\n95\n95\n45\n0\n42.0\n2022\n\n\n12\n2023-12422\n95\n55\n15\n35\n39.0\n2023\n\n\n13\n2022-12488\n50\n80\n40\n30\n45.0\n2022\n\n\n14\n2022-12370\n50\n55\n15\n85\n54.5\n2022\n\n\n15\n2023-12443\n95\n30\n30\n95\n62.5\n2023\n\n\n16\n2022-12463\n50\n50\n45\n10\n32.5\n2022\n\n\n17\n2023-12491\n65\n55\n15\n45\n40.0\n2023\n\n\n18\n2023-12340\n70\n70\n40\n35\n47.0\n2023\n\n\n19\n2022-12312\n90\n90\n80\n90\n87.0\n2022"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#인덱스를-reset하고-컬럼으로-변경",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#인덱스를-reset하고-컬럼으로-변경",
+    "title": "08. pandas",
+    "section": "(1) 인덱스를 reset하고 컬럼으로 변경",
+    "text": "(1) 인덱스를 reset하고 컬럼으로 변경\n\ndf2= df.reset_index()\n\n\nindex = [i.replace(\")\",\"\").split(\"(\") for i in df2[\"index\"]]\n\n\ndf2 = df2.assign(\n    day = [i for i,_ in index],\n    weekday = [i for _,i in index]\n     )"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#월달에-전북대학교-학생들은-r과-python중-어떤-과목을-더-많이-공부하였는가",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#월달에-전북대학교-학생들은-r과-python중-어떤-과목을-더-많이-공부하였는가",
+    "title": "08. pandas",
+    "section": "(2) 4월달에 전북대학교 학생들은 R과 python중 어떤 과목을 더 많이 공부하였는가?",
+    "text": "(2) 4월달에 전북대학교 학생들은 R과 python중 어떤 과목을 더 많이 공부하였는가?\n\ndf4= df2.query(\"'2023-04-01' &lt;= day &lt;='2023-04-30'\")\n\n\ndf4[\"hours(R)\"].sum()\n\n42.99003889835529\n\n\n\ndf4[\"hours(Python)\"].sum()\n\n49.20019054928582"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#월-금-사이의-요일-중-r을-가장-열심히-공부한-요일은-어느-요일인가",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#월-금-사이의-요일-중-r을-가장-열심히-공부한-요일은-어느-요일인가",
+    "title": "08. pandas",
+    "section": "(3) “월-금” 사이의 요일 중 R을 가장 열심히 공부한 요일은 어느 요일인가?",
+    "text": "(3) “월-금” 사이의 요일 중 R을 가장 열심히 공부한 요일은 어느 요일인가?\n\ndf2.groupby(\"weekday\")[\"hours(R)\"].sum()\n\nweekday\nFri    11.804415\nMon    18.998378\nThu    16.717393\nTue    17.597811\nWed    14.108609\nName: hours(R), dtype: float64"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#월-금사이의-요잉중-python과-r의-합계-학습량이-가장-큰-요일은",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#월-금사이의-요잉중-python과-r의-합계-학습량이-가장-큰-요일은",
+    "title": "08. pandas",
+    "section": "(4) “월-금”사이의 요잉중 Python과 R의 합계 학습량이 가장 큰 요일은?",
+    "text": "(4) “월-금”사이의 요잉중 Python과 R의 합계 학습량이 가장 큰 요일은?\n\n df[\"hours(R)\"] + df[\"hours(Python)\"]\n\n2023-04-24(Mon)    20.319500\n2023-04-25(Tue)    17.118298\n2023-04-26(Wed)    15.178856\n2023-04-27(Thu)    20.068066\n2023-04-28(Fri)    19.505508\n2023-05-01(Mon)    16.799086\n2023-05-02(Tue)    17.538030\n2023-05-03(Wed)    15.216786\n2023-05-04(Thu)    11.843545\n2023-05-05(Fri)     7.374323\n2023-05-08(Mon)     5.319094\n2023-05-09(Tue)     2.350073\n2023-05-10(Wed)     5.772362\n2023-05-11(Thu)     8.024616\n2023-05-12(Fri)     3.139417\ndtype: float64\n\n\n\ndf2 = df2.assign(total = df2[\"hours(R)\"] + df2[\"hours(Python)\"])\n\n\ndf2.groupby(\"weekday\").agg({\"total\":np.sum})\n\n\n\n\n\n\n\n\ntotal\n\n\nweekday\n\n\n\n\n\nFri\n30.019248\n\n\nMon\n42.437680\n\n\nThu\n39.936227\n\n\nTue\n37.006402\n\n\nWed\n36.168004"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#r과-python의-학습량-차이를-계산하고-matplotlib을-이용하여-시각화해라",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#r과-python의-학습량-차이를-계산하고-matplotlib을-이용하여-시각화해라",
+    "title": "08. pandas",
+    "section": "(5) R과 Python의 학습량 차이를 계산하고 matplotlib을 이용하여 시각화해라",
+    "text": "(5) R과 Python의 학습량 차이를 계산하고 matplotlib을 이용하여 시각화해라\n\nimport matplotlib.pyplot as plt\n\n\ny = df2[\"hours(R)\"] - df2[\"hours(Python)\"] \n\n\nplt.plot(y,\"--o\")"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-08.pandas.html#계산한-차이를-아래와-같이-변환해라",
+    "href": "post/Lecture/IP/2023-08-04-08.pandas.html#계산한-차이를-아래와-같이-변환해라",
+    "title": "08. pandas",
+    "section": "(6) 계산한 차이를 아래와 같이 변환해라",
+    "text": "(6) 계산한 차이를 아래와 같이 변환해라\n$y_1 = (2y_1+y_2) $\n$y_i = (y_{i-1}+y_i + y_{i+1}) $\n\\(\\hat y_{n} = \\frac {1}{3} (y_{n-1} + 2y_{n})\\)\n\nM = [[abs(i-j) &lt;=1 for i in range(len(y))] for j in range(len(y))]\nM = np.array(M)*1/3\nM[0,0] = 2/3\nM[-1,-1] = 2/3\n\n\nplt.plot(y,\"--o\",label=\"y\")\nplt.plot(M@y,\"--o\",label=\"M@y\")\nplt.legend()\n\n&lt;matplotlib.legend.Legend at 0x29d1b059210&gt;"
+  },
+  {
     "objectID": "post/Lecture/IP/2023-08-04-06. numpy.html",
     "href": "post/Lecture/IP/2023-08-04-06. numpy.html",
     "title": "06. Numpy",
@@ -2538,7 +2720,7 @@
     "href": "index.html",
     "title": "Lecture",
     "section": "",
-    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 4, 2023\n\n\n07. Numpy 활용\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n06. Numpy\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n05. 집합\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n04. 딕셔너리\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 3, 2023\n\n\n03. 튜플\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 2, 2023\n\n\n02. 리스트\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 1, 2023\n\n\n01. 자료형\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 30, 2023\n\n\nsummary\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 23, 2023\n\n\npart 5\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 22, 2023\n\n\npart 4\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2023\n\n\npart 3\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 20, 2023\n\n\npart 2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 19, 2023\n\n\npart 1\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n12. final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n11. Choropleth Map & Plotly\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 16, 2023\n\n\n10. Choropleth Map\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 15, 2023\n\n\n09. folium\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 14, 2023\n\n\n08. mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 13, 2023\n\n\n07. tidydata\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 6, 2023\n\n\n06. Partial Correlation & Pandas Handling\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 3, 2023\n\n\n16. Extra-2: 생성모형 (GAN)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 29, 2023\n\n\n05. Plotnine & Pandas\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 26, 2023\n\n\n15. Extra-1: 추천시스템\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 22, 2023\n\n\n04. qqplot, 찰스미나도의 도표\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 19, 2023\n\n\n14. 순환신경망 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 15, 2023\n\n\n03. 그래프를 그리는 여러 방법\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 12, 2023\n\n\n13. 순환신경망 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 8, 2023\n\n\n02. Histogram equalization\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 5, 2023\n\n\n12. 순환신경망 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 1, 2023\n\n\n01. intro\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 29, 2023\n\n\n11. 순환신경망 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 22, 2023\n\n\n10. 순환신경망 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2023\n\n\n09. 이미지분석 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 7, 2023\n\n\n08. 이미지분석 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 1, 2023\n\n\n07. 딥러닝의 기초 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 25, 2023\n\n\n06. 딥러닝의 기초 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 18, 2023\n\n\n05. 딥러닝의 기초 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 11, 2023\n\n\n04. 딥러닝의 기초 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 4, 2023\n\n\n03. 딥러닝의 기초 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 1, 2023\n\n\n02. Overview\n\n\nGANGCHEOL LEE\n\n\n\n\nJan 27, 2023\n\n\n01. Intro\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 13, 2022\n\n\n14. Final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 30, 2022\n\n\n13. model fitting\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 23, 2022\n\n\n13. CNN-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 11, 2022\n\n\n12. Max pooling, CNN\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 8, 2022\n\n\n11. softmax\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 2, 2022\n\n\n10. 확률적 경사하강법\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 1, 2022\n\n\n09. MLE\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 27, 2022\n\n\n08. Mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 18, 2022\n\n\n07. Adam\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer 과제\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 30, 2022\n\n\n05. 경사하강법-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 28, 2022\n\n\n04. 경사하강법-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 21, 2022\n\n\n03. Tensorflow-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 14, 2022\n\n\n02. Tensorflow-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2022\n\n\n01. 단순선형회귀\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 7, 2021\n\n\n03. 날짜 데이터\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 6, 2021\n\n\n02. 표준화와 정규화\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 5, 2021\n\n\n01. 결측치 처리\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 24, 2021\n\n\n03. Text Mining\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 11, 2021\n\n\n02. unsupervised learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 10, 2021\n\n\n01. Supervised Learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 28, 2021\n\n\n11. Time-seris analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 24, 2021\n\n\n10. Multidimensional scaling\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2021\n\n\n09. Factor Analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 17, 2021\n\n\n08. PCA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 16, 2021\n\n\n07. regression analysis-2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 15, 2021\n\n\n06. regression analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 9, 2021\n\n\n05. cor-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 7, 2021\n\n\n04. chi-square test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 5, 2021\n\n\n03. ANOVA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 3, 2021\n\n\n02. T-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 1, 2021\n\n\n01. sampling\n\n\nGANGCHEOL LEE\n\n\n\n\n\n\nNo matching items"
+    "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\nAuthor\n\n\n\n\n\n\nAug 4, 2023\n\n\n09. Numpy와 Pandas 활용\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n08. pandas\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n07. Numpy 활용\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n06. Numpy\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n05. 집합\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 4, 2023\n\n\n04. 딕셔너리\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 3, 2023\n\n\n03. 튜플\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 2, 2023\n\n\n02. 리스트\n\n\nGANGCHEOL LEE\n\n\n\n\nAug 1, 2023\n\n\n01. 자료형\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 30, 2023\n\n\nsummary\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 23, 2023\n\n\npart 5\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 22, 2023\n\n\npart 4\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2023\n\n\npart 3\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 20, 2023\n\n\npart 2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 19, 2023\n\n\npart 1\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n12. final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 17, 2023\n\n\n11. Choropleth Map & Plotly\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 16, 2023\n\n\n10. Choropleth Map\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 15, 2023\n\n\n09. folium\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 14, 2023\n\n\n08. mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 13, 2023\n\n\n07. tidydata\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 6, 2023\n\n\n06. Partial Correlation & Pandas Handling\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 3, 2023\n\n\n16. Extra-2: 생성모형 (GAN)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 29, 2023\n\n\n05. Plotnine & Pandas\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 26, 2023\n\n\n15. Extra-1: 추천시스템\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 22, 2023\n\n\n04. qqplot, 찰스미나도의 도표\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 19, 2023\n\n\n14. 순환신경망 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 15, 2023\n\n\n03. 그래프를 그리는 여러 방법\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 12, 2023\n\n\n13. 순환신경망 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 8, 2023\n\n\n02. Histogram equalization\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 5, 2023\n\n\n12. 순환신경망 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 1, 2023\n\n\n01. intro\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 29, 2023\n\n\n11. 순환신경망 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 22, 2023\n\n\n10. 순환신경망 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2023\n\n\n09. 이미지분석 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 7, 2023\n\n\n08. 이미지분석 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 1, 2023\n\n\n07. 딥러닝의 기초 (5)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 25, 2023\n\n\n06. 딥러닝의 기초 (4)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 18, 2023\n\n\n05. 딥러닝의 기초 (3)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 11, 2023\n\n\n04. 딥러닝의 기초 (2)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 4, 2023\n\n\n03. 딥러닝의 기초 (1)\n\n\nGANGCHEOL LEE\n\n\n\n\nFeb 1, 2023\n\n\n02. Overview\n\n\nGANGCHEOL LEE\n\n\n\n\nJan 27, 2023\n\n\n01. Intro\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 13, 2022\n\n\n14. Final term\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 30, 2022\n\n\n13. model fitting\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 23, 2022\n\n\n13. CNN-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 11, 2022\n\n\n12. Max pooling, CNN\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 8, 2022\n\n\n11. softmax\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 2, 2022\n\n\n10. 확률적 경사하강법\n\n\nGANGCHEOL LEE\n\n\n\n\nMay 1, 2022\n\n\n09. MLE\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 27, 2022\n\n\n08. Mid term\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 18, 2022\n\n\n07. Adam\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer 과제\n\n\nGANGCHEOL LEE\n\n\n\n\nApr 11, 2022\n\n\n06. layer\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 30, 2022\n\n\n05. 경사하강법-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 28, 2022\n\n\n04. 경사하강법-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 21, 2022\n\n\n03. Tensorflow-2\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 14, 2022\n\n\n02. Tensorflow-1\n\n\nGANGCHEOL LEE\n\n\n\n\nMar 8, 2022\n\n\n01. 단순선형회귀\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 7, 2021\n\n\n03. 날짜 데이터\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 6, 2021\n\n\n02. 표준화와 정규화\n\n\nGANGCHEOL LEE\n\n\n\n\nDec 5, 2021\n\n\n01. 결측치 처리\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 24, 2021\n\n\n03. Text Mining\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 11, 2021\n\n\n02. unsupervised learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJul 10, 2021\n\n\n01. Supervised Learning\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 28, 2021\n\n\n11. Time-seris analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 24, 2021\n\n\n10. Multidimensional scaling\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 21, 2021\n\n\n09. Factor Analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 17, 2021\n\n\n08. PCA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 16, 2021\n\n\n07. regression analysis-2\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 15, 2021\n\n\n06. regression analysis\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 9, 2021\n\n\n05. cor-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 7, 2021\n\n\n04. chi-square test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 5, 2021\n\n\n03. ANOVA\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 3, 2021\n\n\n02. T-test\n\n\nGANGCHEOL LEE\n\n\n\n\nJun 1, 2021\n\n\n01. sampling\n\n\nGANGCHEOL LEE\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html#education",
@@ -2888,14 +3070,154 @@
     "href": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex5-1",
     "title": "07. Numpy 활용",
     "section": "ex5",
-    "text": "ex5\n아래의 수시에 따르는 수열을 생성\n\\[x_T = \\sum_{t=1}^{T} \\varepsilon_t\\]\n- 예비학습\n\ne = np.random.randn(1000)\n\n\nx = np.cumsum(e)\n\n\nplt.plot(x)"
+    "text": "ex5\n아래의 수시에 따르는 수열을 생성\n\\[x_T = \\sum_{t=1}^{T} \\varepsilon_t\\]\n- 예비학습\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n\ne = np.random.randn(1000)\n\n\nx = np.cumsum(e)\n\n\nplt.plot(x)"
   },
   {
     "objectID": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex6",
     "href": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex6",
     "title": "07. Numpy 활용",
     "section": "ex6",
-    "text": "ex6\n아래와 같은 변환을 수행하고 결과를 시각화해라.\n\\[\\bf{xx}_T = \\frac 13 (x_{T-1}+ x_{T})\\]"
+    "text": "ex6\n아래와 같은 변환을 수행하고 결과를 시각화해라.\n\\[\\bf{xx}_T = \\frac 13 (x_{T-1}+ x_{T})\\]\n\nM= np.array([[abs(i-j)&lt;2 for i in range(1000)] for j in range(1000)])*1/3\n\n\nxx = M @ x\n\n\nplt.plot(x,label = r\"$x$\")\nplt.plot(xx,label = r\"$xx$\")\nplt.legend()\n\n&lt;matplotlib.legend.Legend at 0x2175cdf0f50&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex7",
+    "href": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex7",
+    "title": "07. Numpy 활용",
+    "section": "ex7",
+    "text": "ex7\n- 아래와 같은 변환을 수행하고 결과를 시각화\n$xx_{1} = (x_1+x_1+x_2) $\n$xx_{t-1} = (x_{t-2}+x_{t-1}+x_t) $\n$xx_{t} = (x_{t-1}+x_{t}+x_t) $\n\nM[0,0] = 2/3\nM[-1,-1] = 2/3\n\nplt.plot(x,label = r\"$x$\")\nplt.plot(x@M,label = r\"$xx$\")\nplt.legend()\n\n&lt;matplotlib.legend.Legend at 0x21762a6aa90&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex8",
+    "href": "post/Lecture/IP/2023-08-04-07. Numpy 활용.html#ex8",
+    "title": "07. Numpy 활용",
+    "section": "ex8",
+    "text": "ex8\n- 7의 변환을 100번 반복하고 시각화\n\nplt.plot(x,label=r\"$x$\")\nplt.plot(np.linalg.matrix_power(M,100)@x,label=r\"$M^{100}@x$\")\nplt.legend()\n\n&lt;matplotlib.legend.Legend at 0x217631f8150&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "",
+    "text": "import pandas as pd\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport urllib.request"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex1",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex1",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex1",
+    "text": "ex1\n0-9에 해당하는 이미지는 각각 몇장씩 들어있는가?\n\nY = list(np.concatenate([ytrain,ytest],axis=0))\n\n\n{i: Y.count(i) for i in set(Y)}\n\n{0: 6903,\n 1: 7877,\n 2: 6990,\n 3: 7141,\n 4: 6824,\n 5: 6313,\n 6: 6876,\n 7: 7293,\n 8: 6825,\n 9: 6958}"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex2",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex2",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex2",
+    "text": "ex2\n0을 의미하는 xtrain을 추출하고. 처음과 마지막 이미지를 출력\n\nx0 = xtrain[ytrain==0]\n\n\nfig,axes = plt.subplots(1,2)\nax1,ax2 = axes\n\nax1.imshow(x0[0])\nax1.set_title(\"first\")\nax2.imshow(x0[-1])\nax2.set_title(\"last\")\n\nText(0.5, 1.0, 'last')"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex3",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex3",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex3",
+    "text": "ex3\nxtrain에서 0을 의미하는 이미지의 평균을 계산하라.\n\nplt.imshow(x0.mean(axis=0))\n\n&lt;matplotlib.image.AxesImage at 0x254948a56d0&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex4",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex4",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex4",
+    "text": "ex4\nxtrain에 각 라벨에 대한 평균이미지를 계산하고 계산결과를 imgmean 리스트에 저장\n\nimgmean = [xtrain[ytrain==i].mean(axis=0) for i in range(10)]\n\n\n# code-fold : false\nfig,a = plt.subplots(2,5)\n\n(a1,a2,a3,a4,a5), (a6,a7,a8,a9,a10) = a\n\n\na1.imshow(imgmean[0])\na1.set_title(\"label : {}\".format(\"0\"))\n\na10.imshow(imgmean[1])\na10.set_title(\"label : {}\".format(\"1\"))\n\na2.imshow(imgmean[2])\na2.set_title(\"label : {}\".format(\"2\"))\n\na3.imshow(imgmean[3])\na3.set_title(\"label : {}\".format(\"3\"))\n\na4.imshow(imgmean[4])\na4.set_title(\"label : {}\".format(\"4\"))\n\na5.imshow(imgmean[5])\na5.set_title(\"label : {}\".format(\"5\"))\n\na6.imshow(imgmean[6])\na6.set_title(\"label : {}\".format(\"6\"))\n\na7.imshow(imgmean[7])\na7.set_title(\"label : {}\".format(\"7\"))\n\na8.imshow(imgmean[8])\na8.set_title(\"label : {}\".format(\"8\"))\n\na9.imshow(imgmean[9])\na9.set_title(\"label : {}\".format(\"9\"))\nfig.tight_layout()"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex5",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex5",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex5",
+    "text": "ex5\nxtrain의 두번째 이미지와 imgmean[0]의 차이를 제곱한 값의 평균을 구하라\n\nnp.mean((xtrain[1]-imgmean[0])**2)\n\n2299.9585279846365"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex6",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex6",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex6",
+    "text": "ex6\n모든 라벨에 대하여 계산\n\n[np.mean((xtrain[1]-imgmean[i])**2) for i in range(10)]\n\n[2299.9585279846365,\n 7474.876421640121,\n 6154.997099653264,\n 5889.84882305034,\n 6763.709480023399,\n 4616.900123430389,\n 5856.367892213506,\n 6465.999476962735,\n 5916.546346421647,\n 6385.5252510342525]\n\n\n- xtrain에 두전째 이미지는 숫자 0일 것같다.\n\nplt.imshow(xtrain[1])\n\n&lt;matplotlib.image.AxesImage at 0x2549881a710&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex7",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex7",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex7",
+    "text": "ex7\n각각의 이미지와 평균과의 loss를 계산하는 넘파이 행렬을 생성\n\nloss = [[np.mean((xtrain[j]-imgmean[i])**2) for i in range(10)] for j in range(len(xtrain))]\n\n\nloss = np.array(loss)\n\n\nloss.shape\n\n(60000, 10)\n\n\nloss를 이용하여 xtrain 문제 6번과 같이 이미지에 대한 분류를 수행\n\nloss.argmin(axis=1)\n\narray([5, 0, 4, ..., 5, 6, 8], dtype=int64)"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex8",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex8",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex8",
+    "text": "ex8\n(7)에서 수행한 분류결과와 실제 라벨 ytrain을 비교하라. 얼마나 많은 결과가 일치하는지 비율을 계산하라.\n\nnp.mean(ytrain==loss.argmin(axis=1))\n\n0.8079833333333334"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex9",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex9",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex9",
+    "text": "ex9\nxtrain에서 학습한 평균이미지 imgmean을 바탕으로 xtest의 이미지를 분류하라.\n- 또한, 분류결과를 ytest와 비교하고 얼마나 많은 결과가 일치하는지 비율을 계산하라.\n\nloss_t = [[np.mean((xtest[j]-imgmean[i])**2) for i in range(10)] for j in range(len(xtest))]\n\n\nloss_t = np.array(loss_t)\n\n\nloss_t.argmin(axis=1)\n\narray([7, 2, 1, ..., 4, 5, 6], dtype=int64)\n\n\n\nnp.mean(loss_t.argmin(axis=1)== ytest)\n\n0.8203"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex10",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex10",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex10",
+    "text": "ex10\n실제 라벨과 잘못된 라벨을 구분하여 시각화할 것!\n\nf_t = xtest[loss_t.argmin(axis=1)!=ytest]\nf_y = ytest[loss_t.argmin(axis=1)!=ytest]\nf_yhat = loss_t.argmin(axis=1)[loss_t.argmin(axis=1)!=ytest]\n\n\nfig,axes = plt.subplots(2,3)\n\nt=0\nfor i in range(2):\n    for j in range(3) :\n        ax = axes[i][j]\n        ax.imshow(f_t[t])\n        ax.set_title(r\"$\\hat y : {}, y : {}$\".format(f_yhat[t],f_y[t]))\n        t = t+1"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex1-1",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#ex1-1",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "ex1",
+    "text": "ex1\n선수들의 평균임금을 구하라.\n\nw=df[\"Wage\"]\nw = [i.replace(\"€\",\"\").replace(\"K\",\"\") for i in w]\n\ndf[\"Wage\"] = w\n\n\ndf = df.astype({\"Wage\": \"float\"})\n\n\ndf.groupby(\"Name\").agg({\"Wage\":np.mean})\n\n\n\n\n\n\n\n\nWage\n\n\nName\n\n\n\n\n\n18 A. Aquilani\n20.0\n\n\n18 A. Nouri\n10.0\n\n\n18 B. Kalaica\n5.0\n\n\n18 B. Pedretti\n5.0\n\n\n18 B. Ruíz\n20.0\n\n\n...\n...\n\n\nŽ. Laci\n500.0\n\n\nŽ. Rogelj\n3.0\n\n\nŽ. Zaletel\n2.0\n\n\nȘ. Pănoiu\n1.0\n\n\nȘ. Tomache\n500.0\n\n\n\n\n15904 rows × 1 columns"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#공백이-포함된-column이-총-몇개인지-count",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#공백이-포함된-column이-총-몇개인지-count",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "(1) 공백이 포함된 column이 총 몇개인지 count",
+    "text": "(1) 공백이 포함된 column이 총 몇개인지 count\n\ndf=pd.read_csv('https://raw.githubusercontent.com/guebin/DV2022/master/posts/FIFA23_official_data.csv').drop(columns=['Loaned From', 'Best Overall Rating']).dropna().reset_index(drop=True)\n\n\nsol\n\nsum([\" \" in i for i in df.columns])\n\n11"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#공백이-포함된-열을-출력",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#공백이-포함된-열을-출력",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "(2) 공백이 포함된 열을 출력",
+    "text": "(2) 공백이 포함된 열을 출력\n\nsol\n\ndf.columns[[\" \" in i for i in df.columns]]\n\nIndex(['Club Logo', 'Preferred Foot', 'International Reputation', 'Weak Foot',\n       'Skill Moves', 'Work Rate', 'Body Type', 'Real Face',\n       'Contract Valid Until', 'Release Clause', 'Kit Number'],\n      dtype='object')"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#데이터를-올바르게-해석한-사람-고르기",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#데이터를-올바르게-해석한-사람-고르기",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "(3) 데이터를 올바르게 해석한 사람 고르기",
+    "text": "(3) 데이터를 올바르게 해석한 사람 고르기\n\n세민: 데이터프레임에는 모두 27개의 열이 있다.\n성재: 한국선수(Nationality==Korea Republic)와 일본선수(Nationality==Japan)의 Overall의 평균값은 일본이 더 높다.\n민정: 총 159개의 나라선수들이 포함되어 있다.\n슬기: 선수들의 연령이 25세이상(&gt;=)인 선수들은 그렇지 않은 선수들보다 평균적으로 키(Height)가크다.\n\n\nsol\n\nlen(df.columns)\n\n27\n\n\n\ndf.query('Nationality==\"Korea Republic\" or Nationality==\"Japan\"').\\\n        groupby(\"Nationality\").agg({\"Overall\":np.mean})\n\n\n\n\n\n\n\n\nOverall\n\n\nNationality\n\n\n\n\n\nJapan\n61.937669\n\n\nKorea Republic\n54.974729\n\n\n\n\n\n\n\n\nlen(set(df.Nationality))\n\n159\n\n\n\ndf.Height = [i.replace(\"cm\",\"\") for i in df.Height]\n\n\ndf = df.astype({\"Height\": float})\n\n\nnp.mean(df.Height[df.Age&gt;=25]),np.mean(df.Height[df.Age&lt;25])\n\n(181.41528966752938, 180.60268053963495)"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#삼성전자-주가",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#삼성전자-주가",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "(4) 삼성전자 주가",
+    "text": "(4) 삼성전자 주가\n\nstart_date = \"2023-01-01\"\nend_date = \"2023-05-02\"\ny = yf.download(\"005930.KS\", start=start_date, end=end_date)['Adj Close'].to_numpy()\n\n[*********************100%***********************]  1 of 1 completed\n\n\n\nplt.plot(y)\n\n\n\n\n아래와 같은 변환을 이용하여 \\(y\\)를 \\(\\hat y\\) 변환하고 결과를 시각화해라\n\n\\(\\hat y_1 = \\frac 14 (3y_1+y_2)\\)\n\\(\\hat y_i = \\frac 14 (y_{i-1}+2y_i+y_{i+1})\\)\n\\(\\hat y_n = \\frac 14 (y_{n-1}+3y_n)\\)\n\n\nsol\n\nT = len(y)\nM = (np.eye(T) + np.array([abs(i-j)&lt;2 for i in range(T) for j in range(T)]).reshape(T,T))/4\nM[0,0] = 3/4; M[-1,-1]= 3/4 \nplt.plot(y,label=r'$y$')\nplt.plot(M@y,'--',label=r'$M@y$')\nplt.legend()\n\n&lt;matplotlib.legend.Legend at 0x254a75c9790&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#의-변환을-50회-반복적용하고-결과를-시각화",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#의-변환을-50회-반복적용하고-결과를-시각화",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "(5) (4)의 변환을 50회 반복적용하고 결과를 시각화",
+    "text": "(5) (4)의 변환을 50회 반복적용하고 결과를 시각화\n\nplt.plot(y,label=r'$y$')\nplt.plot(np.linalg.matrix_power(M,50)@y,'--',label=r'$M^{50}@y$')\nplt.legend()\n\n&lt;matplotlib.legend.Legend at 0x254a76149d0&gt;"
+  },
+  {
+    "objectID": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#주어진-자료의-베타를-추정하고-시각화하여라",
+    "href": "post/Lecture/IP/2023-08-04-09. Numpy와 Pandas 활용.html#주어진-자료의-베타를-추정하고-시각화하여라",
+    "title": "09. Numpy와 Pandas 활용",
+    "section": "(6) 주어진 자료의 베타를 추정하고 시각화하여라",
+    "text": "(6) 주어진 자료의 베타를 추정하고 시각화하여라\n\nx =  np.array([0.00983, 0.01098, 0.02951, 0.0384 , 0.03973, 0.04178, 0.0533 ,\n               0.058  , 0.09454, 0.1103 , 0.1328 , 0.1412 , 0.1497 , 0.1664 ,\n               0.1906 , 0.1923 , 0.198  , 0.2141 , 0.2393 , 0.2433 , 0.3157 ,\n               0.3228 , 0.3418 , 0.3552 , 0.3918 , 0.3962 , 0.4    , 0.4482 ,\n               0.496  , 0.507  , 0.53   , 0.5654 , 0.582  , 0.5854 , 0.5854 ,\n               0.6606 , 0.7007 , 0.723  , 0.7305 , 0.7383 , 0.7656 , 0.7725 ,\n               0.831  , 0.8896 , 0.9053 , 0.914  , 0.949  , 0.952  , 0.9727 ,\n               0.982  ])\ny =  np.array([0.7381, 0.7043, 0.3937, 0.1365, 0.3784, 0.3028, 0.1037, 0.3846,\n               0.706 , 0.7572, 0.2421, 0.232 , 0.9855, 1.162 , 0.4653, 0.6791,\n               0.6905, 0.6865, 0.9757, 0.7665, 0.9522, 0.4641, 0.5498, 1.1509,\n               0.5288, 1.1195, 1.1659, 1.4341, 1.2779, 1.1648, 1.4002, 0.7472,\n               0.9142, 0.9658, 1.0707, 1.4501, 1.6758, 0.8778, 1.3384, 0.7476,\n               1.3086, 1.7537, 1.5559, 1.2928, 1.3832, 1.3115, 1.3382, 1.536 ,           \n               1.9177, 1.2069])\n\n\nsol\n\nX = np.stack([np.ones(len(x)),x],axis=1)\nY = y.reshape(-1,1)\n\n\nbeta = np.linalg.inv(X.T@X)@X.T@Y\n\n\ny_h = X@beta\n\n\nplt.plot(x,y,\"o\")\nplt.plot(x,y_h)"
   },
   {
     "objectID": "post/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html",
