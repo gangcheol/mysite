@@ -1,10 +1,8 @@
 ---
 title: "Lecture"
 listing:
-  contents: post
-  sort: 
-      - "date desc"
-      - "title desc"
+  contents: posts
+  sort: [date desc, title]
   type: table
   categories: true
   sort-ui: true
