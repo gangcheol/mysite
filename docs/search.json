@@ -2828,39 +2828,67 @@
     "text": "a = \"gangcheol\"\n\n\na\n\n'gangcheol'\n\n\n\n\n\na = \"X\"\n\nb= \"2\"\n\na+b\n\n'X2'\n\n\n\n\n\n\na = \"X\"\n\nb= \"2\"\n\na-b\n\nTypeError: unsupported operand type(s) for -: 'str' and 'str'\n\n\n\n\n\n\na*3\n\n'XXX'\n\n\n\nb=2\na*b\n\n'XX'\n\n\n- 이런건 수행되지 않음.\n\na = \"X\"\nb = \"Y\"\na*b\n\nTypeError: can't multiply sequence by non-int of type 'str'\n\n\n\n\n\n\na/b\n\nTypeError: unsupported operand type(s) for /: 'str' and 'str'\n\n\n\n\n\n\na = \"gangcheol\"\n\n\na[0]\n\n'g'\n\n\n\na[-1]\n\n'l'\n\n\n\na[1:-1]\n\n'angcheo'\n\n\n\n\n\n\na = \"ABCD\"\nb = \"efgh\"\n\n\na,b\n\n('ABCD', 'efgh')\n\n\n\na.lower(),b.upper()\n\n('abcd', 'EFGH')"
   },
   {
+    "objectID": "about.html#contact",
+    "href": "about.html#contact",
+    "title": "About me",
+    "section": "contact",
+    "text": "contact\n\nE-mail : rkdcjf8232@gmail.com"
+  },
+  {
     "objectID": "about.html#education",
     "href": "about.html#education",
-    "title": "About Me",
+    "title": "About me",
     "section": "Education",
-    "text": "Education\n- 전북대학교 통계학과 학사(부전공: 컴퓨터공학) 졸업 | 3.67 / 4.50 | 2015. 03 ~ 2021. 02\n- 전북대학교 통계학과 석사 졸업 | 4.44 / 4.50 | 2021. 03 ~ 2023. 02"
-  },
-  {
-    "objectID": "about.html#experience",
-    "href": "about.html#experience",
-    "title": "About Me",
-    "section": "Experience",
-    "text": "Experience\n- 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n- 지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n- 빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\n- KT AIVLE School DX Consultant Track | KT | 2023. 08 ~"
-  },
-  {
-    "objectID": "about.html#publications",
-    "href": "about.html#publications",
-    "title": "About Me",
-    "section": "Publications",
-    "text": "Publications\n- 데이터 분석을 통한 지역별 고령친화도 시각화\n`-` 김영선, 강민구, 이강철 등  | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존 \n- 핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n`-` 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+    "text": "Education\n\n전북대학교 통계학 학사(부전공 : 컴퓨터공학) | 2015.03 ~ 2021.02\n전북대학교 통계학 석사 | 2021.03 ~ 2023.02"
   },
   {
     "objectID": "about.html#certificate",
     "href": "about.html#certificate",
-    "title": "About Me",
+    "title": "About me",
     "section": "Certificate",
-    "text": "Certificate\n- 워드프로세서 | 대한상공회의소 | 19-19-017981 | 2019. 08. 30\n- 데이터분석준전문가(ADsP) | 한국데이터진흥원 | ADsP-0223898 | 2019. 10. 01\n- 사회조사분석사 2급 | 한국산업인력공단 | 19201142418N | 2019. 10. 01"
+    "text": "Certificate\n\n사회조사분석사 2급\n데이터분석준전문가(ADsP)\nAICE Associate"
   },
   {
-    "objectID": "about.html#conctact",
-    "href": "about.html#conctact",
-    "title": "About Me",
-    "section": "Conctact",
-    "text": "Conctact\n- rkdcjf8232@gmail.com"
+    "objectID": "about.html#skill",
+    "href": "about.html#skill",
+    "title": "About me",
+    "section": "Skill",
+    "text": "Skill\n\nR ⭐⭐⭐⭐\nPython ⭐⭐⭐⭐\nEXCEL ⭐⭐⭐⭐\nSPSS ⭐⭐⭐⭐\nSQL ⭐⭐⭐\nJAVA, C ⭐⭐"
+  },
+  {
+    "objectID": "about.html#extracurricular-activities",
+    "href": "about.html#extracurricular-activities",
+    "title": "About me",
+    "section": "Extracurricular Activities",
+    "text": "Extracurricular Activities\n\n국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06\n지역 문화산업 융복합 데이터 전문가 과정 | 과학기술정보통신부, 한국데이터산업진흥원 | 2021. 06 ~ 2021. 08\n빅데이터 혁신공유대학사업 서포터즈 |전북대학교 빅데이터 현신공유대학사업| 2021. 07. 01 ~ 2021. 10. 31\nKT AIVLE School DX Consultant Track | KT | 2023. 08. 08 ~ 2024. 01. 25"
+  },
+  {
+    "objectID": "about.html#publication",
+    "href": "about.html#publication",
+    "title": "About me",
+    "section": "Publication",
+    "text": "Publication\n\n데이터 분석을 통한 지역별 고령친화도 시각화\n\n김영선, 강민구, 이강철 등 | 문화융복합아카이빙연구소 | 2021. 10 | 기록관리/보존\n\n핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선\n\n이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학"
+  },
+  {
+    "objectID": "about.html#awards",
+    "href": "about.html#awards",
+    "title": "About me",
+    "section": "Awards",
+    "text": "Awards\n\n학회장상 | 한국통계학회 | 2023. 02. 22\nAIVLE Big Project Practical | KT | 2024. 01. 25"
+  },
+  {
+    "objectID": "about.html#interest",
+    "href": "about.html#interest",
+    "title": "About me",
+    "section": "Interest",
+    "text": "Interest\n\nNLP\nAction Recognition, Object Detection\nData Science\nGrowth Hacking"
+  },
+  {
+    "objectID": "about.html#my-blog",
+    "href": "about.html#my-blog",
+    "title": "About me",
+    "section": "My blog",
+    "text": "My blog\n 1. Lecture\n\nR for Data Science\nSpecial Topics in Data Visualization\nIntroduction to Python\nSpecial Topics in Big Data Analysis\nSpecial Topics in Machine Learning\n\n 2. Tableau\n\nTableau Practice\n\n 3. DX\n\nDX Consultant Education\n\n 4. Study\n\nISLP Study\nAlgorithm Study"
   },
   {
     "objectID": "index.html",
