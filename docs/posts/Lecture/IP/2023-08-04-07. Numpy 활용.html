@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -101,17 +108,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -123,46 +156,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/IP/2023-08-01-01wk.html">IP</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/IP/2023-08-04-07. Numpy 활용.html">07. Numpy 활용</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/IP/2023-08-01-01wk.html">IP</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/IP/2023-08-04-07. Numpy 활용.html">07. Numpy 활용</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -170,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/IP/2023-08-01-01wk.html">IP</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/IP/2023-08-04-07. Numpy 활용.html">07. Numpy 활용</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">07. Numpy 활용</h1>
@@ -203,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -776,12 +809,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">toeic speaking</span></a>
+ <span class="menu-text">STTS</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-01-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-03-01. example (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. example (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-08-02. 확률과정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 확률과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-10-03. ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 비정상 ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 정상 ARMA 모형 적합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. predict</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-24-07. example (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. example (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-28-08. example (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. example (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-10-01-09. example (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. example (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">toeic speaking</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../posts/Lecture/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">
@@ -827,7 +931,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -873,27 +977,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="matplotlib" class="level1">
 <h1>matplotlib</h1>
-<div class="cell" data-execution_count="4">
+<div id="037d805e-c153-45bf-bea1-8cb399cec463" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#conda install -c conda-forge matplotlib</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="87cc4cf5-ce25-446a-baca-f28459ea3680" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="fe3773ff-6190-41c9-9d3d-239df819527d" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">그래프 옵션</a></p>
 <section id="line-plot" class="level2">
 <h2 class="anchored" data-anchor-id="line-plot">line plot</h2>
-<div class="cell" data-execution_count="10">
+<div id="490f25df-feb4-4752-89ba-20ecc9ccb03e" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
 <span id="cb4-2"><a href="#cb4-2"></a>y <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="line-style" class="level3">
 <h3 class="anchored" data-anchor-id="line-style">line style</h3>
-<div class="cell" data-execution_count="17">
+<div id="e236757b-992f-4050-a351-bfc96e650b97" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a></span>
 <span id="cb5-3"><a href="#cb5-3"></a>(ax1,ax2),(ax3,ax4) <span class="op">=</span> axes</span>
@@ -911,13 +1016,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-15"><a href="#cb5-15"></a>ax4.set_title(<span class="st">"etc"</span>)</span>
 <span id="cb5-16"><a href="#cb5-16"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="color-line" class="level3">
 <h3 class="anchored" data-anchor-id="color-line">color + line</h3>
-<div class="cell" data-execution_count="23">
+<div id="d6895cfc-692c-41d2-9e15-98c7a8394548" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a></span>
 <span id="cb6-3"><a href="#cb6-3"></a>(ax1,ax2),(ax3,ax4) <span class="op">=</span> axes</span>
@@ -935,14 +1044,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-15"><a href="#cb6-15"></a>ax4.set_title(<span class="st">"dotted red"</span>)</span>
 <span id="cb6-16"><a href="#cb6-16"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 </section>
 <section id="scatter-plot" class="level2">
 <h2 class="anchored" data-anchor-id="scatter-plot">scatter plot</h2>
-<div class="cell" data-execution_count="28">
+<div id="9686ca8a-a3c3-4ee9-8cde-0c6e28e51cae" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">3</span>)</span>
 <span id="cb7-2"><a href="#cb7-2"></a></span>
 <span id="cb7-3"><a href="#cb7-3"></a>(ax1,ax2,ax3),(ax4,ax5,ax6) <span class="op">=</span> axes</span>
@@ -967,13 +1080,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-22"><a href="#cb7-22"></a></span>
 <span id="cb7-23"><a href="#cb7-23"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="dot-connected-plot" class="level2">
 <h2 class="anchored" data-anchor-id="dot-connected-plot">dot-connected plot</h2>
-<div class="cell" data-execution_count="35">
+<div id="53704c52-cb50-430a-ae40-72d7513b7314" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
 <span id="cb8-2"><a href="#cb8-2"></a></span>
 <span id="cb8-3"><a href="#cb8-3"></a>(ax1,ax2),(ax3,ax4) <span class="op">=</span> axes</span>
@@ -996,7 +1113,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-20"><a href="#cb8-20"></a>ax4.set_title(<span class="st">"y, hat y"</span>)</span>
 <span id="cb8-21"><a href="#cb8-21"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1010,62 +1131,66 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>int 255 혹은 float 1은 해당색이 매우 밝다는 것을 의미</p></li>
 </ul>
 <p><code>-</code> 예시 1</p>
-<div class="cell" data-execution_count="36">
+<div id="72c48747-9d96-464a-8004-7cf0b438ef76" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>r <span class="op">=</span> np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>) </span>
 <span id="cb9-2"><a href="#cb9-2"></a>g <span class="op">=</span> np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>) </span>
 <span id="cb9-3"><a href="#cb9-3"></a>b <span class="op">=</span> np.array([<span class="dv">0</span>]<span class="op">*</span><span class="dv">25</span><span class="op">*</span><span class="dv">3</span>).reshape(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">3</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="43">
+<div id="6dda51f7-37bc-4654-83dc-86b85dd34b0c" class="cell" data-execution_count="43">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>r[:<span class="dv">3</span>,:<span class="dv">3</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">255</span>   </span>
 <span id="cb10-2"><a href="#cb10-2"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">255</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">255</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="44">
+<div id="4dbf4b46-4bb4-4f9b-8f77-74f43666605f" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>plt.imshow(r<span class="op">+</span>g<span class="op">+</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="44">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28bf34590&gt;</code></pre>
-</div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-12-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> RGB에 작은 숫자를 주면 점점 어두워진다.</p>
-<div class="cell" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>r[:<span class="dv">3</span>,:<span class="dv">3</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">80</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3e819896-c405-43bb-a397-512ae3c9b6ae" class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>r[:<span class="dv">3</span>,:<span class="dv">3</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">80</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">80</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>plt.imshow((r<span class="op">+</span>g<span class="op">+</span>b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="47">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28bf82410&gt;</code></pre>
-</div>
+<div id="c81a7ed4-001e-4b68-8347-8351a98ff741" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>plt.imshow((r<span class="op">+</span>g<span class="op">+</span>b))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-14-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 예시 3. r,b,g 값이 float으로 저장되었다면 표준화가 진행된 것으로 컴퓨터가 이해한다.</p>
-<div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>r[:<span class="dv">3</span>,:<span class="dv">3</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e35284a7-924b-4957-86df-01e60269b71e" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>r[:<span class="dv">3</span>,:<span class="dv">3</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>g[:<span class="dv">3</span>,<span class="dv">2</span>:,<span class="dv">1</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>b[<span class="dv">2</span>:,:,<span class="dv">2</span>] <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>plt.imshow(r<span class="op">+</span>g<span class="op">+</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="49">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28bfec590&gt;</code></pre>
-</div>
+<div id="251c8077-1f8f-4186-a952-b0b23615188a" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>plt.imshow(r<span class="op">+</span>g<span class="op">+</span>b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-16-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>plt.imshow((r<span class="op">+</span>g<span class="op">+</span>b)<span class="op">*</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="50">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28bdf4590&gt;</code></pre>
 </div>
+<div id="37e43675-9465-4f3c-85f6-b1dbd9737b13" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>plt.imshow((r<span class="op">+</span>g<span class="op">+</span>b)<span class="op">*</span><span class="fl">1.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-17-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1074,16 +1199,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ex1" class="level3">
 <h3 class="anchored" data-anchor-id="ex1">ex1</h3>
 <p><span class="math inline">\(y(t)=cos(2t)\)</span> 와 <span class="math inline">\(x(t)=sin(t)\)</span>를 고려할 때,<span class="math inline">\(-3.14 \leq t \leq 3.14\)</span>에서 몇 개의 해를 가지는가?</p>
-<div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.14</span>,<span class="fl">3.14</span>,<span class="dv">1000</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>y <span class="op">=</span> np.cos(<span class="dv">2</span><span class="op">*</span>t)</span>
-<span id="cb21-3"><a href="#cb21-3"></a>x <span class="op">=</span> np.sin(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1401cd06-448b-49ca-9080-1db62288fd1b" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>t <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">3.14</span>,<span class="fl">3.14</span>,<span class="dv">1000</span>)</span>
+<span id="cb17-2"><a href="#cb17-2"></a>y <span class="op">=</span> np.cos(<span class="dv">2</span><span class="op">*</span>t)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>x <span class="op">=</span> np.sin(t)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>plt.plot(t,x)</span>
-<span id="cb22-2"><a href="#cb22-2"></a>plt.plot(t,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="567b8150-941a-40f2-b47a-9077e8d3049a" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>plt.plot(t,x)</span>
+<span id="cb18-2"><a href="#cb18-2"></a>plt.plot(t,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1091,43 +1220,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="ex2">ex2</h3>
 <p>아래와 같은 합성함수가 있다.</p>
 <p><span class="math display">\[l(x) = w_0 + w_{1}x, \quad a(x) = \frac {1}{1+e^{-x}}\]</span></p>
-<p><span class="math inline">\(x \in [-5,5]\)</span>의 범위에서 <span class="math inline">\(a(l(x))\)</span>의 그래프를 그려라. (단 이때 <span class="math inline">\(w_0=1, w_1=1\)</span>)로 설정한다.</p>
-<div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="kw">def</span> l(x) :</span>
-<span id="cb23-2"><a href="#cb23-2"></a>    <span class="cf">return</span> w0<span class="op">+</span>w1<span class="op">*</span>x</span>
-<span id="cb23-3"><a href="#cb23-3"></a><span class="kw">def</span> a(x) :</span>
-<span id="cb23-4"><a href="#cb23-4"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><span class="math inline">\(x  \in [-5,5]\)</span>의 범위에서 <span class="math inline">\(a(l(x))\)</span>의 그래프를 그려라. (단 이때 <span class="math inline">\(w_0=1, w_1=1\)</span>)로 설정한다.</p>
+<div id="a9dcb221-42ff-419a-90b6-cf225a66962c" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw">def</span> l(x) :</span>
+<span id="cb19-2"><a href="#cb19-2"></a>    <span class="cf">return</span> w0<span class="op">+</span>w1<span class="op">*</span>x</span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="kw">def</span> a(x) :</span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="cf">return</span> <span class="dv">1</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>np.exp(<span class="op">-</span>x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="61">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
-<span id="cb24-2"><a href="#cb24-2"></a>w0<span class="op">=</span><span class="dv">1</span></span>
-<span id="cb24-3"><a href="#cb24-3"></a>w1<span class="op">=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="20b509a1-1b36-4dc6-b84e-75bd7db34309" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
+<span id="cb20-2"><a href="#cb20-2"></a>w0<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>w1<span class="op">=</span><span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>plt.plot(x,a(l(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="41c09452-f673-4dc4-89e9-9eb4a2b74a1f" class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>plt.plot(x,a(l(x)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="ex3" class="level3">
 <h3 class="anchored" data-anchor-id="ex3">ex3</h3>
 <p><code>-</code> <span class="math inline">\(X\)</span>의 각 열의 평균과 표준편차를 구하여라</p>
-<div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>X <span class="op">=</span> np.array([[<span class="fl">11.75</span> ,  <span class="fl">5.72</span> ],</span>
-<span id="cb26-2"><a href="#cb26-2"></a>              [<span class="fl">12.39</span> ,  <span class="fl">7.695</span>],</span>
-<span id="cb26-3"><a href="#cb26-3"></a>              [<span class="fl">11.75</span> ,  <span class="fl">6.93</span> ],</span>
-<span id="cb26-4"><a href="#cb26-4"></a>              [<span class="fl">11.625</span>,  <span class="fl">4.195</span>],</span>
-<span id="cb26-5"><a href="#cb26-5"></a>              [<span class="fl">12.6</span>  ,  <span class="fl">6.734</span>],</span>
-<span id="cb26-6"><a href="#cb26-6"></a>              [<span class="fl">11.13</span> ,  <span class="fl">6.688</span>],</span>
-<span id="cb26-7"><a href="#cb26-7"></a>              [<span class="fl">12.24</span> ,  <span class="fl">7.33</span> ],</span>
-<span id="cb26-8"><a href="#cb26-8"></a>              [<span class="fl">13.586</span>,  <span class="fl">1.072</span>],</span>
-<span id="cb26-9"><a href="#cb26-9"></a>              [<span class="fl">10.9</span>  ,  <span class="fl">4.125</span>],</span>
-<span id="cb26-10"><a href="#cb26-10"></a>              [<span class="fl">10.68</span> ,  <span class="fl">3.691</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ccec530a-5328-468e-ae73-e1f109ac2d83" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>X <span class="op">=</span> np.array([[<span class="fl">11.75</span> ,  <span class="fl">5.72</span> ],</span>
+<span id="cb22-2"><a href="#cb22-2"></a>              [<span class="fl">12.39</span> ,  <span class="fl">7.695</span>],</span>
+<span id="cb22-3"><a href="#cb22-3"></a>              [<span class="fl">11.75</span> ,  <span class="fl">6.93</span> ],</span>
+<span id="cb22-4"><a href="#cb22-4"></a>              [<span class="fl">11.625</span>,  <span class="fl">4.195</span>],</span>
+<span id="cb22-5"><a href="#cb22-5"></a>              [<span class="fl">12.6</span>  ,  <span class="fl">6.734</span>],</span>
+<span id="cb22-6"><a href="#cb22-6"></a>              [<span class="fl">11.13</span> ,  <span class="fl">6.688</span>],</span>
+<span id="cb22-7"><a href="#cb22-7"></a>              [<span class="fl">12.24</span> ,  <span class="fl">7.33</span> ],</span>
+<span id="cb22-8"><a href="#cb22-8"></a>              [<span class="fl">13.586</span>,  <span class="fl">1.072</span>],</span>
+<span id="cb22-9"><a href="#cb22-9"></a>              [<span class="fl">10.9</span>  ,  <span class="fl">4.125</span>],</span>
+<span id="cb22-10"><a href="#cb22-10"></a>              [<span class="fl">10.68</span> ,  <span class="fl">3.691</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 풀이</p>
-<div class="cell" data-execution_count="65">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>X.mean(axis<span class="op">=</span><span class="dv">0</span>),X.std(ddof<span class="op">=</span><span class="dv">1</span>,axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="590849c7-2a07-4b5d-8543-a1cd1593738d" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>X.mean(axis<span class="op">=</span><span class="dv">0</span>),X.std(ddof<span class="op">=</span><span class="dv">1</span>,axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="65">
 <pre><code>(array([11.8651,  5.418 ]), array([0.87420064, 2.09762829]))</code></pre>
 </div>
@@ -1137,32 +1270,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ex4" class="level3">
 <h3 class="anchored" data-anchor-id="ex4">ex4</h3>
 <p>X를 columnwise 하게 표준화하라.</p>
-<div class="cell" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">def</span> sc(x) :</span>
-<span id="cb29-2"><a href="#cb29-2"></a>    <span class="cf">return</span> (x<span class="op">-</span>np.mean(x))<span class="op">/</span>x.std(ddof<span class="op">=</span><span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="8e9cea4b-fe49-47ee-9516-d3dda6048860" class="cell" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a><span class="kw">def</span> sc(x) :</span>
+<span id="cb25-2"><a href="#cb25-2"></a>    <span class="cf">return</span> (x<span class="op">-</span>np.mean(x))<span class="op">/</span>x.std(ddof<span class="op">=</span><span class="dv">1</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>예비학습 : 1차원 배열에서 첫 번째 인자와 마지막 인자의 평균을 구하는 함수 작성</li>
 </ul>
-<div class="cell" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">def</span> my_func(a):</span>
-<span id="cb30-2"><a href="#cb30-2"></a>    <span class="cf">return</span> (a[<span class="dv">0</span>] <span class="op">+</span> a[<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="fl">0.5</span></span>
-<span id="cb30-3"><a href="#cb30-3"></a>b <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>], [<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]])</span>
-<span id="cb30-4"><a href="#cb30-4"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="83ead2f5-2430-4f7c-bd5f-4190fecf63b6" class="cell" data-execution_count="81">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="kw">def</span> my_func(a):</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    <span class="cf">return</span> (a[<span class="dv">0</span>] <span class="op">+</span> a[<span class="op">-</span><span class="dv">1</span>]) <span class="op">*</span> <span class="fl">0.5</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a>b <span class="op">=</span> np.array([[<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>], [<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>]])</span>
+<span id="cb26-4"><a href="#cb26-4"></a>b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>array([[1, 2, 3],
        [4, 5, 6],
        [7, 8, 9]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>np.apply_along_axis(my_func, <span class="dv">0</span>, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="292131d5-23f1-4a11-ac9b-c82747fc354f" class="cell" data-execution_count="82">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>np.apply_along_axis(my_func, <span class="dv">0</span>, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="82">
 <pre><code>array([4., 5., 6.])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>np.apply_along_axis(my_func, <span class="dv">1</span>, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="bf8b6079-62fb-4e0c-9737-18296cbe7065" class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>np.apply_along_axis(my_func, <span class="dv">1</span>, b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <pre><code>array([2., 5., 8.])</code></pre>
 </div>
@@ -1170,8 +1303,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>다시 돌아와서</li>
 </ul>
-<div class="cell" data-execution_count="85">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>np.apply_along_axis(sc,<span class="dv">0</span>,X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="d29d29b4-17bf-40c0-be2a-3e96dddc0b0c" class="cell" data-execution_count="85">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>np.apply_along_axis(sc,<span class="dv">0</span>,X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="85">
 <pre><code>array([[-0.13166314,  0.14397212],
        [ 0.60043424,  1.08551168],
@@ -1189,11 +1322,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ex5" class="level3">
 <h3 class="anchored" data-anchor-id="ex5">ex5</h3>
 <p><code>-</code> 아래는 이미지파일을 불러오는 코드이다.</p>
-<div class="cell" data-execution_count="89">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>hani <span class="op">=</span> np.einsum(<span class="st">'ijk-&gt;jik'</span>,np.array(PIL.Image.<span class="bu">open</span>(<span class="st">'hani.jpeg'</span>),dtype<span class="op">=</span>np.int64)<span class="op">/</span><span class="dv">255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="eedaa2c5-99c3-4bba-a6e0-529dd4688068" class="cell" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>hani <span class="op">=</span> np.einsum(<span class="st">'ijk-&gt;jik'</span>,np.array(PIL.Image.<span class="bu">open</span>(<span class="st">'hani.jpeg'</span>),dtype<span class="op">=</span>np.int64)<span class="op">/</span><span class="dv">255</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>hani.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a20ba90b-8e1f-4fff-acb8-760f0c65253d" class="cell" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>hani.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="92">
 <pre><code>(4032, 3024, 3)</code></pre>
 </div>
@@ -1201,66 +1334,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li>이미지는 가로,세로 <code>4032 x 3024</code>개의 격자로 이루어져 있다.</li>
 </ul>
-<div class="cell" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>plt.imshow(hani)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="93">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28b36e250&gt;</code></pre>
-</div>
+<div id="20606ef3-ab0b-48be-b0f8-37c71c503a56" class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>plt.imshow(hani)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-32-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 얼굴 영역만 확대</p>
-<div class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>plt.imshow(hani[<span class="dv">1000</span>:<span class="dv">1500</span>,<span class="dv">1000</span>:<span class="dv">2000</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="94">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f289fa0150&gt;</code></pre>
-</div>
+<div id="9dce1c10-92d5-411b-8d1a-05b18f876ce9" class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>plt.imshow(hani[<span class="dv">1000</span>:<span class="dv">1500</span>,<span class="dv">1000</span>:<span class="dv">2000</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-33-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 하니이미지를 나타내는 어레이를 변형하여 빨간색을 의미하는 칼라만 남기자</p>
-<div class="cell" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>red_hani <span class="op">=</span> hani<span class="op">*</span><span class="dv">0</span></span>
-<span id="cb45-2"><a href="#cb45-2"></a>red_hani[:,:,<span class="dv">0</span>] <span class="op">=</span> hani[:,:,<span class="dv">0</span>]</span>
-<span id="cb45-3"><a href="#cb45-3"></a>plt.imshow(red_hani)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="97">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f2873f9510&gt;</code></pre>
-</div>
+<div id="a516e415-38d2-44fc-8044-ff0558f0194e" class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>red_hani <span class="op">=</span> hani<span class="op">*</span><span class="dv">0</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>red_hani[:,:,<span class="dv">0</span>] <span class="op">=</span> hani[:,:,<span class="dv">0</span>]</span>
+<span id="cb39-3"><a href="#cb39-3"></a>plt.imshow(red_hani)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-34-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 하니의 모든값에 루트를 취하여 “루트하니”를 만들고 “원본하니”와 “루트하니”를 조우로 나란히 배치 후 출력하라.</p>
-<div class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>root_hani <span class="op">=</span> np.sqrt(hani)</span>
-<span id="cb47-2"><a href="#cb47-2"></a>plt.imshow(np.concatenate([hani,root_hani],axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="99">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28f2d9f50&gt;</code></pre>
-</div>
+<div id="dd50f3dd-3ca4-49a2-8fae-b160b2757daa" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>root_hani <span class="op">=</span> np.sqrt(hani)</span>
+<span id="cb40-2"><a href="#cb40-2"></a>plt.imshow(np.concatenate([hani,root_hani],axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-35-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 하니의 모든값에 다음 함수를 적용</p>
 <p><span class="math display">\[f(x) =\begin{cases} \sqrt{x} &amp; \mbox{x&gt;0.7} \\ x &amp; \mbox{else} \end{cases}\]</span></p>
-<div class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>s_hani <span class="op">=</span> np.sqrt(hani)<span class="op">*</span>(hani<span class="op">&gt;</span><span class="fl">0.7</span>) <span class="op">+</span> hani<span class="op">*</span>(hani<span class="op">&lt;=</span><span class="fl">0.7</span>)</span>
-<span id="cb49-2"><a href="#cb49-2"></a></span>
-<span id="cb49-3"><a href="#cb49-3"></a>plt.imshow(np.concatenate([hani,s_hani],axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="101">
-<pre><code>&lt;matplotlib.image.AxesImage at 0x1f28f32a850&gt;</code></pre>
-</div>
+<div id="14a2534d-cdaf-4d2b-a49f-8c3a9f1a8a70" class="cell" data-execution_count="101">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>s_hani <span class="op">=</span> np.sqrt(hani)<span class="op">*</span>(hani<span class="op">&gt;</span><span class="fl">0.7</span>) <span class="op">+</span> hani<span class="op">*</span>(hani<span class="op">&lt;=</span><span class="fl">0.7</span>)</span>
+<span id="cb41-2"><a href="#cb41-2"></a></span>
+<span id="cb41-3"><a href="#cb41-3"></a>plt.imshow(np.concatenate([hani,s_hani],axis<span class="op">=</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-36-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-36-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
-<div class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb51-2"><a href="#cb51-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb51-3"><a href="#cb51-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a2cb150d-8b88-43bf-b71b-6fe6e89e43bd" class="cell" data-execution_count="106">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb42-2"><a href="#cb42-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb42-3"><a href="#cb42-3"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -1268,43 +1406,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="넘파이-활용-2" class="level1">
 <h1>넘파이 활용 (2)</h1>
 <p><code>-</code> 아래는 우산모양의 scatter plot을 그리는 좌표값이다.</p>
-<div class="cell" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># 자료저장 </span></span>
-<span id="cb52-2"><a href="#cb52-2"></a>data_raw <span class="op">=</span> np.array(pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/2021IR/master/_notebooks/round2.csv'</span>)).T</span>
-<span id="cb52-3"><a href="#cb52-3"></a>data_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9e08a795-596f-4c57-bdbb-88d75bc011ea" class="cell" data-execution_count="115">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a><span class="co"># 자료저장 </span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>data_raw <span class="op">=</span> np.array(pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/2021IR/master/_notebooks/round2.csv'</span>)).T</span>
+<span id="cb43-3"><a href="#cb43-3"></a>data_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="115">
 <pre><code>array([[ 12,  12,  13, ..., 636, 636, 637],
        [313, 314, 279, ..., 416, 417, 409]], dtype=int64)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="116">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>data_raw.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="3f72a4f1-5150-4da1-a4ab-dd4b873c6601" class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>data_raw.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="116">
 <pre><code>(2, 5513)</code></pre>
 </div>
 </div>
 <p><code>-</code> 저장된 자료를 x,y로 분해</p>
-<div class="cell" data-execution_count="117">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>x,y <span class="op">=</span> data_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="ad8bfceb-f66e-4686-ae2b-d260cef7b7d4" class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>x,y <span class="op">=</span> data_raw</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 시각화</p>
-<div class="cell" data-execution_count="119">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>plt.plot(x,y,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1d42607d-cfdd-42d6-a36c-a3ba79f7d6c4" class="cell" data-execution_count="119">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>plt.plot(x,y,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-41-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-41-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="ex1-1" class="level2">
 <h2 class="anchored" data-anchor-id="ex1-1">ex1</h2>
 <p><code>-</code> 각 좌표를 표준화 하고 시각화 해라</p>
-<div class="cell" data-execution_count="120">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>x2 <span class="op">=</span> (x<span class="op">-</span>np.mean(x))<span class="op">/</span>np.std(x,ddof<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb58-2"><a href="#cb58-2"></a>y2 <span class="op">=</span> (y<span class="op">-</span>np.mean(y))<span class="op">/</span>np.std(y,ddof<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="81dd5c84-d0b3-486c-9860-faf2e22e303c" class="cell" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>x2 <span class="op">=</span> (x<span class="op">-</span>np.mean(x))<span class="op">/</span>np.std(x,ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb49-2"><a href="#cb49-2"></a>y2 <span class="op">=</span> (y<span class="op">-</span>np.mean(y))<span class="op">/</span>np.std(y,ddof<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="121">
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>plt.plot(x2,y2,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="76df840c-383d-4c53-b4dd-c90076717f85" class="cell" data-execution_count="121">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>plt.plot(x2,y2,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-43-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-43-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1315,18 +1461,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><span class="math display">\[\bf{yy}_{i}= (sin \,\theta)x_i + (cos \,\theta)y_i\]</span></p>
 <p><span class="math display">\[\theta = \pi/4\]</span></p>
 <p><code>-</code> 풀이 1</p>
-<div class="cell" data-execution_count="132">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>t <span class="op">=</span> np.pi<span class="op">/</span><span class="dv">4</span></span>
-<span id="cb60-2"><a href="#cb60-2"></a></span>
-<span id="cb60-3"><a href="#cb60-3"></a>xx <span class="op">=</span> np.cos(t)<span class="op">*</span>x2 <span class="op">-</span> np.sin(t)<span class="op">*</span>y2</span>
-<span id="cb60-4"><a href="#cb60-4"></a>yy <span class="op">=</span> np.sin(t)<span class="op">*</span>x2 <span class="op">+</span> np.cos(t)<span class="op">*</span>y2</span>
-<span id="cb60-5"><a href="#cb60-5"></a></span>
-<span id="cb60-6"><a href="#cb60-6"></a>plt.plot(x2,y2,<span class="st">"o"</span>,label<span class="op">=</span><span class="vs">r"(x,y)"</span>)</span>
-<span id="cb60-7"><a href="#cb60-7"></a>plt.plot(xx,yy,<span class="st">"o"</span>,label<span class="op">=</span><span class="vs">r"(xx,yy)"</span>)</span>
-<span id="cb60-8"><a href="#cb60-8"></a>plt.legend()</span>
-<span id="cb60-9"><a href="#cb60-9"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f6d33787-b590-4ffb-a314-6edf117845cf" class="cell" data-execution_count="132">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>t <span class="op">=</span> np.pi<span class="op">/</span><span class="dv">4</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a></span>
+<span id="cb51-3"><a href="#cb51-3"></a>xx <span class="op">=</span> np.cos(t)<span class="op">*</span>x2 <span class="op">-</span> np.sin(t)<span class="op">*</span>y2</span>
+<span id="cb51-4"><a href="#cb51-4"></a>yy <span class="op">=</span> np.sin(t)<span class="op">*</span>x2 <span class="op">+</span> np.cos(t)<span class="op">*</span>y2</span>
+<span id="cb51-5"><a href="#cb51-5"></a></span>
+<span id="cb51-6"><a href="#cb51-6"></a>plt.plot(x2,y2,<span class="st">"o"</span>,label<span class="op">=</span><span class="vs">r"(x,y)"</span>)</span>
+<span id="cb51-7"><a href="#cb51-7"></a>plt.plot(xx,yy,<span class="st">"o"</span>,label<span class="op">=</span><span class="vs">r"(xx,yy)"</span>)</span>
+<span id="cb51-8"><a href="#cb51-8"></a>plt.legend()</span>
+<span id="cb51-9"><a href="#cb51-9"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-44-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-44-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 풀이 2</p>
@@ -1334,59 +1484,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    \begin{bmatrix} cos\,\theta &amp; -sin\,\theta  \\
                    sin \theta &amp; cos \theta \end{bmatrix}
    \begin{bmatrix} x_1 \\ y_1 \end{bmatrix}\]</span></p>
-<div class="cell" data-execution_count="138">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>R <span class="op">=</span> np.array([[np.cos(t), <span class="op">-</span>np.sin(t)],[np.sin(t),np.cos(t)]])</span>
-<span id="cb61-2"><a href="#cb61-2"></a></span>
-<span id="cb61-3"><a href="#cb61-3"></a>xy <span class="op">=</span> np.stack([x2,y2])</span>
-<span id="cb61-4"><a href="#cb61-4"></a></span>
-<span id="cb61-5"><a href="#cb61-5"></a>xx, yy <span class="op">=</span> R<span class="op">@</span>xy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="27b3523c-4226-402e-a7a4-43dcd09925e3" class="cell" data-execution_count="138">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>R <span class="op">=</span> np.array([[np.cos(t), <span class="op">-</span>np.sin(t)],[np.sin(t),np.cos(t)]])</span>
+<span id="cb52-2"><a href="#cb52-2"></a></span>
+<span id="cb52-3"><a href="#cb52-3"></a>xy <span class="op">=</span> np.stack([x2,y2])</span>
+<span id="cb52-4"><a href="#cb52-4"></a></span>
+<span id="cb52-5"><a href="#cb52-5"></a>xx, yy <span class="op">=</span> R<span class="op">@</span>xy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="141">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>plt.plot(x2,y2,<span class="st">"o"</span>,label<span class="op">=</span><span class="vs">r"(x,y)"</span>)</span>
-<span id="cb62-2"><a href="#cb62-2"></a>plt.plot(xx,yy,<span class="st">"o"</span>,label <span class="op">=</span> <span class="vs">r"(xx,yy)"</span>)</span>
-<span id="cb62-3"><a href="#cb62-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="141">
-<pre><code>&lt;matplotlib.legend.Legend at 0x1f2eba7d090&gt;</code></pre>
-</div>
+<div id="7c5b7983-a56b-4fdd-aaf5-be62f0c5910a" class="cell" data-execution_count="141">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>plt.plot(x2,y2,<span class="st">"o"</span>,label<span class="op">=</span><span class="vs">r"(x,y)"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2"></a>plt.plot(xx,yy,<span class="st">"o"</span>,label <span class="op">=</span> <span class="vs">r"(xx,yy)"</span>)</span>
+<span id="cb53-3"><a href="#cb53-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-46-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="ex3-1" class="level2">
 <h2 class="anchored" data-anchor-id="ex3-1">ex3</h2>
 <p>위 과정을 8번 연속진행한 결과를 시각화</p>
-<div class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>xx,yy <span class="op">=</span> np.linalg.matrix_power(R,<span class="dv">8</span>) <span class="op">@</span> xy</span>
-<span id="cb64-2"><a href="#cb64-2"></a>plt.plot(x2,y2,<span class="st">"ob"</span>,label <span class="op">=</span><span class="vs">r"$(x,y)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
-<span id="cb64-3"><a href="#cb64-3"></a>plt.plot(xx,yy,<span class="st">"or"</span>,label <span class="op">=</span><span class="vs">r"$(xx,yy)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
-<span id="cb64-4"><a href="#cb64-4"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="172">
-<pre><code>&lt;matplotlib.legend.Legend at 0x1f2a450e290&gt;</code></pre>
-</div>
+<div id="441659ca-73a7-42f2-a60f-f1142f30672f" class="cell" data-execution_count="172">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>xx,yy <span class="op">=</span> np.linalg.matrix_power(R,<span class="dv">8</span>) <span class="op">@</span> xy</span>
+<span id="cb54-2"><a href="#cb54-2"></a>plt.plot(x2,y2,<span class="st">"ob"</span>,label <span class="op">=</span><span class="vs">r"$(x,y)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb54-3"><a href="#cb54-3"></a>plt.plot(xx,yy,<span class="st">"or"</span>,label <span class="op">=</span><span class="vs">r"$(xx,yy)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb54-4"><a href="#cb54-4"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-47-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="ex4-1" class="level2">
 <h2 class="anchored" data-anchor-id="ex4-1">ex4</h2>
 <p>예제 2번을 역변환하는 코드 작성</p>
-<div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>_x,_y <span class="op">=</span> np.linalg.inv(R)<span class="op">@</span> xy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9547d4e5-f50f-42a9-868c-7e28aa13358f" class="cell" data-execution_count="173">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>_x,_y <span class="op">=</span> np.linalg.inv(R)<span class="op">@</span> xy</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>xx,yy <span class="op">=</span> np.linalg.matrix_power(R,<span class="dv">8</span>) <span class="op">@</span> xy</span>
-<span id="cb67-2"><a href="#cb67-2"></a>plt.plot(x2,y2,<span class="st">"ob"</span>,label <span class="op">=</span><span class="vs">r"$(x,y)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
-<span id="cb67-3"><a href="#cb67-3"></a>plt.plot(xx,yy,<span class="st">"or"</span>,label <span class="op">=</span><span class="vs">r"$(xx,yy)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
-<span id="cb67-4"><a href="#cb67-4"></a>plt.plot(_x,_y,<span class="st">"og"</span>,label <span class="op">=</span><span class="vs">r"$(_x,_y)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
-<span id="cb67-5"><a href="#cb67-5"></a></span>
-<span id="cb67-6"><a href="#cb67-6"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="175">
-<pre><code>&lt;matplotlib.legend.Legend at 0x1f286cee290&gt;</code></pre>
-</div>
+<div id="dca003a3-8c81-4234-99c9-3920e2e468cd" class="cell" data-execution_count="175">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>xx,yy <span class="op">=</span> np.linalg.matrix_power(R,<span class="dv">8</span>) <span class="op">@</span> xy</span>
+<span id="cb56-2"><a href="#cb56-2"></a>plt.plot(x2,y2,<span class="st">"ob"</span>,label <span class="op">=</span><span class="vs">r"$(x,y)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb56-3"><a href="#cb56-3"></a>plt.plot(xx,yy,<span class="st">"or"</span>,label <span class="op">=</span><span class="vs">r"$(xx,yy)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb56-4"><a href="#cb56-4"></a>plt.plot(_x,_y,<span class="st">"og"</span>,label <span class="op">=</span><span class="vs">r"$(_x,_y)$"</span>,alpha<span class="op">=</span><span class="fl">0.15</span>)</span>
+<span id="cb56-5"><a href="#cb56-5"></a></span>
+<span id="cb56-6"><a href="#cb56-6"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-49-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1395,20 +1548,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>아래의 수시에 따르는 수열을 생성</p>
 <p><span class="math display">\[x_T = \sum_{t=1}^{T} \varepsilon_t\]</span></p>
 <p><code>-</code> 예비학습</p>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb69-2"><a href="#cb69-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="79ceb3f5-4227-48c8-836b-87882bab0512" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb57-2"><a href="#cb57-2"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>e <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e26ca11a-a0a3-4692-999f-9b661e5020be" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>e <span class="op">=</span> np.random.randn(<span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>x <span class="op">=</span> np.cumsum(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="21d01383-9877-4798-a0e5-de356980a1f2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>x <span class="op">=</span> np.cumsum(e)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>plt.plot(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e6376790-c243-4ed2-9f9c-ea035ef87a2a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>plt.plot(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1416,21 +1573,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="ex6">ex6</h2>
 <p>아래와 같은 변환을 수행하고 결과를 시각화해라.</p>
 <p><span class="math display">\[\bf{xx}_T = \frac 13 (x_{T-1}+ x_{T})\]</span></p>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>M<span class="op">=</span> np.array([[<span class="bu">abs</span>(i<span class="op">-</span>j)<span class="op">&lt;</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="9b060481-41bd-47cc-97fc-02034a61c985" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>M<span class="op">=</span> np.array([[<span class="bu">abs</span>(i<span class="op">-</span>j)<span class="op">&lt;</span><span class="dv">2</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)] <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>)])<span class="op">*</span><span class="dv">1</span><span class="op">/</span><span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>xx <span class="op">=</span> M <span class="op">@</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="fcdf455f-2d9f-46e4-9830-1210cb4a763c" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>xx <span class="op">=</span> M <span class="op">@</span> x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>plt.plot(x,label <span class="op">=</span> <span class="vs">r"$x$"</span>)</span>
-<span id="cb75-2"><a href="#cb75-2"></a>plt.plot(xx,label <span class="op">=</span> <span class="vs">r"$xx$"</span>)</span>
-<span id="cb75-3"><a href="#cb75-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="29">
-<pre><code>&lt;matplotlib.legend.Legend at 0x2175cdf0f50&gt;</code></pre>
-</div>
+<div id="3decfab8-1d06-4eae-86a2-6c94b74fc4b7" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>plt.plot(x,label <span class="op">=</span> <span class="vs">r"$x$"</span>)</span>
+<span id="cb63-2"><a href="#cb63-2"></a>plt.plot(xx,label <span class="op">=</span> <span class="vs">r"$xx$"</span>)</span>
+<span id="cb63-3"><a href="#cb63-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-56-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1440,33 +1598,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>$xx_{1} = (x_1+x_1+x_2) $</p>
 <p>$xx_{t-1} = (x_{t-2}+x_{t-1}+x_t) $</p>
 <p>$xx_{t} = (x_{t-1}+x_{t}+x_t) $</p>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>M[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
-<span id="cb77-2"><a href="#cb77-2"></a>M[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
-<span id="cb77-3"><a href="#cb77-3"></a></span>
-<span id="cb77-4"><a href="#cb77-4"></a>plt.plot(x,label <span class="op">=</span> <span class="vs">r"$x$"</span>)</span>
-<span id="cb77-5"><a href="#cb77-5"></a>plt.plot(x<span class="op">@</span>M,label <span class="op">=</span> <span class="vs">r"$xx$"</span>)</span>
-<span id="cb77-6"><a href="#cb77-6"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>&lt;matplotlib.legend.Legend at 0x21762a6aa90&gt;</code></pre>
-</div>
+<div id="ff8ed9da-24fa-4463-9573-e85c7da03196" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>M[<span class="dv">0</span>,<span class="dv">0</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb64-2"><a href="#cb64-2"></a>M[<span class="op">-</span><span class="dv">1</span>,<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">2</span><span class="op">/</span><span class="dv">3</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a></span>
+<span id="cb64-4"><a href="#cb64-4"></a>plt.plot(x,label <span class="op">=</span> <span class="vs">r"$x$"</span>)</span>
+<span id="cb64-5"><a href="#cb64-5"></a>plt.plot(x<span class="op">@</span>M,label <span class="op">=</span> <span class="vs">r"$xx$"</span>)</span>
+<span id="cb64-6"><a href="#cb64-6"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-57-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-57-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
 <section id="ex8" class="level2">
 <h2 class="anchored" data-anchor-id="ex8">ex8</h2>
 <p><code>-</code> 7의 변환을 100번 반복하고 시각화</p>
-<div class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>plt.plot(x,label<span class="op">=</span><span class="vs">r"$x$"</span>)</span>
-<span id="cb79-2"><a href="#cb79-2"></a>plt.plot(np.linalg.matrix_power(M,<span class="dv">100</span>)<span class="op">@</span>x,label<span class="op">=</span><span class="vs">r"$M^</span><span class="sc">{100}</span><span class="vs">@x$"</span>)</span>
-<span id="cb79-3"><a href="#cb79-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="36">
-<pre><code>&lt;matplotlib.legend.Legend at 0x217631f8150&gt;</code></pre>
-</div>
+<div id="c076e9fd-fc6e-4bcc-b170-5e7f0a9b755c" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>plt.plot(x,label<span class="op">=</span><span class="vs">r"$x$"</span>)</span>
+<span id="cb65-2"><a href="#cb65-2"></a>plt.plot(np.linalg.matrix_power(M,<span class="dv">100</span>)<span class="op">@</span>x,label<span class="op">=</span><span class="vs">r"$M^</span><span class="sc">{100}</span><span class="vs">@x$"</span>)</span>
+<span id="cb65-3"><a href="#cb65-3"></a>plt.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-58-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2023-08-04-07. Numpy 활용_files/figure-html/cell-58-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -1554,10 +1714,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1567,8 +1744,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1580,7 +1766,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1624,6 +1933,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1649,6 +1959,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1710,17 +2046,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/Lecture/IP/2023-08-04-06. numpy.html" class="pagination-link">
+      <a href="../../../posts/Lecture/IP/2023-08-04-06. numpy.html" class="pagination-link" aria-label="06. Numpy">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">06. Numpy</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/Lecture/IP/2023-08-04-08.pandas.html" class="pagination-link">
+      <a href="../../../posts/Lecture/IP/2023-08-04-08.pandas.html" class="pagination-link" aria-label="08. pandas">
         <span class="nav-page-text">08. pandas</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

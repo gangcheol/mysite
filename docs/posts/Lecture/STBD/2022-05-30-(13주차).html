@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -101,17 +108,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
 <link rel="stylesheet" href="../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -123,46 +156,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STBD/2022-03-08-(1주차).html">STBD</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STBD/2022-05-30-(13주차).html">13. model fitting</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STBD/2022-03-08-(1주차).html">STBD</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STBD/2022-05-30-(13주차).html">13. model fitting</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -170,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STBD/2022-03-08-(1주차).html">STBD</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STBD/2022-05-30-(13주차).html">13. model fitting</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">13. model fitting</h1>
@@ -203,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -776,12 +809,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">toeic speaking</span></a>
+ <span class="menu-text">STTS</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-01-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-03-01. example (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. example (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-08-02. 확률과정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 확률과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-10-03. ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 비정상 ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 정상 ARMA 모형 적합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. predict</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-24-07. example (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. example (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-28-08. example (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. example (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-10-01-09. example (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. example (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">toeic speaking</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../posts/Lecture/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">
@@ -827,7 +931,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -846,20 +950,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="imports" class="level3">
 <h3 class="anchored" data-anchor-id="imports">imports</h3>
-<div class="cell">
+<div id="d61159cd-f2af-46aa-95e0-a4943083be41" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="im">import</span> tensorflow <span class="im">as</span> tf </span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> tensorflow.experimental.numpy <span class="im">as</span> tnp </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="5d9cbc69-32fe-415a-9c6d-d8d9210944c9" class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>tnp.experimental_enable_numpy_behavior()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="5646d4eb-6172-4bed-82e1-65115ca1486d" class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="1536d626-c87b-46ce-80fc-66334bf95288" class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="op">%</span>load_ext tensorboard</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
@@ -870,19 +975,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>3-(1)</code> 아래와 같은 모형을 고려하자.</p>
 <p><span class="math display">\[y_i= \beta_0 + \sum_{k=1}^{5} \beta_k \cos(k t_i)+\epsilon_i\]</span></p>
 <p>여기에서 <span class="math inline">\(t=(t_1,\dots,t_{1000})=\)</span> <code>np.linspace(0,5,1000)</code> 이다. 그리고 <span class="math inline">\(\epsilon_i \sim i.i.d~ N(0,\sigma^2)\)</span>, 즉 서로 독립인 표준정규분포에서 추출된 샘플이다. 위의 모형에서 아래와 같은 데이터를 관측했다고 가정하자.</p>
-<div class="cell" data-outputid="cb04b83f-1b28-48ba-994c-07e2824a728a">
+<div id="5912fe35-49bb-4dea-b7be-3543d9af0cb9" class="cell" data-outputid="cb04b83f-1b28-48ba-994c-07e2824a728a">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
 <span id="cb5-2"><a href="#cb5-2"></a>t<span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
 <span id="cb5-3"><a href="#cb5-3"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">+</span> <span class="dv">3</span><span class="op">*</span>np.cos(t) <span class="op">+</span> <span class="dv">1</span><span class="op">*</span>np.cos(<span class="dv">2</span><span class="op">*</span>t) <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>np.cos(<span class="dv">5</span><span class="op">*</span>t) <span class="op">+</span> np.random.randn(<span class="dv">1000</span>)<span class="op">*</span><span class="fl">0.2</span></span>
 <span id="cb5-4"><a href="#cb5-4"></a>plt.plot(t,y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-6-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>tf.keras를 이용하여 <span class="math inline">\(\beta_0,\dots,\beta_5\)</span>를 추정하라. (<span class="math inline">\(\beta_0,\dots,\beta_5\)</span>의 참값은 각각 -2,3,1,0,0,0.5 이다)</p>
 <p><strong>(풀이)</strong></p>
 <p><code>-</code> 다시 풀어보자</p>
-<div class="cell" data-outputid="e3d6dee1-4a21-4d89-af71-339a503ad058">
+<div id="9f828f6d-402d-417c-962a-4c72f9074450" class="cell" data-outputid="e3d6dee1-4a21-4d89-af71-339a503ad058">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>y <span class="op">=</span> y.reshape(<span class="dv">1000</span>,<span class="dv">1</span>)</span>
 <span id="cb6-2"><a href="#cb6-2"></a>x1 <span class="op">=</span> np.cos(t) </span>
 <span id="cb6-3"><a href="#cb6-3"></a>x2 <span class="op">=</span> np.cos(<span class="dv">2</span><span class="op">*</span>t)</span>
@@ -894,7 +1003,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>2022-05-25 13:34:57.890242: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:939] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="0b0d56e1-f3fb-4641-886d-cdba4e4bf083" data-scrolled="true" data-tags="[]">
+<div id="6e63c450-0453-49e8-837a-123d605b807f" class="cell" data-outputid="0b0d56e1-f3fb-4641-886d-cdba4e4bf083" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb8-3"><a href="#cb8-3"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
@@ -1910,15 +2019,19 @@ Epoch 500/500
 </div>
 </div>
 <p><code>-</code> 결과시각화</p>
-<div class="cell" data-outputid="1da3c1a2-239e-4c6e-baae-94c7a6b27c96">
+<div id="dd72e481-6fb5-4bc2-8ab8-9acb9bb84fda" class="cell" data-outputid="1da3c1a2-239e-4c6e-baae-94c7a6b27c96">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>plt.plot(y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb11-2"><a href="#cb11-2"></a>plt.plot(net(X),<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 보여준 데이터에서는 잘 맞추는것 같지만 validation에서는 엉망이다. -&gt; 오버피팅인가? -&gt; 텐서보드로 확인</p>
-<div class="cell">
+<div id="d9e84ceb-b0db-4a94-9f0d-081d9da677a7" class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># </span></span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1926,7 +2039,7 @@ Epoch 500/500
 <li>확인결과: 에폭마다 val_loss 가 줄어들고 있기는 하다 (늦게 줄어들뿐) -&gt; 오버피팅이라기보다 val_set에 들어있는 자료를 예측하기에는 보여준 데이터가 불충분하다라고 해석하는것이 더 옳음 (모형자체의 문제는 아님)</li>
 </ul>
 <p><code>-</code> 해결하는 방법? 그냥 더 학습시키면된다.</p>
-<div class="cell" data-outputid="bb8f3354-f182-481d-9055-6bd1142eec71" data-scrolled="true" data-tags="[]">
+<div id="7cd5c7e6-ba16-46e3-a79d-6dc7c2c24f4e" class="cell" data-outputid="bb8f3354-f182-481d-9055-6bd1142eec71" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb13-3"><a href="#cb13-3"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
@@ -5941,14 +6054,18 @@ Epoch 2000/2000
 <pre><code>&lt;keras.callbacks.History at 0x7f708bd97e50&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="fad8c0e9-6028-4875-b187-9cd3281c0534">
+<div id="23054b2d-a03d-4f4b-84cd-91129445e570" class="cell" data-outputid="fad8c0e9-6028-4875-b187-9cd3281c0534">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>plt.plot(y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb16-2"><a href="#cb16-2"></a>plt.plot(net(X),<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
+</div>
+<div id="79e926fa-d884-4ab7-b8d0-32d426742201" class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># </span></span>
 <span id="cb17-2"><a href="#cb17-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -5957,7 +6074,7 @@ Epoch 2000/2000
 </ul>
 <p><code>-</code> 결론적으로 말해서 위와 같은 net는 설계하였을 경우 val을 빼는 것은 어리석음. (데이터만 버리는 꼴임)</p>
 <p><code>-</code> 더 많은 데이터를 남겨주면 더 빨리 학습한다.</p>
-<div class="cell" data-outputid="e200b2e6-72af-41a6-9479-5e81e90b00ac" data-scrolled="true" data-tags="[]">
+<div id="1f58b630-dfbe-44f2-9cd0-5d83581a4e3d" class="cell" data-outputid="e200b2e6-72af-41a6-9479-5e81e90b00ac" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb18-2"><a href="#cb18-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb18-3"><a href="#cb18-3"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
@@ -6970,14 +7087,18 @@ Epoch 500/500
 <pre><code>&lt;keras.callbacks.History at 0x7f708be9a470&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="3779e80e-90c9-4568-d46c-4749dbfb7a4f">
+<div id="ea1135bc-49d0-4ac5-a0d6-31b35ba14fdd" class="cell" data-outputid="3779e80e-90c9-4568-d46c-4749dbfb7a4f">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>plt.plot(y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>plt.plot(net(X),<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
+</div>
+<div id="d0c63d9b-31c3-493a-b872-a434277a9691" class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="co">#</span></span>
 <span id="cb22-2"><a href="#cb22-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -6985,7 +7106,7 @@ Epoch 500/500
 <section id="텐서보드-적합결과-시각화" class="level4">
 <h4 class="anchored" data-anchor-id="텐서보드-적합결과-시각화">텐서보드: 적합결과 시각화</h4>
 <p><code>-</code> 시각화결과는 모두 텐서보드에서 보고 싶다! 적합결과를 보여주는 fig 오브젝트를 텐서보드에 끼워넣어서 출력하는 방법을 알아보자.</p>
-<div class="cell" data-outputid="b9e3548f-ee7d-4b77-b8fb-328a24c8c19d" data-scrolled="true" data-tags="[]">
+<div id="7355bd8f-205f-49a3-93a1-08511b614fab" class="cell" data-outputid="b9e3548f-ee7d-4b77-b8fb-328a24c8c19d" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb23-2"><a href="#cb23-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb23-3"><a href="#cb23-3"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
@@ -7998,30 +8119,38 @@ Epoch 500/500
 <pre><code>&lt;keras.callbacks.History at 0x7f70988babc0&gt;</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="3f482b32-9078-4835-824e-7ee34c52146e" class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="co">#</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 끼워넣을 오브젝트 만들기</p>
-<div class="cell" data-outputid="290adc73-894b-44d6-cea5-36f6be845d3e">
+<div id="9adb4432-4b09-41d0-a111-baa088b1d2ef" class="cell" data-outputid="290adc73-894b-44d6-cea5-36f6be845d3e">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
 <span id="cb27-2"><a href="#cb27-2"></a>ax.plot(y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb27-3"><a href="#cb27-3"></a>ax.plot(net(X),<span class="st">'--'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-outputid="05676c52-08b7-43c5-d9c3-3a7b4ba89fb3">
+</div>
+<div id="cfd5e7a1-6a8e-42d4-be53-fd380187259e" class="cell" data-outputid="05676c52-08b7-43c5-d9c3-3a7b4ba89fb3">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 이제 fig 오브젝트를 끼워넣을 코드를 구성하자. (공식홈페이지 참고)</p>
 <ul>
 <li>https://www.tensorflow.org/tensorboard/image_summaries</li>
 </ul>
-<div class="cell">
+<div id="f350d590-784d-4012-af72-877d36d966d8" class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a><span class="co"># 이코드는 한번만 실행</span></span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="co">#from datetime import datetime</span></span>
 <span id="cb29-3"><a href="#cb29-3"></a><span class="im">import</span> io</span>
@@ -8044,11 +8173,11 @@ Epoch 500/500
 <span id="cb29-20"><a href="#cb29-20"></a>    image <span class="op">=</span> tf.expand_dims(image, <span class="dv">0</span>)</span>
 <span id="cb29-21"><a href="#cb29-21"></a>    <span class="cf">return</span> image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="35b8ff07-b1b8-46bd-9174-84188548d1d8" class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="cf">with</span> tf.summary.create_file_writer(logdir).as_default():</span>
 <span id="cb30-2"><a href="#cb30-2"></a>    tf.summary.image(<span class="st">"적합결과시각화"</span>, plot_to_image(fig), step<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="842c3512-6395-4396-b8fd-475ba7913b52" class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">#</span></span>
 <span id="cb31-2"><a href="#cb31-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -8062,20 +8191,24 @@ Epoch 500/500
 <p><code>3-(1)</code> 아래와 같은 모형을 고려하자.</p>
 <p><span class="math display">\[y_i= \beta_0 + \sum_{k=1}^{5} \beta_k \cos(k t_i)+\epsilon_i\]</span></p>
 <p>여기에서 <span class="math inline">\(t=(t_1,\dots,t_{1000})=\)</span> <code>np.linspace(0,5,1000)</code> 이다. 그리고 <span class="math inline">\(\epsilon_i \sim i.i.d~ N(0,\sigma^2)\)</span>, 즉 서로 독립인 표준정규분포에서 추출된 샘플이다. 위의 모형에서 아래와 같은 데이터를 관측했다고 가정하자.</p>
-<div class="cell" data-outputid="77e8441d-920c-4a7a-f1be-a04ad6e804f0">
+<div id="b018c9e3-6451-4aec-9ad3-d0850be9c81b" class="cell" data-outputid="77e8441d-920c-4a7a-f1be-a04ad6e804f0">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>np.random.seed(<span class="dv">43052</span>)</span>
 <span id="cb32-2"><a href="#cb32-2"></a>t<span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
 <span id="cb32-3"><a href="#cb32-3"></a>y <span class="op">=</span> <span class="op">-</span><span class="dv">2</span><span class="op">+</span> <span class="dv">3</span><span class="op">*</span>np.cos(t) <span class="op">+</span> <span class="dv">1</span><span class="op">*</span>np.cos(<span class="dv">2</span><span class="op">*</span>t) <span class="op">+</span> <span class="fl">0.5</span><span class="op">*</span>np.cos(<span class="dv">5</span><span class="op">*</span>t) <span class="op">+</span> np.random.randn(<span class="dv">1000</span>)<span class="op">*</span><span class="fl">0.2</span></span>
 <span id="cb32-4"><a href="#cb32-4"></a>plt.plot(t,y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><code>-</code> 학습을 진행하면서 가중치가 어떻게 업데이트 되는지 시각화하자.</p>
-<div class="cell">
+<div id="4fd0fa9e-6d34-4ff3-b7a0-5523d87a49b5" class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># y = -2+ 3*np.cos(t) + 1*np.cos(2*t) + 0.5*np.cos(5*t) + np.random.randn(1000)*0.2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="a0e278b2-bbb2-4881-ae80-9cbf9b41fc0b" data-scrolled="true" data-tags="[]">
+<div id="f4885f64-f591-4282-970f-052a17641b5a" class="cell" data-outputid="a0e278b2-bbb2-4881-ae80-9cbf9b41fc0b" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb34-2"><a href="#cb34-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb34-3"><a href="#cb34-3"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
@@ -12089,7 +12222,7 @@ Epoch 2000/2000
 <pre><code>&lt;keras.callbacks.History at 0x7f708335a740&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="47cba377-045d-49ab-963d-e0c5271987d7">
+<div id="25d4b216-abbb-43cc-8dd6-98a2d339cf30" class="cell" data-outputid="47cba377-045d-49ab-963d-e0c5271987d7">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>net.weights</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="97">
 <pre><code>[&lt;tf.Variable 'dense_9/kernel:0' shape=(5, 1) dtype=float32, numpy=
@@ -12101,7 +12234,7 @@ Epoch 2000/2000
  &lt;tf.Variable 'dense_9/bias:0' shape=(1,) dtype=float32, numpy=array([-2.0080342], dtype=float32)&gt;]</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="1bcfac8f-3884-468d-8f65-1478b3c6583c">
+<div id="a11608e7-fe41-4f7f-9def-91fc40a52d3e" class="cell" data-outputid="1bcfac8f-3884-468d-8f65-1478b3c6583c">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>net.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model: "sequential_9"
@@ -12117,7 +12250,7 @@ Non-trainable params: 0
 _________________________________________________________________</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="0d0a3764-6859-4c71-b556-aebcd88961bc" class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co">#</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -12126,7 +12259,7 @@ _________________________________________________________________</code></pre>
 <h4 class="anchored" data-anchor-id="텐서보드-사용자지정그림-에폭별로-시각화-1">텐서보드: 사용자지정그림 에폭별로 시각화 (1)</h4>
 <p><code>-</code> 100에폭마다 적합결과를 시각화 하고 싶다 + 가중치와 같이!! - https://www.tensorflow.org/guide/keras/custom_callback</p>
 <p><code>-</code> 일단 “100에폭마다 가중치적합과정 시각화 + 최종적합곡선 시각화” 까지 구현</p>
-<div class="cell" data-outputid="61334c72-2ca8-4224-f2e5-1d73c14405fe" data-scrolled="true" data-tags="[]">
+<div id="779ba35f-0e3a-4648-b564-d9de40c3c742" class="cell" data-outputid="61334c72-2ca8-4224-f2e5-1d73c14405fe" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb42-2"><a href="#cb42-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb42-3"><a href="#cb42-3"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
@@ -16140,14 +16273,14 @@ Epoch 2000/2000
 <pre><code>&lt;keras.callbacks.History at 0x7f708353a650&gt;</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="cb26a181-1308-4b68-9167-952ed673700a" class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>fig, ax <span class="op">=</span> plt.subplots() </span>
 <span id="cb45-2"><a href="#cb45-2"></a>ax.plot(y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)</span>
 <span id="cb45-3"><a href="#cb45-3"></a>ax.plot(net(X),<span class="st">'--'</span>)</span>
 <span id="cb45-4"><a href="#cb45-4"></a><span class="cf">with</span> tf.summary.create_file_writer(logdir).as_default():</span>
 <span id="cb45-5"><a href="#cb45-5"></a>    tf.summary.image(<span class="st">"적합결과시각화"</span>, plot_to_image(fig), step<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell">
+<div id="b602e70a-9014-4162-9131-a38894f7a2ee" class="cell">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="co"># </span></span>
 <span id="cb46-2"><a href="#cb46-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -16158,13 +16291,13 @@ Epoch 2000/2000
 <span id="cb47-4"><a href="#cb47-4"></a><span class="cf">with</span> tf.summary.create_file_writer(logdir).as_default():</span>
 <span id="cb47-5"><a href="#cb47-5"></a>    tf.summary.image(<span class="st">"적합결과시각화"</span>, plot_to_image(fig), step<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>-</code> 일단 net.fit직전까지의 코드를 구현</p>
-<div class="cell">
+<div id="357ae53d-dd3c-42c1-aa95-709ce21cea01" class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
 <span id="cb48-2"><a href="#cb48-2"></a>net.add(tf.keras.layers.Dense(<span class="dv">1</span>))</span>
 <span id="cb48-3"><a href="#cb48-3"></a>net.<span class="bu">compile</span>(loss<span class="op">=</span><span class="st">'mse'</span>,optimizer<span class="op">=</span><span class="st">'adam'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 사용자정의 콜백클래스를 만듬</p>
-<div class="cell">
+<div id="a40bfc4f-743e-4322-832c-3d5467559203" class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a><span class="kw">class</span> PlotYhat(tf.keras.callbacks.Callback):</span>
 <span id="cb49-2"><a href="#cb49-2"></a>    <span class="kw">def</span> on_epoch_begin(<span class="va">self</span>,epoch,logs): <span class="co"># 입력은 무조건 self, epoch, logs를 써야합니다 --&gt; 이 함수안에 에폭이 끝날때마다 할 동작을 정의한다. </span></span>
 <span id="cb49-3"><a href="#cb49-3"></a>        <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span><span class="dv">0</span>: </span>
@@ -16175,7 +16308,7 @@ Epoch 2000/2000
 <span id="cb49-8"><a href="#cb49-8"></a>                tf.summary.image(<span class="st">"적합결과시각화"</span><span class="op">+</span><span class="bu">str</span>(epoch), plot_to_image(fig), step<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><code>-</code> 내가 만든 클래스에서 cb2를 생성</p>
-<div class="cell" data-outputid="03401e55-b5b4-4e93-92bd-38a34e655d7b" data-scrolled="true" data-tags="[]">
+<div id="cc16a152-6d81-4019-92dc-0acc7c0d7d89" class="cell" data-outputid="03401e55-b5b4-4e93-92bd-38a34e655d7b" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a><span class="co">#collapse_output</span></span>
 <span id="cb50-2"><a href="#cb50-2"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb50-3"><a href="#cb50-3"></a>cb1<span class="op">=</span> tf.keras.callbacks.TensorBoard(update_freq<span class="op">=</span><span class="st">'epoch'</span>,histogram_freq<span class="op">=</span><span class="dv">100</span>)</span>
@@ -20188,7 +20321,7 @@ Epoch 2000/2000
 <pre><code>&lt;keras.callbacks.History at 0x7f67c81a26b0&gt;</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="e531207c-1698-4be4-a39e-a77811dc0c1d" class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a><span class="co"># </span></span>
 <span id="cb53-2"><a href="#cb53-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -20200,7 +20333,7 @@ Epoch 2000/2000
 <p>아래의 모형을 고려하자.</p>
 <p>model: <span class="math inline">\(y_i=\begin{cases} x_i +0.3\epsilon_i &amp; x\leq 0 \\ 3.5x_i +0.3\epsilon_i &amp; x&gt;0 \end{cases}\)</span></p>
 <p>아래는 위의 모형에서 생성한 샘플이다.</p>
-<div class="cell">
+<div id="7b8619d9-8fa2-4b4f-aca3-156ba1766f9e" class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="co">## data </span></span>
 <span id="cb54-2"><a href="#cb54-2"></a>np.random.seed(<span class="dv">43052</span>)</span>
 <span id="cb54-3"><a href="#cb54-3"></a>N<span class="op">=</span><span class="dv">100</span></span>
@@ -20208,7 +20341,7 @@ Epoch 2000/2000
 <span id="cb54-5"><a href="#cb54-5"></a>y<span class="op">=</span> np.array(<span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: x<span class="op">*</span><span class="dv">1</span><span class="op">+</span>np.random.normal()<span class="op">*</span><span class="fl">0.3</span> <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span> <span class="cf">else</span> x<span class="op">*</span><span class="fl">3.5</span><span class="op">+</span>np.random.normal()<span class="op">*</span><span class="fl">0.3</span>,x))).reshape(N,<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(풀이)</p>
-<div class="cell" data-outputid="f74327c9-b082-483c-afec-c2e19b6fdc6c">
+<div id="08b37ffe-4085-4c8e-bdfc-67dabed27512" class="cell" data-outputid="f74327c9-b082-483c-afec-c2e19b6fdc6c">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>tf.random.set_seed(<span class="dv">43055</span>) </span>
 <span id="cb55-2"><a href="#cb55-2"></a>net <span class="op">=</span> tf.keras.Sequential()</span>
 <span id="cb55-3"><a href="#cb55-3"></a>net.add(tf.keras.layers.Dense(<span class="dv">2</span>))</span>
@@ -20223,24 +20356,28 @@ Epoch 2000/2000
 <pre><code>&lt;keras.callbacks.History at 0x7f68849e9420&gt;</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="aeefbf05-7ea9-470c-8c0f-38cfc74f057f" class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>l1,a1,l2 <span class="op">=</span>net.layers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="386929b6-92e3-4c92-ed50-0f314bde8d86">
+<div id="c52c6363-e244-4834-94e0-a44aead64c9c" class="cell" data-outputid="386929b6-92e3-4c92-ed50-0f314bde8d86">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>fig, (ax1,ax2,ax3) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>) </span>
 <span id="cb59-2"><a href="#cb59-2"></a>fig.set_figwidth(<span class="dv">9</span>)</span>
 <span id="cb59-3"><a href="#cb59-3"></a>ax1.plot(x,y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">;</span> ax1.plot(x,l1(x),<span class="st">'--'</span>)<span class="op">;</span> </span>
 <span id="cb59-4"><a href="#cb59-4"></a>ax2.plot(x,y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">;</span> ax2.plot(x,a1(l1(x)),<span class="st">'--'</span>)<span class="op">;</span> </span>
 <span id="cb59-5"><a href="#cb59-5"></a>ax3.plot(x,y,<span class="st">'.'</span>,alpha<span class="op">=</span><span class="fl">0.2</span>)<span class="op">;</span> ax3.plot(x,l2(a1(l1(x))),<span class="st">'--r'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2022-05-30-(13주차)_files/figure-html/cell-40-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2022-05-30-(13주차)_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>이런 그림이 100에폭마다 그려졌으면 좋겠다.</li>
 </ul>
 <p><code>-</code> 새로운 클래스를 만들자.</p>
-<div class="cell">
+<div id="3807071f-c60c-4bf2-8f3d-2ec87a17d30a" class="cell">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="kw">class</span> PlotMidlayer(tf.keras.callbacks.Callback):</span>
 <span id="cb60-2"><a href="#cb60-2"></a>    <span class="kw">def</span> on_epoch_begin(<span class="va">self</span>,epoch,logs): <span class="co"># 입력은 무조건 self, epoch, logs를 써야합니다 --&gt; 이 함수안에 에폭이 끝날때마다 할 동작을 정의한다. </span></span>
 <span id="cb60-3"><a href="#cb60-3"></a>        <span class="cf">if</span> epoch <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span><span class="dv">0</span>: </span>
@@ -20252,7 +20389,7 @@ Epoch 2000/2000
 <span id="cb60-9"><a href="#cb60-9"></a>            <span class="cf">with</span> tf.summary.create_file_writer(logdir).as_default():</span>
 <span id="cb60-10"><a href="#cb60-10"></a>                tf.summary.image(<span class="st">"적합결과시각화"</span><span class="op">+</span><span class="bu">str</span>(epoch), plot_to_image(fig), step<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-outputid="492ab8e8-9c54-40a4-8bdd-26e5b2f0f5ab" data-scrolled="true" data-tags="[]">
+<div id="7c54f03e-7917-47c0-87d7-80a95396df65" class="cell" data-outputid="492ab8e8-9c54-40a4-8bdd-26e5b2f0f5ab" data-scrolled="true" data-tags="[]">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="op">!</span>rm <span class="op">-</span>rf logs</span>
 <span id="cb61-2"><a href="#cb61-2"></a>cb1<span class="op">=</span> tf.keras.callbacks.TensorBoard(update_freq<span class="op">=</span><span class="st">'epoch'</span>,histogram_freq<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb61-3"><a href="#cb61-3"></a>cb2<span class="op">=</span> PlotMidlayer() </span>
@@ -20261,7 +20398,7 @@ Epoch 2000/2000
 <pre><code>&lt;keras.callbacks.History at 0x7f6ef421c280&gt;</code></pre>
 </div>
 </div>
-<div class="cell">
+<div id="3cd89e9c-add8-4c9b-a814-039ece68b86d" class="cell">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># </span></span>
 <span id="cb63-2"><a href="#cb63-2"></a><span class="co">#%tensorboard --logdir logs --host 0.0.0.0 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -20350,10 +20487,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -20363,8 +20517,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -20376,7 +20539,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -20420,6 +20706,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -20445,6 +20732,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -20506,17 +20819,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../posts/Lecture/STBD/2022-05-23-(12주차).html" class="pagination-link">
+      <a href="../../../posts/Lecture/STBD/2022-05-23-(12주차).html" class="pagination-link" aria-label="13. CNN-2">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">13. CNN-2</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../posts/Lecture/STBD/2022-06-13-기말고사 문제풀이.html" class="pagination-link">
+      <a href="../../../posts/Lecture/STBD/2022-06-13-기말고사 문제풀이.html" class="pagination-link" aria-label="14. Final term">
         <span class="nav-page-text">14. Final term</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

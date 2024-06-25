@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">데이터마이닝</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">01. Supervised Learning</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">데이터마이닝</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">01. Supervised Learning</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">데이터마이닝</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">01. Supervised Learning</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">01. Supervised Learning</h1>
@@ -206,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -779,12 +812,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">toeic speaking</span></a>
+ <span class="menu-text">STTS</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-01-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-03-01. example (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. example (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-08-02. 확률과정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 확률과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-10-03. ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 비정상 ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 정상 ARMA 모형 적합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. predict</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-24-07. example (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. example (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-28-08. example (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. example (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-10-01-09. example (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. example (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">toeic speaking</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/Lecture/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">
@@ -830,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -865,6 +969,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="지도학습-supervised-learning" class="level1">
 <h1>지도학습 (Supervised Learning)</h1>
 <ul>
@@ -880,7 +985,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="package-for-supervised-learning" class="level1">
 <h1>0. Package for Supervised Learning</h1>
-<div class="cell" data-execution_count="4">
+<div id="cell-9" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>library(tidyverse) <span class="co">##전처리 패키지</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>library(caret) <span class="co">## confusion matrix를 만들기 위한 패키지</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>library(nnet) <span class="co">##  다항 로지스틱 회귀분석 모델을 적합하기 위한 패키지</span></span>
@@ -899,7 +1004,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <section id="r을-이용한-이항-로지스틱" class="level2">
 <h2 class="anchored" data-anchor-id="r을-이용한-이항-로지스틱">1-1. R을 이용한 이항 로지스틱</h2>
-<div class="cell" data-execution_count="5">
+<div id="cell-16" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>setwd(<span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">lee</span><span class="ch">\\</span><span class="st">Desktop</span><span class="ch">\\</span><span class="st">PART 05 실습용 데이터"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2"></a>credit_data <span class="op">&lt;-</span> read_csv(<span class="st">"credit_final.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#glimpse(credit_data) ## credit.rating의 경우 factor 변수이므로 변환</span></span>
@@ -917,13 +1022,13 @@ i Specify the column types or set `show_col_types = FALSE` to quiet this message
 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div id="cell-17" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># summary(credit_data)</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="co">## 데이터 분할 각각의 데이터를 7:3으로 나눔</span></span>
 <span id="cb4-3"><a href="#cb4-3"></a>train <span class="op">&lt;-</span> credit_data <span class="op">%&gt;%</span> sample_frac(<span class="fl">0.7</span>)</span>
 <span id="cb4-4"><a href="#cb4-4"></a>test <span class="op">&lt;-</span> credit_data <span class="op">%&gt;%</span> setdiff(train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="cell-18" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## 로지스틱 회귀모형 적합</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>logit_fit <span class="op">&lt;-</span>glm(credit.rating<span class="op">~</span>., data <span class="op">=</span>train, </span>
 <span id="cb5-3"><a href="#cb5-3"></a>                family <span class="op">=</span> <span class="st">"binomial"</span>) <span class="co">## 이진분류이므로 "binomial"이라고 기입</span></span>
@@ -1178,7 +1283,7 @@ credit.rating ~ account.balance + credit.duration.months + previous.credit.payme
 - account.balance                 1   713.23 739.23</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div id="cell-19" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>confusionMatrix(data<span class="op">=</span>pred$hat_y,reference <span class="op">=</span> test$credit.rating,positive <span class="op">=</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Confusion Matrix and Statistics
@@ -1210,7 +1315,7 @@ Prediction   0   1
                                          </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div id="cell-20" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>options(<span class="bu">repr</span>.plot.res<span class="op">=</span><span class="dv">150</span>,<span class="bu">repr</span>.plot.width<span class="op">=</span><span class="dv">8</span>,<span class="bu">repr</span>.plot.height<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb9-2"><a href="#cb9-2"></a>pred.roc <span class="op">&lt;-</span> prediction(<span class="im">as</span>.numeric(pred$hat_y),<span class="im">as</span>.numeric(test$credit.rating))</span>
 <span id="cb9-3"><a href="#cb9-3"></a>plot(performance(pred.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),lwd<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1222,7 +1327,11 @@ Prediction   0   1
 </ol>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-7-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-7-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1232,7 +1341,7 @@ Prediction   0   1
 </section>
 <section id="다항로지스틱" class="level2">
 <h2 class="anchored" data-anchor-id="다항로지스틱">1-2. 다항로지스틱</h2>
-<div class="cell" data-execution_count="9">
+<div id="cell-24" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">##iris 데이터를 이용한 다항 로지스틱 회귀분석</span></span>
 <span id="cb10-2"><a href="#cb10-2"></a>train.iris <span class="op">&lt;-</span> iris <span class="op">%&gt;%</span> sample_frac(<span class="fl">0.7</span>)</span>
 <span id="cb10-3"><a href="#cb10-3"></a>test.iris <span class="op">&lt;-</span> iris <span class="op">%&gt;%</span> setdiff(train.iris)</span>
@@ -1273,7 +1382,7 @@ Residual Deviance: 1.206402
 AIC: 21.2064 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div id="cell-25" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>pred.mul <span class="op">&lt;-</span> predict(mul.iris,test.iris <span class="op">%&gt;%</span> select(<span class="op">-</span><span class="dv">5</span>)) </span>
 <span id="cb13-2"><a href="#cb13-2"></a>confusionMatrix(pred.mul,test.iris$Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1320,21 +1429,25 @@ Balanced Accuracy           1.0000            0.9706           0.9833</code></pr
 </ul>
 <section id="binary-classification" class="level2">
 <h2 class="anchored" data-anchor-id="binary-classification">2-1. binary classification</h2>
-<div class="cell" data-execution_count="11">
+<div id="cell-30" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>library(rpart)</span>
 <span id="cb15-2"><a href="#cb15-2"></a>library(rpart.plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="23">
+<div id="cell-31" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>dt.model <span class="op">&lt;-</span> rpart(credit.rating<span class="op">~</span>.,method<span class="op">=</span><span class="st">"class"</span>, <span class="co">## 회귀가 아닌 분류이므로 "class" 기입</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a>                                   data <span class="op">=</span> train, </span>
 <span id="cb16-3"><a href="#cb16-3"></a>                                   control <span class="op">=</span> rpart.control(maxdepth<span class="op">=</span><span class="dv">5</span>,</span>
 <span id="cb16-4"><a href="#cb16-4"></a>                                                           minsplit<span class="op">=</span><span class="dv">15</span>)) <span class="co">## 의사결정나무의 최대 깊이는 5, 노드에서의 최소 관측치는 15개이 상</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="cell-32" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>options(<span class="bu">repr</span>.plot.res<span class="op">=</span><span class="dv">200</span>)</span>
 <span id="cb17-2"><a href="#cb17-2"></a>rpart.plot(dt.model,extra<span class="op">=</span><span class="dv">2</span>) <span class="co">## extra 인자를 이용해 각각 범주의 분류된 개수를 파악, extra=3 은 오분류된 개수를 보여주</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-12-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
@@ -1342,9 +1455,10 @@ Balanced Accuracy           1.0000            0.9706           0.9833</code></pr
 <li><p>cptable을 확인하여 xerror가 가장 낮은 split 개수를 택한 후 가지치기를 적용하자.</p></li>
 <li><p><code>xerror</code>는해당 <code>CP</code>에서 교차검증오류를 나타내며 <code>CP</code>는 복잡성을 나타낸다.</p></li>
 </ul>
-<div class="cell" data-execution_count="25">
+<div id="cell-35" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>dt.model$cptable</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
+<div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A matrix: 4 × 5 of type dbl</caption>
 <thead>
@@ -1394,48 +1508,61 @@ Balanced Accuracy           1.0000            0.9706           0.9833</code></pr
 </table>
 </div>
 </div>
+</div>
 <ul>
 <li><p>확인 결과 <code>xerror</code>가 가장 낮은 분할 횟수는 7이며, 앞선 모형의 그래프를 봤을 때 모델이 분할을 7번까지 한다고 할 수 있다.</p></li>
 <li><p>해당 위치에서의 <code>CP</code> 값을 전달받자</p></li>
 </ul>
-<div class="cell" data-execution_count="26">
+<div id="cell-38" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>opt <span class="op">&lt;-</span> which.<span class="bu">min</span>(dt.model$cptable[,<span class="st">"xerror"</span>])</span>
 <span id="cb19-2"><a href="#cb19-2"></a>cp  <span class="op">&lt;-</span> dt.model$cptable[opt,<span class="st">"CP"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>plotcp를 그려본결과 8번째 분할에서 <code>xerror</code>가 가장 낮지만 과적합을 막기위해 <code>cptable</code>에서 산출한 <code>cp</code>값을 이용하여 가지치기를 하자.</li>
 </ul>
-<div class="cell" data-execution_count="28">
+<div id="cell-40" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>plotcp(dt.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-15-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>가지치기 수행</li>
 </ul>
-<div class="cell" data-execution_count="29">
+<div id="cell-42" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>options(<span class="bu">repr</span>.plot.res<span class="op">=</span><span class="dv">200</span>)</span>
 <span id="cb21-2"><a href="#cb21-2"></a>rpart.plot(dt.model,extra<span class="op">=</span><span class="dv">2</span>) <span class="co">## extra 인자를 이용해 각각 범주의 분류된 개수를 파악, extra=3 은 오분류된 개수를 보여준다</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="30">
+</div>
+<div id="cell-43" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>prune.c <span class="op">&lt;-</span> prune(dt.model,cp<span class="op">=</span>cp)</span>
 <span id="cb22-2"><a href="#cb22-2"></a>rpart.plot(prune.c,extra<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li><p>기존의 모델보다 복잡성이 줄어든 것으로 볼 수 있다.</p></li>
 <li><p>예측을 통하여 우리가 생성한 모델의 타당성을 평가하자.</p></li>
 </ul>
-<div class="cell" data-execution_count="31">
+<div id="cell-46" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>pred.dt <span class="op">&lt;-</span> predict(dt.model, test <span class="op">%&gt;%</span> select(<span class="op">-</span><span class="dv">1</span>),<span class="bu">type</span><span class="op">=</span><span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="32">
+<div id="cell-47" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>confusionMatrix(data<span class="op">=</span>pred.dt,reference<span class="op">=</span> test$credit.rating)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Confusion Matrix and Statistics
@@ -1470,17 +1597,21 @@ Prediction   0   1
 <ul>
 <li><code>정분류율</code>은 0.73이며 <code>특이도</code>, <code>민감도</code>는 각각 0.8578, 0.4270으로 산출되었다.</li>
 </ul>
-<div class="cell" data-execution_count="33">
+<div id="cell-49" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>pred.dt.roc <span class="op">&lt;-</span> prediction(<span class="im">as</span>.numeric(pred.dt),<span class="im">as</span>.numeric(test$credit.rating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="34">
+<div id="cell-50" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>plot(performance(pred.dt.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),lwd<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb27-2"><a href="#cb27-2"></a>abline(a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>,lty<span class="op">=</span><span class="dv">2</span>,col<span class="op">=</span><span class="st">"red"</span>,lwd<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+</div>
+<div id="cell-51" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>performance(pred.dt.roc,<span class="st">"auc"</span>)<span class="op">@</span>y.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <ol>
@@ -1494,22 +1625,26 @@ Prediction   0   1
 </section>
 <section id="multiple-classification" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-classification">2-2. multiple classification</h2>
-<div class="cell" data-execution_count="36">
+<div id="cell-54" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>dt.model2 <span class="op">&lt;-</span> rpart(Species <span class="op">~</span>. ,data<span class="op">=</span>train.iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="cell-55" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>rpart.plot(dt.model2,extra<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>총 105개의 데이터에서 39개의 데이터가 <code>virginica</code>로 분류되었고, <code>Petal.Length &lt; 2.5</code>인 34개의 데이터는 모두 <code>setosa</code>로 분류되었다.</li>
 </ul>
-<div class="cell" data-execution_count="38">
+<div id="cell-57" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>pred.dt2 <span class="op">&lt;-</span> predict(dt.model2, test.iris <span class="op">%&gt;%</span> select(<span class="op">-</span><span class="dv">5</span>),<span class="bu">type</span><span class="op">=</span><span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="40">
+<div id="cell-58" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>confusionMatrix(pred.dt2,test.iris$Species)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>Confusion Matrix and Statistics
@@ -1564,11 +1699,11 @@ Balanced Accuracy           1.0000            0.9170           0.8833</code></pr
 <li><p><code>mtry</code> 는 매번 분할에 사용될 예측변수(x)에 개수, 해당 데이터는 총 20개의 예측변수를 가짐</p></li>
 <li><p><code>randomForest</code>와 <code>bagging</code>의 차이점은 고려할 예측변수의 개수이다. <code>bagging</code>의 경우 모든 변수를 고려한다.</p></li>
 </ul>
-<div class="cell" data-execution_count="18">
+<div id="cell-67" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>library(randomForest)</span>
 <span id="cb34-2"><a href="#cb34-2"></a>library(adabag) <span class="co">## 이 패키지의 경우 코드실행속도가 매우 느리다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-68" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>bag <span class="op">&lt;-</span> randomForest(credit.rating <span class="op">~</span>. , data<span class="op">=</span>train, </span>
 <span id="cb35-2"><a href="#cb35-2"></a>                        mtry <span class="op">=</span> <span class="dv">20</span>,importance <span class="op">=</span>T)</span>
 <span id="cb35-3"><a href="#cb35-3"></a>pred.bg <span class="op">&lt;-</span> predict(bag,test,<span class="bu">type</span><span class="op">=</span><span class="st">"class"</span>)</span>
@@ -1605,7 +1740,7 @@ Prediction   0   1
                                           </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="cell-69" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>options(<span class="bu">repr</span>.plot.res<span class="op">=</span><span class="dv">200</span>,<span class="bu">repr</span>.plot.width<span class="op">=</span><span class="dv">8</span>,<span class="bu">repr</span>.plot.height<span class="op">=</span><span class="dv">5</span>)</span>
 <span id="cb37-2"><a href="#cb37-2"></a>pred.bg.roc <span class="op">&lt;-</span> prediction(<span class="im">as</span>.numeric(pred.bg),<span class="im">as</span>.numeric(test$credit.rating))</span>
 <span id="cb37-3"><a href="#cb37-3"></a>plot(performance(pred.bg.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),lwd<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1617,7 +1752,11 @@ Prediction   0   1
 </ol>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-29-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-29-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -1639,10 +1778,10 @@ Prediction   0   1
 <li>붓스트랩에 의해 생성되는 나무들 간의 상관성을 제거함으로써 최종 예측 모형의 분산을 획기적으로 감소시키고자 하는 방법</li>
 <li>이는 소수의 강력한 예측변수들에 의해 모든 나무모형이 유사해지는 것을 막기 위해 매번 분할 시 <code>p</code>개의 예측 변수 중 <code>m</code> 개만 문할 기준의 후보로 삼음.</li>
 </ul>
-<div class="cell" data-execution_count="37">
+<div id="cell-77" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>library(randomForest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="39">
+<div id="cell-78" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>rf.model <span class="op">&lt;-</span> randomForest(credit.rating <span class="op">~</span>.,</span>
 <span id="cb39-2"><a href="#cb39-2"></a>                         data <span class="op">=</span> train, ntree <span class="op">=</span> <span class="dv">50</span>,</span>
 <span id="cb39-3"><a href="#cb39-3"></a>                          mtry <span class="op">=</span> sqrt(<span class="dv">20</span>),</span>
@@ -1666,17 +1805,21 @@ Confusion matrix:
 <ul>
 <li><code>OOB estimate of error rate</code>는 에러추정치로서 값이 낮을수록 분류모델의 성능이 좋다고 판단할 수 있다.</li>
 </ul>
-<div class="cell" data-execution_count="44">
+<div id="cell-80" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a><span class="co"># rf.model$importance</span></span>
 <span id="cb41-2"><a href="#cb41-2"></a>varImpPlot(rf.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-32-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-32-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>변수 중요도를 <code>MeanDecreaseGini</code> 기준으로 살펴보았을 때, <code>credit.amount</code>, <code>credit.duration.months</code>, <code>age</code> 순서로 변수 중요도가 크다는 것을 파악할 수 있다.</li>
 </ul>
-<div class="cell" data-execution_count="46">
+<div id="cell-82" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>pred.rf <span class="op">&lt;-</span>  predict(rf.model, test, <span class="bu">type</span><span class="op">=</span><span class="st">"class"</span>)</span>
 <span id="cb42-2"><a href="#cb42-2"></a>confusionMatrix(data <span class="op">=</span> pred.rf, reference <span class="op">=</span> test$credit.rating, positive<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1709,7 +1852,7 @@ Prediction   0   1
                                          </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
+<div id="cell-83" class="cell" data-execution_count="51">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>pred.rf.roc <span class="op">&lt;-</span> prediction(<span class="im">as</span>.numeric(pred.rf), <span class="im">as</span>.numeric(test$credit.rating))</span>
 <span id="cb44-2"><a href="#cb44-2"></a>plot(performance(pred.rf.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>),lwd<span class="op">=</span><span class="dv">2</span>)</span>
 <span id="cb44-3"><a href="#cb44-3"></a>abline(b<span class="op">=</span><span class="dv">1</span>,a<span class="op">=</span><span class="dv">0</span>,col<span class="op">=</span><span class="st">"red"</span>,lty<span class="op">=</span><span class="dv">2</span>,lwd<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1720,7 +1863,11 @@ Prediction   0   1
 </ol>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-34-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-34-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1733,10 +1880,10 @@ Prediction   0   1
 <li><p><code>gamma</code> : 초평면의 기울기, default = 1/(데이터차원)</p></li>
 <li><p><code>cost</code> : 과적합을 막는 정도로 오분류의 허용한계이다. cost가 클수록 마진이 넓고, 적을 수록 마진이 좁다. dafault = 1</p></li>
 </ul>
-<div class="cell" data-execution_count="54">
+<div id="cell-87" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>library(e1071)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="53">
+<div id="cell-88" class="cell" data-execution_count="53">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>tune.svm(credit.rating <span class="op">~</span>., data <span class="op">=</span> credit_data,</span>
 <span id="cb46-2"><a href="#cb46-2"></a>                          gamma <span class="op">=</span> <span class="dv">10</span><span class="op">^</span>(<span class="op">-</span><span class="dv">6</span>:<span class="op">-</span><span class="dv">1</span>),</span>
 <span id="cb46-3"><a href="#cb46-3"></a>                          cost <span class="op">=</span> <span class="dv">10</span><span class="op">^</span>(<span class="dv">1</span>:<span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1757,14 +1904,14 @@ Parameter tuning of 'svm':
 <li><p>위와 같은 경우 <code>6 x 2 = 12</code> 총 12개의 조합에서 모수조율이 이루어진다.</p></li>
 <li><p><code>kernel</code> : radial, linear, polynomial, sigmoid 등이 있는데 실제 문제에서 커널의 선택이 결과의 정확도에 큰 영향을 주지 않는다.</p></li>
 </ul>
-<div class="cell" data-execution_count="55">
+<div id="cell-91" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>svm.model  <span class="op">&lt;-</span> svm(credit.rating<span class="op">~</span>.,</span>
 <span id="cb48-2"><a href="#cb48-2"></a>                  data <span class="op">=</span>train,</span>
 <span id="cb48-3"><a href="#cb48-3"></a>                  kernel <span class="op">=</span><span class="st">"radial"</span>,</span>
 <span id="cb48-4"><a href="#cb48-4"></a>                  gamma <span class="op">=</span> <span class="fl">0.01</span>,</span>
 <span id="cb48-5"><a href="#cb48-5"></a>                  cost <span class="op">=</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="56">
+<div id="cell-92" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>summary(svm.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
@@ -1791,7 +1938,7 @@ Levels:
 </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div id="cell-93" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>pred.svm <span class="op">&lt;-</span> predict(svm.model, test, <span class="bu">type</span><span class="op">=</span><span class="st">"class"</span>)</span>
 <span id="cb51-2"><a href="#cb51-2"></a>confusionMatrix(data <span class="op">=</span> pred.svm, reference <span class="op">=</span> test$credit.rating,positive<span class="op">=</span> <span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1824,7 +1971,7 @@ Prediction   0   1
                                         </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="62">
+<div id="cell-94" class="cell" data-execution_count="62">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>pred.svm.roc <span class="op">&lt;-</span> prediction(<span class="im">as</span>.numeric(pred.svm),<span class="im">as</span>.numeric(test$credit.rating))</span>
 <span id="cb53-2"><a href="#cb53-2"></a>plot(performance(pred.svm.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>))</span>
 <span id="cb53-3"><a href="#cb53-3"></a>abline(a<span class="op">=</span><span class="dv">0</span>,b<span class="op">=</span><span class="dv">1</span>,col<span class="op">=</span><span class="st">"red"</span>,lty<span class="op">=</span><span class="dv">2</span>)</span>
@@ -1835,7 +1982,11 @@ Prediction   0   1
 </ol>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-40-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-40-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1849,16 +2000,16 @@ Prediction   0   1
 <li><p>클래스 조건 독립성 : 위 식처럼 속성값에 대해 다른 속성이 독립적이라는 가정이다.</p></li>
 <li><p>즉 <span class="math inline">\(X\)</span>라는 속성값들이 주어져있을 때 사전확률값과 관측값을 이용하여 사후확률을 구하여 개체를 해당 클래스로 분류하는 기법이다.</p></li>
 </ul>
-<div class="cell" data-execution_count="63">
+<div id="cell-101" class="cell" data-execution_count="63">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>library(e1071)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><code>laplace</code> : 라플라스 보정여부, 뭔지는 잘 모르겠음..</li>
 </ul>
-<div class="cell" data-execution_count="65">
+<div id="cell-103" class="cell" data-execution_count="65">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>nb.model  <span class="op">&lt;-</span> naiveBayes(credit.rating <span class="op">~</span> . ,data <span class="op">=</span> train , laplace<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="66">
+<div id="cell-104" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>nb.model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
@@ -1977,7 +2128,7 @@ Y       [,1]      [,2]
 <ul>
 <li><code>A-priori probabilities</code> 는 사전확률을 나타내고 있으며, <code>Conditional Probabilities</code>는 각 변수에 대한 조건부 확률이다.</li>
 </ul>
-<div class="cell" data-execution_count="68">
+<div id="cell-106" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>pred.nb <span class="op">&lt;-</span> predict(nb.model,test, <span class="bu">type</span><span class="op">=</span><span class="st">"class"</span>)</span>
 <span id="cb58-2"><a href="#cb58-2"></a>confusionMatrix(data<span class="op">=</span> pred.nb,reference <span class="op">=</span> test$credit.rating,positive<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -2010,7 +2161,7 @@ Prediction   0   1
                                           </code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="71">
+<div id="cell-107" class="cell" data-execution_count="71">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>pred.nb.roc  <span class="op">&lt;-</span> prediction(<span class="im">as</span>.numeric(pred.nb),<span class="im">as</span>.numeric(test$credit.rating))</span>
 <span id="cb60-2"><a href="#cb60-2"></a>plot(performance(pred.nb.roc,<span class="st">"tpr"</span>,<span class="st">"fpr"</span>))</span>
 <span id="cb60-3"><a href="#cb60-3"></a>abline(b<span class="op">=</span><span class="dv">1</span>,a<span class="op">=</span><span class="dv">0</span>,col<span class="op">=</span><span class="st">"red"</span>)<span class="op">;</span> performance(pred.nb.roc,<span class="st">"auc"</span>)<span class="op">@</span>y.values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2020,7 +2171,11 @@ Prediction   0   1
 </ol>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-45-output-2.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-45-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <hr>
@@ -2031,10 +2186,10 @@ Prediction   0   1
 <li>K-NN 알고리즘에서는 새로운 데이터의 클래스를 해당 데이터와 가장 가까운 <code>k</code>개 데이터들의 클래스(범주)로 결정한다.</li>
 <li>최근접 이웃 간의 거리를 계산할 때 유클리디안 거리, 맨하탄 거리, 민코우스키 거리 등을 사용할 수 있으며, 대표적으로 <strong>유클리디안 거리</strong>를 사용한다.</li>
 </ul>
-<div class="cell" data-execution_count="72">
+<div id="cell-111" class="cell" data-execution_count="72">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>library(<span class="kw">class</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="76">
+<div id="cell-112" class="cell" data-execution_count="76">
 <div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>train.data <span class="op">&lt;-</span> train <span class="op">%&gt;%</span> select(<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb62-2"><a href="#cb62-2"></a>test.data <span class="op">&lt;-</span> test <span class="op">%&gt;%</span> select(<span class="op">-</span><span class="dv">1</span>)</span>
 <span id="cb62-3"><a href="#cb62-3"></a><span class="kw">class</span> <span class="op">&lt;-</span> train$credit.rating</span>
@@ -2043,7 +2198,7 @@ Prediction   0   1
 <span id="cb62-6"><a href="#cb62-6"></a>knn<span class="fl">.7</span> <span class="op">&lt;-</span> knn(train.data,test.data, <span class="kw">class</span>, k<span class="op">=</span><span class="dv">7</span> )</span>
 <span id="cb62-7"><a href="#cb62-7"></a>knn<span class="fl">.10</span> <span class="op">&lt;-</span> knn(train.data,test.data, <span class="kw">class</span>, k<span class="op">=</span><span class="dv">10</span> )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="79">
+<div id="cell-113" class="cell" data-execution_count="79">
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>confusionMatrix(knn<span class="fl">.3</span>, test$credit.rating,positive<span class="op">=</span><span class="st">"1"</span>)</span>
 <span id="cb63-2"><a href="#cb63-2"></a>confusionMatrix(knn<span class="fl">.7</span>, test$credit.rating,positive<span class="op">=</span><span class="st">"1"</span>)</span>
 <span id="cb63-3"><a href="#cb63-3"></a>confusionMatrix(knn<span class="fl">.10</span>, test$credit.rating,positive<span class="op">=</span><span class="st">"1"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -2142,7 +2297,7 @@ Prediction   0   1
 </section>
 <section id="인공신경망-모형-artificial-nerual-network" class="level1">
 <h1>9. 인공신경망 모형 (Artificial Nerual Network)</h1>
-<div class="cell" data-execution_count="7">
+<div id="cell-117" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>library(nnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -2150,7 +2305,7 @@ Prediction   0   1
 <li>maxit = 학습 반복 횟수, 반복 중 가장 좋은 모델을 선정함.</li>
 <li>decay = 가중치 감소의 모수, 보통 0.0005 채택</li>
 </ul>
-<div class="cell" data-execution_count="16">
+<div id="cell-119" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>nn.model <span class="op">&lt;-</span> nnet(credit.rating<span class="op">~</span>.,data<span class="op">=</span>train,</span>
 <span id="cb68-2"><a href="#cb68-2"></a>                                  size <span class="op">=</span> <span class="dv">2</span>,</span>
 <span id="cb68-3"><a href="#cb68-3"></a>                                  maxit <span class="op">=</span> <span class="dv">200</span>,</span>
@@ -2175,7 +2330,7 @@ converged</code></pre>
 <ul>
 <li>최종 error 값이 <code>425.896932</code>로 <code>final value</code>를 보고 확인할 수 있다.</li>
 </ul>
-<div class="cell" data-execution_count="17">
+<div id="cell-121" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1"></a>summary(nn.model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>a 20-2-1 network with 45 weights
@@ -2199,14 +2354,14 @@ i20-&gt;h2
 <ul>
 <li><code>neuralnet</code> 패키지를 이용</li>
 </ul>
-<div class="cell" data-execution_count="19">
+<div id="cell-123" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1"></a>library(neuralnet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="20">
+<div id="cell-124" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>data(infert)</span>
 <span id="cb73-2"><a href="#cb73-2"></a>infert$case <span class="op">&lt;-</span> <span class="im">as</span>.factor(infert$case)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="cell-125" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1"></a>train.infert <span class="op">&lt;-</span> infert <span class="op">%&gt;%</span> sample_frac(<span class="fl">0.7</span>)</span>
 <span id="cb74-2"><a href="#cb74-2"></a>test.infert  <span class="op">&lt;-</span>  infert  <span class="op">%&gt;%</span> setdiff(train.infert)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2220,26 +2375,31 @@ i20-&gt;h2
 <li><code>likelihood</code> : 에러함수에 대한 우도함수를 지정해주는 것, 만약 에러 함수가 음의 로그-우도 함수가 아니면, likelhood는 TRUE이여야 한다., 그러면 <code>AIC,BIC</code>가 계산되는 것을 기반으로 한다.</li>
 <li><code>acc.fct</code> : 활성화 함수로 <code>logistice, tanh</code> 인자가 입력 가능하다.</li>
 </ul>
-<div class="cell" data-execution_count="36">
+<div id="cell-127" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>nn.model2 <span class="op">&lt;-</span> neuralnet(case <span class="op">~</span> age<span class="op">+</span>parity<span class="op">+</span>induced <span class="op">+</span> spontaneous,data<span class="op">=</span>train.infert,</span>
 <span id="cb75-2"><a href="#cb75-2"></a>                       hidden <span class="op">=</span><span class="dv">3</span>,</span>
 <span id="cb75-3"><a href="#cb75-3"></a>                       algorithm<span class="op">=</span><span class="st">"rprop+"</span>,</span>
 <span id="cb75-4"><a href="#cb75-4"></a>                       threshold<span class="op">=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="37">
+<div id="cell-128" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1"></a>options(<span class="bu">repr</span>.plot.res<span class="op">=</span><span class="dv">150</span>,<span class="bu">repr</span>.plot.width<span class="op">=</span><span class="dv">6</span>,<span class="bu">repr</span>.plot.height<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb76-2"><a href="#cb76-2"></a>plot(nn.model2,rep<span class="op">=</span><span class="st">"best"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-56-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-10-01. Supervised Learning_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="38">
+</div>
+<div id="cell-129" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>test.infert$nn.model2_pred.prob <span class="op">&lt;-</span> compute(nn.model2,covariate<span class="op">=</span>test.infert[,c(<span class="dv">2</span>:<span class="dv">4</span>,<span class="dv">6</span>)])$net.result</span>
 <span id="cb77-2"><a href="#cb77-2"></a>test.infert$nn.model2_pred <span class="op">&lt;-</span> ifelse(test.infert$nn.model2_pred.prob<span class="op">&gt;</span><span class="fl">0.5</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="40">
+<div id="cell-130" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb78-1"><a href="#cb78-1"></a>test.infert$nn.model2_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
+<div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A matrix: 56 × 2 of type dbl</caption>
 <tbody>
@@ -2471,7 +2631,8 @@ i20-&gt;h2
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="39">
+</div>
+<div id="cell-131" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>confusionMatrix(<span class="im">as</span>.factor(test.infert$nn.model2_pred),test.infert$case)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>ERROR: Error in table(data, reference, dnn = dnn, ...): 모든 인자들은 반드시 같은 길이를 가져야 합니다</code></pre>
@@ -2564,10 +2725,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2577,8 +2755,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2590,7 +2777,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2634,6 +2944,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2659,6 +2970,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2720,17 +3057,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../posts/Lecture/IP/2023-08-14-14. 클래스 탐구 (3).html" class="pagination-link">
+      <a href="../../../../posts/Lecture/IP/2023-08-14-14. 클래스 탐구 (3).html" class="pagination-link" aria-label="14. 클래스 탐구 (3)">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">14. 클래스 탐구 (3)</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html" class="pagination-link">
+      <a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html" class="pagination-link" aria-label="02. unsupervised learning">
         <span class="nav-page-text">02. unsupervised learning</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.551">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -83,7 +83,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -92,29 +98,56 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../../../styles.css">
 </head>
 
 <body class="nav-sidebar docked nav-fixed">
 
-
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
     <span class="navbar-title">Gangcheol</span>
     </a>
@@ -126,46 +159,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/" rel="" target="">
- <span class="menu-text">Lecture</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/" rel="" target="">
- <span class="menu-text">Tableau</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/" rel="" target="">
- <span class="menu-text">DX</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/" rel="" target="">
- <span class="menu-text">IA2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/" rel="" target="">
- <span class="menu-text">ISLP2023</span></a>
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/gangcheol/" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
       </div> <!-- /container-fluid -->
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">데이터마이닝</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-24-03 Text Mining.html">03. Text Mining</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">데이터마이닝</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-24-03 Text Mining.html">03. Text Mining</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -173,7 +206,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html">데이터마이닝</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-24-03 Text Mining.html">03. Text Mining</a></li></ol></nav>
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">03. Text Mining</h1>
@@ -206,7 +239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
         <div class="sidebar-search">
         <div id="quarto-search" class="" title="Search"></div>
@@ -779,12 +812,83 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">toeic speaking</span></a>
+ <span class="menu-text">STTS</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-01-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-03-01. example (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. example (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-08-02. 확률과정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 확률과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-10-03. ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 비정상 ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 정상 ARMA 모형 적합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. predict</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-24-07. example (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. example (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-09-28-08. example (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. example (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/Lecture/STTS/2021-10-01-09. example (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. example (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">toeic speaking</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../../../posts/Lecture/toeic speaking/part1.html" class="sidebar-item-text sidebar-link">
@@ -830,7 +934,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -861,20 +965,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="tm-패키지를-활용한-corpus만들기" class="level1">
 <h1>tm 패키지를 활용한 Corpus만들기</h1>
 <ul>
 <li><p>텍스트 마이닝을 수행하기 전에 tm 패키지를 활용해 Corpus를 만들고 생성된 Corpus를 전처리 하고 분석에 활용하여야 한다.</p></li>
 <li><p><code>VectorSource</code> 함수를 사용하고 문서로 완성된 데이터를 <code>VCorpus</code> 함수를 이용하여 <code>Corpus</code>로 만든다.</p></li>
 </ul>
-<div class="cell" data-execution_count="41">
+<div id="f59411c2" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>library(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p><code>crude</code> 데이터는 <code>tm</code> 패키지 내에 내장된 <code>Corpus</code>데이터 이다.</p></li>
 <li><p><code>inspect</code> 하수를 이용해 첫 번째 문서의 정보를 확인한다.</p></li>
 </ul>
-<div class="cell" data-execution_count="13">
+<div id="277898cb" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>inspect(crude[<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;&lt;VCorpus&gt;&gt;
@@ -900,22 +1005,22 @@ Content:  chars: 527
 <li>tm_map(x, removeWords,stopwords (“english)) : 불용어 제거</li>
 <li>tm_map(x, PlainTextDocument) : TextDocument로 변환</li>
 </ul>
-<div class="cell" data-execution_count="44">
+<div id="1c6ac2e5" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>setwd(<span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">rkdcj</span><span class="ch">\\</span><span class="st">OneDrive</span><span class="ch">\\</span><span class="st">바탕 화면</span><span class="ch">\\</span><span class="st">PART 06 실습용 데이터"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="27">
+<div id="22e2b640" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>library(tm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>데이터 로드</li>
 </ul>
-<div class="cell" data-execution_count="45">
+<div id="f93c9529" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>news <span class="op">&lt;-</span> readLines(<span class="st">"키워드_뉴스.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="29">
+<div id="94f1ada0" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>news.corpus <span class="op">&lt;-</span> VCorpus(VectorSource(news))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="31">
+<div id="07a1cda0" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>news.corpus</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;&lt;VCorpus&gt;&gt;
@@ -926,7 +1031,7 @@ Content:  documents: 10</code></pre>
 <ul>
 <li>전처리 함수 생성</li>
 </ul>
-<div class="cell" data-execution_count="32">
+<div id="b2695cf4" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>clean_txt <span class="op">&lt;-</span> function(txt) {</span>
 <span id="cb10-2"><a href="#cb10-2"></a>        txt <span class="op">&lt;-</span> tm_map(txt, removeNumbers) <span class="co">## 숫자제거</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>        txt <span class="op">&lt;-</span> tm_map(txt, removePunctuation) <span class="co">## 문장부호 제거</span></span>
@@ -935,16 +1040,16 @@ Content:  documents: 10</code></pre>
 <span id="cb10-6"><a href="#cb10-6"></a>        <span class="cf">return</span>(txt)</span>
 <span id="cb10-7"><a href="#cb10-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="33">
+<div id="90339975" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>clean.news <span class="op">&lt;-</span> clean_txt(news.corpus)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="21">
+<div id="281ef4e7" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>news.corpus[[<span class="dv">1</span>]]$content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 '동아대학교(총장 한석정)가 \'수요자 데이터기반 스마트헬스케어 서비스\'분야 ‘4차 산업혁명 혁신선도대학으로 최종선정됐습니다. 동아대가 혁신선도대학으로 펼치게 될 ‘수요자 데이터기반 스마트헬스케어 서비스’ 산업은 리빙데이터(운동·영양·약물)와 메디컬데이터(생체계측·진료기록)를 종합 분석, 다양한 헬스케어 서비스를 제공하는 것입니다. 동아대는 건강과학대학과 의료원, 재활요양병원 등 경쟁력 있는 인프라를 바탕으로 신뢰도 높은 정밀 분석을 실시, ‘헬스케어 기획 전문가’와 ‘헬스케어 데이터분석 전문가’ 등 수요자 맞춤형 헬스케어 서비스 분야를 선도하는 전문 인재를 키워나갈 계획입니다. ‘스마트헬스케어 융합전공’을 신설, 경영정보학과를 중심으로 한 빅데이터 분석, 식품영양학과·의약생명공학과·건강관리학과 중심의 헬스케어 등 학문 간 경계는 교육혁신도 이뤄나갈 방침입니다. '
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div id="da20ff2a" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>clean.news[[<span class="dv">1</span>]]$content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 '동아대학교총장 한석정가 수요자 데이터기반 스마트헬스케어 서비스분야 ‘차 산업혁명 혁신선도대학으로 최종선정됐습니다 동아대가 혁신선도대학으로 펼치게 될 ‘수요자 데이터기반 스마트헬스케어 서비스’ 산업은 리빙데이터운동·영양·약물와 메디컬데이터생체계측·진료기록를 종합 분석 다양한 헬스케어 서비스를 제공하는 것입니다 동아대는 건강과학대학과 의료원 재활요양병원 등 경쟁력 있는 인프라를 바탕으로 신뢰도 높은 정밀 분석을 실시 ‘헬스케어 기획 전문가’와 ‘헬스케어 데이터분석 전문가’ 등 수요자 맞춤형 헬스케어 서비스 분야를 선도하는 전문 인재를 키워나갈 계획입니다 ‘스마트헬스케어 융합전공’을 신설 경영정보학과를 중심으로 한 빅데이터 분석 식품영양학과·의약생명공학과·건강관리학과 중심의 헬스케어 등 학문 간 경계는 교육혁신도 이뤄나갈 방침입니다 '
@@ -954,7 +1059,7 @@ Content:  documents: 10</code></pre>
 <li><p>확인 결과 ” ’, <span class="math inline">\(\cdot\)</span> “와 같은 부호는 제거 되지않음</p></li>
 <li><p>아래와 같은 함수를 사용하여 제거해준다.</p></li>
 </ul>
-<div class="cell" data-execution_count="54">
+<div id="d5e1a7e9" class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>txt<span class="op">&lt;-</span> gsub(<span class="st">"[[:punct:]]"</span>,<span class="st">""</span>,clean.news)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <hr>
@@ -962,10 +1067,10 @@ Content:  documents: 10</code></pre>
 </section>
 <section id="konlp-패키지를-활용한-한글처리" class="level1">
 <h1>KoNLP 패키지를 활용한 한글처리</h1>
-<div class="cell" data-execution_count="34">
+<div id="ac61ec91" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>library(IRdisplay)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="5">
+<div id="28c277c8" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>library(KoNLP)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
@@ -977,17 +1082,17 @@ Content:  documents: 10</code></pre>
 <li><p>SimplePos22(text) : 형태소 분석을 하고자 하는 문장 또는 문서</p></li>
 <li><p>간단한 문장으로 명사 추출, 사전 단어 추가, 품사를 확인해보자</p></li>
 </ul>
-<div class="cell" data-execution_count="23">
+<div id="f5d5629d" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>useSejongDic() <span class="co">## 세종사전 사용</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Backup was just finished!
 370957 words dictionary was built.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="24">
+<div id="1e848e7d" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>sentence <span class="op">&lt;-</span> <span class="st">"아버지가 방에 스르륵 들어가신다."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="25">
+<div id="443f0c46" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>extractNoun(sentence) <span class="co">## 명사추출 스르륵은 명사가 아니다.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -998,7 +1103,7 @@ Content:  documents: 10</code></pre>
 <ol class="list-inline"><li>'아버지'</li><li>'방'</li><li>'스르륵'</li></ol>
 </div>
 </div>
-<div class="cell" data-execution_count="29">
+<div id="cb099d81" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>buildDictionary(ext_dic<span class="op">=</span><span class="st">"sejong"</span>,</span>
 <span id="cb21-2"><a href="#cb21-2"></a>               user_dic <span class="op">=</span> data.frame(c(<span class="st">"스르륵"</span>),c(<span class="st">"mag"</span>)))  <span class="co">## 스르륵을 부사로 추가</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1008,7 +1113,7 @@ Content:  documents: 10</code></pre>
 <ul>
 <li>스르륵을 부사로 추가 후 다시 명사를 추출하였을 때 제대로 추출되었음을 알 수 있음</li>
 </ul>
-<div class="cell" data-execution_count="30">
+<div id="d82440c2" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>extractNoun(sentence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1022,16 +1127,20 @@ Content:  documents: 10</code></pre>
 <ul>
 <li>KoNLP에서 제공하는 품사태그는 아래와 같다.</li>
 </ul>
-<div class="cell" data-execution_count="36">
+<div id="8b763249" class="cell" data-execution_count="36">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>display_png(<span class="bu">file</span><span class="op">=</span><span class="st">"C:</span><span class="ch">\\</span><span class="st">Users</span><span class="ch">\\</span><span class="st">rkdcj</span><span class="ch">\\</span><span class="st">OneDrive</span><span class="ch">\\</span><span class="st">바탕 화면</span><span class="ch">\\</span><span class="st">품사.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-24-03 Text Mining_files/figure-html/cell-21-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-24-03 Text Mining_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <ul>
 <li>아래의 함수를 이용하여 문장의 형태소 분석을 해보자.</li>
 </ul>
-<div class="cell" data-execution_count="31">
+<div id="37050214" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>SimplePos22(sentence)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <dl>
@@ -1050,7 +1159,7 @@ Content:  documents: 10</code></pre>
 </div>
 <section id="news-data-not-use-corpus" class="level2">
 <h2 class="anchored" data-anchor-id="news-data-not-use-corpus">news data not use Corpus</h2>
-<div class="cell" data-execution_count="93">
+<div id="f8be633b" class="cell" data-execution_count="93">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>clean_txt2 <span class="op">&lt;-</span> function(txt) {</span>
 <span id="cb26-2"><a href="#cb26-2"></a>        txt <span class="op">&lt;-</span> removeNumbers(txt) <span class="co">## 숫자제거</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>        txt <span class="op">&lt;-</span> removePunctuation(txt) <span class="co">## 문장부호 제거</span></span>
@@ -1059,14 +1168,14 @@ Content:  documents: 10</code></pre>
 <span id="cb26-6"><a href="#cb26-6"></a>        <span class="cf">return</span>(txt)</span>
 <span id="cb26-7"><a href="#cb26-7"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="94">
+<div id="3a2a7f07" class="cell" data-execution_count="94">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>clean.news <span class="op">&lt;-</span> clean_txt2(news)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li><p>전처리 결과 <code>푸드테크</code>, <code>스타트업</code> 등과 같은 복합명사가 분리되어 출력되는 것을 확인할 수 있었다.</p></li>
 <li><p>따라서 복합명사를 명사로 인식할 수 있도록 사전에 등록하고 다시 분석 결과를 확인하면 복합명사도 하나의 명사로 추가된 것으로 확인할 수 있다.</p></li>
 </ul>
-<div class="cell" data-execution_count="55">
+<div id="4dc08be8" class="cell" data-execution_count="55">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>head(extractNoun(clean.news[<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1077,16 +1186,17 @@ Content:  documents: 10</code></pre>
 <ol class="list-inline"><li>'푸드'</li><li>'테크'</li><li>'스타트'</li><li>'업'</li><li>'빅데이터'</li><li>'기반'</li></ol>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
+<div id="780e85c6" class="cell" data-execution_count="56">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>buildDictionary(ext_dic<span class="op">=</span> <span class="st">"sejong"</span>,</span>
 <span id="cb29-2"><a href="#cb29-2"></a>                user_dic<span class="op">=</span>data.frame(c(read.table(<span class="st">"food.txt"</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>370965 words dictionary was built.</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="59">
+<div id="92a728ec" class="cell" data-execution_count="59">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>read.table(<span class="st">"food.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
+<div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A data.frame: 4 × 2</caption>
 <thead>
@@ -1120,7 +1230,8 @@ Content:  documents: 10</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+</div>
+<div id="bd56549b" class="cell" data-execution_count="57">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a>head(extractNoun(clean.news[<span class="dv">5</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1137,13 +1248,13 @@ Content:  documents: 10</code></pre>
 </section>
 <section id="simplepos22를-활용해-형용사-추출하기" class="level2">
 <h2 class="anchored" data-anchor-id="simplepos22를-활용해-형용사-추출하기">SimplePos22를 활용해 형용사 추출하기</h2>
-<div class="cell" data-execution_count="64">
+<div id="6405cd7d" class="cell" data-execution_count="64">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>library(stringr) <span class="co">## R에서 문자열을 처리할 수 있는 패키지</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="66">
+<div id="1d0a91cc" class="cell" data-execution_count="66">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>doc1 <span class="op">&lt;-</span> paste(SimplePos22(clean.news[[<span class="dv">2</span>]]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="68">
+<div id="eb17f460" class="cell" data-execution_count="68">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>head(doc1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1157,12 +1268,13 @@ Content:  documents: 10</code></pre>
 <ul>
 <li>형용사의 품사는 PA 이므로 아래와 같은 함수를 이용하여 추출</li>
 </ul>
-<div class="cell" data-execution_count="69">
+<div id="57afd0c1" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>doc2 <span class="op">&lt;-</span> str_match(doc1,<span class="st">"([가-힣]+)/PA"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="73">
+<div id="e6e5cb31" class="cell" data-execution_count="73">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>head(doc2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
+<div>
 <table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
 <caption>A matrix: 6 × 2 of type chr</caption>
 <tbody>
@@ -1194,7 +1306,8 @@ Content:  documents: 10</code></pre>
 </table>
 </div>
 </div>
-<div class="cell" data-execution_count="83">
+</div>
+<div id="4fbc454a" class="cell" data-execution_count="83">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>doc3 <span class="op">&lt;-</span> doc2 <span class="op">%&gt;%</span> na.omit()</span>
 <span id="cb38-2"><a href="#cb38-2"></a>doc3[,<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1216,7 +1329,7 @@ Content:  documents: 10</code></pre>
 </ul></li>
 <li>R에서는 <code>tm</code>패키지에서 <code>stemDocument</code> 함수를 통해 공통으로 들어가지 않은 부분을 제외하고 <code>stemCompletion</code> 함수를 통해 <code>stemming</code>된 단어와 완성을 위한 <code>dictionary</code>를 함께 넣으면 기본적인 어휘로 완성해주는 역할을 한다.</li>
 </ul>
-<div class="cell" data-execution_count="89">
+<div id="0fd268dc" class="cell" data-execution_count="89">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>test <span class="op">&lt;-</span> stemDocument(c(<span class="st">"analyze"</span>,<span class="st">"analyzed"</span>,<span class="st">"analyzing"</span>))</span>
 <span id="cb39-2"><a href="#cb39-2"></a>test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1231,7 +1344,7 @@ Content:  documents: 10</code></pre>
 <ul>
 <li>아래에서 중요한것은 <code>stemCompletion</code> 함수를 사용할 때에는 단어의 완성을 위해 반드시 <code>dictionary</code>가 필요하다.</li>
 </ul>
-<div class="cell" data-execution_count="90">
+<div id="4e1bc01e" class="cell" data-execution_count="90">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>stemCompletion(test,dictionary <span class="op">=</span>c(<span class="st">"analyze"</span>,<span class="st">"analyzed"</span>,<span class="st">"analyzing"</span>) )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1248,10 +1361,10 @@ Content:  documents: 10</code></pre>
 <ul>
 <li>R에서 <code>tm</code>패키지의 <code>TermDocumentMatric</code>을 사용하여 문서-단어 빈도행렬을 만들 수 있다. 단 객체는 <code>Corpus</code> 객체를 이용하여야함.</li>
 </ul>
-<div class="cell" data-execution_count="100">
+<div id="39970113" class="cell" data-execution_count="100">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>VC.news <span class="op">&lt;-</span> VCorpus(VectorSource(clean.news))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="102">
+<div id="4e2aab16" class="cell" data-execution_count="102">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>inspect(TermDocumentMatrix(VC.news))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;&lt;TermDocumentMatrix (terms: 1011, documents: 10)&gt;&gt;
@@ -1282,7 +1395,7 @@ Terms        1 10 2 3 4 5 6 7 8 9
 <ul>
 <li>사용자 정의 함수 생성</li>
 </ul>
-<div class="cell" data-execution_count="104">
+<div id="79ca8d37" class="cell" data-execution_count="104">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>words <span class="op">&lt;-</span> function(doc) {</span>
 <span id="cb44-2"><a href="#cb44-2"></a>    doc <span class="op">&lt;-</span> <span class="im">as</span>.character(doc)</span>
 <span id="cb44-3"><a href="#cb44-3"></a>    extractNoun(doc)</span>
@@ -1291,10 +1404,10 @@ Terms        1 10 2 3 4 5 6 7 8 9
 <ul>
 <li>명사만 추출한 TDM 생성</li>
 </ul>
-<div class="cell" data-execution_count="105">
+<div id="f2d05b08" class="cell" data-execution_count="105">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>TDM.news2 <span class="op">&lt;-</span> TermDocumentMatrix(VC.news, control <span class="op">=</span> <span class="bu">list</span>(tokenize <span class="op">=</span> words))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="106">
+<div id="0ab7e401" class="cell" data-execution_count="106">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>inspect(TDM.news2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;&lt;TermDocumentMatrix (terms: 289, documents: 10)&gt;&gt;
@@ -1321,12 +1434,12 @@ Terms        1 10 2 3 4  5  6 7 8 9
 <li><p>총 289개의 단어가 추출되었다.</p></li>
 <li><p>TDM으로 나타난 단어들의 빈도 체크</p></li>
 </ul>
-<div class="cell">
+<div id="80827682" class="cell">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>tdm2 <span class="op">&lt;-</span> <span class="im">as</span>.matrix(TDM.news2)</span>
 <span id="cb48-2"><a href="#cb48-2"></a>tdm3 <span class="op">&lt;-</span> rowSums(tdm2)</span>
 <span id="cb48-3"><a href="#cb48-3"></a>tdm4 <span class="op">&lt;-</span> tdm3[order(tdm3,decreasing <span class="op">=</span> T)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="111">
+<div id="7326c8d8" class="cell" data-execution_count="111">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>tdm4[<span class="dv">1</span>:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1340,13 +1453,13 @@ Terms        1 10 2 3 4  5  6 7 8 9
 <ul>
 <li>단어 사전을 정의하여 특정 단어들에 대해서만 분석 결과를 확인해보자.</li>
 </ul>
-<div class="cell" data-execution_count="116">
+<div id="fbb97d0e" class="cell" data-execution_count="116">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>mydict <span class="op">&lt;-</span> names(tdm4)[<span class="dv">1</span>:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="117">
+<div id="27bba6ea" class="cell" data-execution_count="117">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>my.news <span class="op">&lt;-</span> TermDocumentMatrix(VC.news, control <span class="op">=</span> <span class="bu">list</span>(tokenize<span class="op">=</span>words,dictionary<span class="op">=</span>mydict))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="118">
+<div id="66dcab34" class="cell" data-execution_count="118">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>my.news</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>&lt;&lt;TermDocumentMatrix (terms: 10, documents: 10)&gt;&gt;
@@ -1359,7 +1472,7 @@ Weighting          : term frequency (tf)</code></pre>
 <ul>
 <li>상위 10개 단어에 대해서만 추출하엿다.</li>
 </ul>
-<div class="cell" data-execution_count="119">
+<div id="342ac24c" class="cell" data-execution_count="119">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>inspect(my.news)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;&lt;TermDocumentMatrix (terms: 10, documents: 10)&gt;&gt;
@@ -1387,7 +1500,7 @@ Terms        1 10 2 3 4  5  6 7 8 9
 </section>
 <section id="tdm을-활용한-분석-및-시각화" class="level1">
 <h1>TDM을 활용한 분석 및 시각화</h1>
-<div class="cell" data-execution_count="125">
+<div id="c0317cd9" class="cell" data-execution_count="125">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>findFreqTerms(my.news,<span class="dv">10</span>,Inf) <span class="co">## 단어 빈도가 10 이상인 단어 추출</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <style>
@@ -1401,7 +1514,7 @@ Terms        1 10 2 3 4  5  6 7 8 9
 <ul>
 <li>빅데이터라는 단어와의 연관성이 0.9 이상인 단어들을 추출</li>
 </ul>
-<div class="cell" data-execution_count="126">
+<div id="41935396" class="cell" data-execution_count="126">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>findAssocs(TDM.news2,<span class="st">"빅데이터"</span>,<span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <strong>$빅데이터</strong> = <style>
@@ -1421,23 +1534,27 @@ Terms        1 10 2 3 4  5  6 7 8 9
 <p><code>3</code> min.freq : 시각화하려는 단어의 최소빈도</p>
 <p><code>4</code> random.order : 단어의 배치를 랜덤으로 할지 정함, (F 인 경우 빈도순으로 그려짐)</p>
 <p><code>5</code> colors : 빈도에 다라 단어의 색을 지정</p>
-<div class="cell" data-execution_count="130">
+<div id="f67c04c1" class="cell" data-execution_count="130">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>library(wordcloud)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="159">
+<div id="b31e7df2" class="cell" data-execution_count="159">
 <div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>freq <span class="op">&lt;-</span> rowSums(<span class="im">as</span>.matrix(TDM.news2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="163">
+<div id="04e0a897" class="cell" data-execution_count="163">
 <div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>options(<span class="bu">repr</span>.plot.res<span class="op">=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="167">
+<div id="f12d8c62" class="cell" data-execution_count="167">
 <div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>wordcloud(words <span class="op">=</span> names(freq),</span>
 <span id="cb61-2"><a href="#cb61-2"></a>          freq <span class="op">=</span> freq,</span>
 <span id="cb61-3"><a href="#cb61-3"></a>          <span class="bu">min</span>.freq<span class="op">=</span><span class="dv">5</span>,</span>
 <span id="cb61-4"><a href="#cb61-4"></a>          random.order<span class="op">=</span>F,</span>
 <span id="cb61-5"><a href="#cb61-5"></a>          colors <span class="op">=</span> brewer.pal(<span class="dv">8</span>,<span class="st">"Dark2"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="2021-07-24-03 Text Mining_files/figure-html/cell-53-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2021-07-24-03 Text Mining_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 
@@ -1524,10 +1641,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1537,8 +1671,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1550,7 +1693,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1594,6 +1860,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1619,6 +1886,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1680,17 +1973,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html" class="pagination-link">
+      <a href="../../../../posts/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html" class="pagination-link" aria-label="02. unsupervised learning">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">02. unsupervised learning</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../../../posts/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="pagination-link">
+      <a href="../../../../posts/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="pagination-link" aria-label="01. 결측치 처리">
         <span class="nav-page-text">01. 결측치 처리</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
