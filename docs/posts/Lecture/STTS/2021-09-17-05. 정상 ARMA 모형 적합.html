@@ -1,0 +1,3281 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GC">
+<meta name="dcterms.date" content="2021-09-17">
+
+<title>Gangcheol - 05. 정상 ARMA 모형 적합</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" rel="next">
+<link href="../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STTS/2021-09-01-00. intro.html">STTS</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html">05. 정상 ARMA 모형 적합</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STTS/2021-09-01-00. intro.html">STTS</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html">05. 정상 ARMA 모형 적합</a></li></ol></nav>
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">05. 정상 ARMA 모형 적합</h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>GC </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 17, 2021</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>About me</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Lecture</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">IP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-01-01wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 자료형</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-02-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 리스트</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-03-03.튜플.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 튜플</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-04.딕셔너리.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 딕셔너리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-05. 집합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 집합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-06. numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Numpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-07. Numpy 활용.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. Numpy 활용</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-08.pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-07-09. Numpy와 Pandas 활용.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Numpy와 Pandas 활용</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-08-10. 밈과 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 밈과 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-09-11. 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-10-12. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. 클래스 탐구 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-14-13. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. 클래스 탐구 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-14-14. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. 클래스 탐구 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">RFD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">데이터마이닝</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Supervised Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. unsupervised learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터마이닝/2021-07-24-03 Text Mining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Text Mining</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">데이터전처리</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 결측치 처리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터전처리/2021-12-06-02. 표준화와 정규화.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 표준화와 정규화</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 날짜 데이터</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">통계분석</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-01-01. sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-03.02. T-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. T-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ANOVA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-07-04. chi-square test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. chi-square test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. cor-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-15-06. regression analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. regression analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. regression analysis-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-17-08. PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-21-09. Factor Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Factor Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-24-10. Multidimensional scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Multidimensional scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-28-11. Time-seris analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Time-seris analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">STBD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-08-(1주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 단순선형회귀</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-14-(2주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Tensorflow-1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-21-(3주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Tensorflow-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-28-(4주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 경사하강법-1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-30-(5주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 경사하강법-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-11-(6주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. layer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-12-(6주차) 과제.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. layer 과제</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-18-(7주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. Adam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-27-중간고사 해설.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. Mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-01-(9주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. MLE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-02-lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 확률적 경사하강법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-08-lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. softmax</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-11-(11주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Max pooling, CNN</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-23-(12주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. CNN-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-30-(13주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. model fitting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-06-13-기말고사 문제풀이.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Final term</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">STDV</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-08-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Histogram equalization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-15-4wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 그래프를 그리는 여러 방법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-22-5wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. qqplot, 찰스미나도의 도표</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-29-6wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Plotnine &amp; Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-06-7wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Partial Correlation &amp; Pandas Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-13-8wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. tidydata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-14-midsol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-15-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. folium</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-16-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Choropleth Map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-17-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Choropleth Map &amp; Plotly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-17-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. final term</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">STML</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2022-01-27-Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-01-Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-04-DNN 딥러닝의 기초 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 딥러닝의 기초 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-11 DNN 딥러닝의 기초 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 딥러닝의 기초 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-18 DNN 딥러닝의 기초 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 딥러닝의 기초 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-25 DNN 딥러닝의 기초 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. 딥러닝의 기초 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-01-DNN 딥러닝의 기초(5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. 딥러닝의 기초 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-07-8wk1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. 이미지분석 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-08-8wk2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. 이미지분석 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-22-9wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 순환신경망 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-29-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. 순환신경망 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-05-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. 순환신경망 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-12-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. 순환신경망 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-19-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. 순환신경망 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-26-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15. Extra-1: 추천시스템</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-05-03-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Extra-2: 생성모형 (GAN)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
+ <span class="menu-text">STTS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-01-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-03-01. example (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. example (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-08-02. 확률과정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 확률과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-10-03. ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 비정상 ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">05. 정상 ARMA 모형 적합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. predict</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-24-07. example (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. example (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-28-08. example (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. example (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-10-01-09. example (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. example (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#정상-aram-모형의-적합-절차" id="toc-정상-aram-모형의-적합-절차" class="nav-link active" data-scroll-target="#정상-aram-모형의-적합-절차">0. 정상 ARAM 모형의 적합 절차</a></li>
+  <li><a href="#모형-식별-model-identification" id="toc-모형-식별-model-identification" class="nav-link" data-scroll-target="#모형-식별-model-identification">1. 모형 식별 (model identification)</a></li>
+  <li><a href="#모수의-추정-parameter-esitmation" id="toc-모수의-추정-parameter-esitmation" class="nav-link" data-scroll-target="#모수의-추정-parameter-esitmation">2. 모수의 추정 (Parameter Esitmation)</a>
+  <ul class="collapse">
+  <li><a href="#적률추정법-ar1" id="toc-적률추정법-ar1" class="nav-link" data-scroll-target="#적률추정법-ar1">2-1. 적률추정법 AR(1)</a></li>
+  <li><a href="#적률추정법-ma1" id="toc-적률추정법-ma1" class="nav-link" data-scroll-target="#적률추정법-ma1">2-2. 적률추정법 MA(1)</a></li>
+  </ul></li>
+  <li><a href="#잔차분석-residual-analysis" id="toc-잔차분석-residual-analysis" class="nav-link" data-scroll-target="#잔차분석-residual-analysis">3. 잔차분석 (Residual Analysis)</a></li>
+  <li><a href="#과대적합-진단-overfitting-diagostics" id="toc-과대적합-진단-overfitting-diagostics" class="nav-link" data-scroll-target="#과대적합-진단-overfitting-diagostics">4. 과대적합 진단 (Overfitting diagostics)</a></li>
+  <li><a href="#참고-단위근-검정" id="toc-참고-단위근-검정" class="nav-link" data-scroll-target="#참고-단위근-검정">5. 참고 : 단위근 검정</a></li>
+  <li><a href="#실습" id="toc-실습" class="nav-link" data-scroll-target="#실습">6. 실습</a>
+  <ul class="collapse">
+  <li><a href="#예제-8.6-가스로-자료-분석" id="toc-예제-8.6-가스로-자료-분석" class="nav-link" data-scroll-target="#예제-8.6-가스로-자료-분석">예제 8.6 가스로 자료 분석</a>
+  <ul class="collapse">
+  <li><a href="#데이터-로드-및-시도표-확인" id="toc-데이터-로드-및-시도표-확인" class="nav-link" data-scroll-target="#데이터-로드-및-시도표-확인">데이터 로드 및 시도표 확인</a></li>
+  <li><a href="#단위근-검정" id="toc-단위근-검정" class="nav-link" data-scroll-target="#단위근-검정">단위근 검정</a></li>
+  <li><a href="#모형적합" id="toc-모형적합" class="nav-link" data-scroll-target="#모형적합">모형적합</a></li>
+  <li><a href="#acf-유의성-검정" id="toc-acf-유의성-검정" class="nav-link" data-scroll-target="#acf-유의성-검정">ACF 유의성 검정</a></li>
+  <li><a href="#잔차검정" id="toc-잔차검정" class="nav-link" data-scroll-target="#잔차검정">잔차검정</a></li>
+  </ul></li>
+  <li><a href="#예제-8.7-과대적합" id="toc-예제-8.7-과대적합" class="nav-link" data-scroll-target="#예제-8.7-과대적합">예제 8.7 : 과대적합</a>
+  <ul class="collapse">
+  <li><a href="#데이터-로드-및-시도표-확인-1" id="toc-데이터-로드-및-시도표-확인-1" class="nav-link" data-scroll-target="#데이터-로드-및-시도표-확인-1">데이터 로드 및 시도표 확인</a></li>
+  <li><a href="#모형-적합-ar1" id="toc-모형-적합-ar1" class="nav-link" data-scroll-target="#모형-적합-ar1">모형 적합 AR(1)</a></li>
+  <li><a href="#잔차-분석" id="toc-잔차-분석" class="nav-link" data-scroll-target="#잔차-분석">잔차 분석</a></li>
+  <li><a href="#참고-sarima" id="toc-참고-sarima" class="nav-link" data-scroll-target="#참고-sarima">참고 : sarima</a></li>
+  <li><a href="#과대적합" id="toc-과대적합" class="nav-link" data-scroll-target="#과대적합">과대적합</a></li>
+  </ul></li>
+  <li><a href="#예제-8.8-단위근-검정" id="toc-예제-8.8-단위근-검정" class="nav-link" data-scroll-target="#예제-8.8-단위근-검정">예제 8.8 : 단위근 검정</a>
+  <ul class="collapse">
+  <li><a href="#시도표-확인" id="toc-시도표-확인" class="nav-link" data-scroll-target="#시도표-확인">시도표 확인</a></li>
+  <li><a href="#차분" id="toc-차분" class="nav-link" data-scroll-target="#차분">차분</a></li>
+  </ul></li>
+  <li><a href="#예제-8.9-female" id="toc-예제-8.9-female" class="nav-link" data-scroll-target="#예제-8.9-female">예제 8.9 : female</a>
+  <ul class="collapse">
+  <li><a href="#데이터-로드-및-시도표-확인-2" id="toc-데이터-로드-및-시도표-확인-2" class="nav-link" data-scroll-target="#데이터-로드-및-시도표-확인-2">데이터 로드 및 시도표 확인</a></li>
+  <li><a href="#단위근검정" id="toc-단위근검정" class="nav-link" data-scroll-target="#단위근검정">단위근검정</a></li>
+  <li><a href="#선형모형-적합" id="toc-선형모형-적합" class="nav-link" data-scroll-target="#선형모형-적합">선형모형 적합</a></li>
+  <li><a href="#잔차에-ar1-모형을-적합-후-차분" id="toc-잔차에-ar1-모형을-적합-후-차분" class="nav-link" data-scroll-target="#잔차에-ar1-모형을-적합-후-차분">잔차에 AR(1) 모형을 적합 후 차분</a></li>
+  <li><a href="#arima-010" id="toc-arima-010" class="nav-link" data-scroll-target="#arima-010">ARIMA (0,1,0)</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="정상-aram-모형의-적합-절차" class="level1">
+<h1>0. 정상 ARAM 모형의 적합 절차</h1>
+<p><code>1</code>. 정상성 판단 : 비정상시계열의 경우 변환, 분해법, 차분 등을 통해 정상시계열로 변환</p>
+<p><code>2</code>. 모형의 식별 : <span class="math inline">\(ARMA(p.q)\)</span> 차수 선택</p>
+<p><code>3</code>. 모형의 추정 : 우리가 설정한 모델의 대하여 모수를 추정하는 것이다.</p>
+<p><code>4</code>. 모형의 진단 : 화이트 노이즈라는 것에 대한 진단이 필요하다(잔차 분석). 화이트 노이즈 가정에 적합하지 않으면 다시 모형의 식별 단계로 돌아간다.</p>
+<p><code>5.</code>예측모형 : 최종적으로 채택</p>
+<hr>
+</section>
+<section id="모형-식별-model-identification" class="level1">
+<h1>1. 모형 식별 (model identification)</h1>
+<p><code>1</code>. 모형을 적합하기 위한 전처리 단계라고 생각하자.</p>
+<p><code>step .1</code> 정상화 : 분산 안정화변환(이분산성 제거) -&gt; 분해법을 이용하거나 차분, 계절 차분 시행(SACF를 그려 확인)</p>
+<ul>
+<li><p>과대차분을 하지 않도록 주의하여야 한다.</p></li>
+<li><p>과대차분을 확인하기 위해선 차분된 시계열의 분산과 이전 단계의 분산을 비교 <span class="math inline">\(Var(\nabla Z) &gt; Var(Z)?\)</span> 좌변이 더 클경우 과대차분의 가능성이 보인다.</p></li>
+<li><p>샘플사이즈가 적을 경우 <span class="math inline">\(SACF\)</span>의 도표를 보고 추세가 존재하는지 판단하기 힘들다.</p></li>
+<li><p>추세나 계절성이 실제로 존재하는지 판단하기 위해 <strong>Unit root test(단위 근 검정)</strong> 결과를 이용하여,</p></li>
+</ul>
+<p>example <span class="math display">\[AR(1) \quad H_0 : \phi =1 \quad vs \quad H_1 :\phi \neq 1\]</span></p>
+<pre><code>* 귀무가설을 기각시 정상성을 만족한다고 볼 수 있다.</code></pre>
+<ul>
+<li>계절형 자료가 아닌 경우 대부분 차분의 차수는 0, 1, 2이면 충분하고, 계절형 자료의 경우는 계절의 주기와 같은 값의 차분이면 충분하다.</li>
+</ul>
+<p><code>step.2</code>: ARMA 모형의 차수 결정</p>
+<div id="cell-19" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">고급시계열 분석</span><span class="sc">\\</span><span class="st">6주차"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">library</span>(IRdisplay)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">display_png</span>(<span class="at">file=</span><span class="st">"요약표.png"</span>,<span class="at">width=</span><span class="dv">700</span>,<span class="at">height=</span><span class="dv">200</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>AR(p)의 경우</li>
+</ul>
+<p><span class="math display">\[H_0 : \phi_{kk} =0 \,vs\, H_1 : \phi_{kk}\neq0 \to |\hat {\phi}_{kk}|&gt;1.96\,/\,\sqrt n \approx  2 / \sqrt n\quad   ( k\geq p+1)\]</span></p>
+<ul>
+<li>MA(q)의 경우</li>
+</ul>
+<p><span class="math display">\[H_0 : \rho_{k} =0 \,vs\, H_1 : \rho_{k}\neq0 \to |\hat {\rho}_{k}|&gt;1.96\,\times\,S.E(\hat {\rho}_k)\quad   ( k\geq p+1)\]</span></p>
+<p><span class="math display">\[\begin{eqnarray*}Var\,(\hat {\rho}_k) = \frac 1 n (1+2\rho_1^2+\dots 2p_q^2) = \frac 1n \end{eqnarray*}\]</span></p>
+<p>화이트 노이즈를 가정하기 때문에 <span class="math inline">\(Var\,(\hat {\rho}_k)  =\frac 1n\)</span>이 성립한다. (그냥 그렇다고만)</p>
+<ul>
+<li>ARMA(p,q)의 경우 : 여러 가지 후보모형을 생각해서 다 적합시킨다.( 모형 선택 기준은 아래와 같다.)</li>
+</ul>
+<p><code>1.</code> : <span class="math inline">\(AIC\)</span>(Akaike’s Information Criterion, Akaike)</p>
+<p><span class="math display">\[ AIC = n\ln(\hat {\sigma}^2)+2(p+q)\]</span></p>
+<p><code>2.</code> : <span class="math inline">\(SBC\)</span> (Schwartz’s Bayesian Criterion, Schwartz (1978))</p>
+<p><span class="math display">\[ SBC = n\ln(\hat {\sigma}^2) +(p+q)\ln(n)\]</span></p>
+<ul>
+<li>즉, <span class="math inline">\(AIC, SBC, FPE, BIC, CAT\)</span> 등이 최소가 되도록 모형 선택</li>
+</ul>
+<p><code>step 3.</code>상수항 포함 여부</p>
+<ul>
+<li><p>시계열을 차분한 경우, 상수항 <span class="math inline">\(\delta\)</span>를 모형에 포함시킬지의 여부를 결정</p>
+<ul>
+<li>이 말은 <span class="math inline">\(E(\nabla Z_t) = 0\)</span>으로 할지 말지에 대한 결정이다.</li>
+<li>즉 $ $으로 할지 말지 결정하는 것이다.</li>
+</ul></li>
+<li><p>차분된 시계열 <span class="math inline">\(W_t = (1-B)^dZ_t\)</span>의 표본평균과 근사표준오차를 이용하여 <span class="math inline">\(H_0: \delta = 0\)</span>의 유의성 검정을 시행</p></li>
+<li><p>검정 통계량 : <span class="math inline">\(\begin {eqnarray*}\frac {\overline W}{S_{\overline W}} \end{eqnarray*}\)</span></p></li>
+<li><p><span class="math inline">\(S_{\overline W} : \overline {W}_t\)</span>의 표본 분산</p></li>
+<li><p><span class="math inline">\(\begin{eqnarray*}\overline W = \frac 1n \sum W_t, S_{\overline W}= \left [\frac {\hat {\gamma}_0}{n}(1+2\hat{\rho}_1+\dots 2\hat{\rho}_k)\right]^{1/2} \end{eqnarray*}\)</span> 단, <span class="math inline">\(k\)</span>는 유의한 <span class="math inline">\(SACF\)</span>의 개수</p></li>
+<li><p><span class="math inline">\(\hat {\gamma}_0 :\)</span> <span class="math inline">\(W_t\)</span> 의 표본분산</p></li>
+<li><p>위에는 실제로 계산하는게 아니니 깊게 생각하지 말자…</p></li>
+</ul>
+<hr>
+</section>
+<section id="모수의-추정-parameter-esitmation" class="level1">
+<h1>2. 모수의 추정 (Parameter Esitmation)</h1>
+<ul>
+<li><p>모형을 식별 후 식별한 모형의 모수, 즉 특성을 파악하는 단계이다.</p></li>
+<li><p>적률추정법, 최소제곱법(CLSE, ULSE), 최대가능도함수를 이용하여 추정</p></li>
+<li><p>적률추정법의 경우 최종적인 추정방법으로는 추정할수는 없고, 다른 추정방법의 초기치로 사용됨</p></li>
+</ul>
+<section id="적률추정법-ar1" class="level2">
+<h2 class="anchored" data-anchor-id="적률추정법-ar1">2-1. 적률추정법 AR(1)</h2>
+<p><span class="math display">\[Z_t = \phi(Z_{t-1}-\mu)+\varepsilon_t \quad \varepsilon_t \sim WN(0,\sigma^2)\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\mu = E(Z_t) \to \hat {\mu}_{MME} = \overline Z\)</span></p></li>
+<li><p><span class="math inline">\(\begin {eqnarray*}Cov(Z_t,Z_{t-1}) = \gamma_1 = \phi\gamma_0 \to \hat {\phi}_{MME} = \frac {\hat {\gamma}_1}{\hat {\gamma}_0} \end{eqnarray*}\)</span></p></li>
+<li><p><span class="math inline">\(Var(Z_t) = \phi^2Var(Z_{t-1}) +\sigma^2 \to \gamma_0 = \phi^2 \gamma_0 + \sigma^2\)</span></p></li>
+</ul>
+<p><span class="math inline">\(\therefore \quad \hat {\sigma}^2_{MME} = \hat {\gamma}_0 (1-\hat{\phi}^2)\)</span></p>
+</section>
+<section id="적률추정법-ma1" class="level2">
+<h2 class="anchored" data-anchor-id="적률추정법-ma1">2-2. 적률추정법 MA(1)</h2>
+<p><span class="math display">\[Z_t -\mu = \varepsilon_t - \theta \varepsilon_{t-1}\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\hat {\mu}_{MME} = \overline Z\)</span></p></li>
+<li><p><span class="math inline">\(\begin{eqnarray*} \hat {\theta}_{MME} = \frac {-1 \pm \sqrt{1-4\hat {\rho}_1^2}}{2\hat{\rho}_1}\end{eqnarray*}\)</span></p>
+<p><span class="math inline">\(if \quad \hat {\rho}_1 = \pm \,0.5 \to \hat {\theta} = \pm 1\)</span> 이므로 가역성을 만족하지 않아 추정량으로 쓸 수 없음</p>
+<p><span class="math inline">\(eles \,if \quad |\hat {\rho}_1| &gt; \pm \,0.5 \to \hat {\theta}\)</span> 는 허수로 존재하지 않음</p>
+<p><span class="math inline">\(eles \,if \quad |\hat {\rho}_1| &lt; \pm \,0.5 \to |\hat {\theta}|&lt;   1\)</span> 인 경우, 즉 가역성을 만족하는 경우를 찾아서 사용</p></li>
+<li><p><span class="math inline">\(\begin {eqnarray*}  \hat {\sigma}^2 = \frac {\hat {\gamma_0}}{1+\theta^2}\end{eqnarray*}\)</span></p></li>
+</ul>
+<p>조건부, 비조건부 최소제곱법과 MLE 추정법은 강의노트 참고</p>
+<hr>
+</section>
+</section>
+<section id="잔차분석-residual-analysis" class="level1">
+<h1>3. 잔차분석 (Residual Analysis)</h1>
+<ul>
+<li><p>잔차를 이용하여 <span class="math inline">\(\varepsilon_t \sim WN(0,\sigma^2)\)</span> 인지를 검정</p></li>
+<li><p>잔차를 이용한 <strong>WN TEST( Portmanteau test )</strong> <br></p>
+<ul>
+<li><span class="math inline">\(H_0: \rho(\varepsilon_1) = \dots \rho_k(\varepsilon_t) = 0\)</span></li>
+<li>위를 검정하며 “<strong>box-pierce test”, “Ljung-Box test”</strong> 가 있다,</li>
+<li>후자의 경우 샘플사이즈가 작은 경우 검정통계량 값을 크게하기 위하여 사용한다.</li>
+</ul></li>
+<li><p>“<strong>Jarque and Bera</strong>”의 정규성검정</p></li>
+</ul>
+<p><span class="math display">\[\begin {eqnarray*} JB = \frac n6 \left( \frac 1n\sum \frac {\varepsilon_t^3}{\hat \sigma^2} \right )+\left( \frac 1{24}\sum \frac {\varepsilon_t^4}{\hat \sigma^2}-3 \right ) \approx \chi^2(2)\end{eqnarray*}\]</span></p>
+<ul>
+<li>좌항을 왜도, 우항을 첨도로 하여 왜도와 첨도를 가지고 정규성 검정을 시행하는 것이다.</li>
+</ul>
+<hr>
+</section>
+<section id="과대적합-진단-overfitting-diagostics" class="level1">
+<h1>4. 과대적합 진단 (Overfitting diagostics)</h1>
+<ul>
+<li><p>모형에 모수를 추가해나가며 과댁적합 진단을 시행</p></li>
+<li><p>다음과 같은 경우 기존의 잠정모형을 새로운 모형으로 대체한다.</p></li>
+</ul>
+<p><code>1</code> 잠정모형에 추가된 모수가 유의하다고 판정되는 경우</p>
+<p><code>2</code> 잠정모형에서의 모수 추정값이 과대적합시킨 후 얻어지는 모수 추정값과 큰 차이가 있는 경우</p>
+<p><code>3</code> 과대적합된 모형에서 잔차들의 분산이 잠정모형에서의 잔차들의 분산보다 작아진 경우</p>
+<hr>
+</section>
+<section id="참고-단위근-검정" class="level1">
+<h1>5. 참고 : 단위근 검정</h1>
+<p><span class="math inline">\(\Phi(B) = (1-\phi_1 B -\dots - \phi_pB)\)</span></p>
+<p><span class="math display">\[H_0: \phi=1\quad vs \quad H_1 : |\phi| &lt;1\]</span></p>
+<ul>
+<li><p>차분이 필요한 지 아닌지 검정한다.</p></li>
+<li><p><span class="math inline">\(1-B\)</span>에서 <span class="math inline">\(B=1\)</span> 인 경우 단위근이라고 하는데 이걸 가지는 경우 비정상 시계열이므로 <span class="math inline">\(ARIMA\)</span> 모형을 적합해야함.</p></li>
+<li><p>단위근이 있는 경우가 $ $인 경우이다.</p></li>
+<li><p>차분을 통해 정상 확률 과정으로 변환 가능</p></li>
+<li><p>R 에서 “<strong>Dickey -Fuller</strong>”로 단위근 검정을 시행 (ex AR(1))</p>
+<ul>
+<li><code>case 1</code> : 적합할 모형에 절편(상수항)이 없는 경우 (nc) 평균이 0인 경우</li>
+<li><code>case 2</code> : 적합할 모형에 절편이 존재하는 경우 (c) 평균이 0이 아닌 경우</li>
+<li><code>case 3</code> : 적합할 모형에 절편과 추세(<span class="math inline">\(\beta_t\)</span>)가 존재하는 경우 (ct) 추세가 있어보이는 경우</li>
+</ul></li>
+</ul>
+<hr>
+</section>
+<section id="실습" class="level1">
+<h1>6. 실습</h1>
+<div id="cell-86" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">library</span>(forecast)</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="fu">library</span>(lmtest)  <span class="do">##coeftest</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="fu">library</span>(portes)  <span class="do">##LjungBox</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="fu">library</span>(astsa)</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="fu">library</span>(fUnitRoots)  <span class="co"># library for function adfTest</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="fu">library</span>(tseries)  <span class="do">##JB test</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-87" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">setwd</span>(<span class="st">"C:</span><span class="sc">\\</span><span class="st">Users</span><span class="sc">\\</span><span class="st">lee</span><span class="sc">\\</span><span class="st">Desktop</span><span class="sc">\\</span><span class="st">고급시계열 분석</span><span class="sc">\\</span><span class="st">제5판_시계열분석_프로그램</span><span class="sc">\\</span><span class="st">제5판 시계열분석 data"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="예제-8.6-가스로-자료-분석" class="level2">
+<h2 class="anchored" data-anchor-id="예제-8.6-가스로-자료-분석">예제 8.6 가스로 자료 분석</h2>
+<ul>
+<li>가스로 공급비율과 이에 따른 이산화탄소의 농도를 나타낸다. 여기서는 가스의 공급비율에 적합한 모형을 적합해보자.</li>
+</ul>
+<section id="데이터-로드-및-시도표-확인" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-로드-및-시도표-확인">데이터 로드 및 시도표 확인</h3>
+<div id="cell-91" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-92" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"gas.txt"</span>, <span class="at">what=</span><span class="fu">list</span>(<span class="dv">0</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-93" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>dt <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">t=</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(z[[<span class="dv">1</span>]]),</span>
+<span id="cb8-2"><a href="#cb8-2"></a>            <span class="at">rate =</span> z[[<span class="dv">1</span>]],</span>
+<span id="cb8-3"><a href="#cb8-3"></a>            <span class="at">co2 =</span> z[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-94" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, rate)) <span class="sc">+</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot of the input Gas feed rate'</span>)<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>rate) <span class="sc">+</span> </span>
+<span id="cb9-7"><a href="#cb9-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>rate) <span class="sc">+</span> </span>
+<span id="cb9-11"><a href="#cb9-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-14"><a href="#cb9-14"></a></span>
+<span id="cb9-15"><a href="#cb9-15"></a></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb9-17"><a href="#cb9-17"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb9-18"><a href="#cb9-18"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>시계열그림을 살펴본 결과 추세는 없는 것처럼 보이며 ACF와 PACF값을 보아도 딱히 문제될 것이 없어 보인다.</p></li>
+<li><p>단위근 검정을 통해 실제로 정상성 여부를 판단한다.</p></li>
+<li><p>또한 시도표를 살펴본 결과 평균을 0, 즉 상수항이 없다고 판단할 수 있다.</p></li>
+</ul>
+</section>
+<section id="단위근-검정" class="level3">
+<h3 class="anchored" data-anchor-id="단위근-검정">단위근 검정</h3>
+<div id="cell-99" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">options</span>(<span class="at">warn=</span><span class="sc">-</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>1</code></p>
+<div id="cell-101" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>rate, <span class="at">lags =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">"nc"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 0
+  STATISTIC:
+    Dickey-Fuller: -2.6648
+  P VALUE:
+    0.01 
+
+Description:
+ Sun Nov 21 15:28:39 2021 by user: lee</code></pre>
+</div>
+</div>
+<div id="cell-102" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>rate, <span class="at">lags =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">"nc"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>rate, <span class="at">lags =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"nc"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>rate, <span class="at">lags =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">"nc"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 0
+  STATISTIC:
+    Dickey-Fuller: -2.6648
+  P VALUE:
+    0.01 
+
+Description:
+ Sun Nov 21 15:28:50 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 1
+  STATISTIC:
+    Dickey-Fuller: -7.6608
+  P VALUE:
+    0.01 
+
+Description:
+ Sun Nov 21 15:28:50 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 2
+  STATISTIC:
+    Dickey-Fuller: -4.8744
+  P VALUE:
+    0.01 
+
+Description:
+ Sun Nov 21 15:28:50 2021 by user: lee</code></pre>
+</div>
+</div>
+<ul>
+<li><p>각 시차에서의 <span class="math inline">\(p-value\)</span>값을 살펴본 결과 단위근이 없다. 즉, 확률적 추세가 없으므로 차분을 할 필요가 없다고 판단된다.</p></li>
+<li><p>즉 우리가 불러온 데이터가 ACF 지수적으로 감소하고, PACF가 시차 3까지 유의 하므로 AR(3) 모형 정도가 된다고 잠정적으로 식별한다.</p></li>
+</ul>
+</section>
+<section id="모형적합" class="level3">
+<h3 class="anchored" data-anchor-id="모형적합">모형적합</h3>
+<ul>
+<li>AR(3) 모형 적합</li>
+</ul>
+<div id="cell-107" class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">arima</span>(dt<span class="sc">$</span>rate, <span class="at">order=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-108" class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">summary</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+arima(x = dt$rate, order = c(3, 0, 0))
+
+Coefficients:
+         ar1      ar2     ar3  intercept
+      1.9691  -1.3651  0.3394    -0.0606
+s.e.  0.0544   0.0985  0.0543     0.1898
+
+sigma^2 estimated as 0.0353:  log likelihood = 72.57,  aic = -135.14
+
+Training set error measures:
+                       ME      RMSE       MAE MPE MAPE      MASE        ACF1
+Training set 3.004966e-05 0.1878719 0.1307624 NaN  Inf 0.5140648 -0.03522643</code></pre>
+</div>
+</div>
+<ul>
+<li><p>추정된 계수에 비해 s.e 가 너무 크다면 유의하지 않다고 summary값으로 간략히 확인할 수 있다.</p></li>
+<li><p>만약 intercept가 작은데 s.e 가 크다면 추정된 계수가 유의하지 않다고 볼 수 있다.</p></li>
+<li><p>모수 추정의 디폴트 방법은 조건부최소제곱법(css)와 최대가능도함수를 이용한다.</p></li>
+</ul>
+<div id="cell-112" class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">coeftest</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+z test of coefficients:
+
+           Estimate Std. Error  z value  Pr(&gt;|z|)    
+ar1        1.969066   0.054385  36.2061 &lt; 2.2e-16 ***
+ar2       -1.365143   0.098538 -13.8540 &lt; 2.2e-16 ***
+ar3        0.339404   0.054328   6.2473 4.177e-10 ***
+intercept -0.060643   0.189800  -0.3195    0.7493    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<ul>
+<li>또한 추정된 <span class="math inline">\(\phi_1,\phi_2.\phi_3\)</span> 이 유의미함을 알 수 있다.</li>
+<li>또한 절편의 경우 유의미하지 않음을 확인할 수 있었다.</li>
+</ul>
+<div id="cell-114" class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">arima</span>(dt<span class="sc">$</span>rate, <span class="at">order=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">include.mean =</span> F)</span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="fu">summary</span>(fit2)</span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="fu">coeftest</span>(fit2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+arima(x = dt$rate, order = c(3, 0, 0), include.mean = F)
+
+Coefficients:
+         ar1      ar2     ar3
+      1.9696  -1.3659  0.3399
+s.e.  0.0544   0.0985  0.0543
+
+sigma^2 estimated as 0.03531:  log likelihood = 72.52,  aic = -137.04
+
+Training set error measures:
+                       ME      RMSE       MAE MPE MAPE      MASE        ACF1
+Training set -0.003418121 0.1879034 0.1305995 NaN  Inf 0.5134245 -0.03583041</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+z test of coefficients:
+
+     Estimate Std. Error  z value  Pr(&gt;|z|)    
+ar1  1.969560   0.054371  36.2243 &lt; 2.2e-16 ***
+ar2 -1.365925   0.098522 -13.8641 &lt; 2.2e-16 ***
+ar3  0.339906   0.054314   6.2582 3.894e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<ul>
+<li><code>include.mean = F</code>, 상수항 ,즉 절편을 빼는지에 대한 결정 여부이다.</li>
+</ul>
+</section>
+<section id="acf-유의성-검정" class="level3">
+<h3 class="anchored" data-anchor-id="acf-유의성-검정">ACF 유의성 검정</h3>
+<div id="cell-117" class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">LjungBox</span>(dt<span class="sc">$</span>rate, <span class="at">lags =</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>)) <span class="do">## 포트맨토 검정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>786.3478</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>874.0668</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>895.2384</td>
+<td>18</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>902.5192</td>
+<td>24</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li><p>전부 유의확률이 0이므로 해당 시차에 <span class="math inline">\(\rho(\varepsilon_t)\neq0\)</span> 이다.</p></li>
+<li><p>여기까지 잠정모형으로 fit2을 선택</p></li>
+</ul>
+</section>
+<section id="잔차검정" class="level3">
+<h3 class="anchored" data-anchor-id="잔차검정">잔차검정</h3>
+<div id="cell-121" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>dt[<span class="st">"resid"</span>] <span class="ot">=</span> <span class="fu">as.numeric</span>(<span class="fu">resid</span>(fit2)) <span class="do">## 잔차 생성</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-122" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, resid)) <span class="sc">+</span> </span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col=</span><span class="st">'grey'</span>, <span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot of Residual'</span>)<span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb27-6"><a href="#cb27-6"></a></span>
+<span id="cb27-7"><a href="#cb27-7"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb27-8"><a href="#cb27-8"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb27-9"><a href="#cb27-9"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb27-10"><a href="#cb27-10"></a></span>
+<span id="cb27-11"><a href="#cb27-11"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb27-12"><a href="#cb27-12"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb27-13"><a href="#cb27-13"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb27-14"><a href="#cb27-14"></a></span>
+<span id="cb27-15"><a href="#cb27-15"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb27-16"><a href="#cb27-16"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb27-17"><a href="#cb27-17"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-19-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>잔차에 대한 시도표와 ACF, PACF 그림을 그린 결과이다.</p></li>
+<li><p>살펴본 결과 화이트노이즈 가정을 위배하는 것처럼 보이진 않으나 중간중간 이상치가 보인다.</p></li>
+</ul>
+<section id="잔차의-정규성-검정" class="level4">
+<h4 class="anchored" data-anchor-id="잔차의-정규성-검정">잔차의 정규성 검정</h4>
+<div id="cell-126" class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">shapiro.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##H0 : normal distribution</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  dt$resid
+W = 0.91708, p-value = 9.842e-12</code></pre>
+</div>
+</div>
+<ul>
+<li>정규분포를 기각한 결과가 나오는데 이상치로 판단된다.</li>
+</ul>
+<div id="cell-128" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">qqnorm</span>(dt<span class="sc">$</span>resid)</span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="fu">qqline</span>(dt<span class="sc">$</span>resid, <span class="at">col =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>양쪽 꼬리부분에서 정규성에 위반된 형태를 띈다.</li>
+</ul>
+<div id="cell-130" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">LjungBox</span>(fit2, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>)) <span class="do">##포트만트 검정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>10.21058</td>
+<td>3</td>
+<td>0.01685835</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>19.76879</td>
+<td>9</td>
+<td>0.01939412</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>27.70650</td>
+<td>15</td>
+<td>0.02348012</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>30.86553</td>
+<td>21</td>
+<td>0.07592519</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li><p>ACF가 0이라는 가정을 기각하는 경우가 많아 화이트 노이즈가 의심된다.</p></li>
+<li><p>정규성과 ACF가 0이라는 가정이 전부 기각되었다. 이상치 때문이라는 의심이 판단된다.</p></li>
+<li><p>과대적합(차수를 늘려가며)을 통해 다른 모형을 고려할 필요가 있어보인다.</p></li>
+<li><p>다양한 모형을 적합해가며 살펴본 결과 결과가 나아지지 않아 AR(3)을 최종모형으로 선정하였다.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="예제-8.7-과대적합" class="level2">
+<h2 class="anchored" data-anchor-id="예제-8.7-과대적합">예제 8.7 : 과대적합</h2>
+<section id="데이터-로드-및-시도표-확인-1" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-로드-및-시도표-확인-1">데이터 로드 및 시도표 확인</h3>
+<div id="cell-138" class="cell" data-execution_count="63">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"eg8_7.txt"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2"></a></span>
+<span id="cb32-3"><a href="#cb32-3"></a>dt <span class="ot">&lt;-</span> <span class="fu">tibble</span>( <span class="at">t =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(z),</span>
+<span id="cb32-4"><a href="#cb32-4"></a>                  <span class="at">z=</span>z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-139" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, z)) <span class="sc">+</span> </span>
+<span id="cb33-2"><a href="#cb33-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot'</span>)<span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb33-5"><a href="#cb33-5"></a></span>
+<span id="cb33-6"><a href="#cb33-6"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>z) <span class="sc">+</span> </span>
+<span id="cb33-7"><a href="#cb33-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb33-8"><a href="#cb33-8"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb33-9"><a href="#cb33-9"></a></span>
+<span id="cb33-10"><a href="#cb33-10"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>z) <span class="sc">+</span> </span>
+<span id="cb33-11"><a href="#cb33-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb33-12"><a href="#cb33-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb33-13"><a href="#cb33-13"></a></span>
+<span id="cb33-14"><a href="#cb33-14"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb33-15"><a href="#cb33-15"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb33-16"><a href="#cb33-16"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><p>평균 20근처에서 위아래로 움직이는 것처럼 보인다. 추세도 없으므로 정상시계열이라고 판단된다.</p></li>
+<li><p>ACF의 경우 지수적으로 유의미한 것처럼 보인다</p></li>
+<li><p>PACF가 시차 2부터 절단점을 가지므로 AR(1) 모형을 적합시킨다.</p></li>
+</ul>
+</section>
+<section id="모형-적합-ar1" class="level3">
+<h3 class="anchored" data-anchor-id="모형-적합-ar1">모형 적합 AR(1)</h3>
+<div id="cell-144" class="cell" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(dt<span class="sc">$</span>z,<span class="at">order=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb34-2"><a href="#cb34-2"></a><span class="fu">summary</span>(fit)</span>
+<span id="cb34-3"><a href="#cb34-3"></a><span class="fu">coeftest</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+arima(x = dt$z, order = c(1, 0, 0))
+
+Coefficients:
+          ar1  intercept
+      -0.6715    19.8312
+s.e.   0.0728     0.1776
+
+sigma^2 estimated as 8.744:  log likelihood = -250.61,  aic = 507.22
+
+Training set error measures:
+                      ME     RMSE      MAE       MPE    MAPE      MASE
+Training set 0.007670341 2.957007 2.337302 -2.080783 11.9899 0.4096807
+                   ACF1
+Training set 0.04344908</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+z test of coefficients:
+
+           Estimate Std. Error  z value  Pr(&gt;|z|)    
+ar1       -0.671544   0.072838  -9.2197 &lt; 2.2e-16 ***
+intercept 19.831150   0.177618 111.6504 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+</section>
+<section id="잔차-분석" class="level3">
+<h3 class="anchored" data-anchor-id="잔차-분석">잔차 분석</h3>
+<div id="cell-146" class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a>dt[<span class="st">"resid"</span>]  <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">resid</span>(fit))</span>
+<span id="cb37-2"><a href="#cb37-2"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, resid)) <span class="sc">+</span> </span>
+<span id="cb37-3"><a href="#cb37-3"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col=</span><span class="st">'grey'</span>, <span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb37-5"><a href="#cb37-5"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot of Residual'</span>)<span class="sc">+</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb37-7"><a href="#cb37-7"></a></span>
+<span id="cb37-8"><a href="#cb37-8"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb37-9"><a href="#cb37-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb37-10"><a href="#cb37-10"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb37-11"><a href="#cb37-11"></a></span>
+<span id="cb37-12"><a href="#cb37-12"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb37-13"><a href="#cb37-13"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb37-14"><a href="#cb37-14"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb37-15"><a href="#cb37-15"></a></span>
+<span id="cb37-16"><a href="#cb37-16"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb37-17"><a href="#cb37-17"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb37-18"><a href="#cb37-18"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>ACF와 PACF가 전부 유의미하지 않음</li>
+</ul>
+<div id="cell-148" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">shapiro.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##H0 : normal distribution</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="fu">jarque.bera.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##JB test H0: normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  dt$resid
+W = 0.97952, p-value = 0.1219</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Jarque Bera Test
+
+data:  dt$resid
+X-squared = 4.2649, df = 2, p-value = 0.1185</code></pre>
+</div>
+</div>
+<ul>
+<li>정규성 검정 결과 잔차가 정규분포라고 해도 무방하다.</li>
+</ul>
+<div id="cell-150" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">qqnorm</span>(dt<span class="sc">$</span>resid)</span>
+<span id="cb41-2"><a href="#cb41-2"></a><span class="fu">qqline</span>(dt<span class="sc">$</span>resid, <span class="at">col =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-28-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-151" class="cell" data-execution_count="72">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">LjungBox</span>(fit, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">3</span>))<span class="co"># 포트만트 검정</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 7 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>3.147291</td>
+<td>5</td>
+<td>0.6772898</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>9</td>
+<td>8.425883</td>
+<td>8</td>
+<td>0.3930115</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>13.135047</td>
+<td>11</td>
+<td>0.2845906</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>15</td>
+<td>15.114889</td>
+<td>14</td>
+<td>0.3703464</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>17.072699</td>
+<td>17</td>
+<td>0.4494514</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>21</td>
+<td>22.452495</td>
+<td>20</td>
+<td>0.3164701</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>24.393987</td>
+<td>23</td>
+<td>0.3822679</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>포트만트 검정을 통해 ACF의 유의성 검정결과 귀무가설을 기각하지 못했다.</li>
+</ul>
+</section>
+<section id="참고-sarima" class="level3">
+<h3 class="anchored" data-anchor-id="참고-sarima">참고 : sarima</h3>
+<ul>
+<li>arima와 동일하나 제공하는 정보 측면에서 훨씬 뛰어난다.</li>
+</ul>
+</section>
+<section id="과대적합" class="level3">
+<h3 class="anchored" data-anchor-id="과대적합">과대적합</h3>
+<div id="cell-156" class="cell" data-execution_count="98">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">sarima</span>(dt<span class="sc">$</span>z,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">details=</span>F) <span class="do">## 기존 모형</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>fit1<span class="sc">$</span>ttable</span>
+<span id="cb43-3"><a href="#cb43-3"></a>fit1<span class="sc">$</span>AIC</span>
+<span id="cb43-4"><a href="#cb43-4"></a>fit1<span class="sc">$</span>fit<span class="sc">$</span>sigma2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 2 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">Estimate</th>
+<th data-quarto-table-cell-role="th" scope="col">SE</th>
+<th data-quarto-table-cell-role="th" scope="col">t.value</th>
+<th data-quarto-table-cell-role="th" scope="col">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">ar1</td>
+<td>-0.6715</td>
+<td>0.0728</td>
+<td>-9.2197</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">xmean</td>
+<td>19.8312</td>
+<td>0.1776</td>
+<td>111.6504</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+5.07222841029181
+</div>
+<div class="cell-output cell-output-display">
+8.74389110536125
+</div>
+</div>
+<div id="cell-157" class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">sarima</span>(dt<span class="sc">$</span>z,<span class="dv">2</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="at">details=</span>F) <span class="do">## AR(2)</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>fit2<span class="sc">$</span>ttable</span>
+<span id="cb44-3"><a href="#cb44-3"></a>fit2<span class="sc">$</span>AIC</span>
+<span id="cb44-4"><a href="#cb44-4"></a>fit2<span class="sc">$</span>fit<span class="sc">$</span>sigma2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 3 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">Estimate</th>
+<th data-quarto-table-cell-role="th" scope="col">SE</th>
+<th data-quarto-table-cell-role="th" scope="col">t.value</th>
+<th data-quarto-table-cell-role="th" scope="col">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">ar1</td>
+<td>-0.6231</td>
+<td>0.1002</td>
+<td>-6.2215</td>
+<td>0.0000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">ar2</td>
+<td>0.0704</td>
+<td>0.1003</td>
+<td>0.7020</td>
+<td>0.4843</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">xmean</td>
+<td>19.8331</td>
+<td>0.1906</td>
+<td>104.0657</td>
+<td>0.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+5.0873138285354
+</div>
+<div class="cell-output cell-output-display">
+8.70042443220833
+</div>
+</div>
+<div id="cell-158" class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>fit3 <span class="ot">&lt;-</span> <span class="fu">sarima</span>(dt<span class="sc">$</span>z,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="at">details=</span>F) <span class="do">## ARMA(1,0,1)</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>fit3<span class="sc">$</span>ttable</span>
+<span id="cb45-3"><a href="#cb45-3"></a>fit3<span class="sc">$</span>AIC</span>
+<span id="cb45-4"><a href="#cb45-4"></a>fit3<span class="sc">$</span>fit<span class="sc">$</span>sigma2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 3 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">Estimate</th>
+<th data-quarto-table-cell-role="th" scope="col">SE</th>
+<th data-quarto-table-cell-role="th" scope="col">t.value</th>
+<th data-quarto-table-cell-role="th" scope="col">p.value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">ar1</td>
+<td>-0.7214</td>
+<td>0.0976</td>
+<td>-7.3942</td>
+<td>0.000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row">ma1</td>
+<td>0.0927</td>
+<td>0.1395</td>
+<td>0.6644</td>
+<td>0.508</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row">xmean</td>
+<td>19.8329</td>
+<td>0.1879</td>
+<td>105.5291</td>
+<td>0.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+5.08786741594701
+</div>
+<div class="cell-output cell-output-display">
+8.70536117214488
+</div>
+</div>
+<ul>
+<li><p>모형을 과대적합시켜가며 살펴본결과 기존의 모형을 채택하는 것 이 더 좋아보인다.</p></li>
+<li><p>즉, 과대적합을 굳이 할 필요가 없어 보인다.</p></li>
+</ul>
+</section>
+</section>
+<section id="예제-8.8-단위근-검정" class="level2">
+<h2 class="anchored" data-anchor-id="예제-8.8-단위근-검정">예제 8.8 : 단위근 검정</h2>
+<ul>
+<li>주식회사의 주가지수 자료</li>
+</ul>
+<div id="cell-163" class="cell" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"elecstock.txt"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-164" class="cell" data-execution_count="110">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>dt  <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">t=</span><span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(z),</span>
+<span id="cb47-2"><a href="#cb47-2"></a>                <span class="at">z=</span>z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="시도표-확인" class="level3">
+<h3 class="anchored" data-anchor-id="시도표-확인">시도표 확인</h3>
+<div id="cell-166" class="cell" data-execution_count="112">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, z)) <span class="sc">+</span> </span>
+<span id="cb48-2"><a href="#cb48-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot'</span>)<span class="sc">+</span></span>
+<span id="cb48-4"><a href="#cb48-4"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb48-5"><a href="#cb48-5"></a></span>
+<span id="cb48-6"><a href="#cb48-6"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>z) <span class="sc">+</span> </span>
+<span id="cb48-7"><a href="#cb48-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb48-8"><a href="#cb48-8"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb48-9"><a href="#cb48-9"></a></span>
+<span id="cb48-10"><a href="#cb48-10"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>z) <span class="sc">+</span> </span>
+<span id="cb48-11"><a href="#cb48-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb48-12"><a href="#cb48-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb48-13"><a href="#cb48-13"></a></span>
+<span id="cb48-14"><a href="#cb48-14"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb48-15"><a href="#cb48-15"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb48-16"><a href="#cb48-16"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>ACF만 보아도 확률적 추세가 존재함을 확인할 수 있다. (확률적 추세가 있다고 전체 데이터에 추세가 존재하는 것은 아님)</li>
+</ul>
+<div id="cell-168" class="cell" data-execution_count="117">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a><span class="fu">LjungBox</span>(dt<span class="sc">$</span>z, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>))  <span class="do">##이건 잔차에서 수행하는 것이 아닌가....</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>645.8249</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>1074.2322</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>1347.4446</td>
+<td>18</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>1533.4412</td>
+<td>24</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>실제 검정 결과도 ACF가 모든 시차에서 유의하다.</li>
+</ul>
+<div id="cell-170" class="cell" data-execution_count="116">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>z, <span class="at">lags =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">"c"</span>)</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>z, <span class="at">lags =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"c"</span>)</span>
+<span id="cb50-3"><a href="#cb50-3"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>z, <span class="at">lags =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">"c"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 0
+  STATISTIC:
+    Dickey-Fuller: -1.6769
+  P VALUE:
+    0.434 
+
+Description:
+ Sun Nov 21 16:21:56 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 1
+  STATISTIC:
+    Dickey-Fuller: -1.5572
+  P VALUE:
+    0.4784 
+
+Description:
+ Sun Nov 21 16:21:56 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 2
+  STATISTIC:
+    Dickey-Fuller: -1.629
+  P VALUE:
+    0.4517 
+
+Description:
+ Sun Nov 21 16:21:56 2021 by user: lee</code></pre>
+</div>
+</div>
+<ul>
+<li><p>유의확률을 보았을 때 확률적 추세가 있다고 판단된다. 즉 단위근이 있어 비정상 시계열이라고 판단된다.</p></li>
+<li><p>단위근이 있다는 것은 비정상 시계열이고 차분할 필요가 있다는 뜻이므로 차분을 시행</p></li>
+</ul>
+</section>
+<section id="차분" class="level3">
+<h3 class="anchored" data-anchor-id="차분">차분</h3>
+<div id="cell-174" class="cell" data-execution_count="120">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a>dt[<span class="st">"diff_z"</span>] <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">diff</span>(dt<span class="sc">$</span>z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-175" class="cell" data-execution_count="123">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, diff_z)) <span class="sc">+</span> </span>
+<span id="cb55-2"><a href="#cb55-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb55-3"><a href="#cb55-3"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot'</span>)<span class="sc">+</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb55-5"><a href="#cb55-5"></a></span>
+<span id="cb55-6"><a href="#cb55-6"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>diff_z) <span class="sc">+</span> </span>
+<span id="cb55-7"><a href="#cb55-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb55-8"><a href="#cb55-8"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb55-9"><a href="#cb55-9"></a></span>
+<span id="cb55-10"><a href="#cb55-10"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>diff_z) <span class="sc">+</span> </span>
+<span id="cb55-11"><a href="#cb55-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb55-12"><a href="#cb55-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb55-13"><a href="#cb55-13"></a></span>
+<span id="cb55-14"><a href="#cb55-14"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb55-15"><a href="#cb55-15"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb55-16"><a href="#cb55-16"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-39-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>차분한 결과 ACF와 PACF가 화이트 노이즈 처럼 나왔다.</li>
+</ul>
+<div id="cell-177" class="cell" data-execution_count="124">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1"></a><span class="fu">LjungBox</span>(dt<span class="sc">$</span>diff_z, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>4.064179</td>
+<td>6</td>
+<td>0.6679915</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>8.558882</td>
+<td>12</td>
+<td>0.7400741</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>12.316103</td>
+<td>18</td>
+<td>0.8304954</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>17.495294</td>
+<td>24</td>
+<td>0.8267836</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cell-178" class="cell" data-execution_count="125">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">t.test</span>(dt<span class="sc">$</span>diff_z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    One Sample t-test
+
+data:  dt$diff_z
+t = -0.14564, df = 134, p-value = 0.8844
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ -1.187997  1.025034
+sample estimates:
+  mean of x 
+-0.08148148 </code></pre>
+</div>
+</div>
+<ul>
+<li><p>평균이 0이라고 해도 무방하다.</p></li>
+<li><p>차분한 결과 화이트노이즈라고 봐도 무방하다.</p></li>
+</ul>
+<div id="cell-181" class="cell" data-execution_count="127">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(dt<span class="sc">$</span>z,<span class="at">order=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>))</span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+arima(x = dt$z, order = c(0, 1, 0))
+
+
+sigma^2 estimated as 42.26:  log likelihood = -440.98,  aic = 883.95
+
+Training set error measures:
+                      ME    RMSE      MAE        MPE     MAPE      MASE
+Training set -0.08043704 6.47675 4.897341 -0.2029409 4.084668 0.9928043
+                    ACF1
+Training set -0.03158845</code></pre>
+</div>
+</div>
+<div id="cell-182" class="cell" data-execution_count="128">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a><span class="fu">coeftest</span>(fit) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>ERROR: Error in dimnames(x) &lt;- dn: 'dimnames'의 길이 [2]가 배열의 크기와 같지 않습니다</code></pre>
+</div>
+</div>
+<ul>
+<li>에러가 나는 이유는 화이트 노이즈이기 때문에 모수를 추정할 필요가 없기 때문이다.</li>
+</ul>
+<div id="cell-184" class="cell" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a>dt[<span class="st">"resid"</span>]  <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">resid</span>(fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-185" class="cell" data-execution_count="130">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, resid)) <span class="sc">+</span> </span>
+<span id="cb64-2"><a href="#cb64-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb64-3"><a href="#cb64-3"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col=</span><span class="st">'grey'</span>, <span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb64-4"><a href="#cb64-4"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot of Residual'</span>)<span class="sc">+</span></span>
+<span id="cb64-5"><a href="#cb64-5"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb64-6"><a href="#cb64-6"></a></span>
+<span id="cb64-7"><a href="#cb64-7"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb64-8"><a href="#cb64-8"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb64-9"><a href="#cb64-9"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb64-10"><a href="#cb64-10"></a></span>
+<span id="cb64-11"><a href="#cb64-11"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb64-12"><a href="#cb64-12"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb64-13"><a href="#cb64-13"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb64-14"><a href="#cb64-14"></a></span>
+<span id="cb64-15"><a href="#cb64-15"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb64-16"><a href="#cb64-16"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb64-17"><a href="#cb64-17"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-45-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-186" class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a><span class="fu">shapiro.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##H0 : normal distribution</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="fu">jarque.bera.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##JB test H0: normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  dt$resid
+W = 0.97386, p-value = 0.01058</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Jarque Bera Test
+
+data:  dt$resid
+X-squared = 19.063, df = 2, p-value = 7.254e-05</code></pre>
+</div>
+</div>
+<div id="cell-187" class="cell" data-execution_count="133">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">qqnorm</span>(dt<span class="sc">$</span>resid)</span>
+<span id="cb68-2"><a href="#cb68-2"></a><span class="fu">qqline</span>(dt<span class="sc">$</span>resid, <span class="at">col =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-188" class="cell" data-execution_count="135">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="fu">LjungBox</span>(fit, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 7 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>4.057476</td>
+<td>6</td>
+<td>0.6688985</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>9</td>
+<td>7.076795</td>
+<td>9</td>
+<td>0.6291240</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>8.548020</td>
+<td>12</td>
+<td>0.7409734</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>15</td>
+<td>10.739276</td>
+<td>15</td>
+<td>0.7708482</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>12.308859</td>
+<td>18</td>
+<td>0.8308883</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>21</td>
+<td>13.019517</td>
+<td>21</td>
+<td>0.9079388</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>17.491184</td>
+<td>24</td>
+<td>0.8269712</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li><p>화이트노이즈인 것은 문제가 없으나 정규성 문제가 의심된다.</p></li>
+<li><p>그러나 시계열에서는 정규성을 가지고 문제를 다루지 않기 때문에 딱히 문제가 될 것은 없다.</p></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="예제-8.9-female" class="level2">
+<h2 class="anchored" data-anchor-id="예제-8.9-female">예제 8.9 : female</h2>
+<section id="데이터-로드-및-시도표-확인-2" class="level3">
+<h3 class="anchored" data-anchor-id="데이터-로드-및-시도표-확인-2">데이터 로드 및 시도표 확인</h3>
+<div id="cell-194" class="cell" data-execution_count="136">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a>z <span class="ot">&lt;-</span> <span class="fu">scan</span>(<span class="st">"female.txt"</span>)</span>
+<span id="cb70-2"><a href="#cb70-2"></a></span>
+<span id="cb70-3"><a href="#cb70-3"></a>dt <span class="ot">&lt;-</span> <span class="fu">data.table</span>( <span class="at">t =</span> <span class="fu">seq.Date</span>(<span class="fu">as.Date</span>(<span class="st">"1983-01-01"</span>), </span>
+<span id="cb70-4"><a href="#cb70-4"></a>                               <span class="at">by=</span><span class="st">'month'</span>, </span>
+<span id="cb70-5"><a href="#cb70-5"></a>                               <span class="at">length.out=</span><span class="fu">length</span>(z)),</span>
+<span id="cb70-6"><a href="#cb70-6"></a>                  <span class="at">z=</span>z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-195" class="cell" data-execution_count="137">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, z)) <span class="sc">+</span> </span>
+<span id="cb71-2"><a href="#cb71-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot'</span>)<span class="sc">+</span></span>
+<span id="cb71-4"><a href="#cb71-4"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb71-5"><a href="#cb71-5"></a></span>
+<span id="cb71-6"><a href="#cb71-6"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>z) <span class="sc">+</span> </span>
+<span id="cb71-7"><a href="#cb71-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb71-8"><a href="#cb71-8"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb71-9"><a href="#cb71-9"></a></span>
+<span id="cb71-10"><a href="#cb71-10"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>z) <span class="sc">+</span> </span>
+<span id="cb71-11"><a href="#cb71-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb71-12"><a href="#cb71-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb71-13"><a href="#cb71-13"></a></span>
+<span id="cb71-14"><a href="#cb71-14"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb71-15"><a href="#cb71-15"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb71-16"><a href="#cb71-16"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-50-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>추세가 있어보이며 ACF를 본 결과 차분을 할 필요가 있어 보인다.</li>
+</ul>
+<div id="cell-197" class="cell" data-execution_count="139">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="fu">LjungBox</span>(dt<span class="sc">$</span>z, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>))  <span class="do">## 이건 잔차에 대해서 하는 것이 아닌가?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>532.5488</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>882.5667</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>1119.6281</td>
+<td>18</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>1243.7043</td>
+<td>24</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="단위근검정" class="level3">
+<h3 class="anchored" data-anchor-id="단위근검정">단위근검정</h3>
+<div id="cell-199" class="cell" data-execution_count="140">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>z, <span class="at">lags =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">"ct"</span>)</span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>z, <span class="at">lags =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"ct"</span>)</span>
+<span id="cb73-3"><a href="#cb73-3"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>z, <span class="at">lags =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">"ct"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 0
+  STATISTIC:
+    Dickey-Fuller: -2.1323
+  P VALUE:
+    0.5217 
+
+Description:
+ Sun Nov 21 16:35:14 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 1
+  STATISTIC:
+    Dickey-Fuller: -2.4926
+  P VALUE:
+    0.3723 
+
+Description:
+ Sun Nov 21 16:35:14 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 2
+  STATISTIC:
+    Dickey-Fuller: -2.3453
+  P VALUE:
+    0.4334 
+
+Description:
+ Sun Nov 21 16:35:14 2021 by user: lee</code></pre>
+</div>
+</div>
+</section>
+<section id="선형모형-적합" class="level3">
+<h3 class="anchored" data-anchor-id="선형모형-적합">선형모형 적합</h3>
+<ul>
+<li>결정적 추세가 있어보여 선형모형을 적합시켜봄</li>
+</ul>
+<div id="cell-202" class="cell" data-execution_count="144">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(z<span class="sc">~</span>t, <span class="at">data=</span>dt)</span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="fu">summary</span>(fit1)</span>
+<span id="cb77-3"><a href="#cb77-3"></a><span class="fu">coefficients</span>(fit1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+lm(formula = z ~ t, data = dt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-62.336 -17.180   0.327  16.133  64.068 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) -4.451e+02  1.691e+01  -26.32   &lt;2e-16 ***
+t            1.339e-01  2.624e-03   51.03   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 25.87 on 106 degrees of freedom
+Multiple R-squared:  0.9609,    Adjusted R-squared:  0.9605 
+F-statistic:  2604 on 1 and 106 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<style>
+.dl-inline {width: auto; margin:0; padding: 0}
+.dl-inline>dt, .dl-inline>dd {float: none; width: auto; display: inline-block}
+.dl-inline>dt::after {content: ":\0020"; padding-right: .5ex}
+.dl-inline>dt:not(:first-of-type) {padding-left: .5ex}
+</style><dl class="dl-inline"><dt>(Intercept)</dt><dd>-445.141111728697</dd><dt>t</dt><dd>0.133877598537727</dd></dl>
+</div>
+</div>
+<div id="cell-203" class="cell" data-execution_count="145">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a>dt[, resid_lm <span class="sc">:</span><span class="er">=</span> <span class="fu">residuals</span>(fit1)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-204" class="cell" data-execution_count="146">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, resid_lm)) <span class="sc">+</span> </span>
+<span id="cb80-2"><a href="#cb80-2"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb80-3"><a href="#cb80-3"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot'</span>)<span class="sc">+</span></span>
+<span id="cb80-4"><a href="#cb80-4"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb80-5"><a href="#cb80-5"></a></span>
+<span id="cb80-6"><a href="#cb80-6"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>resid_lm) <span class="sc">+</span> </span>
+<span id="cb80-7"><a href="#cb80-7"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb80-8"><a href="#cb80-8"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb80-9"><a href="#cb80-9"></a></span>
+<span id="cb80-10"><a href="#cb80-10"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>resid_lm) <span class="sc">+</span> </span>
+<span id="cb80-11"><a href="#cb80-11"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb80-12"><a href="#cb80-12"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-205" class="cell" data-execution_count="147">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb81-2"><a href="#cb81-2"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb81-3"><a href="#cb81-3"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-56-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>ACF의 경우 여전히 천천히 감소한다.</li>
+</ul>
+<div id="cell-207" class="cell" data-execution_count="148">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a><span class="fu">LjungBox</span>(dt<span class="sc">$</span>resid_lm, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>259.0391</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>290.6151</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>304.0211</td>
+<td>18</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>312.2599</td>
+<td>24</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="cell-208" class="cell" data-execution_count="149">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>resid_lm, <span class="at">lags =</span> <span class="dv">0</span>, <span class="at">type =</span> <span class="st">"nc"</span>)</span>
+<span id="cb83-2"><a href="#cb83-2"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>resid_lm, <span class="at">lags =</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"nc"</span>)</span>
+<span id="cb83-3"><a href="#cb83-3"></a><span class="fu">adfTest</span>(dt<span class="sc">$</span>resid_lm, <span class="at">lags =</span> <span class="dv">2</span>, <span class="at">type =</span> <span class="st">"nc"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 0
+  STATISTIC:
+    Dickey-Fuller: -2.1703
+  P VALUE:
+    0.03098 
+
+Description:
+ Sun Nov 21 16:38:10 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 1
+  STATISTIC:
+    Dickey-Fuller: -2.544
+  P VALUE:
+    0.0123 
+
+Description:
+ Sun Nov 21 16:38:10 2021 by user: lee</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Title:
+ Augmented Dickey-Fuller Test
+
+Test Results:
+  PARAMETER:
+    Lag Order: 2
+  STATISTIC:
+    Dickey-Fuller: -2.4111
+  P VALUE:
+    0.01784 
+
+Description:
+ Sun Nov 21 16:38:10 2021 by user: lee</code></pre>
+</div>
+</div>
+<div id="cell-209" class="cell" data-execution_count="150">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1"></a><span class="fu">jarque.bera.test</span>(dt<span class="sc">$</span>resid_lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Jarque Bera Test
+
+data:  dt$resid_lm
+X-squared = 0.46892, df = 2, p-value = 0.791</code></pre>
+</div>
+</div>
+<ul>
+<li><p>단위근은 없다고 판단된다. 그러나 ACF를 그려본 결과 차분을 할 필요성이 있다고 판단된다.</p></li>
+<li><p>다시 말하면 우리는 결정적 추세가 있어보여 추세모형을 적합시켰다.</p></li>
+<li><p>거기서 얻어진 추세성분을 제거하여 잔차가 정상시계열이라고 생각을 했으나 잔차의 ACF값을 보니 차분할 필요가 있다고 판단이 되며 PACF값을 살펴본 결과 시차 1이후에 유의하지 않으므로 잔차에 <span class="math inline">\(AR(1)\)</span> 모형을 적합</p></li>
+</ul>
+</section>
+<section id="잔차에-ar1-모형을-적합-후-차분" class="level3">
+<h3 class="anchored" data-anchor-id="잔차에-ar1-모형을-적합-후-차분">잔차에 AR(1) 모형을 적합 후 차분</h3>
+<div id="cell-214" class="cell" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb89"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1"></a>fit_resid <span class="ot">&lt;-</span> <span class="fu">arima</span>(dt<span class="sc">$</span>resid_lm, <span class="at">order=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>), <span class="at">include.mean =</span> F)</span>
+<span id="cb89-2"><a href="#cb89-2"></a>fit_resid</span>
+<span id="cb89-3"><a href="#cb89-3"></a><span class="fu">coeftest</span>(fit_resid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+arima(x = dt$resid_lm, order = c(1, 0, 0), include.mean = F)
+
+Coefficients:
+         ar1
+      0.9076
+s.e.  0.0402
+
+sigma^2 estimated as 122.7:  log likelihood = -413.82,  aic = 831.64</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+z test of coefficients:
+
+    Estimate Std. Error z value  Pr(&gt;|z|)    
+ar1 0.907631   0.040191  22.583 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+</div>
+<div id="cell-215" class="cell" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1"></a>dt[, diff_z <span class="sc">:</span><span class="er">=</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">diff</span>(z))]</span>
+<span id="cb92-2"><a href="#cb92-2"></a></span>
+<span id="cb92-3"><a href="#cb92-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, diff_z)) <span class="sc">+</span> </span>
+<span id="cb92-4"><a href="#cb92-4"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb92-5"><a href="#cb92-5"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot'</span>)<span class="sc">+</span></span>
+<span id="cb92-6"><a href="#cb92-6"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb92-7"><a href="#cb92-7"></a></span>
+<span id="cb92-8"><a href="#cb92-8"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>diff_z) <span class="sc">+</span> </span>
+<span id="cb92-9"><a href="#cb92-9"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb92-10"><a href="#cb92-10"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb92-11"><a href="#cb92-11"></a></span>
+<span id="cb92-12"><a href="#cb92-12"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>diff_z) <span class="sc">+</span> </span>
+<span id="cb92-13"><a href="#cb92-13"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb92-14"><a href="#cb92-14"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb92-15"><a href="#cb92-15"></a></span>
+<span id="cb92-16"><a href="#cb92-16"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb92-17"><a href="#cb92-17"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb92-18"><a href="#cb92-18"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-61-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-216" class="cell" data-execution_count="160">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1"></a><span class="fu">LjungBox</span>(dt<span class="sc">$</span>diff_z, <span class="at">lags=</span><span class="fu">seq</span>(<span class="dv">6</span>,<span class="dv">24</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true">
+<caption>A matrix: 4 × 4 of type dbl</caption>
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th" scope="col">lags</th>
+<th data-quarto-table-cell-role="th" scope="col">statistic</th>
+<th data-quarto-table-cell-role="th" scope="col">df</th>
+<th data-quarto-table-cell-role="th" scope="col">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>6</td>
+<td>4.446936</td>
+<td>6</td>
+<td>0.6164279</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>12</td>
+<td>7.806399</td>
+<td>12</td>
+<td>0.8000707</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>18</td>
+<td>9.035158</td>
+<td>18</td>
+<td>0.9589227</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th" scope="row"></td>
+<td>24</td>
+<td>17.344058</td>
+<td>24</td>
+<td>0.8336217</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<ul>
+<li>차분한 결과 whitenoise처럼 보인다.</li>
+</ul>
+<div id="cell-218" class="cell" data-execution_count="161">
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1"></a><span class="fu">t.test</span>(dt<span class="sc">$</span>diff_z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    One Sample t-test
+
+data:  dt$diff_z
+t = 3.8359, df = 107, p-value = 0.0002119
+alternative hypothesis: true mean is not equal to 0
+95 percent confidence interval:
+ 2.017807 6.334045
+sample estimates:
+mean of x 
+ 4.175926 </code></pre>
+</div>
+</div>
+<ul>
+<li><p>그러나 평균은 0이 아니다. (0이 아니라고 정상시계열이 아니라는 것은 아님 0은 단지 화이트노이즈의 여부 중 하나)</p></li>
+<li><p>차분을 한번 하였을 때 정상기계열이 되었으므로 <span class="math inline">\(ARIMA(0,1,0)\)</span>을 적합</p></li>
+<li><p><span class="math inline">\(ARMIA (p,1,0) \sim AR(p+1)\)</span> 임을 기억하자 (챕터 7)</p></li>
+</ul>
+</section>
+<section id="arima-010" class="level3">
+<h3 class="anchored" data-anchor-id="arima-010">ARIMA (0,1,0)</h3>
+<div id="cell-223" class="cell" data-execution_count="168">
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">arima</span>(dt<span class="sc">$</span>z,<span class="at">order=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>),</span>
+<span id="cb96-2"><a href="#cb96-2"></a>             <span class="at">include.mean =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb96-3"><a href="#cb96-3"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+Call:
+arima(x = dt$z, order = c(0, 1, 0), include.mean = TRUE)
+
+
+sigma^2 estimated as 145.6:  log likelihood = -418.3,  aic = 838.6
+
+Training set error measures:
+                   ME     RMSE      MAE      MPE     MAPE      MASE       ACF1
+Training set 4.177926 12.01043 9.085333 0.990671 2.414276 0.9909589 0.09736789</code></pre>
+</div>
+</div>
+<section id="잔차분석" class="level4">
+<h4 class="anchored" data-anchor-id="잔차분석">잔차분석</h4>
+<div id="cell-225" class="cell" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1"></a>dt[, resid <span class="sc">:</span><span class="er">=</span> <span class="fu">as.numeric</span>(<span class="fu">resid</span>(fit))]</span>
+<span id="cb98-2"><a href="#cb98-2"></a></span>
+<span id="cb98-3"><a href="#cb98-3"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dt, <span class="fu">aes</span>(t, resid)) <span class="sc">+</span> </span>
+<span id="cb98-4"><a href="#cb98-4"></a>  <span class="fu">geom_line</span>(<span class="at">col=</span><span class="st">'steelblue'</span>) <span class="sc">+</span></span>
+<span id="cb98-5"><a href="#cb98-5"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col=</span><span class="st">'grey'</span>, <span class="at">lty=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb98-6"><a href="#cb98-6"></a>  <span class="fu">xlab</span>(<span class="st">""</span>)<span class="sc">+</span><span class="fu">ylab</span>(<span class="st">''</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">'Time serise plot of Residual'</span>)<span class="sc">+</span></span>
+<span id="cb98-7"><a href="#cb98-7"></a>  <span class="fu">theme_bw</span>()</span>
+<span id="cb98-8"><a href="#cb98-8"></a></span>
+<span id="cb98-9"><a href="#cb98-9"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggAcf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb98-10"><a href="#cb98-10"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb98-11"><a href="#cb98-11"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb98-12"><a href="#cb98-12"></a></span>
+<span id="cb98-13"><a href="#cb98-13"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggPacf</span>(dt<span class="sc">$</span>resid) <span class="sc">+</span> </span>
+<span id="cb98-14"><a href="#cb98-14"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span><span class="fu">ylim</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb98-15"><a href="#cb98-15"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_blank</span>())</span>
+<span id="cb98-16"><a href="#cb98-16"></a></span>
+<span id="cb98-17"><a href="#cb98-17"></a><span class="fu">grid.arrange</span>(p3, p1, p2, <span class="at">nrow =</span> <span class="dv">2</span>,</span>
+<span id="cb98-18"><a href="#cb98-18"></a>             <span class="at">layout_matrix =</span> <span class="fu">rbind</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>),</span>
+<span id="cb98-19"><a href="#cb98-19"></a>                                   <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2021-09-17-05. 정상 ARMA 모형 적합_files/figure-html/cell-65-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>앞서 차분한 결과와 동일하게 나옴</li>
+</ul>
+</section>
+<section id="잔차분석-1" class="level4">
+<h4 class="anchored" data-anchor-id="잔차분석-1">잔차분석</h4>
+<div id="cell-228" class="cell" data-execution_count="170">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1"></a><span class="fu">shapiro.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##H0 : normal distribution</span></span>
+<span id="cb99-2"><a href="#cb99-2"></a><span class="fu">jarque.bera.test</span>(dt<span class="sc">$</span>resid)  <span class="do">##JB test H0: normal</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  dt$resid
+W = 0.95542, p-value = 0.001157</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>
+    Jarque Bera Test
+
+data:  dt$resid
+X-squared = 41.577, df = 2, p-value = 9.369e-10</code></pre>
+</div>
+</div>
+<ul>
+<li>근데 왠만하면 선형추세모형보다 ARIMA 모형을 쓰는 것이 복잡하지 않고 간편하다.</li>
+</ul>
+
+
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="pagination-link" aria-label="04. 비정상 ARMA">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">04. 비정상 ARMA</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="pagination-link" aria-label="06. predict">
+        <span class="nav-page-text">06. predict</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
