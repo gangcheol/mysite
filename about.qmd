@@ -60,6 +60,7 @@ about:
 
 
 *** 
+
 ## Extracurricular Activities
 
 * 국민연금공단 빅데이터부 현장실습 | 2020. 03 ~ 2020. 06
@@ -81,57 +82,3 @@ about:
 * [핵심어 추출 및 데이터 증강기법을 이용한 텍스트 분류 모델 성능 개선](https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002890029)
     
 	* 이강철, 안정용 | 한국자료분석학회 | 한국자료분석학회 | 2022. 10 | 통계학
-    
-
-## Awards
-
-* 학회장상 | 한국통계학회 | 2023. 02. 22
-
-* AIVLE Big Project Practical | KT | 2024. 01. 25
-
-*** 
-
-
-## Interest
-
-* NLP
-
-* Action Recognition, Object Detection
-
-* Data Science
-
-* Growth Hacking
-
-***
-
-## My blog
-
-<span style = "font-family : NanumSquare; font-size : 1em; color : Fuchsia;"> **1. Lecture**</span>
-
-* [R for Data Science](https://gangcheol.github.io/mysite/posts/Lecture/RFD/%ED%86%B5%EA%B3%84%EB%B6%84%EC%84%9D/2021-06-01-01.%20sampling.html)
-
-* [Special Topics in Data Visualization](https://gangcheol.github.io/mysite/posts/Lecture/STDV/2023-02-24-boxplot,%20histogram.html)
-
-* [Introduction to Python](https://gangcheol.github.io/mysite/posts/Lecture/IP/2023-08-01-01wk.html)
-
-* [Special Topics in Big Data Analysis](https://gangcheol.github.io/mysite/posts/Lecture/STBD/2022-03-08-(1%EC%A3%BC%EC%B0%A8).html)
-
-* [Special Topics in Machine Learning](https://gangcheol.github.io/mysite/posts/Lecture/STML/2022-01-27-Intro.html)
-
-<span style = "font-family : NanumSquare; font-size : 1em; color : Fuchsia"> **2. Tableau**</span>
-
-* [Tableau Practice](https://gangcheol.github.io/TI2023/)
-
-<span style = "font-family : NanumSquare; font-size : 1em; color : Fuchsia"> **3. DX**</span>
-
-* [DX Consultant Education](https://gangcheol.github.io/mysite2/)
-
-<span style = "font-family : NanumSquare; font-size : 1em; color : Fuchsia"> **4. Study**</span>
-
-* [ISLP Study](https://gangcheol.github.io/ISLP2023/)
-
-* [Algorithm Study](https://gangcheol.github.io/IA2023/)
-
-:::
-
-### 
