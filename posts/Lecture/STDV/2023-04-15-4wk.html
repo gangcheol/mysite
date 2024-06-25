@@ -1,0 +1,2104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.551">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="GANGCHEOL LEE">
+<meta name="dcterms.date" content="2023-04-15">
+
+<title>Gangcheol - 03. 그래프를 그리는 여러 방법</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../posts/Lecture/STDV/2023-04-22-5wk.html" rel="next">
+<link href="../../../posts/Lecture/STDV/2023-04-08-02wk.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Gangcheol</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
+<span class="menu-text">Lecture</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
+<span class="menu-text">Tableau</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
+<span class="menu-text">DX</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
+<span class="menu-text">IA2023</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
+<span class="menu-text">ISLP2023</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html">STDV</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-04-15-4wk.html">03. 그래프를 그리는 여러 방법</a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html">STDV</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-04-15-4wk.html">03. 그래프를 그리는 여러 방법</a></li></ol></nav>
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">03. 그래프를 그리는 여러 방법</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">python</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>GANGCHEOL LEE </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">April 15, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../about.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><strong>About me</strong></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Lecture</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">IP</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-01-01wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 자료형</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-02-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 리스트</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-03-03.튜플.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 튜플</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-04.딕셔너리.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 딕셔너리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-05. 집합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 집합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-06. numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Numpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-07. Numpy 활용.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. Numpy 활용</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-04-08.pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-07-09. Numpy와 Pandas 활용.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Numpy와 Pandas 활용</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-08-10. 밈과 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 밈과 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-09-11. 클래스.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. 클래스</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-10-12. 클래스 탐구 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. 클래스 탐구 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-14-13. 클래스 탐구 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. 클래스 탐구 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/IP/2023-08-14-14. 클래스 탐구 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. 클래스 탐구 (3)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">RFD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">데이터마이닝</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터마이닝/2021-07-10-01. Supervised Learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Supervised Learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터마이닝/2021-07-11-02. Unsupervised learning.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. unsupervised learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터마이닝/2021-07-24-03 Text Mining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Text Mining</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">데이터전처리</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터전처리/2021-12-05-01. 결측치.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 결측치 처리</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터전처리/2021-12-06-02. 표준화와 정규화.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 표준화와 정규화</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/데이터전처리/2021-12-07.03. 날짜 데이터.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 날짜 데이터</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">통계분석</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth4 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-01-01. sampling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. sampling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-03.02. T-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. T-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ANOVA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-07-04. chi-square test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. chi-square test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-09. 05. cor-test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. cor-test</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-15-06. regression analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. regression analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-16-07. regression analysis-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. regression analysis-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-17-08. PCA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. PCA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-21-09. Factor Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. Factor Analysis</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-24-10. Multidimensional scaling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Multidimensional scaling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/RFD/통계분석/2021-06-28-11. Time-seris analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Time-seris analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">STBD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-08-(1주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. 단순선형회귀</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-14-(2주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Tensorflow-1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-21-(3주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. Tensorflow-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-28-(4주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 경사하강법-1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-03-30-(5주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 경사하강법-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-11-(6주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. layer</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-12-(6주차) 과제.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. layer 과제</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-18-(7주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. Adam</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-04-27-중간고사 해설.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. Mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-01-(9주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. MLE</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-02-lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 확률적 경사하강법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-08-lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. softmax</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-11-(11주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. Max pooling, CNN</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-23-(12주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. CNN-2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-05-30-(13주차).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. model fitting</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STBD/2022-06-13-기말고사 문제풀이.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. Final term</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true">
+ <span class="menu-text">STDV</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-08-02wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Histogram equalization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-15-4wk.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">03. 그래프를 그리는 여러 방법</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-22-5wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. qqplot, 찰스미나도의 도표</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-04-29-6wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. Plotnine &amp; Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-06-7wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. Partial Correlation &amp; Pandas Handling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-13-8wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. tidydata</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-14-midsol.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. mid term</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-15-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. folium</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-16-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. Choropleth Map</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-17-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. Choropleth Map &amp; Plotly</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STDV/2023-05-17-final term.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. final term</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">STML</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2022-01-27-Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-01-Overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-04-DNN 딥러닝의 기초 (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. 딥러닝의 기초 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-11 DNN 딥러닝의 기초 (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 딥러닝의 기초 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-18 DNN 딥러닝의 기초 (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 딥러닝의 기초 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-02-25 DNN 딥러닝의 기초 (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. 딥러닝의 기초 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-01-DNN 딥러닝의 기초(5).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. 딥러닝의 기초 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-07-8wk1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. 이미지분석 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-08-8wk2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. 이미지분석 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-22-9wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">10. 순환신경망 (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-03-29-10wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">11. 순환신경망 (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-05-11wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">12. 순환신경망 (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-12-12wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">13. 순환신경망 (4)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-19-13wk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">14. 순환신경망 (5)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-04-26-Extra-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">15. Extra-1: 추천시스템</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STML/2023-05-03-Extra-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">16. Extra-2: 생성모형 (GAN)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">STTS</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-01-00. intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Intro</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-03-01. example (1).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">01. example (1)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-08-02. 확률과정.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">02. 확률과정</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-10-03. ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">03. ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-12-04. 비정상 ARMA.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">04. 비정상 ARMA</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-17-05. 정상 ARMA 모형 적합.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">05. 정상 ARMA 모형 적합</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-21-06. 예측.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">06. predict</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-24-07. example (2).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">07. example (2)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-09-28-08. example (3).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">08. example (3)</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/Lecture/STTS/2021-10-01-09. example (4).html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">09. example (4)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#그래프를-그리는-여러가지-방법" id="toc-그래프를-그리는-여러가지-방법" class="nav-link active" data-scroll-target="#그래프를-그리는-여러가지-방법">그래프를 그리는 여러가지 방법</a>
+  <ul class="collapse">
+  <li><a href="#예제-1-axis를-이용한-플랏" id="toc-예제-1-axis를-이용한-플랏" class="nav-link" data-scroll-target="#예제-1-axis를-이용한-플랏">예제 1 : axis를 이용한 플랏</a></li>
+  <li><a href="#예제-2.-axis를-이용한-서브플랏-방법-1" id="toc-예제-2.-axis를-이용한-서브플랏-방법-1" class="nav-link" data-scroll-target="#예제-2.-axis를-이용한-서브플랏-방법-1">예제 2. axis를 이용한 서브플랏 (방법 1)</a></li>
+  <li><a href="#예제-2.-axis를-이용한-서브플랏-방법-1-1" id="toc-예제-2.-axis를-이용한-서브플랏-방법-1-1" class="nav-link" data-scroll-target="#예제-2.-axis를-이용한-서브플랏-방법-1-1">예제 2. axis를 이용한 서브플랏 (방법 1)</a></li>
+  <li><a href="#예제-4-axis를-이용하여-2x2-서브플랏-그리기" id="toc-예제-4-axis를-이용하여-2x2-서브플랏-그리기" class="nav-link" data-scroll-target="#예제-4-axis를-이용하여-2x2-서브플랏-그리기">예제 4 : axis를 이용하여 2x2 서브플랏 그리기</a></li>
+  <li><a href="#예제-5-plt.subplots를-이용하여-2x2-서프플랏-그리기" id="toc-예제-5-plt.subplots를-이용하여-2x2-서프플랏-그리기" class="nav-link" data-scroll-target="#예제-5-plt.subplots를-이용하여-2x2-서프플랏-그리기">예제 5 : plt.subplots()를 이용하여 2x2 서프플랏 그리기</a></li>
+  <li><a href="#예제-6-axis를-각각의-변수명으로-저장" id="toc-예제-6-axis를-각각의-변수명으로-저장" class="nav-link" data-scroll-target="#예제-6-axis를-각각의-변수명으로-저장">예제 6 : axis를 각각의 변수명으로 저장</a></li>
+  <li><a href="#예제-7-fig.axes" id="toc-예제-7-fig.axes" class="nav-link" data-scroll-target="#예제-7-fig.axes">예제 7 : fig.axes</a></li>
+  </ul></li>
+  <li><a href="#제목-설정" id="toc-제목-설정" class="nav-link" data-scroll-target="#제목-설정">제목 설정</a>
+  <ul class="collapse">
+  <li><a href="#예제-1-plt.plot" id="toc-예제-1-plt.plot" class="nav-link" data-scroll-target="#예제-1-plt.plot">예제 1 : plt.plot()</a></li>
+  <li><a href="#예제-2-axis를-이용" id="toc-예제-2-axis를-이용" class="nav-link" data-scroll-target="#예제-2-axis를-이용">예제 2 : axis를 이용</a></li>
+  <li><a href="#예제-3.-subplot에서-각각의-제목설정" id="toc-예제-3.-subplot에서-각각의-제목설정" class="nav-link" data-scroll-target="#예제-3.-subplot에서-각각의-제목설정">예제 3. subplot에서 각각의 제목설정</a></li>
+  <li><a href="#예제-4-axis의-제목-figure" id="toc-예제-4-axis의-제목-figure" class="nav-link" data-scroll-target="#예제-4-axis의-제목-figure">예제 4 : axis의 제목 + figure</a></li>
+  </ul></li>
+  <li><a href="#축-범위-설정matplotlib" id="toc-축-범위-설정matplotlib" class="nav-link" data-scroll-target="#축-범위-설정matplotlib">축 범위 설정(matplotlib)</a>
+  <ul class="collapse">
+  <li><a href="#예제-1-plt.plot-1" id="toc-예제-1-plt.plot-1" class="nav-link" data-scroll-target="#예제-1-plt.plot-1">예제 1 : plt.plot</a></li>
+  <li><a href="#예제-2-subplotsb" id="toc-예제-2-subplotsb" class="nav-link" data-scroll-target="#예제-2-subplotsb">예제 2: subplotsb</a></li>
+  </ul></li>
+  <li><a href="#통계예제-여러가지-경우의-점도와-표본-상관계수" id="toc-통계예제-여러가지-경우의-점도와-표본-상관계수" class="nav-link" data-scroll-target="#통계예제-여러가지-경우의-점도와-표본-상관계수">통계예제 : 여러가지 경우의 점도와 표본 상관계수</a>
+  <ul class="collapse">
+  <li><a href="#예제-1" id="toc-예제-1" class="nav-link" data-scroll-target="#예제-1">예제 1</a></li>
+  <li><a href="#예졔-2" id="toc-예졔-2" class="nav-link" data-scroll-target="#예졔-2">예졔 2</a></li>
+  <li><a href="#예제-3" id="toc-예제-3" class="nav-link" data-scroll-target="#예제-3">예제 3</a></li>
+  <li><a href="#예제-23으로-알아보는-두-변수의-독립성" id="toc-예제-23으로-알아보는-두-변수의-독립성" class="nav-link" data-scroll-target="#예제-23으로-알아보는-두-변수의-독립성">예제 2,3으로 알아보는 두 변수의 독립성</a></li>
+  <li><a href="#예제-4-또-다른-예제" id="toc-예제-4-또-다른-예제" class="nav-link" data-scroll-target="#예제-4-또-다른-예제">예제 4 : 또 다른 예제</a></li>
+  </ul></li>
+  <li><a href="#matplotlib-seaborn" id="toc-matplotlib-seaborn" class="nav-link" data-scroll-target="#matplotlib-seaborn">matplotlib + seaborn</a>
+  <ul class="collapse">
+  <li><a href="#matplotlib-vs-seaborn" id="toc-matplotlib-vs-seaborn" class="nav-link" data-scroll-target="#matplotlib-vs-seaborn">matplotlib vs seaborn</a></li>
+  <li><a href="#예제-정규분포-체크" id="toc-예제-정규분포-체크" class="nav-link" data-scroll-target="#예제-정규분포-체크">예제 : 정규분포 체크</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="그래프를-그리는-여러가지-방법" class="level1">
+<h1>그래프를 그리는 여러가지 방법</h1>
+<section id="예제-1-axis를-이용한-플랏" class="level2">
+<h2 class="anchored" data-anchor-id="예제-1-axis를-이용한-플랏">예제 1 : axis를 이용한 플랏</h2>
+<div id="cell-3" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681957595244,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>-</code> 구조 : axis <span class="math inline">\(\subset\)</span> axes <span class="math inline">\(\subset\)</span> figure</p>
+<p><code>-</code> 목표 : plt.plot()을 사용하지 않고 아래 그림을 그려보자.</p>
+<div id="cell-6" class="cell" data-executioninfo="{&quot;elapsed&quot;:862,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681957748929,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="029654a0-bbd1-4d8a-e685-0ec39c088008" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>plt.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"or"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 전략 : 그림을 만들고 (도화지를 준비) <span class="math inline">\(\to\)</span> axis를 만들고(네모틀을 만든다.) <span class="math inline">\(\to\)</span> axis에 그림을 그린다.</p>
+<div id="cell-8" class="cell" data-executioninfo="{&quot;elapsed&quot;:688,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958091383,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f10c5b20-50ff-4505-f273-fe56afac717d" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>fig <span class="op">=</span> plt.figure() <span class="co">## step1. 도화지 생성</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a></span>
+<span id="cb3-3"><a href="#cb3-3"></a>fig.add_axes([<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]) <span class="co">## step2. 도화지안에 fig(0,0) 위치에 길이가 (1,1)인 네모틀을 만든다.</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a>axis1 <span class="op">=</span> fig.axes[<span class="dv">0</span>] <span class="co">## step3. 첫 번째 axis</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a>axis1.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"or"</span>) <span class="co">## step4. 첫 번째 axis에 접근하여 그림을 그림</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-4-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-2.-axis를-이용한-서브플랏-방법-1" class="level2">
+<h2 class="anchored" data-anchor-id="예제-2.-axis를-이용한-서브플랏-방법-1">예제 2. axis를 이용한 서브플랏 (방법 1)</h2>
+<div id="cell-10" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958094167,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e721acef-a9ad-4af4-aa7f-7cb3fe5e18a8" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>fig.add_axes([<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>]) <span class="co">## fig (1,0)에 위치에 도화지 생성 세로로 생기는데 그냥 받아들이자</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a></span>
+<span id="cb4-3"><a href="#cb4-3"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-5-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-11" class="cell" data-executioninfo="{&quot;elapsed&quot;:742,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958148747,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>ax2<span class="op">=</span> fig.axes[<span class="dv">1</span>] <span class="co">## 두 번째 axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:268,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958160940,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="1aeefc23-d457-4a21-87d6-5288648d5959" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>ax2.plot ([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"ok"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-13" class="cell" data-executioninfo="{&quot;elapsed&quot;:662,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958166577,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="03d7f8d2-9810-42f3-dc18-34e251ce2370" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 첫 번째 axis에 그림추가</p>
+<div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:1633,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958211218,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="09b469aa-bffd-43ae-c94e-bd19416c3ce3" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>axis1.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"--"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-9-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-2.-axis를-이용한-서브플랏-방법-1-1" class="level2">
+<h2 class="anchored" data-anchor-id="예제-2.-axis를-이용한-서브플랏-방법-1-1">예제 2. axis를 이용한 서브플랏 (방법 1)</h2>
+<div id="cell-17" class="cell" data-executioninfo="{&quot;elapsed&quot;:722,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958264397,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="258265da-15b0-42f6-cc69-fb1c458c352d" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>fig.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>array([&lt;Axes: &gt;, &lt;Axes: &gt;], dtype=object)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-10-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-18" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958275266,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>ax1, ax2 <span class="op">=</span> fig.axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-19" class="cell" data-executioninfo="{&quot;elapsed&quot;:346,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958308814,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="5e13ea71-cb51-4c20-9264-e5bedce09ad9" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>ax1.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"or"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2"></a>ax2.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"ob"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:561,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958313283,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ff7724a1-0d94-487d-c87b-9f94f3f528fd" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-13-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-21" class="cell" data-executioninfo="{&quot;elapsed&quot;:826,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958333262,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="abd4a684-b11b-4413-8c1f-01b7f18c1c42" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>fig.tight_layout()</span>
+<span id="cb14-2"><a href="#cb14-2"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-14-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-22" class="cell" data-executioninfo="{&quot;elapsed&quot;:254,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958348057,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="9372eec2-d550-469f-9d85-0459821051f5" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>ax1.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">"--"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-23" class="cell" data-executioninfo="{&quot;elapsed&quot;:793,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958352523,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="48ce4202-0103-4244-ad74-5d25508b4140" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-4-axis를-이용하여-2x2-서브플랏-그리기" class="level2">
+<h2 class="anchored" data-anchor-id="예제-4-axis를-이용하여-2x2-서브플랏-그리기">예제 4 : axis를 이용하여 2x2 서브플랏 그리기</h2>
+<div id="cell-25" class="cell" data-executioninfo="{&quot;elapsed&quot;:435,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958400104,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="cd3ed889-08be-4be2-f07d-0fec8dae8007" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb17-2"><a href="#cb17-2"></a>fig.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb17-3"><a href="#cb17-3"></a>fig.axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958413577,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>ax1,ax2,ax3,ax4 <span class="op">=</span> fig.axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-27" class="cell" data-executioninfo="{&quot;elapsed&quot;:237,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958418026,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="cfa98c61-964b-453b-8905-3f99223a5900" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>ax1.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">'ob'</span>)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>ax2.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">'or'</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>ax3.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">'ok'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a>ax4.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],<span class="st">'oy'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="예제-5-plt.subplots를-이용하여-2x2-서프플랏-그리기" class="level2">
+<h2 class="anchored" data-anchor-id="예제-5-plt.subplots를-이용하여-2x2-서프플랏-그리기">예제 5 : plt.subplots()를 이용하여 2x2 서프플랏 그리기</h2>
+<div id="cell-29" class="cell" data-executioninfo="{&quot;elapsed&quot;:692,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958502949,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2126437e-3b38-45dd-a77e-cef5de48d44b" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb20-2"><a href="#cb20-2"></a>y <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>]</span>
+<span id="cb20-3"><a href="#cb20-3"></a>_,axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb20-4"><a href="#cb20-4"></a>axs[<span class="dv">0</span>,<span class="dv">0</span>].plot(x,y,<span class="st">"o:r"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5"></a>axs[<span class="dv">0</span>,<span class="dv">1</span>].plot(x,y,<span class="st">"Xb"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6"></a>axs[<span class="dv">1</span>,<span class="dv">0</span>].plot(x,y,<span class="st">"xm"</span>)</span>
+<span id="cb20-7"><a href="#cb20-7"></a>axs[<span class="dv">1</span>,<span class="dv">1</span>].plot(x,y,<span class="st">".--k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-20-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-6-axis를-각각의-변수명으로-저장" class="level2">
+<h2 class="anchored" data-anchor-id="예제-6-axis를-각각의-변수명으로-저장">예제 6 : axis를 각각의 변수명으로 저장</h2>
+<div id="cell-31" class="cell" data-executioninfo="{&quot;elapsed&quot;:1107,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958551392,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="6d414432-0bfd-42af-8d76-699a4e978312" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb21-2"><a href="#cb21-2"></a>y <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">3</span>]</span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb21-5"><a href="#cb21-5"></a></span>
+<span id="cb21-6"><a href="#cb21-6"></a>(ax1, ax2), (ax3, ax4) <span class="op">=</span> axs</span>
+<span id="cb21-7"><a href="#cb21-7"></a></span>
+<span id="cb21-8"><a href="#cb21-8"></a>ax1.plot(x,y,<span class="st">"o:r"</span>)</span>
+<span id="cb21-9"><a href="#cb21-9"></a>ax2.plot(x,y,<span class="st">"Xb"</span>)</span>
+<span id="cb21-10"><a href="#cb21-10"></a>ax3.plot(x,y,<span class="st">"xm"</span>)</span>
+<span id="cb21-11"><a href="#cb21-11"></a>ax4.plot(x,y,<span class="st">"--k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-21-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-7-fig.axes" class="level2">
+<h2 class="anchored" data-anchor-id="예제-7-fig.axes">예제 7 : fig.axes</h2>
+<div id="cell-33" class="cell" data-executioninfo="{&quot;elapsed&quot;:1307,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958613893,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="67b747cf-d487-4e44-d56f-f0c322666081" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>fig,_ <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb22-2"><a href="#cb22-2"></a></span>
+<span id="cb22-3"><a href="#cb22-3"></a>ax1,ax2,ax3,ax4<span class="op">=</span> fig.axes</span>
+<span id="cb22-4"><a href="#cb22-4"></a></span>
+<span id="cb22-5"><a href="#cb22-5"></a>ax1.plot(x,y,<span class="st">"o:r"</span>)</span>
+<span id="cb22-6"><a href="#cb22-6"></a>ax2.plot(x,y,<span class="st">"Xb"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7"></a>ax3.plot(x,y,<span class="st">"xm"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8"></a>ax4.plot(x,y,<span class="st">"--k"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>나한테 편한 방법을 선택해서 그리면 될 것 같당.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="제목-설정" class="level1">
+<h1>제목 설정</h1>
+<section id="예제-1-plt.plot" class="level2">
+<h2 class="anchored" data-anchor-id="예제-1-plt.plot">예제 1 : plt.plot()</h2>
+<div id="cell-38" class="cell" data-executioninfo="{&quot;elapsed&quot;:315,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958764774,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e1a8bb6e-5291-4135-bdef-2c57eed1c4c7" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb23-2"><a href="#cb23-2"></a>y <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">2</span>]</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>plt.plot(x,y)</span>
+<span id="cb23-5"><a href="#cb23-5"></a>plt.title(<span class="st">"title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<pre><code>Text(0.5, 1.0, 'title')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-23-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-2-axis를-이용" class="level2">
+<h2 class="anchored" data-anchor-id="예제-2-axis를-이용">예제 2 : axis를 이용</h2>
+<div id="cell-40" class="cell" data-executioninfo="{&quot;elapsed&quot;:1113,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958803066,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="dee2b44e-db25-4e5a-f858-926b05db4857" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb25-2"><a href="#cb25-2"></a>fig.subplots()</span>
+<span id="cb25-3"><a href="#cb25-3"></a></span>
+<span id="cb25-4"><a href="#cb25-4"></a>ax1 <span class="op">=</span> fig.axes[<span class="dv">0</span>]</span>
+<span id="cb25-5"><a href="#cb25-5"></a>ax1.set_title(<span class="st">"title"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="37">
+<pre><code>Text(0.5, 1.0, 'title')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-24-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-3.-subplot에서-각각의-제목설정" class="level2">
+<h2 class="anchored" data-anchor-id="예제-3.-subplot에서-각각의-제목설정">예제 3. subplot에서 각각의 제목설정</h2>
+<div id="cell-42" class="cell" data-executioninfo="{&quot;elapsed&quot;:1990,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958840474,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="4e0e6ff8-0e6a-4c01-d81b-a92fbaa13b76" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>)</span>
+<span id="cb27-2"><a href="#cb27-2"></a>(ax1,ax2),(ax3,ax4) <span class="op">=</span>  ax</span>
+<span id="cb27-3"><a href="#cb27-3"></a>ax1.set_title(<span class="st">"title1"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4"></a>ax2.set_title(<span class="st">"title2"</span>)</span>
+<span id="cb27-5"><a href="#cb27-5"></a>ax3.set_title(<span class="st">"title3"</span>)</span>
+<span id="cb27-6"><a href="#cb27-6"></a>ax4.set_title(<span class="st">"title4"</span>)</span>
+<span id="cb27-7"><a href="#cb27-7"></a></span>
+<span id="cb27-8"><a href="#cb27-8"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-25-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-4-axis의-제목-figure" class="level2">
+<h2 class="anchored" data-anchor-id="예제-4-axis의-제목-figure">예제 4 : axis의 제목 + figure</h2>
+<div id="cell-44" class="cell" data-executioninfo="{&quot;elapsed&quot;:1920,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958885895,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="29f7522f-79aa-475f-a43c-9dec70980ac5" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>fig.suptitle(<span class="st">"sup title"</span>)</span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a>fig.tight_layout()</span>
+<span id="cb28-4"><a href="#cb28-4"></a>fig</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="축-범위-설정matplotlib" class="level1">
+<h1>축 범위 설정(matplotlib)</h1>
+<section id="예제-1-plt.plot-1" class="level2">
+<h2 class="anchored" data-anchor-id="예제-1-plt.plot-1">예제 1 : plt.plot</h2>
+<div id="cell-48" class="cell" data-executioninfo="{&quot;elapsed&quot;:261,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958935636,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="8bf8be11-83fc-4eb3-a683-a6be250a74b4" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>x <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb29-2"><a href="#cb29-2"></a>y <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]</span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a>plt.plot(x,y,<span class="st">'o'</span>)</span>
+<span id="cb29-5"><a href="#cb29-5"></a>plt.xlim(<span class="op">-</span><span class="dv">1</span>,<span class="dv">5</span>)</span>
+<span id="cb29-6"><a href="#cb29-6"></a>plt.ylim(<span class="dv">3</span>,<span class="dv">7</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-2-subplotsb" class="level2">
+<h2 class="anchored" data-anchor-id="예제-2-subplotsb">예제 2: subplotsb</h2>
+<div id="cell-50" class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681958993098,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-51" class="cell" data-executioninfo="{&quot;elapsed&quot;:856,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959012535,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="adb8906c-5487-4164-8346-aa630c0292a6" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb31-2"><a href="#cb31-2"></a>fig.subplots()</span>
+<span id="cb31-3"><a href="#cb31-3"></a></span>
+<span id="cb31-4"><a href="#cb31-4"></a>ax1 <span class="op">=</span> fig.axes[<span class="dv">0</span>]</span>
+<span id="cb31-5"><a href="#cb31-5"></a></span>
+<span id="cb31-6"><a href="#cb31-6"></a>ax1.plot(np.random.normal(size<span class="op">=</span><span class="dv">100</span>),<span class="st">"o"</span>)</span>
+<span id="cb31-7"><a href="#cb31-7"></a></span>
+<span id="cb31-8"><a href="#cb31-8"></a>ax1.set_xlim(<span class="op">-</span><span class="dv">10</span>,<span class="dv">110</span>)</span>
+<span id="cb31-9"><a href="#cb31-9"></a>ax1.set_ylim(<span class="op">-</span><span class="dv">5</span>,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-29-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="통계예제-여러가지-경우의-점도와-표본-상관계수" class="level1">
+<h1>통계예제 : 여러가지 경우의 점도와 표본 상관계수</h1>
+<section id="예제-1" class="level2">
+<h2 class="anchored" data-anchor-id="예제-1">예제 1</h2>
+<div id="cell-54" class="cell" data-executioninfo="{&quot;elapsed&quot;:1405,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959069241,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="35159cb2-f699-42d8-d47b-0cc8762dfca5" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb32-2"><a href="#cb32-2"></a></span>
+<span id="cb32-3"><a href="#cb32-3"></a>np.random.seed(<span class="dv">202150256</span>)</span>
+<span id="cb32-4"><a href="#cb32-4"></a></span>
+<span id="cb32-5"><a href="#cb32-5"></a>x1 <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">100</span>,endpoint<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-6"><a href="#cb32-6"></a>y1 <span class="op">=</span> x1<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> np.random.normal(scale<span class="op">=</span><span class="fl">0.1</span>,size<span class="op">=</span><span class="dv">100</span>)</span>
+<span id="cb32-7"><a href="#cb32-7"></a></span>
+<span id="cb32-8"><a href="#cb32-8"></a>plt.plot(x1,y1,<span class="st">"o"</span>)</span>
+<span id="cb32-9"><a href="#cb32-9"></a>plt.title(<span class="st">"y=x**2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<pre><code>Text(0.5, 1.0, 'y=x**2')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-30-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-55" class="cell" data-executioninfo="{&quot;elapsed&quot;:1,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959079757,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c1585ac4-4067-47df-f20a-956cc0978a06" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>np.corrcoef(x1,y1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>array([[1.        , 0.01388119],
+       [0.01388119, 1.        ]])</code></pre>
+</div>
+</div>
+<p><code>-</code> (표본) 상관계수의 값이 0에 가까운 것은 두 변수의 <strong>직선관계가 약한 것을 의미한 것</strong>이지 두 변수 사이에 <strong>아무런 함수관계가 없다는 것을 의미하는 것이 아니다.</strong></p>
+</section>
+<section id="예졔-2" class="level2">
+<h2 class="anchored" data-anchor-id="예졔-2">예졔 2</h2>
+<div id="cell-58" class="cell" data-executioninfo="{&quot;elapsed&quot;:2022,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959128036,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="f9ea3193-bec3-4dda-fd47-fbda3bf23920" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>np.random.seed(<span class="dv">202150256</span>)</span>
+<span id="cb36-2"><a href="#cb36-2"></a></span>
+<span id="cb36-3"><a href="#cb36-3"></a>x2 <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">1</span>,high<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>y2 <span class="op">=</span> np.random.uniform(low<span class="op">=-</span><span class="dv">1</span>,high<span class="op">=</span><span class="dv">1</span>,size<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb36-5"><a href="#cb36-5"></a></span>
+<span id="cb36-6"><a href="#cb36-6"></a>plt.plot(x2,y2,<span class="st">"."</span>)</span>
+<span id="cb36-7"><a href="#cb36-7"></a>plt.title(<span class="st">"rect"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>Text(0.5, 1.0, 'rect')</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-32-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-59" class="cell" data-executioninfo="{&quot;elapsed&quot;:398,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959131832,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="17ee0306-26af-4787-c99c-063d4d46bc66" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>np.corrcoef(x2,y2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
+<pre><code>array([[1.       , 0.0059896],
+       [0.0059896, 1.       ]])</code></pre>
+</div>
+</div>
+</section>
+<section id="예제-3" class="level2">
+<h2 class="anchored" data-anchor-id="예제-3">예제 3</h2>
+<div id="cell-61" class="cell" data-executioninfo="{&quot;elapsed&quot;:263,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959166204,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a>radius <span class="op">=</span> x2<span class="op">**</span><span class="dv">2</span><span class="op">+</span> y2<span class="op">**</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-62" class="cell" data-executioninfo="{&quot;elapsed&quot;:1617,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959171527,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="48caf41a-8b07-463b-ebdd-7b91b8316424" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>x3 <span class="op">=</span> x2[radius<span class="op">&lt;</span><span class="dv">1</span>]</span>
+<span id="cb41-2"><a href="#cb41-2"></a>y3 <span class="op">=</span> y2[radius<span class="op">&lt;</span><span class="dv">1</span>]</span>
+<span id="cb41-3"><a href="#cb41-3"></a>plt.plot(x2,y2,<span class="st">"."</span>)</span>
+<span id="cb41-4"><a href="#cb41-4"></a>plt.plot(x3,y3,<span class="st">"."</span>)</span>
+<span id="cb41-5"><a href="#cb41-5"></a>plt.title(<span class="st">"circ"</span>)</span>
+<span id="cb41-6"><a href="#cb41-6"></a>plt.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-35-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-63" class="cell" data-executioninfo="{&quot;elapsed&quot;:283,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959175829,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="41b0b3fc-8ebd-45e2-e60d-00ba28c5822c" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>np.corrcoef(x3,y3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>array([[1.        , 0.00311474],
+       [0.00311474, 1.        ]])</code></pre>
+</div>
+</div>
+</section>
+<section id="예제-23으로-알아보는-두-변수의-독립성" class="level2">
+<h2 class="anchored" data-anchor-id="예제-23으로-알아보는-두-변수의-독립성">예제 2,3으로 알아보는 두 변수의 독립성</h2>
+<p>다음과 같은 경우를 고려하여 보자</p>
+<p><code>1</code>. $ X $ 일 경우 <span class="math inline">\(Y\)</span> 의 분포를 생각해보자. 그리고 히스토그램을 그려보자.</p>
+<p><code>2</code>. <span class="math inline">\(X \in [0.9-h, 0.9 + h]\)</span>일 경우 <span class="math inline">\(Y\)</span>의 분포를 생각해보자. 그리고 히스토그램을 그려보자.</p>
+<p><code>3</code>. <code>1</code> - <code>2</code>를 비교해보자.</p>
+<div id="cell-67" class="cell" data-executioninfo="{&quot;elapsed&quot;:255,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959258414,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>h <span class="op">=</span> <span class="fl">0.05</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-68" class="cell" data-executioninfo="{&quot;elapsed&quot;:848,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959265427,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="cef94ccd-e957-4720-bfd0-cf9e1462bb44" data-cold-fold="true" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>fig, axs <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
+<span id="cb45-2"><a href="#cb45-2"></a>(ax1,ax2),(ax3,ax4) <span class="op">=</span> axs</span>
+<span id="cb45-3"><a href="#cb45-3"></a>ax1.hist(y2[(x2<span class="op">&gt;-</span>h) <span class="op">*</span> (x2<span class="op">&lt;</span>h)])</span>
+<span id="cb45-4"><a href="#cb45-4"></a>ax1.set_title(<span class="st">"x in (-h,h) of example 2"</span>)</span>
+<span id="cb45-5"><a href="#cb45-5"></a>ax2.hist(y3[(x3<span class="op">&gt;-</span>h) <span class="op">*</span> (x3<span class="op">&lt;</span>h)])</span>
+<span id="cb45-6"><a href="#cb45-6"></a>ax2.set_title(<span class="st">"x in (-h,h) of example 3"</span>)</span>
+<span id="cb45-7"><a href="#cb45-7"></a>ax3.hist(y2[(x2<span class="op">&gt;</span><span class="fl">0.9</span><span class="op">-</span>h) <span class="op">*</span> (x2<span class="op">&lt;</span><span class="fl">0.9</span><span class="op">+</span>h)])</span>
+<span id="cb45-8"><a href="#cb45-8"></a>ax3.set_title(<span class="st">"x in (0.9-h,0.9+h) of example 2"</span>)</span>
+<span id="cb45-9"><a href="#cb45-9"></a>ax4.hist(y3[(x3<span class="op">&gt;</span><span class="fl">0.9</span><span class="op">-</span>h) <span class="op">*</span> (x3<span class="op">&lt;</span><span class="fl">0.9</span><span class="op">+</span>h)])</span>
+<span id="cb45-10"><a href="#cb45-10"></a>ax4.set_title(<span class="st">"x in (0.9-h,0.9+h) of example 3"</span>)</span>
+<span id="cb45-11"><a href="#cb45-11"></a>ax4.set_xlim(<span class="op">-</span><span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb45-12"><a href="#cb45-12"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-38-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>예제 3같은 경우 <span class="math inline">\(x\)</span>의 범위에 따라 <span class="math inline">\(y\)</span>에 분포가 달라짐을 볼 수 있는데 이는 독립이 아니라는 것을 뜻한다.</li>
+</ul>
+<div id="cell-70" class="cell" data-executioninfo="{&quot;elapsed&quot;:384,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959320752,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="0c3adff6-7427-4835-d0d0-115b7367c074" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>np.corrcoef(x3,y3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
+<pre><code>array([[1.        , 0.00311474],
+       [0.00311474, 1.        ]])</code></pre>
+</div>
+</div>
+<ul>
+<li>위 처럼 상관계수가 낮은 값을 갖더라도 <span class="math inline">\(x\)</span>의 범위에 따라 <span class="math inline">\(y\)</span>값이 변하므로 독립이 아니라고 판단할 수 있다.</li>
+</ul>
+</section>
+<section id="예제-4-또-다른-예제" class="level2">
+<h2 class="anchored" data-anchor-id="예제-4-또-다른-예제">예제 4 : 또 다른 예제</h2>
+<div id="cell-73" class="cell" data-executioninfo="{&quot;elapsed&quot;:1340,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959527028,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="690b25bb-a670-4f3d-b1b6-f793749fbd0b" data-cold-fold="true" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>np.random.seed(<span class="dv">202150256</span>)</span>
+<span id="cb48-2"><a href="#cb48-2"></a></span>
+<span id="cb48-3"><a href="#cb48-3"></a>x4 <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb48-4"><a href="#cb48-4"></a>y4 <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb48-5"><a href="#cb48-5"></a></span>
+<span id="cb48-6"><a href="#cb48-6"></a>plt.scatter(x4,y4,alpha<span class="op">=</span><span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-40-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-74" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959533054,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="53172907-69f5-4ea7-a438-7a7c586185a9" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>np.corrcoef(x4,y4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>array([[ 1.        , -0.00359161],
+       [-0.00359161,  1.        ]])</code></pre>
+</div>
+</div>
+<ul>
+<li><p>상관계수만 보았을 때는 <span class="math inline">\(x,y\)</span> 관계가 아무런 독립 즉, 아무런 연관이 없는 것 같다.</p></li>
+<li><p>전 예제처럼 x 값의 범위를 변경해주며 확인하여 보자</p></li>
+</ul>
+<div id="cell-76" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959549303,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="171df189-c428-4425-8c7f-deb148bf9ce7" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>k <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">9</span>)</span>
+<span id="cb51-2"><a href="#cb51-2"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="60">
+<pre><code>array([-2. , -1.5, -1. , -0.5,  0. ,  0.5,  1. ,  1.5,  2. ])</code></pre>
+</div>
+</div>
+<p>::: {#cell-77 .cell 0=‘c’ 1=‘o’ 2=‘d’ 3=‘e’ 4=‘-’ 5=‘f’ 6=‘o’ 7=‘l’ 8=‘d’ 9=’ ’ 10=‘:’ 11=‘t’ 12=‘r’ 13=‘u’ 14=‘e’ executionInfo=‘{“elapsed”:2172,“status”:“ok”,“timestamp”:1681959577833,“user”:{“displayName”:“이강철”,“userId”:“13507850890638580947”},“user_tz”:-540}’ outputId=‘68ef56b0-eab1-4d70-e031-e491744064c5’ execution_count=61}</p>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>fig,axes <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">3</span> , figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb53-2"><a href="#cb53-2"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">9</span>) :</span>
+<span id="cb53-3"><a href="#cb53-3"></a>    fig.axes[i].hist(y4[ (x4<span class="op">&gt;</span>k[i]<span class="op">-</span>h) <span class="op">*</span> (x4<span class="op">&lt;</span> k[i]<span class="op">+</span>h)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-43-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<p>:::</p>
+<ul>
+<li>히스토그램을 살펴본 결과 밀도는 좀 다를 수 있나 분포의 모양이 전부 종모양으로 독립이라고 판단할 수 있다.</li>
+</ul>
+</section>
+</section>
+<section id="matplotlib-seaborn" class="level1">
+<h1>matplotlib + seaborn</h1>
+<div id="cell-80" class="cell" data-executioninfo="{&quot;elapsed&quot;:401,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959651663,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb54-3"><a href="#cb54-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-81" class="cell" data-executioninfo="{&quot;elapsed&quot;:261,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959758319,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>x<span class="op">=</span>[<span class="dv">44</span>,<span class="dv">48</span>,<span class="dv">49</span>,<span class="dv">58</span>,<span class="dv">62</span>,<span class="dv">68</span>,<span class="dv">69</span>,<span class="dv">70</span>,<span class="dv">76</span>,<span class="dv">79</span>] <span class="co"># 몸무게 </span></span>
+<span id="cb55-2"><a href="#cb55-2"></a>y<span class="op">=</span>[<span class="dv">159</span>,<span class="dv">160</span>,<span class="dv">162</span>,<span class="dv">165</span>,<span class="dv">167</span>,<span class="dv">162</span>,<span class="dv">165</span>,<span class="dv">175</span>,<span class="dv">165</span>,<span class="dv">172</span>] <span class="co">#키 </span></span>
+<span id="cb55-3"><a href="#cb55-3"></a>g<span class="op">=</span><span class="st">'F'</span>,<span class="st">'F'</span>,<span class="st">'F'</span>,<span class="st">'F'</span>,<span class="st">'F'</span>,<span class="st">'M'</span>,<span class="st">'M'</span>,<span class="st">'M'</span>,<span class="st">'M'</span>,<span class="st">'M'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-82" class="cell" data-executioninfo="{&quot;elapsed&quot;:431,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959759836,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d7e07a08-7377-4f44-91b7-024970611fed" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>plt.plot(x,y,<span class="st">"o"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-46-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="cell-83" class="cell" data-executioninfo="{&quot;elapsed&quot;:777,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959761492,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="0e6f545f-d1a2-4503-8068-186dc2d9054f" data-execution_count="80">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a>sns.scatterplot(x<span class="op">=</span>x,y<span class="op">=</span>y,hue<span class="op">=</span>g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-47-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 두 그림을 나란히 겹처 그리는 방법</p>
+<div id="cell-85" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959831119,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="84">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a>?sns.scatterplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-86" class="cell" data-executioninfo="{&quot;elapsed&quot;:2116,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959909676,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="964f7a35-4915-480d-ebfd-5430d0b092f5" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>, figsize<span class="op">=</span> (<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb59-2"><a href="#cb59-2"></a>(ax1,ax2) <span class="op">=</span> axes</span>
+<span id="cb59-3"><a href="#cb59-3"></a>ax1.set_title(<span class="st">"matplotlib"</span>)</span>
+<span id="cb59-4"><a href="#cb59-4"></a>ax2.set_title(<span class="st">"seaborn"</span>)</span>
+<span id="cb59-5"><a href="#cb59-5"></a>ax1.plot(x,y,<span class="st">"o"</span>)</span>
+<span id="cb59-6"><a href="#cb59-6"></a><span class="co">#sns.scatterplot(x,y,hue=g,ax=ax2) 이렇게 하면 안그려짐</span></span>
+<span id="cb59-7"><a href="#cb59-7"></a>sns.scatterplot(x<span class="op">=</span>x,y<span class="op">=</span>y,hue<span class="op">=</span>g,ax<span class="op">=</span>ax2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-49-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="matplotlib-vs-seaborn" class="level2">
+<h2 class="anchored" data-anchor-id="matplotlib-vs-seaborn">matplotlib vs seaborn</h2>
+<p><code>-</code> 디자인이 예쁜 패키지를 선택하여 하나만 공부하는 것은 그렇게 좋은 전략이 아니다.</p>
+<p><code>-</code> 아래와 같이 <code>seaborn</code> 테마를 입혀 <code>matplotlib</code>에 적용할 수 도 있다.</p>
+<div id="cell-90" class="cell" data-executioninfo="{&quot;elapsed&quot;:868,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681959963285,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b4057ff2-7d0f-441c-bc43-157b8c202df5" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>sns.set_theme()</span>
+<span id="cb60-2"><a href="#cb60-2"></a>plt.plot([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>],[<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>],<span class="st">"or"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-50-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="예제-정규분포-체크" class="level2">
+<h2 class="anchored" data-anchor-id="예제-정규분포-체크">예제 : 정규분포 체크</h2>
+<div id="cell-92" class="cell" data-executioninfo="{&quot;elapsed&quot;:723,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960003415,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="92aa4037-5a50-436a-c3b6-d47a6a9e4fe9" data-execution_count="91">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a>np.random.seed(<span class="dv">202150256</span>)</span>
+<span id="cb61-2"><a href="#cb61-2"></a>x <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="dv">1000</span>,loc<span class="op">=</span><span class="dv">2</span>,scale<span class="op">=</span><span class="fl">1.5</span>)</span>
+<span id="cb61-3"><a href="#cb61-3"></a></span>
+<span id="cb61-4"><a href="#cb61-4"></a>plt.hist(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="91">
+<pre><code>(array([  1.,  13.,  44., 129., 231., 278., 181.,  89.,  27.,   7.]),
+ array([-3.62829921, -2.57400059, -1.51970198, -0.46540336,  0.58889525,
+         1.64319387,  2.69749249,  3.7517911 ,  4.80608972,  5.86038834,
+         6.91468695]),
+ &lt;BarContainer object of 10 artists&gt;)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-51-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 기존에 내가배웠던 것 : 종모양이니 정규분포인 듯 하다.</p>
+<p><code>-</code> + 밀도추정곡선을 그려 정규성을 추정해보자. <span class="math inline">\(\to\)</span> seaborn을 활용</p>
+<div id="cell-95" class="cell" data-executioninfo="{&quot;elapsed&quot;:1283,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960026207,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e935b7d2-4045-4e7c-c624-974533098fdb" data-execution_count="92">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>sns.histplot(x,kde<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-52-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 그렇다면 아래와 같은 경우는 어떤가? <span class="math inline">\(\to\)</span> t분포의 경우</p>
+<div id="cell-97" class="cell" data-executioninfo="{&quot;elapsed&quot;:1105,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960082839,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="b033b047-b490-4b7c-bd7c-6e8198393c18" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>np.random.seed(<span class="dv">202150256</span>)</span>
+<span id="cb64-2"><a href="#cb64-2"></a></span>
+<span id="cb64-3"><a href="#cb64-3"></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb64-4"><a href="#cb64-4"></a></span>
+<span id="cb64-5"><a href="#cb64-5"></a>y <span class="op">=</span> stats.t.rvs(<span class="dv">10</span>,size<span class="op">=</span><span class="dv">1000</span>) <span class="co">## 자유도가 10이고 size가 1000인 t분포를 생성</span></span>
+<span id="cb64-6"><a href="#cb64-6"></a></span>
+<span id="cb64-7"><a href="#cb64-7"></a>sns.histplot(y,kde<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-53-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 생성한 y도 종모양이다.</p>
+<p><code>-</code> 비교 : 둘다 비슷한 것 같으면서도 scale이 조큼 다르다.</p>
+<div id="cell-100" class="cell" data-executioninfo="{&quot;elapsed&quot;:1433,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960151027,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="bf7ef8f8-8dd7-431d-9f51-afecc3ce8efd" data-execution_count="96">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span> , figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb65-2"><a href="#cb65-2"></a>ax1,ax2 <span class="op">=</span> axes</span>
+<span id="cb65-3"><a href="#cb65-3"></a>sns.histplot(x,ax<span class="op">=</span>ax1,kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb65-4"><a href="#cb65-4"></a>sns.histplot(y,ax<span class="op">=</span>ax2,kde<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-54-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> 표준화 수행</p>
+<div id="cell-102" class="cell" data-executioninfo="{&quot;elapsed&quot;:1745,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960190349,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="62174f9d-5fa5-48d2-8a0a-959b2d0b9470" data-execution_count="97">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span> , figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">5</span>))</span>
+<span id="cb66-2"><a href="#cb66-2"></a>ax1,ax2 <span class="op">=</span> axes</span>
+<span id="cb66-3"><a href="#cb66-3"></a>xx <span class="op">=</span> (x<span class="op">-</span>np.mean(x))<span class="op">/</span>np.std(x,ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb66-4"><a href="#cb66-4"></a>yy <span class="op">=</span> (y<span class="op">-</span>np.mean(y))<span class="op">/</span>np.std(y,ddof<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb66-5"><a href="#cb66-5"></a></span>
+<span id="cb66-6"><a href="#cb66-6"></a>sns.histplot(xx,ax<span class="op">=</span>ax1,kde<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb66-7"><a href="#cb66-7"></a>sns.histplot(yy,ax<span class="op">=</span>ax2,kde<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-55-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><code>-</code> boxplot과 함께 비교</p>
+<div id="cell-104" class="cell" data-executioninfo="{&quot;elapsed&quot;:444,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960277414,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="102">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a>?sns.boxplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-105" class="cell" data-executioninfo="{&quot;elapsed&quot;:2434,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1681960352145,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="0ceb941f-3cb2-470c-a722-4951831c9a17" data-execution_count="105">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>,<span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">5</span>))</span>
+<span id="cb68-2"><a href="#cb68-2"></a>(ax1,ax2),(ax3,ax4) <span class="op">=</span> axes</span>
+<span id="cb68-3"><a href="#cb68-3"></a>ax1.set_title(<span class="st">"normal distribution"</span>)</span>
+<span id="cb68-4"><a href="#cb68-4"></a>ax2.set_title(<span class="st">"normal distribution"</span>)</span>
+<span id="cb68-5"><a href="#cb68-5"></a></span>
+<span id="cb68-6"><a href="#cb68-6"></a>ax3.set_title(<span class="st">"t distribution"</span>)</span>
+<span id="cb68-7"><a href="#cb68-7"></a>ax4.set_title(<span class="st">"t distribution"</span>)</span>
+<span id="cb68-8"><a href="#cb68-8"></a></span>
+<span id="cb68-9"><a href="#cb68-9"></a>sns.boxplot(xx,ax<span class="op">=</span>ax1,orient<span class="op">=</span><span class="st">"h"</span>)</span>
+<span id="cb68-10"><a href="#cb68-10"></a>sns.histplot(xx,ax<span class="op">=</span>ax2)</span>
+<span id="cb68-11"><a href="#cb68-11"></a></span>
+<span id="cb68-12"><a href="#cb68-12"></a>sns.boxplot(yy,ax<span class="op">=</span>ax3,orient<span class="op">=</span><span class="st">"h"</span>)</span>
+<span id="cb68-13"><a href="#cb68-13"></a>sns.histplot(yy,ax<span class="op">=</span>ax4)</span>
+<span id="cb68-14"><a href="#cb68-14"></a>fig.tight_layout()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="2023-04-15-4wk_files/figure-html/cell-57-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>정규분포와 다르게 t분포는 이상치라고 판단되는점이 더 많다.</li>
+</ul>
+<p><code>-</code> 난 아직도 이걸보고 정규성? 이라는 것을 판단하기 버거워 - &gt; 종모양을 보고 <span class="math inline">\(y\)</span>는 정규분포야 라고 정확히 판단하는 건 오류가 있는 것 같에</p>
+<p><code>-</code> 관찰 : boxplot을 그려보니 <span class="math inline">\(y\)</span>의 꼬리가 정규분포보다두꺼워 보인다.</p>
+<p><code>-</code> 즉 단순히 <code>histogram</code> 만 보고 데이터가 정규성이라고 판단하는 것은 오류의 가능성이 있다…</p>
+<p><code>-</code> qqplot을 배울거니 걱정하지 말자.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../posts/Lecture/STDV/2023-04-08-02wk.html" class="pagination-link" aria-label="02. Histogram equalization">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">02. Histogram equalization</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../posts/Lecture/STDV/2023-04-22-5wk.html" class="pagination-link" aria-label="04. qqplot, 찰스미나도의 도표">
+        <span class="nav-page-text">04. qqplot, 찰스미나도의 도표</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
