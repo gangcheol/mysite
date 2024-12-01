@@ -2,23 +2,12 @@ project:
   type: website
   output-dir : docs  
 website:
-  title: "Gangcheol"
+  title: "GC site"
   page-navigation: true
   navbar:
-    left:
-       - text : "Lecture"
-         href : https://gangcheol.github.io/mysite/
-       - text : "Tableau"
-         href : https://gangcheol.github.io/TI2023/
-       - text : "DX"
-         href : https://gangcheol.github.io/mysite2/
-       - text : "IA2023"
-         href : https://gangcheol.github.io/IA2023/
-       - text : "ISLP2023"
-         href : https://gangcheol.github.io/ISLP2023/
     right:
-      - icon: github
-        href: https://github.com/gangcheol/
+      - icon : github
+        href : https://github.com/gangcheol/
   sidebar:
     style: "docked"
     search: True
@@ -26,13 +15,5 @@ website:
     
 format:
   html:
-    css: styles.css
-    toc: true
-    code-fold : False
-    code-line-numbers : True
-    code-copy : True
-
-theme :
-  light : flatly
-  
-editor : visual
+    theme : materia
+    css : styles.css

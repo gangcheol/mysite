@@ -9,7 +9,7 @@
 <meta name="author" content="GANGCHEOL LEE">
 <meta name="dcterms.date" content="2021-06-05">
 
-<title>Gangcheol - 03. ANOVA</title>
+<title>GC site - 03. ANOVA</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -141,12 +141,12 @@ window.Quarto = {
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../../index.html">
-    <span class="navbar-title">Gangcheol</span>
+    <span class="navbar-title">GC site</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -154,28 +154,6 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
-<span class="menu-text">Lecture</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
-<span class="menu-text">Tableau</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
-<span class="menu-text">DX</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
-<span class="menu-text">IA2023</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
-<span class="menu-text">ISLP2023</span></a>
-  </li>  
-</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
@@ -193,7 +171,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-01-01. sampling.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html">03. ANOVA</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../posts/2023-07-31-00.Quarto Guide.html">Posts</a></li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-01-01. sampling.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html">03. ANOVA</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -203,38 +181,7 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-01-01. sampling.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html">03. ANOVA</a></li></ol></nav>
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">03. ANOVA</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">R</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>GANGCHEOL LEE </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">June 5, 2021</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -259,6 +206,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../../posts/2023-07-31-00.Quarto Guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Quarto Guide</span></a>
+  </div>
+</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -903,10 +856,40 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../../posts/2023-07-31-00.Quarto Guide.html">Posts</a></li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item">RFD</li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-01-01. sampling.html">통계분석</a></li><li class="breadcrumb-item"><a href="../../../../posts/Lecture/RFD/통계분석/2021-06-05-03. ANOVA.html">03. ANOVA</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">03. ANOVA</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>GANGCHEOL LEE </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 5, 2021</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="일원배치-분산분석-one-way-anova" class="level1">
@@ -923,7 +906,7 @@ window.Quarto = {
 <section id="r-실습" class="level2">
 <h2 class="anchored" data-anchor-id="r-실습">R 실습</h2>
 <div id="cell-10" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">by</span>( iris<span class="sc">$</span>Sepal.Width,iris<span class="sc">$</span>Species,shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>( iris<span class="sc">$</span>Sepal.Width,iris<span class="sc">$</span>Species,shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>iris$Species: setosa
 
@@ -953,7 +936,7 @@ W = 0.96739, p-value = 0.1809</code></pre>
 <li>정규성 검정결과 세 가지 종 모두 정규성을 만족한다.</li>
 </ul>
 <div id="cell-12" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">str</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   150 obs. of  5 variables:
  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -964,7 +947,7 @@ W = 0.96739, p-value = 0.1809</code></pre>
 </div>
 </div>
 <div id="cell-13" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">bartlett.test</span>(Sepal.Width<span class="sc">~</span>Species ,<span class="at">data=</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(Sepal.Width<span class="sc">~</span>Species ,<span class="at">data=</span> iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Bartlett test of homogeneity of variances
@@ -978,8 +961,8 @@ Bartlett's K-squared = 2.0911, df = 2, p-value = 0.3515</code></pre>
 <li><p>정규성과 등분산성을 만족한다는 가정하에 일원배치 분산분석을 수행</p></li>
 </ul>
 <div id="cell-16" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>result <span class="ot">&lt;-</span> <span class="fu">oneway.test</span>(Sepal.Width<span class="sc">~</span>Species, <span class="at">data=</span>iris,<span class="at">var.equal=</span>T)</span>
-<span id="cb7-2"><a href="#cb7-2"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">oneway.test</span>(Sepal.Width<span class="sc">~</span>Species, <span class="at">data=</span>iris,<span class="at">var.equal=</span>T)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     One-way analysis of means
@@ -993,10 +976,10 @@ F = 49.16, num df = 2, denom df = 147, p-value &lt; 2.2e-16</code></pre>
 <li><p>사후검정을 통해 확인</p></li>
 </ul>
 <div id="cell-19" class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">library</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-20" class="cell" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">pairwise.t.test</span>(iris<span class="sc">$</span>Sepal.Width,iris<span class="sc">$</span>Species,<span class="at">pool.sd=</span>F,<span class="at">p.adj=</span><span class="st">"bonf"</span>) <span class="do">## pool.sd=F는 합동공분산 사용여부 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pairwise.t.test</span>(iris<span class="sc">$</span>Sepal.Width,iris<span class="sc">$</span>Species,<span class="at">pool.sd=</span>F,<span class="at">p.adj=</span><span class="st">"bonf"</span>) <span class="do">## pool.sd=F는 합동공분산 사용여부 </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>
     Pairwise comparisons using t tests with non-pooled SD 
@@ -1031,7 +1014,7 @@ P value adjustment method: bonferroni </code></pre>
 <li>실린더 개수와 변속기 종류에 따른 주행거리의 차이가 있는지 검정</li>
 </ul>
 <div id="cell-31" class="cell" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   32 obs. of  11 variables:
  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
@@ -1048,26 +1031,26 @@ P value adjustment method: bonferroni </code></pre>
 </div>
 </div>
 <div id="cell-32" class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>mtcars<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl)</span>
-<span id="cb14-2"><a href="#cb14-2"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>cyl <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>cyl)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>am <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(mtcars<span class="sc">$</span>am)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-33" class="cell" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-34" class="cell" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">#mtcars %&gt;% </span></span>
-<span id="cb16-2"><a href="#cb16-2"></a> <span class="co">#       group_by(cyl,am) %&gt;% </span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="co">#          summarise(statistic = shapiro.test(mpg)$statistic,</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="co">#                    p.value = shapiro.test(mpg)$p.value) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mtcars %&gt;% </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> <span class="co">#       group_by(cyl,am) %&gt;% </span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#          summarise(statistic = shapiro.test(mpg)$statistic,</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">#                    p.value = shapiro.test(mpg)$p.value) </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li>본래는 위와 같이 검정을 하여야 하나 샘플사이즈가 3보다 적은 그룹이 있어 계산 불가…</li>
 </ul>
 <div id="cell-36" class="cell" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>car_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(mpg<span class="sc">~</span>cyl<span class="sc">*</span>am,mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>car_aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(mpg<span class="sc">~</span>cyl<span class="sc">*</span>am,mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-37" class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">summary</span>(car_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(car_aov)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <pre><code>            Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 cyl          2  824.8   412.4  44.852 3.73e-09 ***
@@ -1082,10 +1065,10 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>검정결과 <strong>실린더개수(cyl)</strong> 에 따른 주행거리 차이만 통계적으로 유의하다는 결론을 내렸다.</li>
 </ul>
 <div id="cell-39" class="cell" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">repr.plot.res=</span><span class="dv">200</span>,<span class="at">repr.plot.height=</span><span class="dv">5</span>,<span class="at">repr.plot.width=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-40" class="cell" data-execution_count="106">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">interaction.plot</span>(mtcars<span class="sc">$</span>cyl,mtcars<span class="sc">$</span>am,mtcars<span class="sc">$</span>mpg,<span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>,<span class="st">"blue"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">interaction.plot</span>(mtcars<span class="sc">$</span>cyl,mtcars<span class="sc">$</span>am,mtcars<span class="sc">$</span>mpg,<span class="at">col=</span><span class="fu">c</span>(<span class="st">"red"</span>,<span class="st">"blue"</span>),<span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1511,6 +1494,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="gangcheol/mysite" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">

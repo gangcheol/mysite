@@ -99,7 +99,7 @@ about:
 
 * [Special Topics in Machine Learning](https://gangcheol.github.io/mysite/posts/Lecture/STML/2022-01-27-Intro.html)
 
-* [Special Topics in Time Series Analysis]
+* [Special Topics in Time Series Analysis](https://gangcheol.github.io/mysite/posts/Lecture/STTS/2021-09-01-00.%20intro.html)
 
 * [Tableau Practice](https://gangcheol.github.io/TI2023/)
 

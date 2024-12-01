@@ -9,7 +9,7 @@
 <meta name="author" content="GANGCHEOL LEE">
 <meta name="dcterms.date" content="2023-05-06">
 
-<title>Gangcheol - 06. Partial Correlation &amp; Pandas Handling</title>
+<title>GC site - 06. Partial Correlation &amp; Pandas Handling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -144,12 +144,12 @@ window.Quarto = {
 <body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../../index.html">
-    <span class="navbar-title">Gangcheol</span>
+    <span class="navbar-title">GC site</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -157,28 +157,6 @@ window.Quarto = {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite/"> 
-<span class="menu-text">Lecture</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/TI2023/"> 
-<span class="menu-text">Tableau</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/mysite2/"> 
-<span class="menu-text">DX</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/IA2023/"> 
-<span class="menu-text">IA2023</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="https://gangcheol.github.io/ISLP2023/"> 
-<span class="menu-text">ISLP2023</span></a>
-  </li>  
-</ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
     <a class="nav-link" href="https://github.com/gangcheol/"> <i class="bi bi-github" role="img">
@@ -196,7 +174,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html">STDV</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-05-06-7wk.html">06. Partial Correlation &amp; Pandas Handling</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../posts/2023-07-31-00.Quarto Guide.html">Posts</a></li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html">STDV</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-05-06-7wk.html">06. Partial Correlation &amp; Pandas Handling</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -206,38 +184,7 @@ window.Quarto = {
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html">STDV</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-05-06-7wk.html">06. Partial Correlation &amp; Pandas Handling</a></li></ol></nav>
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">06. Partial Correlation &amp; Pandas Handling</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">python</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>GANGCHEOL LEE </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">May 6, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -262,6 +209,12 @@ window.Quarto = {
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../posts/2023-07-31-00.Quarto Guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">00. Quarto Guide</span></a>
+  </div>
+</li>
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -923,10 +876,40 @@ window.Quarto = {
 </nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../posts/2023-07-31-00.Quarto Guide.html">Posts</a></li><li class="breadcrumb-item">Lecture</li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-02-24-boxplot, histogram.html">STDV</a></li><li class="breadcrumb-item"><a href="../../../posts/Lecture/STDV/2023-05-06-7wk.html">06. Partial Correlation &amp; Pandas Handling</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">06. Partial Correlation &amp; Pandas Handling</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">python</div>
+  </div>
+  </div>
 
 
 
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>GANGCHEOL LEE </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 6, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="partial-correlation" class="level1">
@@ -940,15 +923,15 @@ window.Quarto = {
 <li>“아이스크림과 소아마비는 상관관계가 높을 것이다” 라는 것이 이 문제의 핵심 <span class="math inline">\(\to\)</span> 사실은 전혀 그렇지 않음</li>
 </ul>
 <div id="cell-5" class="cell" data-executioninfo="{&quot;elapsed&quot;:4216,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955532902,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-6" class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955532903,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/extremum.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/extremum.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-7" class="cell" data-executioninfo="{&quot;elapsed&quot;:10,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955533612,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="93e8955f-1fd8-4303-d5c4-ec19d42bdbdf" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>Index(['지점번호', '지점명', '일시', '평균기온(℃)', '최고기온(℃)', '최고기온시각', '최저기온(℃)',
        '최저기온시각일교차', 'Unnamed: 8'],
@@ -957,42 +940,42 @@ window.Quarto = {
 </div>
 <p><code>-</code> 전처리 작업</p>
 <div id="cell-9" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955543225,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>temp <span class="op">=</span> df.iloc[:,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>temp <span class="op">=</span> df.iloc[:,<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><span class="math display">\[\text{diseas} = \text{temp} \times 0.5 + 40 + ɛ \quad \varepsilon_i \sim N(0,\sigma^2)\]</span></p>
 <div id="cell-12" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955552021,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>e1 <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="bu">len</span>(df),scale<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb6-2"><a href="#cb6-2"></a>icecream <span class="op">=</span> <span class="dv">30</span> <span class="op">+</span> temp<span class="op">*</span><span class="dv">2</span><span class="op">+</span>e1</span>
-<span id="cb6-3"><a href="#cb6-3"></a>ϵ<span class="dv">2</span><span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="dv">656</span>,scale<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb6-4"><a href="#cb6-4"></a>disease<span class="op">=</span>temp<span class="op">*</span><span class="fl">0.5</span> <span class="op">+</span> <span class="dv">40</span> <span class="op">+</span>ϵ<span class="dv">2</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a>df1 <span class="op">=</span> pd.DataFrame({<span class="st">"temp"</span> : temp, <span class="st">"disease"</span> : disease, <span class="st">"icecream"</span> : icecream})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>e1 <span class="op">=</span> np.random.normal(size<span class="op">=</span><span class="bu">len</span>(df),scale<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>icecream <span class="op">=</span> <span class="dv">30</span> <span class="op">+</span> temp<span class="op">*</span><span class="dv">2</span><span class="op">+</span>e1</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>ϵ<span class="dv">2</span><span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="dv">656</span>,scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>disease<span class="op">=</span>temp<span class="op">*</span><span class="fl">0.5</span> <span class="op">+</span> <span class="dv">40</span> <span class="op">+</span>ϵ<span class="dv">2</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> pd.DataFrame({<span class="st">"temp"</span> : temp, <span class="st">"disease"</span> : disease, <span class="st">"icecream"</span> : icecream})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-13" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955558462,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">def</span> f(x): </span>
-<span id="cb7-2"><a href="#cb7-2"></a>    <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span>: </span>
-<span id="cb7-3"><a href="#cb7-3"></a>        y<span class="op">=</span><span class="st">'group0'</span></span>
-<span id="cb7-4"><a href="#cb7-4"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">5</span>: </span>
-<span id="cb7-5"><a href="#cb7-5"></a>        y<span class="op">=</span><span class="st">'group5'</span></span>
-<span id="cb7-6"><a href="#cb7-6"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">10</span>: </span>
-<span id="cb7-7"><a href="#cb7-7"></a>        y<span class="op">=</span><span class="st">'group10'</span></span>
-<span id="cb7-8"><a href="#cb7-8"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">15</span>: </span>
-<span id="cb7-9"><a href="#cb7-9"></a>        y<span class="op">=</span><span class="st">'group15'</span></span>
-<span id="cb7-10"><a href="#cb7-10"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">20</span>:</span>
-<span id="cb7-11"><a href="#cb7-11"></a>        y<span class="op">=</span><span class="st">'group20'</span></span>
-<span id="cb7-12"><a href="#cb7-12"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">25</span>: </span>
-<span id="cb7-13"><a href="#cb7-13"></a>        y<span class="op">=</span><span class="st">'group25'</span></span>
-<span id="cb7-14"><a href="#cb7-14"></a>    <span class="cf">else</span>: </span>
-<span id="cb7-15"><a href="#cb7-15"></a>        y<span class="op">=</span><span class="st">'group30'</span></span>
-<span id="cb7-16"><a href="#cb7-16"></a>    <span class="cf">return</span> y </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x): </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&lt;</span><span class="dv">0</span>: </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group0'</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">5</span>: </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group5'</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">10</span>: </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group10'</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">15</span>: </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group15'</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">20</span>:</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group20'</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&lt;</span><span class="dv">25</span>: </span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group25'</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: </span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span><span class="st">'group30'</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-14" class="cell" data-executioninfo="{&quot;elapsed&quot;:428,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955692609,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>df1[<span class="st">"temp2"</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x : f(x) ,df1.temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df1[<span class="st">"temp2"</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x : f(x) ,df1.temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-15" class="cell" data-executioninfo="{&quot;elapsed&quot;:1081,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955700028,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="567d4ec1-853b-4355-fb78-4b70139f2094" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>(</span>
-<span id="cb9-2"><a href="#cb9-2"></a>ggplot(df1,aes(x<span class="op">=</span><span class="st">"icecream"</span>,y<span class="op">=</span><span class="st">"disease"</span>)) <span class="op">+</span></span>
-<span id="cb9-3"><a href="#cb9-3"></a>    geom_point()</span>
-<span id="cb9-4"><a href="#cb9-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ggplot(df1,aes(x<span class="op">=</span><span class="st">"icecream"</span>,y<span class="op">=</span><span class="st">"disease"</span>)) <span class="op">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    geom_point()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1002,10 +985,10 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-16" class="cell" data-executioninfo="{&quot;elapsed&quot;:1087,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955721398,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2e4f0675-dbe5-4c4c-86d7-effe3f3aead0" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>(</span>
-<span id="cb10-2"><a href="#cb10-2"></a>ggplot(df1,aes(x<span class="op">=</span><span class="st">"icecream"</span>,y<span class="op">=</span><span class="st">"disease"</span>)) <span class="op">+</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a>    geom_point(aes(color<span class="op">=</span><span class="st">"temp2"</span>))</span>
-<span id="cb10-4"><a href="#cb10-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ggplot(df1,aes(x<span class="op">=</span><span class="st">"icecream"</span>,y<span class="op">=</span><span class="st">"disease"</span>)) <span class="op">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    geom_point(aes(color<span class="op">=</span><span class="st">"temp2"</span>))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1020,29 +1003,29 @@ window.Quarto = {
 <section id="만약-관계가-있는-경우라면" class="level3">
 <h3 class="anchored" data-anchor-id="만약-관계가-있는-경우라면">만약 관계가 있는 경우라면?</h3>
 <div id="cell-19" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955767302,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb11-2"><a href="#cb11-2"></a>ϵ<span class="dv">1</span><span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="dv">656</span>, scale<span class="op">=</span><span class="dv">10</span>) </span>
-<span id="cb11-3"><a href="#cb11-3"></a>icecream<span class="op">=</span>temp<span class="op">*</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> ϵ<span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>ϵ<span class="dv">1</span><span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="dv">656</span>, scale<span class="op">=</span><span class="dv">10</span>) </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>icecream<span class="op">=</span>temp<span class="op">*</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">30</span> <span class="op">+</span> ϵ<span class="dv">1</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-20" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955772225,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>np.random.seed(<span class="dv">2</span>) </span>
-<span id="cb12-2"><a href="#cb12-2"></a>ϵ<span class="dv">2</span><span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="dv">656</span>,scale<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb12-3"><a href="#cb12-3"></a>disease<span class="op">=</span> <span class="dv">30</span><span class="op">+</span> temp<span class="op">*</span><span class="fl">0.0</span> <span class="op">+</span> icecream<span class="op">*</span><span class="fl">0.15</span> <span class="op">+</span>ϵ<span class="dv">2</span><span class="op">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">2</span>) </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ϵ<span class="dv">2</span><span class="op">=</span>np.random.normal(size<span class="op">=</span><span class="dv">656</span>,scale<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>disease<span class="op">=</span> <span class="dv">30</span><span class="op">+</span> temp<span class="op">*</span><span class="fl">0.0</span> <span class="op">+</span> icecream<span class="op">*</span><span class="fl">0.15</span> <span class="op">+</span>ϵ<span class="dv">2</span><span class="op">*</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-21" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955780783,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>df2<span class="op">=</span>pd.DataFrame({<span class="st">'temp'</span>:temp,<span class="st">'icecream'</span>:icecream,<span class="st">'disease'</span>:disease})</span>
-<span id="cb13-2"><a href="#cb13-2"></a>df2[<span class="st">'temp2'</span>]<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(f,df2.temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.DataFrame({<span class="st">'temp'</span>:temp,<span class="st">'icecream'</span>:icecream,<span class="st">'disease'</span>:disease})</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>df2[<span class="st">'temp2'</span>]<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(f,df2.temp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-22" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955843922,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">import</span> warnings</span>
-<span id="cb14-2"><a href="#cb14-2"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-23" class="cell" data-executioninfo="{&quot;elapsed&quot;:1692,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955847251,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ae32921d-df84-41ba-eeb5-82fa7582ec6d" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>(</span>
-<span id="cb15-2"><a href="#cb15-2"></a>ggplot(df2, aes(x<span class="op">=</span><span class="st">"icecream"</span>,y<span class="op">=</span><span class="st">"disease"</span>)) <span class="op">+</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>    geom_point(aes(color<span class="op">=</span><span class="st">"temp2"</span>)) <span class="op">+</span> </span>
-<span id="cb15-4"><a href="#cb15-4"></a>    geom_smooth(aes(color<span class="op">=</span><span class="st">"temp2"</span>),linetype<span class="op">=</span><span class="st">"dashed"</span>)</span>
-<span id="cb15-5"><a href="#cb15-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>ggplot(df2, aes(x<span class="op">=</span><span class="st">"icecream"</span>,y<span class="op">=</span><span class="st">"disease"</span>)) <span class="op">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    geom_point(aes(color<span class="op">=</span><span class="st">"temp2"</span>)) <span class="op">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    geom_smooth(aes(color<span class="op">=</span><span class="st">"temp2"</span>),linetype<span class="op">=</span><span class="st">"dashed"</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1059,11 +1042,11 @@ window.Quarto = {
 <section id="loc" class="level2">
 <h2 class="anchored" data-anchor-id="loc">loc</h2>
 <div id="cell-26" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955964770,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb16-2"><a href="#cb16-2"></a>_df<span class="op">=</span> pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">4</span>)), columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>), index<span class="op">=</span>pd.date_range(<span class="st">'20201225'</span>,periods<span class="op">=</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>_df<span class="op">=</span> pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">4</span>)), columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>), index<span class="op">=</span>pd.date_range(<span class="st">'20201225'</span>,periods<span class="op">=</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-27" class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955927053,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="1e8e2d4b-7270-4eea-a090-47dd3727f02b" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>_df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="20">
 <div>
 
@@ -1200,7 +1183,7 @@ window.Quarto = {
 </div>
 <p><code>-</code> 1월 5일부터 1월 8일 까지의 자료만 보고싶다.</p>
 <div id="cell-29" class="cell" data-executioninfo="{&quot;elapsed&quot;:529,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683955979393,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="44bc078e-75c4-475b-9c97-88d8fe2fe243" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a>_df.loc[<span class="st">"20210105"</span>:<span class="st">"20210108"</span>,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>_df.loc[<span class="st">"20210105"</span>:<span class="st">"20210108"</span>,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <div>
 
@@ -1333,7 +1316,7 @@ window.Quarto = {
 </ul>
 <p><code>-</code> 아래의 경우는 인덱스를 2칸씩 띄어서 불러옴</p>
 <div id="cell-32" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956038051,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="98a6c7b3-2270-4ec7-f398-1b37f364224f" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>_df.iloc[::<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>_df.iloc[::<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
@@ -1505,7 +1488,7 @@ window.Quarto = {
 </div>
 <p><code>-</code> 컬럼에도 적용 가능하다.</p>
 <div id="cell-34" class="cell" data-executioninfo="{&quot;elapsed&quot;:398,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956058316,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="85b56871-2915-484b-8e4e-0ab2a1503119" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>_df.iloc[:,::<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>_df.iloc[:,::<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
@@ -1708,9 +1691,9 @@ window.Quarto = {
 <section id="lambda-map" class="level2">
 <h2 class="anchored" data-anchor-id="lambda-map">lambda + map</h2>
 <div id="cell-37" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956105225,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c03ac047-4e94-4afe-aee3-0cfdcab8d121" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb21-2"><a href="#cb21-2"></a>df2<span class="op">=</span> pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>)),columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>))</span>
-<span id="cb21-3"><a href="#cb21-3"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span> pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>)),columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>))</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="26">
 <div>
 
@@ -1883,7 +1866,7 @@ window.Quarto = {
 <section id="컬럼-a의-값이-0보다-큰경우만" class="level3">
 <h3 class="anchored" data-anchor-id="컬럼-a의-값이-0보다-큰경우만">컬럼 A의 값이 0보다 큰경우만</h3>
 <div id="cell-39" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956142052,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="dc4ef525-cd4b-4e5a-f541-da5964ed3fa4" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>df2.iloc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x<span class="op">&gt;</span><span class="dv">0</span>, df2.A),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df2.iloc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x<span class="op">&gt;</span><span class="dv">0</span>, df2.A),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="27">
 <div>
 
@@ -2012,7 +1995,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-40" class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956149135,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a844e4ef-5c2f-4331-986b-83a066a5351d" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>df2.loc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x <span class="op">&gt;</span> <span class="dv">0</span> , df2.A),: ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df2.loc[<span class="bu">map</span>(<span class="kw">lambda</span> x : x <span class="op">&gt;</span> <span class="dv">0</span> , df2.A),: ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="28">
 <div>
 
@@ -2144,7 +2127,7 @@ window.Quarto = {
 <section id="컬럼-a와-b가-둘다-0보다-큰경우만" class="level3">
 <h3 class="anchored" data-anchor-id="컬럼-a와-b가-둘다-0보다-큰경우만">컬럼 A와 B가 둘다 0보다 큰경우만</h3>
 <div id="cell-42" class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956171520,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="2a058bcd-8a33-4eec-a081-792fcf1a2382" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a>df2.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y : (x<span class="op">&gt;</span><span class="dv">0</span>) <span class="kw">and</span> (y<span class="op">&gt;</span><span class="dv">0</span>) , df2.A,df2.C),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df2.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y : (x<span class="op">&gt;</span><span class="dv">0</span>) <span class="kw">and</span> (y<span class="op">&gt;</span><span class="dv">0</span>) , df2.A,df2.C),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
@@ -2259,7 +2242,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-43" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956175140,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="88ef85a5-1ae0-49a0-e750-e2c2e19b689b" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>df2.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y : (x<span class="op">&gt;</span><span class="dv">0</span>)  <span class="op">|</span> (y<span class="op">&gt;</span><span class="dv">0</span>) , df2.A,df2.C),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df2.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y : (x<span class="op">&gt;</span><span class="dv">0</span>)  <span class="op">|</span> (y<span class="op">&gt;</span><span class="dv">0</span>) , df2.A,df2.C),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="30">
 <div>
 
@@ -2416,7 +2399,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-44" class="cell" data-executioninfo="{&quot;elapsed&quot;:432,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956185015,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="59ba83ca-ea08-4d43-d213-4bb9b1dac87e" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a>df2.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y : (x<span class="op">&gt;</span><span class="dv">0</span>)  <span class="kw">or</span> (y<span class="op">&gt;</span><span class="dv">0</span>) , df2.A,df2.C),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>df2.loc[ <span class="bu">map</span>(<span class="kw">lambda</span> x,y : (x<span class="op">&gt;</span><span class="dv">0</span>)  <span class="kw">or</span> (y<span class="op">&gt;</span><span class="dv">0</span>) , df2.A,df2.C),:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 
@@ -2579,9 +2562,9 @@ window.Quarto = {
 <section id="a0-and-b0-인-행을-선택" class="level3">
 <h3 class="anchored" data-anchor-id="a0-and-b0-인-행을-선택">A&gt;0 and B&lt;0 인 행을 선택</h3>
 <div id="cell-47" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956214489,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="409b1389-3628-43e6-c82a-a02454dd0055" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb27-2"><a href="#cb27-2"></a>df<span class="op">=</span>pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">4</span>)),columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>))</span>
-<span id="cb27-3"><a href="#cb27-3"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>df<span class="op">=</span>pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">15</span>,<span class="dv">4</span>)),columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
 <div>
 
@@ -2787,7 +2770,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-48" class="cell" data-executioninfo="{&quot;elapsed&quot;:412,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956221973,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c7abdba9-2540-4f54-f3b1-6d0d11ab146e" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a>df.query(<span class="st">'A&gt;0 and B&lt;0'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'A&gt;0 and B&lt;0'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="33">
 <div>
 
@@ -2923,7 +2906,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-49" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956225354,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="bf56db4c-693b-4835-965d-18c75e769009" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>df.query(<span class="st">'A&gt;0 &amp; B&lt;0'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'A&gt;0 &amp; B&lt;0'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="34">
 <div>
 
@@ -3062,7 +3045,7 @@ window.Quarto = {
 <section id="a-b-c인-행을선택" class="level3">
 <h3 class="anchored" data-anchor-id="a-b-c인-행을선택">A &lt; B&lt; C인 행을선택</h3>
 <div id="cell-51" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956239824,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="762ae61f-4bd7-41f2-893f-ff1d3c9dfff1" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a>df.query(<span class="st">'A&lt;B&lt;C'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">'A&lt;B&lt;C'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
@@ -3180,14 +3163,14 @@ window.Quarto = {
 <section id="ameana인-행을-선택" class="level3">
 <h3 class="anchored" data-anchor-id="ameana인-행을-선택">A&gt;mean(A)인 행을 선택</h3>
 <div id="cell-53" class="cell" data-executioninfo="{&quot;elapsed&quot;:7,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956256356,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="963fa2c9-e052-454d-8358-47e1d105ed5a" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>meanA <span class="op">=</span>np.mean(df.A)</span>
-<span id="cb31-2"><a href="#cb31-2"></a>meanA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>meanA <span class="op">=</span>np.mean(df.A)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>meanA</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="36">
 <pre><code>-0.018839420539994597</code></pre>
 </div>
 </div>
 <div id="cell-54" class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956259860,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="02b5fa1d-0a92-4a39-ede5-e57bfa5bf594" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>df.query(<span class="st">"A&gt;@meanA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"A&gt;@meanA"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <div>
 
@@ -3340,7 +3323,7 @@ window.Quarto = {
 <section id="a-meana이고-a0.8-인-것을-선택" class="level3">
 <h3 class="anchored" data-anchor-id="a-meana이고-a0.8-인-것을-선택">A &gt; mean(A)이고, A&lt;0.8 인 것을 선택</h3>
 <div id="cell-56" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956272172,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="914c83fe-1fef-48d0-fe19-42fd6226d02e" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a>df.query(<span class="st">"A&gt; @meanA and A&lt;0.8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"A&gt; @meanA and A&lt;0.8"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
@@ -3466,7 +3449,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="단순인덱싱">단순인덱싱</h3>
 <p><code>-</code> 0,3:5, 9:11 에 해당하는 row를 뽑고 싶다 <span class="math inline">\(\to\)</span> 칼럼이름을 <code>index</code>로 받아서 사용한다.</p>
 <div id="cell-59" class="cell" data-executioninfo="{&quot;elapsed&quot;:417,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956322869,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="a9639641-30d4-4a2d-d4de-a9f6f3dd7979" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>df.query(<span class="st">"index==0 or 3&lt;=index&lt;=5 or 9&lt;=index&lt;=11"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>df.query(<span class="st">"index==0 or 3&lt;=index&lt;=5 or 9&lt;=index&lt;=11"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
@@ -3617,8 +3600,8 @@ window.Quarto = {
 </div>
 <p><code>-</code> 아래와 같은 시계열 자료에서 특히 유용함.</p>
 <div id="cell-61" class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956339580,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="d46b4090-965b-45e9-a399-d585709af3f0" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a>df2<span class="op">=</span>pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>)), columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>), index<span class="op">=</span>pd.date_range(<span class="st">'20201226'</span>,periods<span class="op">=</span><span class="dv">10</span>))</span>
-<span id="cb36-2"><a href="#cb36-2"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>df2<span class="op">=</span>pd.DataFrame(np.random.normal(size<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>)), columns<span class="op">=</span><span class="bu">list</span>(<span class="st">'ABCD'</span>), index<span class="op">=</span>pd.date_range(<span class="st">'20201226'</span>,periods<span class="op">=</span><span class="dv">10</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
@@ -3789,7 +3772,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-62" class="cell" data-executioninfo="{&quot;elapsed&quot;:529,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956345832,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="48539b62-edc4-4c5d-810c-fdb0b7d0dcaa" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>df2.query(<span class="st">"20201226 &lt;=index &lt;=20210101"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df2.query(<span class="st">"20201226 &lt;=index &lt;=20210101"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
@@ -3939,7 +3922,7 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-63" class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956349873,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="edfd45ad-e03c-4ee1-caef-da41301f89cd" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a>df2.query(<span class="st">"20201226 &lt;=index &lt;=20210101 and A+B &lt; C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>df2.query(<span class="st">"20201226 &lt;=index &lt;=20210101 and A+B &lt; C"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
@@ -4066,16 +4049,16 @@ window.Quarto = {
 <section id="fifa-선수들-시각화" class="level1">
 <h1>FIFA 선수들 시각화</h1>
 <div id="cell-65" class="cell" data-executioninfo="{&quot;elapsed&quot;:1348,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956376627,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>fifa22<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/2021-10-25-FIFA22_official_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>fifa22<span class="op">=</span>pd.read_csv(<span class="st">'https://raw.githubusercontent.com/guebin/2021DV/master/_notebooks/2021-10-25-FIFA22_official_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-66" class="cell" data-executioninfo="{&quot;elapsed&quot;:4,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956376628,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> <span class="op">*</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-67" class="cell" data-executioninfo="{&quot;elapsed&quot;:1559,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956395081,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="969bee24-edf1-4fa0-e183-76a4d19f09b9" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>(</span>
-<span id="cb41-2"><a href="#cb41-2"></a>ggplot(fifa22) <span class="op">+</span></span>
-<span id="cb41-3"><a href="#cb41-3"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential"</span>))</span>
-<span id="cb41-4"><a href="#cb41-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>ggplot(fifa22) <span class="op">+</span></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential"</span>))</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4086,14 +4069,14 @@ window.Quarto = {
 </div>
 <p><code>-</code> 뭔가 : Potential &gt; Overall 인 관계가 성립하는 것 같음 <span class="math inline">\(\to\)</span> Potential-Overall인 변수를 새로만들고 시각화해보자.</p>
 <div id="cell-69" class="cell" data-executioninfo="{&quot;elapsed&quot;:2,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956477933,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a>fifa22[<span class="st">"Potential2"</span>] <span class="op">=</span> fifa22[<span class="st">"Potential"</span>] <span class="op">-</span> fifa22[<span class="st">"Overall"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>fifa22[<span class="st">"Potential2"</span>] <span class="op">=</span> fifa22[<span class="st">"Potential"</span>] <span class="op">-</span> fifa22[<span class="st">"Overall"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-70" class="cell" data-executioninfo="{&quot;elapsed&quot;:1620,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956535714,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="e29cf66d-9d2c-4ee4-99e6-24bab0757700" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>(</span>
-<span id="cb43-2"><a href="#cb43-2"></a>ggplot(fifa22) <span class="op">+</span></span>
-<span id="cb43-3"><a href="#cb43-3"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>),alpha<span class="op">=</span><span class="fl">0.1</span>,position<span class="op">=</span><span class="st">"jitter"</span>) <span class="co">## iitter 값들이 겹치지않도록 조금씩 흔들어줌</span></span>
-<span id="cb43-4"><a href="#cb43-4"></a>    </span>
-<span id="cb43-5"><a href="#cb43-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>ggplot(fifa22) <span class="op">+</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>),alpha<span class="op">=</span><span class="fl">0.1</span>,position<span class="op">=</span><span class="st">"jitter"</span>) <span class="co">## iitter 값들이 겹치지않도록 조금씩 흔들어줌</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4104,10 +4087,10 @@ window.Quarto = {
 </div>
 <p><code>-</code> 포텐셜2가 너무 0근처인 선수들이 있다. 아마 은퇴한 선수들이 아닐까라는 생각이 든다 -&gt; 제외하고 그려보자</p>
 <div id="cell-72" class="cell" data-executioninfo="{&quot;elapsed&quot;:1845,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956632939,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="c8b35ccf-3974-4a60-eaed-eb5d3b485fee" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a>(</span>
-<span id="cb44-2"><a href="#cb44-2"></a>ggplot(fifa22.query(<span class="st">"Potential2&gt;1"</span>)) <span class="op">+</span></span>
-<span id="cb44-3"><a href="#cb44-3"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>),alpha<span class="op">=</span><span class="fl">0.1</span>,position<span class="op">=</span><span class="st">"jitter"</span>)</span>
-<span id="cb44-4"><a href="#cb44-4"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>ggplot(fifa22.query(<span class="st">"Potential2&gt;1"</span>)) <span class="op">+</span></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>),alpha<span class="op">=</span><span class="fl">0.1</span>,position<span class="op">=</span><span class="st">"jitter"</span>)</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4124,11 +4107,11 @@ window.Quarto = {
 </ul>
 <p><code>-</code> Overall을 구간별로 나누자. 어느 정도가 적당한 구간인가?</p>
 <div id="cell-75" class="cell" data-executioninfo="{&quot;elapsed&quot;:429,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956666801,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb45-2"><a href="#cb45-2"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-76" class="cell" data-executioninfo="{&quot;elapsed&quot;:851,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956671421,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="eca33ad0-a0ed-448a-f5c7-a524e863ea39" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>fifa22.Overall.hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>fifa22.Overall.hist()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4138,22 +4121,22 @@ window.Quarto = {
 </div>
 </div>
 <div id="cell-77" class="cell" data-executioninfo="{&quot;elapsed&quot;:3,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956677426,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a><span class="kw">def</span> f(x): </span>
-<span id="cb47-2"><a href="#cb47-2"></a>    <span class="cf">if</span> x<span class="op">&gt;</span><span class="dv">72</span>: y<span class="op">=</span><span class="st">'Q1'</span> </span>
-<span id="cb47-3"><a href="#cb47-3"></a>    <span class="cf">elif</span> x<span class="op">&gt;</span><span class="dv">68</span>: y<span class="op">=</span><span class="st">'Q2'</span></span>
-<span id="cb47-4"><a href="#cb47-4"></a>    <span class="cf">elif</span> x<span class="op">&gt;</span><span class="dv">63</span>: y<span class="op">=</span><span class="st">'Q3'</span></span>
-<span id="cb47-5"><a href="#cb47-5"></a>    <span class="cf">else</span>: y<span class="op">=</span><span class="st">'Q4'</span></span>
-<span id="cb47-6"><a href="#cb47-6"></a>    <span class="cf">return</span> y </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x): </span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&gt;</span><span class="dv">72</span>: y<span class="op">=</span><span class="st">'Q1'</span> </span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&gt;</span><span class="dv">68</span>: y<span class="op">=</span><span class="st">'Q2'</span></span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">&gt;</span><span class="dv">63</span>: y<span class="op">=</span><span class="st">'Q3'</span></span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: y<span class="op">=</span><span class="st">'Q4'</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-78" class="cell" data-executioninfo="{&quot;elapsed&quot;:577,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956682750,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>fifa22[<span class="st">"Q"</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x : f(x),fifa22.Overall))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>fifa22[<span class="st">"Q"</span>] <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x : f(x),fifa22.Overall))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-79" class="cell" data-executioninfo="{&quot;elapsed&quot;:1232,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956710006,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="1034bd55-4aa6-4762-c0b3-8a3ef4474cbc" data-execution_count="62">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>(</span>
-<span id="cb49-2"><a href="#cb49-2"></a>    ggplot(fifa22.query(<span class="st">"Potential2 &gt; 0.1"</span>)) <span class="op">+</span></span>
-<span id="cb49-3"><a href="#cb49-3"></a>        geom_boxplot(aes(x<span class="op">=</span><span class="st">"Q"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>))</span>
-<span id="cb49-4"><a href="#cb49-4"></a>    </span>
-<span id="cb49-5"><a href="#cb49-5"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>    ggplot(fifa22.query(<span class="st">"Potential2 &gt; 0.1"</span>)) <span class="op">+</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>        geom_boxplot(aes(x<span class="op">=</span><span class="st">"Q"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>))</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4166,29 +4149,29 @@ window.Quarto = {
 <p><code>-</code> 산점도와 박스플랏을 겹처서 그린다면 좀더 이해가 쉬울 것 같다.</p>
 <p><code>-</code> x축의 위치를 조정하면 될 것 같다 <span class="math inline">\(\to\)</span> Q1~Q4 각 그룹별로 x축의 위치를 구하자</p>
 <div id="cell-81" class="cell" data-executioninfo="{&quot;elapsed&quot;:559,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956738063,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="ba695d94-9054-4afb-b6ac-d79a39f432d0" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>l<span class="op">=</span>fifa22.groupby(by<span class="op">=</span><span class="st">'Q'</span>).mean().Overall.to_list()</span>
-<span id="cb50-2"><a href="#cb50-2"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>l<span class="op">=</span>fifa22.groupby(by<span class="op">=</span><span class="st">'Q'</span>).mean().Overall.to_list()</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>l</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="63">
 <pre><code>[76.3506528835691, 70.4117807472048, 66.07444942506334, 59.60269121813031]</code></pre>
 </div>
 </div>
 <div id="cell-82" class="cell" data-executioninfo="{&quot;elapsed&quot;:602,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956755377,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="64">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a><span class="kw">def</span> g(x): </span>
-<span id="cb52-2"><a href="#cb52-2"></a>    <span class="cf">if</span> x<span class="op">==</span><span class="st">'Q1'</span>: y<span class="op">=</span>l[<span class="dv">0</span>]</span>
-<span id="cb52-3"><a href="#cb52-3"></a>    <span class="cf">elif</span> x<span class="op">==</span><span class="st">'Q2'</span>: y<span class="op">=</span>l[<span class="dv">1</span>]</span>
-<span id="cb52-4"><a href="#cb52-4"></a>    <span class="cf">elif</span> x<span class="op">==</span><span class="st">'Q3'</span>: y<span class="op">=</span>l[<span class="dv">2</span>]</span>
-<span id="cb52-5"><a href="#cb52-5"></a>    <span class="cf">else</span>: y<span class="op">=</span>l[<span class="dv">3</span>]</span>
-<span id="cb52-6"><a href="#cb52-6"></a>    <span class="cf">return</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> g(x): </span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">==</span><span class="st">'Q1'</span>: y<span class="op">=</span>l[<span class="dv">0</span>]</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">==</span><span class="st">'Q2'</span>: y<span class="op">=</span>l[<span class="dv">1</span>]</span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x<span class="op">==</span><span class="st">'Q3'</span>: y<span class="op">=</span>l[<span class="dv">2</span>]</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>: y<span class="op">=</span>l[<span class="dv">3</span>]</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-83" class="cell" data-executioninfo="{&quot;elapsed&quot;:432,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956779432,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-execution_count="66">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>fifa22[<span class="st">'Qx'</span>]<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(g,fifa22.Q))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>fifa22[<span class="st">'Qx'</span>]<span class="op">=</span><span class="bu">list</span>(<span class="bu">map</span>(g,fifa22.Q))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="cell-84" class="cell" data-executioninfo="{&quot;elapsed&quot;:1814,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1683956783251,&quot;user&quot;:{&quot;displayName&quot;:&quot;이강철&quot;,&quot;userId&quot;:&quot;13507850890638580947&quot;},&quot;user_tz&quot;:-540}" data-outputid="11871048-10ab-4a56-a893-edfb5ada0f9e" data-execution_count="67">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>(</span>
-<span id="cb54-2"><a href="#cb54-2"></a>ggplot(fifa22.query(<span class="st">"Potential2&gt;0.1"</span>)) <span class="op">+</span></span>
-<span id="cb54-3"><a href="#cb54-3"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>,color<span class="op">=</span><span class="st">"Q"</span>),alpha<span class="op">=</span><span class="fl">0.1</span>,size<span class="op">=</span><span class="fl">0.1</span>,position<span class="op">=</span><span class="st">"jitter"</span>) <span class="op">+</span></span>
-<span id="cb54-4"><a href="#cb54-4"></a>    geom_boxplot(aes(x<span class="op">=</span><span class="st">"Qx"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>,color<span class="op">=</span><span class="st">"Q"</span>))</span>
-<span id="cb54-5"><a href="#cb54-5"></a>)s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>ggplot(fifa22.query(<span class="st">"Potential2&gt;0.1"</span>)) <span class="op">+</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>    geom_point(aes(x<span class="op">=</span><span class="st">"Overall"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>,color<span class="op">=</span><span class="st">"Q"</span>),alpha<span class="op">=</span><span class="fl">0.1</span>,size<span class="op">=</span><span class="fl">0.1</span>,position<span class="op">=</span><span class="st">"jitter"</span>) <span class="op">+</span></span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>    geom_boxplot(aes(x<span class="op">=</span><span class="st">"Qx"</span>,y<span class="op">=</span><span class="st">"Potential2"</span>,color<span class="op">=</span><span class="st">"Q"</span>))</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>)s</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -4610,6 +4593,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://utteranc.es/client.js" repo="gangcheol/mysite" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
