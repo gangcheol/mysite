@@ -1147,29 +1147,23 @@ y_2 = \beta_0 +\beta_1 x_2 + \epsilon_2 \\
 y_{10} = \beta_0 +\beta_1 x_{10} + \epsilon_{10}
 \end{cases}\)</span></p>
 <p>아래와 같이 쓸 수 있다.</p>
-$
-<span class="math display">\[\begin{bmatrix}
+<p><span class="math display">\[\begin{bmatrix}
 y_1 \\
 y_2 \\
 \dots \\
 y_{10}
-\end{bmatrix}\]</span>
-=
-<span class="math display">\[\begin{bmatrix}
+\end{bmatrix}
+= \begin{bmatrix}
 1 &amp; x_1 \\
 1 &amp; x_2 \\
 \dots &amp; \dots \\
 1 &amp; x_{10}
-\end{bmatrix}\begin{bmatrix}\beta_0 \\ \beta_1 \end{bmatrix}\]</span>
-<ul>
-<li><span class="math display">\[\begin{bmatrix}
+\end{bmatrix}\begin{bmatrix}\beta_0 \\ \beta_1 \end{bmatrix} + \begin{bmatrix}
 \epsilon_1 \\
 \epsilon_2 \\
 \dots \\
 \epsilon_{10}
-\end{bmatrix}\]</span>
-$</li>
-</ul>
+\end{bmatrix} \]</span></p>
 <p>벡터와 매트릭스 형태로 정리하면</p>
 <p><span class="math inline">\({\bf y} = {\bf X} {\boldsymbol \beta} + \boldsymbol{\epsilon}\)</span></p>
 <p><code>-</code> 손실함수의 매트릭스화: 우리가 최소화 하려던 손실함수는 아래와 같다.</p>
@@ -1386,7 +1380,7 @@ array([[ 1. , 20.1],
 <p>다시 벡터로 돌아오면</p>
 <p>(올바른 풀이) <span class="math inline">\(\quad \left ( \frac {d}{d\,\mathbf{y}} (\mathbf{y^{\top}y})\right ) = A + B\)</span></p>
 <p><span class="math inline">\(A = f(\mathbf y)\)</span> , <span class="math inline">\(B = g(\mathbf y)\)</span> 라고 생각하자</p>
-<p>$ A =( ) = = $</p>
+<p><span class="math inline">\(\frac {d}{d\,\mathbf y} A =\left (\frac {d}{d\,\mathbf y} \mathbf {y^{\top}y} \right ) = \mathbf {I\,y}\)</span></p>
 <p><span class="math inline">\(B\)</span> 의 경우도 위와 동일하므로</p>
 <p><span class="math display">\[\frac {d\,(A+B)}{d\,\mathbf{y}} = \{f(\mathbf {y})\}^{\prime} +\{g(\mathbf {y})\}^{\prime} = 2\mathbf{y}\]</span></p>
 </section>
